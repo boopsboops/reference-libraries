@@ -1,0 +1,539 @@
+class,order,family,genus,species,commonName,sciName,commonSpecies
+Actinopterygii,Acipenseriformes,Acipenseridae,Acipenser,ruthenus,Sterlet sturgeon,Acipenser ruthenus,FALSE
+Actinopterygii,Acipenseriformes,Acipenseridae,Acipenser,sturio,Sturgeon,Acipenser sturio,FALSE
+Actinopterygii,Anguilliformes,Anguillidae,Anguilla,anguilla,European eel,Anguilla anguilla,TRUE
+Actinopterygii,Anguilliformes,Anguillidae,Anguilla,bengalensis,Indian mottled eel,Anguilla bengalensis,FALSE
+Actinopterygii,Anguilliformes,Congridae,Conger,conger,European conger,Conger conger,TRUE
+Actinopterygii,Anguilliformes,Derichthyidae,Nessorhamphus,ingolfianus,Duckbill oceanic eel,Nessorhamphus ingolfianus,FALSE
+Actinopterygii,Anguilliformes,Muraenidae,Muraena,helena,Mediterranean moray,Muraena helena,FALSE
+Actinopterygii,Anguilliformes,Nemichthyidae,Avocettina,infans,Avocet snipe eel,Avocettina infans,FALSE
+Actinopterygii,Anguilliformes,Nemichthyidae,Nemichthys,scolopaceus,Slender snipe eel,Nemichthys scolopaceus,FALSE
+Actinopterygii,Anguilliformes,Serrivomeridae,Serrivomer,beanii,Stout sawpalate,Serrivomer beanii,FALSE
+Actinopterygii,Anguilliformes,Synaphobranchidae,Histiobranchus,bathybius,Deep-water arrowtooth eel,Histiobranchus bathybius,FALSE
+Actinopterygii,Anguilliformes,Synaphobranchidae,Ilyophis,blachei,NA,Ilyophis blachei,FALSE
+Actinopterygii,Anguilliformes,Synaphobranchidae,Simenchelys,parasitica,Snubnosed eel,Simenchelys parasitica,FALSE
+Actinopterygii,Anguilliformes,Synaphobranchidae,Synaphobranchus,kaupii,Kaup's arrowtooth eel,Synaphobranchus kaupii,FALSE
+Actinopterygii,Atheriniformes,Atherinidae,Atherina,boyeri,Big-scale sand smelt,Atherina boyeri,TRUE
+Actinopterygii,Atheriniformes,Atherinidae,Atherina,presbyter,Sand smelt,Atherina presbyter,TRUE
+Actinopterygii,Aulopiformes,Alepisauridae,Alepisaurus,ferox,Long snouted lancetfish,Alepisaurus ferox,FALSE
+Actinopterygii,Aulopiformes,Bathysauridae,Bathysaurus,ferox,Deep-sea lizardfish,Bathysaurus ferox,FALSE
+Actinopterygii,Aulopiformes,Evermannellidae,Evermannella,balbo,Balbo sabretooth,Evermannella balbo,FALSE
+Actinopterygii,Aulopiformes,Ipnopidae,Bathypterois,dubius,Mediterranean spiderfish,Bathypterois dubius,FALSE
+Actinopterygii,Aulopiformes,Notosudidae,Scopelosaurus,lepidus,Blackfin waryfish,Scopelosaurus lepidus,FALSE
+Actinopterygii,Aulopiformes,Paralepididae,Arctozenus,risso,Spotted barracudina,Arctozenus risso,FALSE
+Actinopterygii,Aulopiformes,Paralepididae,Magnisudis,atlantica,Duckbill barracudina,Magnisudis atlantica,FALSE
+Actinopterygii,Aulopiformes,Paralepididae,Paralepis,coregonoides,Sharpchin barracudina,Paralepis coregonoides,FALSE
+Actinopterygii,Beloniformes,Belonidae,Belone,belone,Garfish,Belone belone,TRUE
+Actinopterygii,Beloniformes,Belonidae,Belone,svetovidovi,NA,Belone svetovidovi,FALSE
+Actinopterygii,Beloniformes,Exocoetidae,Cheilopogon,heterurus,Mediterranean flyingfish,Cheilopogon heterurus,FALSE
+Actinopterygii,Beloniformes,Exocoetidae,Hirundichthys,rondeletii,Black wing flyingfish,Hirundichthys rondeletii,FALSE
+Actinopterygii,Beloniformes,Scomberesocidae,Scomberesox,saurus,Atlantic saury,Scomberesox saurus,FALSE
+Actinopterygii,Beryciformes,Anoplogastridae,Anoplogaster,cornuta,Common fangtooth,Anoplogaster cornuta,FALSE
+Actinopterygii,Beryciformes,Berycidae,Beryx,decadactylus,Alfonsino,Beryx decadactylus,FALSE
+Actinopterygii,Beryciformes,Diretmidae,Diretmus,argenteus,Silver spinyfin,Diretmus argenteus,FALSE
+Actinopterygii,Beryciformes,Trachichthyidae,Gephyroberyx,darwinii,Darwin's slimehead,Gephyroberyx darwinii,FALSE
+Actinopterygii,Beryciformes,Trachichthyidae,Hoplostethus,atlanticus,Orange roughy,Hoplostethus atlanticus,FALSE
+Actinopterygii,Beryciformes,Trachichthyidae,Hoplostethus,mediterraneus,Mediterranean slimehead,Hoplostethus mediterraneus,FALSE
+Actinopterygii,Clupeiformes,Clupeidae,Alosa,alosa,Allis shad,Alosa alosa,TRUE
+Actinopterygii,Clupeiformes,Clupeidae,Alosa,fallax,Twaite shad,Alosa fallax,FALSE
+Actinopterygii,Clupeiformes,Clupeidae,Clupea,harengus,Atlantic herring,Clupea harengus,TRUE
+Actinopterygii,Clupeiformes,Clupeidae,Sardina,pilchardus,European pilchard,Sardina pilchardus,TRUE
+Actinopterygii,Clupeiformes,Clupeidae,Sprattus,sprattus,European sprat,Sprattus sprattus,TRUE
+Actinopterygii,Clupeiformes,Engraulidae,Engraulis,encrasicolus,European anchovy,Engraulis encrasicolus,TRUE
+Actinopterygii,Cypriniformes,Cobitidae,Cobitis,taenia,Spined loach,Cobitis taenia,FALSE
+Actinopterygii,Cypriniformes,Cobitidae,Misgurnus,fossilis,Weatherfish,Misgurnus fossilis,FALSE
+Actinopterygii,Cypriniformes,Cyprinidae,Abramis,brama,Freshwater bream,Abramis brama,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Alburnus,alburnus,Bleak,Alburnus alburnus,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Barbus,barbus,Barbel,Barbus barbus,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Blicca,bjoerkna,White bream,Blicca bjoerkna,FALSE
+Actinopterygii,Cypriniformes,Cyprinidae,Carassius,auratus,Goldfish,Carassius auratus,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Carassius,carassius,Crucian carp,Carassius carassius,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Cyprinus,carpio,Common carp,Cyprinus carpio,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Gobio,gobio,Gudgeon,Gobio gobio,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Leucaspius,delineatus,Belica,Leucaspius delineatus,FALSE
+Actinopterygii,Cypriniformes,Cyprinidae,Leuciscus,idus,Ide,Leuciscus idus,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Leuciscus,leuciscus,Common dace,Leuciscus leuciscus,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Phoxinus,phoxinus,Eurasian minnow,Phoxinus phoxinus,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Pimephales,promelas,Fathead minnow,Pimephales promelas,FALSE
+Actinopterygii,Cypriniformes,Cyprinidae,Pseudorasbora,parva,Stone moroko,Pseudorasbora parva,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Rhodeus,amarus,NA,Rhodeus amarus,FALSE
+Actinopterygii,Cypriniformes,Cyprinidae,Rhodeus,sericeus,Bitterling,Rhodeus sericeus,FALSE
+Actinopterygii,Cypriniformes,Cyprinidae,Rutilus,rutilus,Roach,Rutilus rutilus,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Scardinius,erythrophthalmus,Rudd,Scardinius erythrophthalmus,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Squalius,cephalus,Chub,Squalius cephalus,TRUE
+Actinopterygii,Cypriniformes,Cyprinidae,Tinca,tinca,Tench,Tinca tinca,TRUE
+Actinopterygii,Cypriniformes,Nemacheilidae,Barbatula,barbatula,Stone loach,Barbatula barbatula,TRUE
+Actinopterygii,Cyprinodontiformes,Poeciliidae,Poecilia,reticulata,Guppy,Poecilia reticulata,FALSE
+Actinopterygii,Esociformes,Esocidae,Esox,lucius,Northern pike,Esox lucius,TRUE
+Actinopterygii,Gadiformes,Gadidae,Gadiculus,argenteus,Silvery pout,Gadiculus argenteus,TRUE
+Actinopterygii,Gadiformes,Gadidae,Gadiculus,thori,NA,Gadiculus thori,FALSE
+Actinopterygii,Gadiformes,Gadidae,Gadus,morhua,Atlantic cod,Gadus morhua,TRUE
+Actinopterygii,Gadiformes,Gadidae,Melanogrammus,aeglefinus,Haddock,Melanogrammus aeglefinus,TRUE
+Actinopterygii,Gadiformes,Gadidae,Merlangius,merlangus,Whiting,Merlangius merlangus,TRUE
+Actinopterygii,Gadiformes,Gadidae,Micromesistius,poutassou,Blue whiting,Micromesistius poutassou,TRUE
+Actinopterygii,Gadiformes,Gadidae,Pollachius,pollachius,Pollack,Pollachius pollachius,TRUE
+Actinopterygii,Gadiformes,Gadidae,Pollachius,virens,Saithe,Pollachius virens,TRUE
+Actinopterygii,Gadiformes,Gadidae,Raniceps,raninus,Tadpole fish,Raniceps raninus,FALSE
+Actinopterygii,Gadiformes,Gadidae,Trisopterus,esmarkii,Norway pout,Trisopterus esmarkii,TRUE
+Actinopterygii,Gadiformes,Gadidae,Trisopterus,luscus,Pouting,Trisopterus luscus,TRUE
+Actinopterygii,Gadiformes,Gadidae,Trisopterus,minutus,Poor cod,Trisopterus minutus,TRUE
+Actinopterygii,Gadiformes,Lotidae,Brosme,brosme,Tusk,Brosme brosme,FALSE
+Actinopterygii,Gadiformes,Lotidae,Ciliata,mustela,Fivebeard rockling,Ciliata mustela,TRUE
+Actinopterygii,Gadiformes,Lotidae,Ciliata,septentrionalis,Northern rockling,Ciliata septentrionalis,TRUE
+Actinopterygii,Gadiformes,Lotidae,Enchelyopus,cimbrius,Fourbeard rockling,Enchelyopus cimbrius,TRUE
+Actinopterygii,Gadiformes,Lotidae,Gaidropsarus,argentatus,Arctic rockling,Gaidropsarus argentatus,FALSE
+Actinopterygii,Gadiformes,Lotidae,Gaidropsarus,macrophthalmus,Bigeye rockling,Gaidropsarus macrophthalmus,FALSE
+Actinopterygii,Gadiformes,Lotidae,Gaidropsarus,mediterraneus,Shore rockling,Gaidropsarus mediterraneus,TRUE
+Actinopterygii,Gadiformes,Lotidae,Gaidropsarus,vulgaris,Three-bearded rockling,Gaidropsarus vulgaris,TRUE
+Actinopterygii,Gadiformes,Lotidae,Lota,lota,Burbot,Lota lota,FALSE
+Actinopterygii,Gadiformes,Lotidae,Molva,dypterygia,Blue ling,Molva dypterygia,FALSE
+Actinopterygii,Gadiformes,Lotidae,Molva,macrophthalma,Spanish ling,Molva macrophthalma,FALSE
+Actinopterygii,Gadiformes,Lotidae,Molva,molva,Ling,Molva molva,TRUE
+Actinopterygii,Gadiformes,Macrouridae,Coelorinchus,caelorhincus,Hollowsnout grenadier,Coelorinchus caelorhincus,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Coelorinchus,caudani,NA,Coelorinchus caudani,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Coelorinchus,labiatus,Spearsnouted grenadier,Coelorinchus labiatus,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Coelorinchus,occa,Swordsnout grenadier,Coelorinchus occa,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Coryphaenoides,armatus,Abyssal grenadier,Coryphaenoides armatus,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Coryphaenoides,brevibarbis,NA,Coryphaenoides brevibarbis,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Coryphaenoides,guentheri,Gunther's grenadier,Coryphaenoides guentheri,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Coryphaenoides,mediterraneus,Mediterranean grenadier,Coryphaenoides mediterraneus,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Coryphaenoides,rupestris,Roundnose grenadier,Coryphaenoides rupestris,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Macrourus,berglax,Roughhead grenadier,Macrourus berglax,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Malacocephalus,laevis,Softhead grenadier,Malacocephalus laevis,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Nezumia,aequalis,Common Atlantic grenadier,Nezumia aequalis,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Nezumia,sclerorhynchus,Roughtip grenadier,Nezumia sclerorhynchus,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Trachyrincus,murrayi,Roughnose grenadier,Trachyrincus murrayi,FALSE
+Actinopterygii,Gadiformes,Macrouridae,Trachyrincus,scabrus,Roughsnout grenadier,Trachyrincus scabrus,FALSE
+Actinopterygii,Gadiformes,Melanonidae,Melanonus,zugmayeri,Arrowtail,Melanonus zugmayeri,FALSE
+Actinopterygii,Gadiformes,Merlucciidae,Merluccius,merluccius,European hake,Merluccius merluccius,TRUE
+Actinopterygii,Gadiformes,Moridae,Antimora,rostrata,Blue antimora,Antimora rostrata,FALSE
+Actinopterygii,Gadiformes,Moridae,Guttigadus,latifrons,NA,Guttigadus latifrons,FALSE
+Actinopterygii,Gadiformes,Moridae,Halargyreus,johnsonii,Slender codling,Halargyreus johnsonii,FALSE
+Actinopterygii,Gadiformes,Moridae,Lepidion,eques,North Atlantic codling,Lepidion eques,FALSE
+Actinopterygii,Gadiformes,Moridae,Mora,moro,Common mora,Mora moro,FALSE
+Actinopterygii,Gadiformes,Phycidae,Phycis,blennoides,Greater forkbeard,Phycis blennoides,FALSE
+Actinopterygii,Gasterosteiformes,Gasterosteidae,Gasterosteus,aculeatus,Three-spined stickleback,Gasterosteus aculeatus,TRUE
+Actinopterygii,Gasterosteiformes,Gasterosteidae,Pungitius,laevis,Smoothtail ninespine stickleback,Pungitius laevis,FALSE
+Actinopterygii,Gasterosteiformes,Gasterosteidae,Pungitius,pungitius,Ninespine stickleback,Pungitius pungitius,TRUE
+Actinopterygii,Gasterosteiformes,Gasterosteidae,Spinachia,spinachia,Sea stickleback,Spinachia spinachia,TRUE
+Actinopterygii,Gobiesociformes,Gobiesocidae,Apletodon,dentatus,Small-headed clingfish,Apletodon dentatus,TRUE
+Actinopterygii,Gobiesociformes,Gobiesocidae,Diplecogaster,bimaculata,Two-spotted clingfish,Diplecogaster bimaculata,TRUE
+Actinopterygii,Gobiesociformes,Gobiesocidae,Lepadogaster,candolii,Connemarra clingfish,Lepadogaster candolii,TRUE
+Actinopterygii,Gobiesociformes,Gobiesocidae,Lepadogaster,lepadogaster,Shore clingfish,Lepadogaster lepadogaster,TRUE
+Actinopterygii,Lampriformes,Lampridae,Lampris,guttatus,Opah,Lampris guttatus,FALSE
+Actinopterygii,Lampriformes,Regalecidae,Regalecus,glesne,King of herrings,Regalecus glesne,FALSE
+Actinopterygii,Lampriformes,Trachipteridae,Trachipterus,arcticus,Dealfish,Trachipterus arcticus,FALSE
+Actinopterygii,Lophiiformes,Ceratiidae,Ceratias,holboelli,Kroyer's deep-sea angler fish,Ceratias holboelli,FALSE
+Actinopterygii,Lophiiformes,Ceratiidae,Cryptopsaras,couesii,Triplewart seadevil,Cryptopsaras couesii,FALSE
+Actinopterygii,Lophiiformes,Himantolophidae,Himantolophus,groenlandicus,Atlantic footballfish,Himantolophus groenlandicus,FALSE
+Actinopterygii,Lophiiformes,Linophrynidae,Photocorynus,spiniceps,NA,Photocorynus spiniceps,FALSE
+Actinopterygii,Lophiiformes,Lophiidae,Lophius,budegassa,Blackbellied angler,Lophius budegassa,FALSE
+Actinopterygii,Lophiiformes,Lophiidae,Lophius,piscatorius,Angler,Lophius piscatorius,TRUE
+Actinopterygii,Lophiiformes,Melanocetidae,Melanocetus,johnsonii,Humpback anglerfish,Melanocetus johnsonii,FALSE
+Actinopterygii,Lophiiformes,Oneirodidae,Chaenophryne,draco,Smooth dreamer,Chaenophryne draco,FALSE
+Actinopterygii,Lophiiformes,Oneirodidae,Oneirodes,eschrichtii,Bulbous dreamer,Oneirodes eschrichtii,FALSE
+Actinopterygii,Mugiliformes,Mugilidae,Chelon,labrosus,Thicklip grey mullet,Chelon labrosus,TRUE
+Actinopterygii,Mugiliformes,Mugilidae,Liza,aurata,Golden grey mullet,Liza aurata,TRUE
+Actinopterygii,Mugiliformes,Mugilidae,Liza,ramada,Thinlip grey mullet,Liza ramada,TRUE
+Actinopterygii,Mugiliformes,Mugilidae,Mugil,cephalus,Flathead grey mullet,Mugil cephalus,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Benthosema,glaciale,Glacier lantern fish,Benthosema glaciale,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Bolinichthys,supralateralis,Stubby lanternfish,Bolinichthys supralateralis,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Ceratoscopelus,maderensis,Madeira lantern fish,Ceratoscopelus maderensis,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Ceratoscopelus,warmingii,Warming's lantern fish,Ceratoscopelus warmingii,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Diaphus,dumerilii,NA,Diaphus dumerilii,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Diaphus,metopoclampus,Spothead lantern fish,Diaphus metopoclampus,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Diaphus,rafinesquii,White-spotted lantern fish,Diaphus rafinesquii,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Electrona,risso,Electric lantern fish,Electrona risso,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Lampadena,speculigera,Mirror lanternfish,Lampadena speculigera,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Lampanyctus,crocodilus,Jewel lanternfish,Lampanyctus crocodilus,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Lampanyctus,intricarius,Diamondcheek lanternfish,Lampanyctus intricarius,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Lampanyctus,macdonaldi,Rakery beaconlamp,Lampanyctus macdonaldi,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Lampanyctus,pusillus,Pygmy lanternfish,Lampanyctus pusillus,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Myctophum,nitidulum,Pearly lanternfish,Myctophum nitidulum,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Myctophum,punctatum,Spotted lanternfish,Myctophum punctatum,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Notolychnus,valdiviae,Topside lampfish,Notolychnus valdiviae,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Notoscopelus,elongatus,NA,Notoscopelus elongatus,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Notoscopelus,kroyeri,Lancet fish,Notoscopelus kroyeri,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Protomyctophum,arcticum,Arctic telescope,Protomyctophum arcticum,FALSE
+Actinopterygii,Myctophiformes,Myctophidae,Symbolophorus,veranyi,Large-scale lantern fish,Symbolophorus veranyi,FALSE
+Actinopterygii,Myctophiformes,Neoscopelidae,Neoscopelus,macrolepidotus,Large-scaled lantern fish,Neoscopelus macrolepidotus,FALSE
+Actinopterygii,Notacanthiformes,Halosauridae,Halosauropsis,macrochir,Abyssal halosaur,Halosauropsis macrochir,FALSE
+Actinopterygii,Notacanthiformes,Halosauridae,Halosaurus,johnsonianus,Halosaur,Halosaurus johnsonianus,FALSE
+Actinopterygii,Notacanthiformes,Notacanthidae,Notacanthus,bonaparte,Shortfin spiny eel,Notacanthus bonaparte,FALSE
+Actinopterygii,Notacanthiformes,Notacanthidae,Notacanthus,chemnitzii,Snubnosed spiny eel,Notacanthus chemnitzii,FALSE
+Actinopterygii,Notacanthiformes,Notacanthidae,Polyacanthonotus,challengeri,Longnose tapirfish,Polyacanthonotus challengeri,FALSE
+Actinopterygii,Notacanthiformes,Notacanthidae,Polyacanthonotus,rissoanus,Smallmouth spiny eel,Polyacanthonotus rissoanus,FALSE
+Actinopterygii,Ophidiiformes,Bythitidae,Cataetyx,laticeps,NA,Cataetyx laticeps,FALSE
+Actinopterygii,Ophidiiformes,Carapidae,Echiodon,drummondii,NA,Echiodon drummondii,FALSE
+Actinopterygii,Ophidiiformes,Ophidiidae,Brotula,barbata,Bearded brotula,Brotula barbata,FALSE
+Actinopterygii,Ophidiiformes,Ophidiidae,Lamprogrammus,shcherbachevi,Scaleline cusk,Lamprogrammus shcherbachevi,FALSE
+Actinopterygii,Ophidiiformes,Ophidiidae,Ophidion,barbatum,Snake blenny,Ophidion barbatum,FALSE
+Actinopterygii,Ophidiiformes,Ophidiidae,Spectrunculus,grandis,Pudgy cuskeel,Spectrunculus grandis,FALSE
+Actinopterygii,Ophidiiformes,Parabrotulidae,Leucobrotula,adipata,NA,Leucobrotula adipata,FALSE
+Actinopterygii,Ophidiiformes,Parabrotulidae,Parabrotula,plagiophthalma,False cusk,Parabrotula plagiophthalma,FALSE
+Actinopterygii,Osmeriformes,Alepocephalidae,Alepocephalus,agassizii,Agassiz' slickhead,Alepocephalus agassizii,FALSE
+Actinopterygii,Osmeriformes,Alepocephalidae,Alepocephalus,bairdii,Baird's slickhead,Alepocephalus bairdii,FALSE
+Actinopterygii,Osmeriformes,Alepocephalidae,Alepocephalus,rostratus,Risso's smooth-head,Alepocephalus rostratus,FALSE
+Actinopterygii,Osmeriformes,Alepocephalidae,Bajacalifornia,megalops,Bigeye smooth-head,Bajacalifornia megalops,FALSE
+Actinopterygii,Osmeriformes,Alepocephalidae,Narcetes,stomias,Blackhead salmon,Narcetes stomias,FALSE
+Actinopterygii,Osmeriformes,Alepocephalidae,Rouleina,attrita,Softskin smooth-head,Rouleina attrita,FALSE
+Actinopterygii,Osmeriformes,Alepocephalidae,Rouleina,maderensis,Madeiran smooth-head,Rouleina maderensis,FALSE
+Actinopterygii,Osmeriformes,Alepocephalidae,Xenodermichthys,copei,Bluntsnout smooth-head,Xenodermichthys copei,FALSE
+Actinopterygii,Osmeriformes,Argentinidae,Argentina,silus,Greater argentine,Argentina silus,FALSE
+Actinopterygii,Osmeriformes,Argentinidae,Argentina,sphyraena,Argentine,Argentina sphyraena,FALSE
+Actinopterygii,Osmeriformes,Bathylagidae,Bathylagichthys,greyae,Grey's deepsea smelt,Bathylagichthys greyae,FALSE
+Actinopterygii,Osmeriformes,Bathylagidae,Bathylagus,euryops,Goiter blacksmelt,Bathylagus euryops,FALSE
+Actinopterygii,Osmeriformes,Microstomatidae,Nansenia,groenlandica,Greenland argentine,Nansenia groenlandica,FALSE
+Actinopterygii,Osmeriformes,Opisthoproctidae,Bathylychnops,exilis,Javelin spookfish,Bathylychnops exilis,FALSE
+Actinopterygii,Osmeriformes,Opisthoproctidae,Dolichopteroides,binocularis,NA,Dolichopteroides binocularis,FALSE
+Actinopterygii,Osmeriformes,Opisthoproctidae,Dolichopteryx,rostrata,NA,Dolichopteryx rostrata,FALSE
+Actinopterygii,Osmeriformes,Osmeridae,Osmerus,eperlanus,European smelt,Osmerus eperlanus,TRUE
+Actinopterygii,Osmeriformes,Platytroctidae,Barbantus,curvifrons,Palebelly searsid,Barbantus curvifrons,FALSE
+Actinopterygii,Osmeriformes,Platytroctidae,Holtbyrnia,anomala,Bighead searsid,Holtbyrnia anomala,FALSE
+Actinopterygii,Osmeriformes,Platytroctidae,Holtbyrnia,macrops,Bigeye searsid,Holtbyrnia macrops,FALSE
+Actinopterygii,Osmeriformes,Platytroctidae,Maulisia,mauli,Maul's searsid,Maulisia mauli,FALSE
+Actinopterygii,Osmeriformes,Platytroctidae,Normichthys,operosus,Multipore searsid,Normichthys operosus,FALSE
+Actinopterygii,Osmeriformes,Platytroctidae,Sagamichthys,schnakenbecki,Schnakenbeck's searsid,Sagamichthys schnakenbecki,FALSE
+Actinopterygii,Osmeriformes,Platytroctidae,Searsia,koefoedi,Koefoed's searsid,Searsia koefoedi,FALSE
+Actinopterygii,Perciformes,Ammodytidae,Ammodytes,americanus,American sand lance,Ammodytes americanus,FALSE
+Actinopterygii,Perciformes,Ammodytidae,Ammodytes,marinus,Lesser sand-eel,Ammodytes marinus,TRUE
+Actinopterygii,Perciformes,Ammodytidae,Ammodytes,tobianus,Small sandeel,Ammodytes tobianus,TRUE
+Actinopterygii,Perciformes,Ammodytidae,Gymnammodytes,cicerelus,Mediterranean sand eel,Gymnammodytes cicerelus,FALSE
+Actinopterygii,Perciformes,Ammodytidae,Gymnammodytes,semisquamatus,Smooth sandeel,Gymnammodytes semisquamatus,TRUE
+Actinopterygii,Perciformes,Ammodytidae,Hyperoplus,immaculatus,Greater sand-eel,Hyperoplus immaculatus,TRUE
+Actinopterygii,Perciformes,Ammodytidae,Hyperoplus,lanceolatus,Great sandeel,Hyperoplus lanceolatus,TRUE
+Actinopterygii,Perciformes,Anarhichadidae,Anarhichas,denticulatus,Northern wolffish,Anarhichas denticulatus,FALSE
+Actinopterygii,Perciformes,Anarhichadidae,Anarhichas,lupus,Atlantic wolffish,Anarhichas lupus,FALSE
+Actinopterygii,Perciformes,Anarhichadidae,Anarhichas,minor,Spotted wolffish,Anarhichas minor,FALSE
+Actinopterygii,Perciformes,Blenniidae,Blennius,ocellaris,Butterfly blenny,Blennius ocellaris,TRUE
+Actinopterygii,Perciformes,Blenniidae,Coryphoblennius,galerita,Montagu's blenny,Coryphoblennius galerita,TRUE
+Actinopterygii,Perciformes,Blenniidae,Lipophrys,pholis,Shanny,Lipophrys pholis,TRUE
+Actinopterygii,Perciformes,Blenniidae,Parablennius,gattorugine,Tompot blenny,Parablennius gattorugine,TRUE
+Actinopterygii,Perciformes,Bramidae,Brama,brama,Atlantic pomfret,Brama brama,FALSE
+Actinopterygii,Perciformes,Bramidae,Pterycombus,brama,Atlantic fanfish,Pterycombus brama,FALSE
+Actinopterygii,Perciformes,Bramidae,Taractes,asper,Rough pomfret,Taractes asper,FALSE
+Actinopterygii,Perciformes,Bramidae,Taractichthys,longipinnis,Big-scale pomfret,Taractichthys longipinnis,FALSE
+Actinopterygii,Perciformes,Callanthiidae,Callanthias,ruber,Parrot seaperch,Callanthias ruber,FALSE
+Actinopterygii,Perciformes,Callionymidae,Callionymus,lyra,Dragonet,Callionymus lyra,TRUE
+Actinopterygii,Perciformes,Callionymidae,Callionymus,maculatus,NA,Callionymus maculatus,TRUE
+Actinopterygii,Perciformes,Callionymidae,Callionymus,reticulatus,Reticulated dragonet,Callionymus reticulatus,TRUE
+Actinopterygii,Perciformes,Caproidae,Capros,aper,Boarfish,Capros aper,TRUE
+Actinopterygii,Perciformes,Carangidae,Campogramma,glaycos,Vadigo,Campogramma glaycos,FALSE
+Actinopterygii,Perciformes,Carangidae,Naucrates,ductor,Pilotfish,Naucrates ductor,FALSE
+Actinopterygii,Perciformes,Carangidae,Seriola,dumerili,Greater amberjack,Seriola dumerili,FALSE
+Actinopterygii,Perciformes,Carangidae,Trachinotus,ovatus,Pompano,Trachinotus ovatus,FALSE
+Actinopterygii,Perciformes,Carangidae,Trachurus,trachurus,Atlantic horse mackerel,Trachurus trachurus,TRUE
+Actinopterygii,Perciformes,Centrarchidae,Ambloplites,rupestris,Rock bass,Ambloplites rupestris,FALSE
+Actinopterygii,Perciformes,Centrarchidae,Lepomis,gibbosus,Pumpkinseed,Lepomis gibbosus,FALSE
+Actinopterygii,Perciformes,Centrolophidae,Centrolophus,niger,Rudderfish,Centrolophus niger,FALSE
+Actinopterygii,Perciformes,Centrolophidae,Hyperoglyphe,perciformis,Barrelfish,Hyperoglyphe perciformis,FALSE
+Actinopterygii,Perciformes,Centrolophidae,Schedophilus,medusophagus,Cornish blackfish,Schedophilus medusophagus,FALSE
+Actinopterygii,Perciformes,Cepolidae,Cepola,macrophthalma,Red bandfish,Cepola macrophthalma,TRUE
+Actinopterygii,Perciformes,Chiasmodontidae,Chiasmodon,niger,Black swallower,Chiasmodon niger,FALSE
+Actinopterygii,Perciformes,Chiasmodontidae,Pseudoscopelus,altipinnis,NA,Pseudoscopelus altipinnis,FALSE
+Actinopterygii,Perciformes,Cichlidae,Cichlasoma,bimaculatum,Black acara,Cichlasoma bimaculatum,FALSE
+Actinopterygii,Perciformes,Cichlidae,Oreochromis,niloticus,Nile tilapia,Oreochromis niloticus,FALSE
+Actinopterygii,Perciformes,Cichlidae,Tilapia,zillii,Redbelly tilapia,Tilapia zillii,FALSE
+Actinopterygii,Perciformes,Echeneidae,Remora,remora,Shark sucker,Remora remora,FALSE
+Actinopterygii,Perciformes,Epigonidae,Epigonus,telescopus,Black cardinal fish,Epigonus telescopus,FALSE
+Actinopterygii,Perciformes,Gempylidae,Lepidocybium,flavobrunneum,Escolar,Lepidocybium flavobrunneum,FALSE
+Actinopterygii,Perciformes,Gempylidae,Nesiarchus,nasutus,Black gemfish,Nesiarchus nasutus,FALSE
+Actinopterygii,Perciformes,Gempylidae,Ruvettus,pretiosus,Oilfish,Ruvettus pretiosus,FALSE
+Actinopterygii,Perciformes,Gobiidae,Aphia,minuta,Transparent goby,Aphia minuta,TRUE
+Actinopterygii,Perciformes,Gobiidae,Awaous,commersoni,NA,Awaous commersoni,FALSE
+Actinopterygii,Perciformes,Gobiidae,Buenia,jeffreysii,Jeffrey's goby,Buenia jeffreysii,FALSE
+Actinopterygii,Perciformes,Gobiidae,Crystallogobius,linearis,Crystal goby,Crystallogobius linearis,FALSE
+Actinopterygii,Perciformes,Gobiidae,Gobius,cobitis,Giant goby,Gobius cobitis,TRUE
+Actinopterygii,Perciformes,Gobiidae,Gobius,couchi,Couch's goby,Gobius couchi,FALSE
+Actinopterygii,Perciformes,Gobiidae,Gobius,cruentatus,Red-mouthed goby,Gobius cruentatus,FALSE
+Actinopterygii,Perciformes,Gobiidae,Gobius,gasteveni,Steven's goby,Gobius gasteveni,FALSE
+Actinopterygii,Perciformes,Gobiidae,Gobius,niger,Black goby,Gobius niger,TRUE
+Actinopterygii,Perciformes,Gobiidae,Gobius,paganellus,Rock goby,Gobius paganellus,TRUE
+Actinopterygii,Perciformes,Gobiidae,Gobiusculus,flavescens,Two-spotted goby,Gobiusculus flavescens,TRUE
+Actinopterygii,Perciformes,Gobiidae,Lebetus,guilleti,Guillet's goby,Lebetus guilleti,FALSE
+Actinopterygii,Perciformes,Gobiidae,Lebetus,scorpioides,Diminutive goby,Lebetus scorpioides,FALSE
+Actinopterygii,Perciformes,Gobiidae,Lesueurigobius,friesii,Fries's goby,Lesueurigobius friesii,TRUE
+Actinopterygii,Perciformes,Gobiidae,Pomatoschistus,lozanoi,Lozano's goby,Pomatoschistus lozanoi,TRUE
+Actinopterygii,Perciformes,Gobiidae,Pomatoschistus,microps,Common goby,Pomatoschistus microps,TRUE
+Actinopterygii,Perciformes,Gobiidae,Pomatoschistus,minutus,Sand goby,Pomatoschistus minutus,TRUE
+Actinopterygii,Perciformes,Gobiidae,Pomatoschistus,norvegicus,Norway goby,Pomatoschistus norvegicus,TRUE
+Actinopterygii,Perciformes,Gobiidae,Pomatoschistus,pictus,Painted goby,Pomatoschistus pictus,TRUE
+Actinopterygii,Perciformes,Gobiidae,Thorogobius,ephippiatus,Leopard-spotted goby,Thorogobius ephippiatus,TRUE
+Actinopterygii,Perciformes,Howellidae,Howella,brodiei,Pelagic basslet,Howella brodiei,FALSE
+Actinopterygii,Perciformes,Istiophoridae,Istiophorus,albicans,Atlantic sailfish,Istiophorus albicans,FALSE
+Actinopterygii,Perciformes,Istiophoridae,Kajikia,albida,Atlantic white marlin,Kajikia albida,FALSE
+Actinopterygii,Perciformes,Labridae,Acantholabrus,palloni,Scale-rayed wrasse,Acantholabrus palloni,FALSE
+Actinopterygii,Perciformes,Labridae,Centrolabrus,exoletus,Rock cook,Centrolabrus exoletus,TRUE
+Actinopterygii,Perciformes,Labridae,Coris,julis,Mediterranean rainbow wrasse,Coris julis,FALSE
+Actinopterygii,Perciformes,Labridae,Ctenolabrus,rupestris,Goldsinny-wrasse,Ctenolabrus rupestris,TRUE
+Actinopterygii,Perciformes,Labridae,Labrus,bergylta,Ballan wrasse,Labrus bergylta,TRUE
+Actinopterygii,Perciformes,Labridae,Labrus,mixtus,Cuckoo wrasse,Labrus mixtus,TRUE
+Actinopterygii,Perciformes,Labridae,Symphodus,bailloni,Baillon's wrasse,Symphodus bailloni,TRUE
+Actinopterygii,Perciformes,Labridae,Symphodus,melops,Corkwing wrasse,Symphodus melops,TRUE
+Actinopterygii,Perciformes,Lethrinidae,Lethrinus,nebulosus,Spangled emperor,Lethrinus nebulosus,FALSE
+Actinopterygii,Perciformes,Luvaridae,Luvarus,imperialis,Luvar,Luvarus imperialis,FALSE
+Actinopterygii,Perciformes,Moronidae,Dicentrarchus,labrax,European seabass,Dicentrarchus labrax,TRUE
+Actinopterygii,Perciformes,Mullidae,Mullus,barbatus barbatus,Red mullet,Mullus barbatus,TRUE
+Actinopterygii,Perciformes,Mullidae,Mullus,surmuletus,Surmullet,Mullus surmuletus,TRUE
+Actinopterygii,Perciformes,Nomeidae,Cubiceps,gracilis,Driftfish,Cubiceps gracilis,FALSE
+Actinopterygii,Perciformes,Nomeidae,Psenes,maculatus,Silver driftfish,Psenes maculatus,FALSE
+Actinopterygii,Perciformes,Percidae,Gymnocephalus,cernua,Ruffe,Gymnocephalus cernua,TRUE
+Actinopterygii,Perciformes,Percidae,Perca,fluviatilis,European perch,Perca fluviatilis,TRUE
+Actinopterygii,Perciformes,Percidae,Sander,lucioperca,Pike-perch,Sander lucioperca,TRUE
+Actinopterygii,Perciformes,Pholidae,Pholis,gunnellus,Rock gunnel,Pholis gunnellus,TRUE
+Actinopterygii,Perciformes,Polyprionidae,Polyprion,americanus,Wreckfish,Polyprion americanus,FALSE
+Actinopterygii,Perciformes,Sciaenidae,Argyrosomus,regius,Meagre,Argyrosomus regius,FALSE
+Actinopterygii,Perciformes,Sciaenidae,Umbrina,cirrosa,Shi drum,Umbrina cirrosa,FALSE
+Actinopterygii,Perciformes,Scombridae,Auxis,rochei,Bullet tuna,Auxis rochei,FALSE
+Actinopterygii,Perciformes,Scombridae,Auxis,thazard,Frigate tuna,Auxis thazard,FALSE
+Actinopterygii,Perciformes,Scombridae,Euthynnus,alletteratus,Little tunny,Euthynnus alletteratus,FALSE
+Actinopterygii,Perciformes,Scombridae,Katsuwonus,pelamis,Skipjack tuna,Katsuwonus pelamis,FALSE
+Actinopterygii,Perciformes,Scombridae,Orcynopsis,unicolor,Plain bonito,Orcynopsis unicolor,FALSE
+Actinopterygii,Perciformes,Scombridae,Sarda,sarda,Atlantic bonito,Sarda sarda,FALSE
+Actinopterygii,Perciformes,Scombridae,Scomber,scombrus,Atlantic mackerel,Scomber scombrus,TRUE
+Actinopterygii,Perciformes,Scombridae,Thunnus,alalunga,Albacore,Thunnus alalunga,FALSE
+Actinopterygii,Perciformes,Scombridae,Thunnus,albacares,Yellowfin tuna,Thunnus albacares,FALSE
+Actinopterygii,Perciformes,Scombridae,Thunnus,thynnus,Atlantic bluefin tuna,Thunnus thynnus,FALSE
+Actinopterygii,Perciformes,Serranidae,Acanthistius,sebastoides,Koester,Acanthistius sebastoides,FALSE
+Actinopterygii,Perciformes,Serranidae,Serranus,cabrilla,Comber,Serranus cabrilla,FALSE
+Actinopterygii,Perciformes,Sparidae,Boops,boops,Bogue,Boops boops,FALSE
+Actinopterygii,Perciformes,Sparidae,Dentex,dentex,Common dentex,Dentex dentex,FALSE
+Actinopterygii,Perciformes,Sparidae,Dentex,maroccanus,Morocco dentex,Dentex maroccanus,FALSE
+Actinopterygii,Perciformes,Sparidae,Pagellus,acarne,Axillary seabream,Pagellus acarne,FALSE
+Actinopterygii,Perciformes,Sparidae,Pagellus,bogaraveo,Blackspot seabream,Pagellus bogaraveo,TRUE
+Actinopterygii,Perciformes,Sparidae,Pagellus,erythrinus,Common pandora,Pagellus erythrinus,FALSE
+Actinopterygii,Perciformes,Sparidae,Pagrus,pagrus,Red porgy,Pagrus pagrus,FALSE
+Actinopterygii,Perciformes,Sparidae,Sarpa,salpa,Salema,Sarpa salpa,FALSE
+Actinopterygii,Perciformes,Sparidae,Sparus,aurata,Gilthead seabream,Sparus aurata,TRUE
+Actinopterygii,Perciformes,Sparidae,Spondyliosoma,cantharus,Black seabream,Spondyliosoma cantharus,TRUE
+Actinopterygii,Perciformes,Stichaeidae,Chirolophis,ascanii,Yarrell's blenny,Chirolophis ascanii,TRUE
+Actinopterygii,Perciformes,Stichaeidae,Leptoclinus,maculatus,Daubed shanny,Leptoclinus maculatus,FALSE
+Actinopterygii,Perciformes,Stichaeidae,Lumpenus,lampretaeformis,Snakeblenny,Lumpenus lampretaeformis,TRUE
+Actinopterygii,Perciformes,Stromateidae,Peprilus,triacanthus,Atlantic butterfish,Peprilus triacanthus,FALSE
+Actinopterygii,Perciformes,Trachinidae,Echiichthys,vipera,Lesser weever,Echiichthys vipera,TRUE
+Actinopterygii,Perciformes,Trachinidae,Trachinus,draco,Greater weever,Trachinus draco,TRUE
+Actinopterygii,Perciformes,Trichiuridae,Aphanopus,carbo,Black scabbardfish,Aphanopus carbo,FALSE
+Actinopterygii,Perciformes,Trichiuridae,Lepidopus,caudatus,Silver scabbardfish,Lepidopus caudatus,FALSE
+Actinopterygii,Perciformes,Trichiuridae,Trichiurus,lepturus,Largehead hairtail,Trichiurus lepturus,FALSE
+Actinopterygii,Perciformes,Tripterygiidae,Tripterygion,delaisi,Black-faced blenny,Tripterygion delaisi,FALSE
+Actinopterygii,Perciformes,Xiphiidae,Xiphias,gladius,Swordfish,Xiphias gladius,FALSE
+Actinopterygii,Perciformes,Zoarcidae,Lycenchelys,sarsii,Sar's wolf eel,Lycenchelys sarsii,FALSE
+Actinopterygii,Perciformes,Zoarcidae,Lycodes,esmarkii,Greater eelpout,Lycodes esmarkii,FALSE
+Actinopterygii,Perciformes,Zoarcidae,Lycodes,eudipleurostictus,Doubleline eelpout,Lycodes eudipleurostictus,FALSE
+Actinopterygii,Perciformes,Zoarcidae,Lycodes,pallidus,Pale eelpout,Lycodes pallidus,FALSE
+Actinopterygii,Perciformes,Zoarcidae,Lycodes,squamiventer,Scalebelly eelpout,Lycodes squamiventer,FALSE
+Actinopterygii,Perciformes,Zoarcidae,Lycodes,terraenovae,NA,Lycodes terraenovae,FALSE
+Actinopterygii,Perciformes,Zoarcidae,Lycodes,vahlii,Vahl's eelpout,Lycodes vahlii,FALSE
+Actinopterygii,Perciformes,Zoarcidae,Lycodonus,flagellicauda,NA,Lycodonus flagellicauda,FALSE
+Actinopterygii,Perciformes,Zoarcidae,Melanostigma,atlanticum,Atlantic soft pout,Melanostigma atlanticum,FALSE
+Actinopterygii,Perciformes,Zoarcidae,Zoarces,viviparus,Eelpout,Zoarces viviparus,TRUE
+Actinopterygii,Pleuronectiformes,Bothidae,Arnoglossus,imperialis,Imperial scaldfish,Arnoglossus imperialis,FALSE
+Actinopterygii,Pleuronectiformes,Bothidae,Arnoglossus,laterna,Mediterranean scaldfish,Arnoglossus laterna,TRUE
+Actinopterygii,Pleuronectiformes,Bothidae,Arnoglossus,thori,Thor's scaldfish,Arnoglossus thori,FALSE
+Actinopterygii,Pleuronectiformes,Pleuronectidae,Glyptocephalus,cynoglossus,Witch flounder,Glyptocephalus cynoglossus,TRUE
+Actinopterygii,Pleuronectiformes,Pleuronectidae,Hippoglossoides,platessoides,American plaice,Hippoglossoides platessoides,FALSE
+Actinopterygii,Pleuronectiformes,Pleuronectidae,Hippoglossus,hippoglossus,Atlantic halibut,Hippoglossus hippoglossus,TRUE
+Actinopterygii,Pleuronectiformes,Pleuronectidae,Limanda,limanda,Common dab,Limanda limanda,TRUE
+Actinopterygii,Pleuronectiformes,Pleuronectidae,Microstomus,kitt,Lemon sole,Microstomus kitt,TRUE
+Actinopterygii,Pleuronectiformes,Pleuronectidae,Platichthys,flesus,European flounder,Platichthys flesus,TRUE
+Actinopterygii,Pleuronectiformes,Pleuronectidae,Pleuronectes,platessa,European plaice,Pleuronectes platessa,TRUE
+Actinopterygii,Pleuronectiformes,Pleuronectidae,Reinhardtius,hippoglossoides,Greenland halibut,Reinhardtius hippoglossoides,FALSE
+Actinopterygii,Pleuronectiformes,Scophthalmidae,Lepidorhombus,boscii,Four-spot megrim,Lepidorhombus boscii,FALSE
+Actinopterygii,Pleuronectiformes,Scophthalmidae,Lepidorhombus,whiffiagonis,Megrim,Lepidorhombus whiffiagonis,TRUE
+Actinopterygii,Pleuronectiformes,Scophthalmidae,Phrynorhombus,norvegicus,Norwegian topknot,Phrynorhombus norvegicus,TRUE
+Actinopterygii,Pleuronectiformes,Scophthalmidae,Scophthalmus,maximus,Turbot,Scophthalmus maximus,TRUE
+Actinopterygii,Pleuronectiformes,Scophthalmidae,Scophthalmus,rhombus,Brill,Scophthalmus rhombus,TRUE
+Actinopterygii,Pleuronectiformes,Scophthalmidae,Zeugopterus,punctatus,Topknot,Zeugopterus punctatus,TRUE
+Actinopterygii,Pleuronectiformes,Scophthalmidae,Zeugopterus,regius,Eckstrom's topknot,Zeugopterus regius,TRUE
+Actinopterygii,Pleuronectiformes,Soleidae,Bathysolea,profundicola,Deepwater sole,Bathysolea profundicola,FALSE
+Actinopterygii,Pleuronectiformes,Soleidae,Buglossidium,luteum,Solenette,Buglossidium luteum,TRUE
+Actinopterygii,Pleuronectiformes,Soleidae,Microchirus,azevia,NA,Microchirus azevia,FALSE
+Actinopterygii,Pleuronectiformes,Soleidae,Microchirus,theophila,Bastard sole,Microchirus theophila,FALSE
+Actinopterygii,Pleuronectiformes,Soleidae,Microchirus,variegatus,Thickback sole,Microchirus variegatus,TRUE
+Actinopterygii,Pleuronectiformes,Soleidae,Pegusa,lascaris,Sand sole,Pegusa lascaris,TRUE
+Actinopterygii,Pleuronectiformes,Soleidae,Solea,solea,Common sole,Solea solea,TRUE
+Actinopterygii,Salmoniformes,Salmonidae,Coregonus,albula,Vendace,Coregonus albula,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Coregonus,autumnalis,Arctic cisco,Coregonus autumnalis,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Coregonus,clupeoides,Powan,Coregonus clupeoides,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Coregonus,lavaretus,European whitefish,Coregonus lavaretus,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Coregonus,pennantii,Gwyniad,Coregonus pennantii,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Coregonus,pollan,Irish pollan,Coregonus pollan,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Coregonus,stigmaticus,Schelly,Coregonus stigmaticus,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Coregonus,vandesius,NA,Coregonus vandesius,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Oncorhynchus,gorbuscha,Pink salmon,Oncorhynchus gorbuscha,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Oncorhynchus,mykiss,Rainbow trout,Oncorhynchus mykiss,TRUE
+Actinopterygii,Salmoniformes,Salmonidae,Salmo,ferox,NA,Salmo ferox,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salmo,nigripinnis,NA,Salmo nigripinnis,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salmo,salar,Atlantic salmon,Salmo salar,TRUE
+Actinopterygii,Salmoniformes,Salmonidae,Salmo,stomachicus,NA,Salmo stomachicus,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salmo,trutta,Sea trout,Salmo trutta,TRUE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,alpinus alpinus,Arctic char,Salvelinus alpinus,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,fontinalis,Brook trout,Salvelinus fontinalis,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,gracillimus,NA,Salvelinus gracillimus,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,inframundus,NA,Salvelinus inframundus,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,killinensis,NA,Salvelinus killinensis,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,lonsdalii,NA,Salvelinus lonsdalii,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,mallochi,NA,Salvelinus mallochi,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,maxillaris,NA,Salvelinus maxillaris,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,namaycush,Lake trout,Salvelinus namaycush,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,obtusus,NA,Salvelinus obtusus,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,perisii,NA,Salvelinus perisii,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,struanensis,NA,Salvelinus struanensis,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,willoughbii,Char,Salvelinus willoughbii,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Salvelinus,youngeri,Golden charr,Salvelinus youngeri,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Thymallus,thymallus,Grayling,Thymallus thymallus,TRUE
+Actinopterygii,Scorpaeniformes,Agonidae,Agonus,cataphractus,Hooknose,Agonus cataphractus,TRUE
+Actinopterygii,Scorpaeniformes,Cottidae,Artediellus,atlanticus,Atlantic hookear sculpin,Artediellus atlanticus,FALSE
+Actinopterygii,Scorpaeniformes,Cottidae,Cottus,gobio,Bullhead,Cottus gobio,TRUE
+Actinopterygii,Scorpaeniformes,Cottidae,Cottus,perifretum,Chabot fluviatile,Cottus perifretum,FALSE
+Actinopterygii,Scorpaeniformes,Cottidae,Icelus,bicornis,Twohorn sculpin,Icelus bicornis,FALSE
+Actinopterygii,Scorpaeniformes,Cottidae,Micrenophrys,lilljeborgii,Norway bullhead,Micrenophrys lilljeborgii,TRUE
+Actinopterygii,Scorpaeniformes,Cottidae,Myoxocephalus,scorpius,Shorthorn sculpin,Myoxocephalus scorpius,TRUE
+Actinopterygii,Scorpaeniformes,Cottidae,Taurulus,bubalis,Longspined bullhead,Taurulus bubalis,TRUE
+Actinopterygii,Scorpaeniformes,Cottidae,Triglops,murrayi,Moustache sculpin,Triglops murrayi,FALSE
+Actinopterygii,Scorpaeniformes,Cyclopteridae,Cyclopterus,lumpus,Lumpfish,Cyclopterus lumpus,TRUE
+Actinopterygii,Scorpaeniformes,Dactylopteridae,Dactylopterus,volitans,Flying gurnard,Dactylopterus volitans,FALSE
+Actinopterygii,Scorpaeniformes,Liparidae,Careproctus,longipinnis,Longfin snailfish,Careproctus longipinnis,FALSE
+Actinopterygii,Scorpaeniformes,Liparidae,Careproctus,reinhardti,Sea tadpole,Careproctus reinhardti,FALSE
+Actinopterygii,Scorpaeniformes,Liparidae,Liparis,liparis,Striped seasnail,Liparis liparis,TRUE
+Actinopterygii,Scorpaeniformes,Liparidae,Liparis,montagui,Montagus seasnail,Liparis montagui,TRUE
+Actinopterygii,Scorpaeniformes,Liparidae,Paraliparis,bathybius,Black seasnail,Paraliparis bathybius,FALSE
+Actinopterygii,Scorpaeniformes,Liparidae,Paraliparis,challengeri,NA,Paraliparis challengeri,FALSE
+Actinopterygii,Scorpaeniformes,Liparidae,Paraliparis,hystrix,NA,Paraliparis hystrix,FALSE
+Actinopterygii,Scorpaeniformes,Liparidae,Paraliparis,kreffti,NA,Paraliparis kreffti,FALSE
+Actinopterygii,Scorpaeniformes,Peristediidae,Peristedion,cataphractum,African armoured searobin,Peristedion cataphractum,FALSE
+Actinopterygii,Scorpaeniformes,Psychrolutidae,Cottunculus,microps,Polar sculpin,Cottunculus microps,FALSE
+Actinopterygii,Scorpaeniformes,Psychrolutidae,Cottunculus,thomsonii,Pallid sculpin,Cottunculus thomsonii,FALSE
+Actinopterygii,Scorpaeniformes,Scorpaenidae,Scorpaena,porcus,Black scorpionfish,Scorpaena porcus,FALSE
+Actinopterygii,Scorpaeniformes,Scorpaenidae,Scorpaena,scrofa,Red scorpionfish,Scorpaena scrofa,FALSE
+Actinopterygii,Scorpaeniformes,Sebastidae,Helicolenus,dactylopterus,Blackbelly rosefish,Helicolenus dactylopterus,FALSE
+Actinopterygii,Scorpaeniformes,Sebastidae,Sebastes,norvegicus,Golden redfish,Sebastes norvegicus,FALSE
+Actinopterygii,Scorpaeniformes,Sebastidae,Sebastes,viviparus,Norway redfish,Sebastes viviparus,FALSE
+Actinopterygii,Scorpaeniformes,Sebastidae,Trachyscorpia,cristulata cristulata,Atlantic thornyhead,Trachyscorpia cristulata,FALSE
+Actinopterygii,Scorpaeniformes,Sebastidae,Trachyscorpia,cristulata echinata,Spiny scorpionfish,Trachyscorpia cristulata,FALSE
+Actinopterygii,Scorpaeniformes,Triglidae,Chelidonichthys,cuculus,Red gurnard,Chelidonichthys cuculus,TRUE
+Actinopterygii,Scorpaeniformes,Triglidae,Chelidonichthys,lucerna,Tub gurnard,Chelidonichthys lucerna,TRUE
+Actinopterygii,Scorpaeniformes,Triglidae,Chelidonichthys,obscurus,Longfin gurnard,Chelidonichthys obscurus,FALSE
+Actinopterygii,Scorpaeniformes,Triglidae,Eutrigla,gurnardus,Grey gurnard,Eutrigla gurnardus,TRUE
+Actinopterygii,Scorpaeniformes,Triglidae,Trigla,lyra,Piper gurnard,Trigla lyra,FALSE
+Actinopterygii,Scorpaeniformes,Triglidae,Trigloporus,lastoviza,Streaked gurnard,Trigloporus lastoviza,TRUE
+Actinopterygii,Siluriformes,Ictaluridae,Ameiurus,melas,Black bullhead,Ameiurus melas,FALSE
+Actinopterygii,Siluriformes,Ictaluridae,Ameiurus,nebulosus,Brown bullhead,Ameiurus nebulosus,FALSE
+Actinopterygii,Siluriformes,Ictaluridae,Ictalurus,punctatus,Channel catfish,Ictalurus punctatus,FALSE
+Actinopterygii,Siluriformes,Siluridae,Silurus,glanis,Wels catfish,Silurus glanis,TRUE
+Actinopterygii,Stephanoberyciformes,Melamphaidae,Melamphaes,suborbitalis,Shoulderspine bigscale,Melamphaes suborbitalis,FALSE
+Actinopterygii,Stephanoberyciformes,Melamphaidae,Poromitra,nigriceps,NA,Poromitra nigriceps,FALSE
+Actinopterygii,Stephanoberyciformes,Melamphaidae,Scopelogadus,beanii,Bean's bigscale,Scopelogadus beanii,FALSE
+Actinopterygii,Stephanoberyciformes,Melamphaidae,Scopelogadus,mizolepis,Ragged bigscale,Scopelogadus mizolepis,FALSE
+Actinopterygii,Stomiiformes,Gonostomatidae,Bonapartia,pedaliota,Longray fangjaw,Bonapartia pedaliota,FALSE
+Actinopterygii,Stomiiformes,Gonostomatidae,Cyclothone,braueri,Garrick,Cyclothone braueri,FALSE
+Actinopterygii,Stomiiformes,Gonostomatidae,Cyclothone,microdon,Veiled anglemouth,Cyclothone microdon,FALSE
+Actinopterygii,Stomiiformes,Gonostomatidae,Cyclothone,obscura,Hidden bristlemouth,Cyclothone obscura,FALSE
+Actinopterygii,Stomiiformes,Gonostomatidae,Sigmops,bathyphilus,Spark anglemouth,Sigmops bathyphilus,FALSE
+Actinopterygii,Stomiiformes,Sternoptychidae,Argyropelecus,hemigymnus,Half-naked hatchetfish,Argyropelecus hemigymnus,FALSE
+Actinopterygii,Stomiiformes,Sternoptychidae,Argyropelecus,olfersii,NA,Argyropelecus olfersii,FALSE
+Actinopterygii,Stomiiformes,Sternoptychidae,Maurolicus,muelleri,Silvery lightfish,Maurolicus muelleri,FALSE
+Actinopterygii,Stomiiformes,Sternoptychidae,Sternoptyx,diaphana,Diaphanous hatchet fish,Sternoptyx diaphana,FALSE
+Actinopterygii,Stomiiformes,Stomiidae,Borostomias,antarcticus,Snaggletooth,Borostomias antarcticus,FALSE
+Actinopterygii,Stomiiformes,Stomiidae,Chauliodus,sloani,Sloane's viperfish,Chauliodus sloani,FALSE
+Actinopterygii,Stomiiformes,Stomiidae,Flagellostomias,boureei,Longbarb dragonfish,Flagellostomias boureei,FALSE
+Actinopterygii,Stomiiformes,Stomiidae,Malacosteus,niger,Stoplight loosejaw,Malacosteus niger,FALSE
+Actinopterygii,Stomiiformes,Stomiidae,Melanostomias,bartonbeani,Scaleless black dragonfish,Melanostomias bartonbeani,FALSE
+Actinopterygii,Stomiiformes,Stomiidae,Rhadinesthes,decimus,Slender snaggletooth,Rhadinesthes decimus,FALSE
+Actinopterygii,Stomiiformes,Stomiidae,Stomias,boa boa,Boa dragonfish,Stomias boa,FALSE
+Actinopterygii,Stomiiformes,Stomiidae,Stomias,boa ferox,NA,Stomias boa,FALSE
+Actinopterygii,Stomiiformes,Stomiidae,Trigonolampa,miriceps,Threelight dragonfish,Trigonolampa miriceps,FALSE
+Actinopterygii,Syngnathiformes,Centriscidae,Macroramphosus,scolopax,Longspine snipefish,Macroramphosus scolopax,FALSE
+Actinopterygii,Syngnathiformes,Syngnathidae,Entelurus,aequoreus,Snake pipefish,Entelurus aequoreus,TRUE
+Actinopterygii,Syngnathiformes,Syngnathidae,Hippocampus,guttulatus,Long-snouted seahorse,Hippocampus guttulatus,TRUE
+Actinopterygii,Syngnathiformes,Syngnathidae,Hippocampus,hippocampus,Short snouted seahorse,Hippocampus hippocampus,TRUE
+Actinopterygii,Syngnathiformes,Syngnathidae,Nerophis,lumbriciformis,Worm pipefish,Nerophis lumbriciformis,TRUE
+Actinopterygii,Syngnathiformes,Syngnathidae,Nerophis,ophidion,Straightnose pipefish,Nerophis ophidion,TRUE
+Actinopterygii,Syngnathiformes,Syngnathidae,Syngnathus,acus,Greater pipefish,Syngnathus acus,TRUE
+Actinopterygii,Syngnathiformes,Syngnathidae,Syngnathus,rostellatus,Nilsson's pipefish,Syngnathus rostellatus,TRUE
+Actinopterygii,Syngnathiformes,Syngnathidae,Syngnathus,typhle,Broadnosed pipefish,Syngnathus typhle,TRUE
+Actinopterygii,Tetraodontiformes,Balistidae,Balistes,capriscus,Grey triggerfish,Balistes capriscus,TRUE
+Actinopterygii,Tetraodontiformes,Molidae,Mola,mola,Ocean sunfish,Mola mola,TRUE
+Actinopterygii,Tetraodontiformes,Molidae,Ranzania,laevis,Slender sunfish,Ranzania laevis,FALSE
+Actinopterygii,Tetraodontiformes,Tetraodontidae,Lagocephalus,lagocephalus,Oceanic puffer,Lagocephalus lagocephalus,FALSE
+Actinopterygii,Tetraodontiformes,Tetraodontidae,Sphoeroides,pachygaster,Blunthead puffer,Sphoeroides pachygaster,FALSE
+Actinopterygii,Zeiformes,Grammicolepididae,Grammicolepis,brachiusculus,Thorny tinselfish,Grammicolepis brachiusculus,FALSE
+Actinopterygii,Zeiformes,Oreosomatidae,Neocyttus,helgae,False boarfish,Neocyttus helgae,FALSE
+Actinopterygii,Zeiformes,Zeidae,Zeus,faber,John dory,Zeus faber,TRUE
+Cephalaspidomorphi,Petromyzontiformes,Petromyzontidae,Lampetra,fluviatilis,River lamprey,Lampetra fluviatilis,TRUE
+Cephalaspidomorphi,Petromyzontiformes,Petromyzontidae,Lampetra,planeri,European brook lamprey,Lampetra planeri,TRUE
+Cephalaspidomorphi,Petromyzontiformes,Petromyzontidae,Petromyzon,marinus,Sea lamprey,Petromyzon marinus,TRUE
+Elasmobranchii,Carcharhiniformes,Carcharhinidae,Prionace,glauca,Blue shark,Prionace glauca,TRUE
+Elasmobranchii,Carcharhiniformes,Pseudotriakidae,Pseudotriakis,microdon,False catshark,Pseudotriakis microdon,FALSE
+Elasmobranchii,Carcharhiniformes,Scyliorhinidae,Apristurus,aphyodes,NA,Apristurus aphyodes,FALSE
+Elasmobranchii,Carcharhiniformes,Scyliorhinidae,Apristurus,laurussonii,Iceland catshark,Apristurus laurussonii,FALSE
+Elasmobranchii,Carcharhiniformes,Scyliorhinidae,Apristurus,profundorum,Deep-water catshark,Apristurus profundorum,FALSE
+Elasmobranchii,Carcharhiniformes,Scyliorhinidae,Galeus,melastomus,Blackmouth catshark,Galeus melastomus,FALSE
+Elasmobranchii,Carcharhiniformes,Scyliorhinidae,Galeus,murinus,Mouse catshark,Galeus murinus,FALSE
+Elasmobranchii,Carcharhiniformes,Scyliorhinidae,Scyliorhinus,canicula,Lesser spotted dogfish,Scyliorhinus canicula,TRUE
+Elasmobranchii,Carcharhiniformes,Scyliorhinidae,Scyliorhinus,stellaris,Nursehound,Scyliorhinus stellaris,TRUE
+Elasmobranchii,Carcharhiniformes,Sphyrnidae,Sphyrna,zygaena,Smooth hammerhead,Sphyrna zygaena,FALSE
+Elasmobranchii,Carcharhiniformes,Triakidae,Galeorhinus,galeus,Tope shark,Galeorhinus galeus,TRUE
+Elasmobranchii,Carcharhiniformes,Triakidae,Mustelus,asterias,Starry smooth-hound,Mustelus asterias,TRUE
+Elasmobranchii,Carcharhiniformes,Triakidae,Mustelus,mustelus,Smooth-hound,Mustelus mustelus,FALSE
+Elasmobranchii,Hexanchiformes,Chlamydoselachidae,Chlamydoselachus,anguineus,Frilled shark,Chlamydoselachus anguineus,FALSE
+Elasmobranchii,Hexanchiformes,Hexanchidae,Heptranchias,perlo,Sharpnose sevengill shark,Heptranchias perlo,FALSE
+Elasmobranchii,Hexanchiformes,Hexanchidae,Hexanchus,griseus,Bluntnose sixgill shark,Hexanchus griseus,FALSE
+Elasmobranchii,Lamniformes,Alopiidae,Alopias,vulpinus,Thresher,Alopias vulpinus,TRUE
+Elasmobranchii,Lamniformes,Cetorhinidae,Cetorhinus,maximus,Basking shark,Cetorhinus maximus,TRUE
+Elasmobranchii,Lamniformes,Lamnidae,Carcharodon,carcharias,Great white shark,Carcharodon carcharias,FALSE
+Elasmobranchii,Lamniformes,Lamnidae,Isurus,oxyrinchus,Shortfin mako,Isurus oxyrinchus,FALSE
+Elasmobranchii,Lamniformes,Lamnidae,Lamna,nasus,Porbeagle,Lamna nasus,TRUE
+Elasmobranchii,Myliobatiformes,Dasyatidae,Dasyatis,pastinaca,Common stingray,Dasyatis pastinaca,TRUE
+Elasmobranchii,Myliobatiformes,Dasyatidae,Pteroplatytrygon,violacea,Pelagic stingray,Pteroplatytrygon violacea,FALSE
+Elasmobranchii,Myliobatiformes,Myliobatidae,Mobula,mobular,Devil fish,Mobula mobular,FALSE
+Elasmobranchii,Myliobatiformes,Myliobatidae,Myliobatis,aquila,Common eagle ray,Myliobatis aquila,FALSE
+Elasmobranchii,Rajiformes,Arhynchobatidae,Bathyraja,brachyurops,Broadnose skate,Bathyraja brachyurops,FALSE
+Elasmobranchii,Rajiformes,Arhynchobatidae,Bathyraja,richardsoni,Richardson's ray,Bathyraja richardsoni,FALSE
+Elasmobranchii,Rajiformes,Arhynchobatidae,Bathyraja,spinicauda,Spinytail skate,Bathyraja spinicauda,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Amblyraja,hyperborea,Arctic skate,Amblyraja hyperborea,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Amblyraja,jenseni,Shorttail skate,Amblyraja jenseni,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Amblyraja,radiata,Starry ray,Amblyraja radiata,TRUE
+Elasmobranchii,Rajiformes,Rajidae,Dipturus,batis,Blue skate,Dipturus batis,TRUE
+Elasmobranchii,Rajiformes,Rajidae,Dipturus,nidarosiensis,Norwegian skate,Dipturus nidarosiensis,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Dipturus,oxyrinchus,Longnosed skate,Dipturus oxyrinchus,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Leucoraja,circularis,Sandy ray,Leucoraja circularis,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Leucoraja,fullonica,Shagreen ray,Leucoraja fullonica,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Leucoraja,naevus,Cuckoo ray,Leucoraja naevus,TRUE
+Elasmobranchii,Rajiformes,Rajidae,Neoraja,caerulea,Blue ray,Neoraja caerulea,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Raja,brachyura,Blonde ray,Raja brachyura,TRUE
+Elasmobranchii,Rajiformes,Rajidae,Raja,clavata,Thornback ray,Raja clavata,TRUE
+Elasmobranchii,Rajiformes,Rajidae,Raja,microocellata,Small-eyed ray,Raja microocellata,TRUE
+Elasmobranchii,Rajiformes,Rajidae,Raja,miraletus,Brown ray,Raja miraletus,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Raja,montagui,Spotted ray,Raja montagui,TRUE
+Elasmobranchii,Rajiformes,Rajidae,Raja,undulata,Undulate ray,Raja undulata,TRUE
+Elasmobranchii,Rajiformes,Rajidae,Rajella,bathyphila,Deep-water ray,Rajella bathyphila,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Rajella,bigelowi,Bigelow's ray,Rajella bigelowi,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Rajella,fyllae,Round ray,Rajella fyllae,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Rostroraja,alba,White skate,Rostroraja alba,FALSE
+Elasmobranchii,Squaliformes,Centrophoridae,Centrophorus,granulosus,Gulper shark,Centrophorus granulosus,FALSE
+Elasmobranchii,Squaliformes,Centrophoridae,Centrophorus,squamosus,Leafscale gulper shark,Centrophorus squamosus,FALSE
+Elasmobranchii,Squaliformes,Centrophoridae,Deania,calcea,Birdbeak dogfish,Deania calcea,FALSE
+Elasmobranchii,Squaliformes,Dalatiidae,Dalatias,licha,Kitefin shark,Dalatias licha,FALSE
+Elasmobranchii,Squaliformes,Echinorhinidae,Echinorhinus,brucus,Bramble shark,Echinorhinus brucus,FALSE
+Elasmobranchii,Squaliformes,Etmopteridae,Centroscyllium,fabricii,Black dogfish,Centroscyllium fabricii,FALSE
+Elasmobranchii,Squaliformes,Etmopteridae,Etmopterus,princeps,Great lanternshark,Etmopterus princeps,FALSE
+Elasmobranchii,Squaliformes,Etmopteridae,Etmopterus,spinax,Velvet belly,Etmopterus spinax,FALSE
+Elasmobranchii,Squaliformes,Oxynotidae,Oxynotus,centrina,Angular roughshark,Oxynotus centrina,FALSE
+Elasmobranchii,Squaliformes,Oxynotidae,Oxynotus,paradoxus,Sailfin roughshark,Oxynotus paradoxus,FALSE
+Elasmobranchii,Squaliformes,Somniosidae,Centroscymnus,coelolepis,Portuguese dogfish,Centroscymnus coelolepis,FALSE
+Elasmobranchii,Squaliformes,Somniosidae,Centroscymnus,crepidater,Longnose velvet dogfish,Centroscymnus crepidater,FALSE
+Elasmobranchii,Squaliformes,Somniosidae,Centroscymnus,owstonii,Roughskin dogfish,Centroscymnus owstonii,FALSE
+Elasmobranchii,Squaliformes,Somniosidae,Scymnodon,ringens,Knifetooth dogfish,Scymnodon ringens,FALSE
+Elasmobranchii,Squaliformes,Somniosidae,Somniosus,microcephalus,Greenland shark,Somniosus microcephalus,FALSE
+Elasmobranchii,Squaliformes,Somniosidae,Somniosus,rostratus,Little sleeper shark,Somniosus rostratus,FALSE
+Elasmobranchii,Squaliformes,Somniosidae,Zameus,squamulosus,Velvet dogfish,Zameus squamulosus,FALSE
+Elasmobranchii,Squaliformes,Squalidae,Squalus,acanthias,Picked dogfish,Squalus acanthias,TRUE
+Elasmobranchii,Squatiniformes,Squatinidae,Squatina,squatina,Angelshark,Squatina squatina,FALSE
+Elasmobranchii,Torpediniformes,Torpedinidae,Torpedo,marmorata,Marbled electric ray,Torpedo marmorata,FALSE
+Elasmobranchii,Torpediniformes,Torpedinidae,Torpedo,nobiliana,Electric ray,Torpedo nobiliana,FALSE
+Holocephali,Chimaeriformes,Chimaeridae,Chimaera,monstrosa,Rabbit fish,Chimaera monstrosa,FALSE
+Holocephali,Chimaeriformes,Chimaeridae,Chimaera,opalescens,Opal chimaera,Chimaera opalescens,FALSE
+Holocephali,Chimaeriformes,Rhinochimaeridae,Harriotta,raleighana,Pacific longnose chimaera,Harriotta raleighana,FALSE
+Holocephali,Chimaeriformes,Rhinochimaeridae,Rhinochimaera,atlantica,Straightnose rabbitfish,Rhinochimaera atlantica,FALSE
+Myxini,Myxiniformes,Myxinidae,Myxine,glutinosa,Atlantic hagfish,Myxine glutinosa,FALSE
