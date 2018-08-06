@@ -1,0 +1,99 @@
+NC_033909_Otolithes_ruber	TOPOLOGY		circular	
+	source	1..16589	ff_definition	NC_033909_Otolithes_ruber mitochondrial DNA, ???
+			organelle	mitochondrion
+			organism	NC_033909_Otolithes_ruber
+			specimen_voucher	???
+			mol_type	genomic DNA
+	CDS	2926..3900	codon_start	1
+			gene	ND1
+			product	NADH dehydrogenase subunit 1
+			transl_table	2
+	CDS	4113..5159	codon_start	1
+			gene	ND2
+			product	NADH dehydrogenase subunit 2
+			transl_table	2
+	CDS	5564..7120	codon_start	1
+			gene	COI
+			product	cytochrome c oxidase subunit I
+			transl_table	2
+	CDS	7267..7957	codon_start	1
+			gene	COII
+			product	cytochrome c oxidase subunit II
+			note	Incomplete stop codon
+			transl_except	(pos:7957,aa:TERM)
+			transl_table	2
+	CDS	8033..8200	codon_start	1
+			gene	ATPase 8
+			product	ATPase subunit 8
+			transl_table	2
+	CDS	8179..8873	codon_start	1
+			gene	ATPase 6
+			product	ATPase subunit 6
+			note	Incomplete stop codon
+			transl_except	(pos:8872..8873,aa:TERM)
+			transl_table	2
+	CDS	8874..9658	codon_start	1
+			gene	COIII
+			product	cytochrome c oxidase subunit III
+			note	Incomplete stop codon
+			transl_except	(pos:9657..9658,aa:TERM)
+			transl_table	2
+	CDS	9730..10078	codon_start	1
+			gene	ND3
+			product	NADH dehydrogenase subunit 3
+			note	Incomplete stop codon
+			transl_except	(pos:10078,aa:TERM)
+			transl_table	2
+	CDS	10149..10445	codon_start	1
+			gene	ND4L
+			product	NADH dehydrogenase subunit 4L
+			transl_table	2
+	CDS	10439..11819	codon_start	1
+			gene	ND4
+			product	NADH dehydrogenase subunit 4
+			note	Incomplete stop codon
+			transl_except	(pos:11819,aa:TERM)
+			transl_table	2
+	CDS	12036..13874	codon_start	1
+			gene	ND5
+			product	NADH dehydrogenase subunit 5
+			transl_table	2
+	CDS	complement(13871..14392)	codon_start	1
+			gene	ND6
+			product	NADH dehydrogenase subunit 6
+			transl_table	2
+	CDS	14467..15607	codon_start	1
+			gene	Cyt b
+			product	cytochrome b
+			note	Incomplete stop codon
+			transl_except	(pos:15607,aa:TERM)
+			transl_table	2
+	rRNA	69..1026	product	12S rRNA
+	rRNA	1100..2851	product	16S rRNA
+	tRNA	1..68	product	tRNA-Phe
+	tRNA	1027..1099	product	tRNA-Val
+	tRNA	2852..2925	product	tRNA-Leu
+			note	Anticodon: UAA
+	tRNA	3905..3974	product	tRNA-Ile
+	tRNA	complement(3974..4044)	product	tRNA-Gln
+	tRNA	4044..4112	product	tRNA-Met
+	tRNA	5168..5239	product	tRNA-Trp
+	tRNA	complement(5242..5310)	product	tRNA-Ala
+	tRNA	complement(5316..5388)	product	tRNA-Asn
+	tRNA	complement(5427..5492)	product	tRNA-Cys
+	tRNA	complement(5493..5562)	product	tRNA-Tyr
+	tRNA	complement(7116..7186)	product	tRNA-Ser
+			note	Anticodon: UGA
+	tRNA	7190..7258	product	tRNA-Asp
+	tRNA	7958..8031	product	tRNA-Lys
+	tRNA	9659..9729	product	tRNA-Gly
+	tRNA	10079..10146	product	tRNA-Arg
+	tRNA	11820..11888	product	tRNA-His
+	tRNA	11889..11956	product	tRNA-Ser
+			note	Anticodon: GCU
+	tRNA	11961..12033	product	tRNA-Leu
+			note	Anticodon: UAG
+	tRNA	complement(14394..14463)	product	tRNA-Glu
+	tRNA	15608..15679	product	tRNA-Thr
+	tRNA	complement(15682..15751)	product	tRNA-Pro
+	D-loop	15752..16589	note	control region

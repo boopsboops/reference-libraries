@@ -1,0 +1,100 @@
+NC_022446_Crossorhombus_azureus	TOPOLOGY		circular	
+	source	1..16792	ff_definition	NC_022446_Crossorhombus_azureus mitochondrial DNA, ???
+			organelle	mitochondrion
+			organism	NC_022446_Crossorhombus_azureus
+			specimen_voucher	???
+			mol_type	genomic DNA
+	CDS	2892..3869	codon_start	1
+			gene	ND1
+			product	NADH dehydrogenase subunit 1
+			transl_table	2
+	CDS	4017..5064	codon_start	1
+			gene	ND2
+			product	NADH dehydrogenase subunit 2
+			note	Incomplete stop codon
+			transl_except	(pos:5064,aa:TERM)
+			transl_table	2
+	CDS	5229..6779	codon_start	1
+			gene	COI
+			product	cytochrome c oxidase subunit I
+			transl_table	2
+	CDS	6855..7545	codon_start	1
+			gene	COII
+			product	cytochrome c oxidase subunit II
+			note	Incomplete stop codon
+			transl_except	(pos:7545,aa:TERM)
+			transl_table	2
+	CDS	7620..7787	codon_start	1
+			gene	ATPase 8
+			product	ATPase subunit 8
+			transl_table	2
+	CDS	7778..8460	codon_start	1
+			gene	ATPase 6
+			product	ATPase subunit 6
+			note	Incomplete stop codon
+			transl_except	(pos:8459..8460,aa:TERM)
+			transl_table	2
+	CDS	8461..9245	codon_start	1
+			gene	COIII
+			product	cytochrome c oxidase subunit III
+			note	Incomplete stop codon
+			transl_except	(pos:9244..9245,aa:TERM)
+			transl_table	2
+	CDS	9317..9665	codon_start	1
+			gene	ND3
+			product	NADH dehydrogenase subunit 3
+			note	Incomplete stop codon
+			transl_except	(pos:9665,aa:TERM)
+			transl_table	2
+	CDS	9735..10031	codon_start	1
+			gene	ND4L
+			product	NADH dehydrogenase subunit 4L
+			transl_table	2
+	CDS	10025..11405	codon_start	1
+			gene	ND4
+			product	NADH dehydrogenase subunit 4
+			note	Incomplete stop codon
+			transl_except	(pos:11405,aa:TERM)
+			transl_table	2
+	CDS	11621..13459	codon_start	1
+			gene	ND5
+			product	NADH dehydrogenase subunit 5
+			transl_table	2
+	CDS	13472..14612	codon_start	1
+			gene	Cyt b
+			product	cytochrome b
+			note	Incomplete stop codon
+			transl_except	(pos:14612,aa:TERM)
+			transl_table	2
+	CDS	complement(15870..16391)	codon_start	1
+			gene	ND6
+			product	NADH dehydrogenase subunit 6
+			transl_table	2
+	rRNA	69..1034	product	12S rRNA
+	rRNA	1106..2818	product	16S rRNA
+	tRNA	1..68	product	tRNA-Phe
+	tRNA	1035..1105	product	tRNA-Val
+	tRNA	2819..2891	product	tRNA-Leu
+			note	Atypical codon: UAA
+	tRNA	3870..3938	product	tRNA-Ile
+	tRNA	3946..4016	product	tRNA-Met
+	tRNA	5065..5134	product	tRNA-Trp
+	tRNA	complement(5143..5215)	product	tRNA-Asn
+	tRNA	7546..7618	product	tRNA-Lys
+	tRNA	9246..9316	product	tRNA-Gly
+	tRNA	9666..9734	product	tRNA-Arg
+	tRNA	11406..11474	product	tRNA-His
+	tRNA	11475..11540	product	tRNA-Ser
+			note	Atypical codon: GCU
+	tRNA	11548..11620	product	tRNA-Leu
+			note	Atypical codon: UAG
+	tRNA	14613..14685	product	tRNA-Thr
+	tRNA	14726..14793	product	tRNA-Asp
+	tRNA	complement(15483..15553)	product	tRNA-Gln
+	tRNA	complement(15634..15699)	product	tRNA-Cys
+	tRNA	complement(15701..15771)	product	tRNA-Tyr
+	tRNA	complement(15773..15843)	product	tRNA-Ser
+			note	Atypical codon: UGA
+	tRNA	complement(16392..16459)	product	tRNA-Glu
+	tRNA	complement(16462..16529)	product	tRNA-Pro
+	D-loop	14794..15482	note	control region

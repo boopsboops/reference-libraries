@@ -1,0 +1,91 @@
+NC_034291_Ichthyomyzon_gagei	TOPOLOGY		circular	
+	source	1..16359	ff_definition	NC_034291_Ichthyomyzon_gagei mitochondrial DNA, ???
+			organelle	mitochondrion
+			organism	NC_034291_Ichthyomyzon_gagei
+			specimen_voucher	???
+			mol_type	genomic DNA
+	CDS	2729..3694	codon_start	1
+			gene	ND1
+			product	NADH dehydrogenase subunit 1
+			transl_table	2
+	CDS	3931..4972	codon_start	1
+			gene	ND2
+			product	NADH dehydrogenase subunit 2
+			note	Incomplete stop codon
+			transl_except	(pos:4972,aa:TERM)
+			transl_table	2
+	CDS	5331..6887	codon_start	1
+			gene	COI
+			product	cytochrome c oxidase subunit I
+			transl_table	2
+	CDS	7021..7710	codon_start	1
+			gene	COII
+			product	cytochrome c oxidase subunit II
+			transl_table	2
+	CDS	7789..7956	codon_start	1
+			gene	ATPase 8
+			product	ATPase subunit 8
+			transl_table	2
+	CDS	7947..8625	codon_start	1
+			gene	ATPase 6
+			product	ATPase subunit 6
+			note	Incomplete stop codon
+			transl_except	(pos:8625,aa:TERM)
+			transl_table	2
+	CDS	8626..9411	codon_start	1
+			gene	COIII
+			product	cytochrome c oxidase subunit III
+			transl_table	2
+	CDS	9489..9839	codon_start	1
+			gene	ND3
+			product	NADH dehydrogenase subunit 3
+			transl_table	2
+	CDS	9918..10208	codon_start	1
+			gene	ND4L
+			product	NADH dehydrogenase subunit 4L
+			transl_table	2
+	CDS	10202..11575	codon_start	1
+			gene	ND4
+			product	NADH dehydrogenase subunit 4
+			transl_table	2
+	CDS	11789..13585	codon_start	1
+			gene	ND5
+			product	NADH dehydrogenase subunit 5
+			transl_table	2
+	CDS	complement(13570..14088)	codon_start	1
+			gene	ND6
+			product	NADH dehydrogenase subunit 6
+			transl_table	2
+	CDS	15102..16283	codon_start	1
+			gene	Cyt b
+			product	cytochrome b
+			transl_table	2
+	rRNA	70..908	product	12S rRNA
+	rRNA	1037..2650	product	16S rRNA
+	tRNA	1..69	product	tRNA-Phe
+	tRNA	966..1036	product	tRNA-Val
+	tRNA	2651..2724	product	tRNA-Leu
+			note	Anticodon: UAA
+	tRNA	3720..3788	product	tRNA-Ile
+	tRNA	complement(3791..3861)	product	tRNA-Gln
+	tRNA	3862..3929	product	tRNA-Met
+	tRNA	4973..5040	product	tRNA-Trp
+	tRNA	complement(5043..5110)	product	tRNA-Ala
+	tRNA	complement(5117..5185)	product	tRNA-Asn
+	tRNA	complement(5188..5253)	product	tRNA-Cys
+	tRNA	complement(5259..5329)	product	tRNA-Tyr
+	tRNA	complement(6878..6949)	product	tRNA-Ser
+			note	Anticodon: UGA
+	tRNA	6950..7017	product	tRNA-Asp
+	tRNA	7720..7787	product	tRNA-Lys
+	tRNA	9420..9487	product	tRNA-Gly
+	tRNA	9844..9909	product	tRNA-Arg
+	tRNA	11577..11645	product	tRNA-His
+	tRNA	11646..11713	product	tRNA-Ser
+			note	Anticodon: GCU
+	tRNA	11716..11787	product	tRNA-Leu
+			note	Anticodon: UAG
+	tRNA	14719..14790	product	tRNA-Thr
+	tRNA	complement(14792..14862)	product	tRNA-Glu
+	tRNA	complement(16277..16347)	product	tRNA-Pro
+	D-loop	14089..14718	note	control region

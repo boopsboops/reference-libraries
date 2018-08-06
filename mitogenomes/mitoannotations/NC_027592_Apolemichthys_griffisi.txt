@@ -1,0 +1,99 @@
+NC_027592_Apolemichthys_griffisi	TOPOLOGY		circular	
+	source	1..16528	ff_definition	NC_027592_Apolemichthys_griffisi mitochondrial DNA, ???
+			organelle	mitochondrion
+			organism	NC_027592_Apolemichthys_griffisi
+			specimen_voucher	???
+			mol_type	genomic DNA
+	CDS	2875..3849	codon_start	1
+			gene	ND1
+			product	NADH dehydrogenase subunit 1
+			transl_table	2
+	CDS	4062..5108	codon_start	1
+			gene	ND2
+			product	NADH dehydrogenase subunit 2
+			transl_table	2
+	CDS	5516..7096	codon_start	1
+			gene	COI
+			product	cytochrome c oxidase subunit I
+			transl_table	2
+	CDS	7222..7912	codon_start	1
+			gene	COII
+			product	cytochrome c oxidase subunit II
+			note	Incomplete stop codon
+			transl_except	(pos:7912,aa:TERM)
+			transl_table	2
+	CDS	7988..8155	codon_start	1
+			gene	ATPase 8
+			product	ATPase subunit 8
+			transl_table	2
+	CDS	8146..8828	codon_start	1
+			gene	ATPase 6
+			product	ATPase subunit 6
+			note	Incomplete stop codon
+			transl_except	(pos:8827..8828,aa:TERM)
+			transl_table	2
+	CDS	8829..9613	codon_start	1
+			gene	COIII
+			product	cytochrome c oxidase subunit III
+			note	Incomplete stop codon
+			transl_except	(pos:9612..9613,aa:TERM)
+			transl_table	2
+	CDS	9686..10034	codon_start	1
+			gene	ND3
+			product	NADH dehydrogenase subunit 3
+			note	Incomplete stop codon
+			transl_except	(pos:10034,aa:TERM)
+			transl_table	2
+	CDS	10104..10400	codon_start	1
+			gene	ND4L
+			product	NADH dehydrogenase subunit 4L
+			transl_table	2
+	CDS	10394..11774	codon_start	1
+			gene	ND4
+			product	NADH dehydrogenase subunit 4
+			note	Incomplete stop codon
+			transl_except	(pos:11774,aa:TERM)
+			transl_table	2
+	CDS	11988..13826	codon_start	1
+			gene	ND5
+			product	NADH dehydrogenase subunit 5
+			transl_table	2
+	CDS	complement(13823..14344)	codon_start	1
+			gene	ND6
+			product	NADH dehydrogenase subunit 6
+			transl_table	2
+	CDS	14418..15558	codon_start	1
+			gene	Cyt b
+			product	cytochrome b
+			note	Incomplete stop codon
+			transl_except	(pos:15558,aa:TERM)
+			transl_table	2
+	rRNA	69..1020	product	12S rRNA
+	rRNA	1093..2798	product	16S rRNA
+	tRNA	1..68	product	tRNA-Phe
+	tRNA	1021..1092	product	tRNA-Val
+	tRNA	2799..2874	product	tRNA-Leu
+			note	Atypical codon: UAA
+	tRNA	3853..3922	product	tRNA-Ile
+	tRNA	complement(3922..3992)	product	tRNA-Gln
+	tRNA	3992..4061	product	tRNA-Met
+	tRNA	5120..5192	product	tRNA-Trp
+	tRNA	complement(5193..5261)	product	tRNA-Ala
+	tRNA	complement(5263..5335)	product	tRNA-Asn
+	tRNA	complement(5376..5444)	product	tRNA-Cys
+	tRNA	complement(5445..5514)	product	tRNA-Tyr
+	tRNA	complement(7068..7138)	product	tRNA-Ser
+			note	Atypical codon: UGA
+	tRNA	7143..7214	product	tRNA-Asp
+	tRNA	7913..7986	product	tRNA-Lys
+	tRNA	9614..9685	product	tRNA-Gly
+	tRNA	10035..10103	product	tRNA-Arg
+	tRNA	11775..11844	product	tRNA-His
+	tRNA	11845..11911	product	tRNA-Ser
+			note	Atypical codon: GCU
+	tRNA	11915..11987	product	tRNA-Leu
+			note	Atypical codon: UAG
+	tRNA	complement(14345..14413)	product	tRNA-Glu
+	tRNA	15559..15630	product	tRNA-Thr
+	tRNA	complement(15630..15700)	product	tRNA-Pro
+	D-loop	15701..16528	note	control region
