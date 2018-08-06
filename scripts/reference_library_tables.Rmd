@@ -1,0 +1,149 @@
+---
+title: "SeaDNA 12S rRNA reference library coverage"
+author: "Rupert A. Collins"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: github_document
+---
+
+
+##### Methods and description
+This document describes the current sampling for the 12S rRNA fish reference library for the SeaDNA project. 
+The document is a dynamic knitr document and can be updated quickly using the Makefile in SeaDNA/scripts.
+A list of species from the UK was generated from three sources: GBIF, FishBase, and the Water Framework Directive list of transitional species.
+This list was filtered to identify synonyms and duplicates, and annotated with FishBase taxonomic classification and FishBase common names.
+Next a sub-list of "common" species was generated. 
+These were species that we believe are likely to be encountered in eDNA surveys of inshore and transitional waters of the UK, and comprise most of the species in Henderson (2015).
+Most of the remaining are either introduced species, rarely encountered migrants, oceanic pelagics, or deep sea organisms.
+
+
+To calculate coverage we used the Bristol SeaDNA tissue catalogue, and also performed a search of the GenBank database. 
+Because of inconsistencies in how researchers annotate their GenBank submissions and the differing internal coverage of primer pairs for particular gene fragments, we performed a search requesting all mitochondrial DNA.
+Then we pulled out the ~170 bp Miya fragment from all the mtDNA using a hidden markov model. This enabled us to have greater confidence that useful sequences had not been missed. 
+For the resulting sequences we then tabulated all their metadata from GenBank in order to allow us to curate a custom reference library according to various criteria (e.g. must have reference specimen or locality data).
+<!-- NEED TO ALSO SEARCH GENBANK UNDER SYNONYMS, CHANGE/CHECK STREAKED GURNARD, INVESTIGATE REFSEQ SEQUENCES FOR REPETITION -->
+
+
+```{r load_libs, include=FALSE}
+# load up libs
+require("tidyverse")
+require("knitr")
+```
+
+
+```{r load_data, include=FALSE}
+# load up the data
+tissues.df <- read_csv(file="../species/tissues.csv")
+genbank.df <- read_csv(file="../references/uk-fishes-miya-12s-noprimers.csv")
+uk.species.table <- read_csv(file="../species/uk_species_table.csv")
+```
+
+
+```{r tissue_clean, include=FALSE}
+# clean up the tissues data
+tissues.sp <- tissues.df %>% #
+    mutate(sciName=paste(genus, specificEpithet)) %>% #
+    filter(class!="Malacostraca") %>% #
+    filter(!is.na(specificEpithet)) %>% #
+    select(sciName) %>% #
+    count(sciName) %>% #
+    rename(tissueCount=n)
+```
+
+
+```{r genbank_clean, include=FALSE}
+# clean up the GenBank data
+genbank.sp <- genbank.df %>% #
+    mutate(sciName=sapply(strsplit(taxon, " "), function(x) paste(x[1], x[2]))) %>% #
+    select(sciName) %>% #
+    count(sciName) %>% #
+    rename(genbankCount=n)
+```
+
+
+```{r tables_join, include=FALSE}
+# join to the uk species table
+combined.df <- dplyr::left_join(uk.species.table, tissues.sp, by="sciName")
+combined.df <- dplyr::left_join(combined.df, genbank.sp, by="sciName")
+```
+
+
+```{r common_subset, include=FALSE}
+# subset the common species
+common.df <- combined.df %>% #
+    filter(commonSpecies==TRUE) %>% #
+    arrange(class, order, family, sciName) %>% #
+    select(family, sciName, commonName, tissueCount, genbankCount)
+```
+
+```{r rare_subset, include=FALSE}
+# subset the rare species
+rare.df <- combined.df %>% #
+    filter(commonSpecies==FALSE) %>% #
+    arrange(class, order, family, sciName) %>% #
+    select(family, sciName, commonName, tissueCount, genbankCount)
+```
+
+
+```{r needed_subset, include=FALSE}
+# subset the common species with no data
+needed.species <- common.df %>% #
+    filter(is.na(tissueCount) & is.na(genbankCount)) %>% #
+    select(family, sciName, commonName)
+```
+
+```{r percentages, include=FALSE}
+# calculate percentages for each group
+uk.all <- combined.df %>% count()
+got.com <- combined.df %>% filter(commonSpecies==TRUE) %>% filter(!is.na(tissueCount) | !is.na(genbankCount)) %>% count()
+tot.com <- combined.df %>% filter(commonSpecies==TRUE) %>% count()
+got.com.prop <- paste0(round(((got.com$n/tot.com$n)*100), digits=0), "%")
+#
+got.all <- combined.df %>% filter(commonSpecies==FALSE) %>% filter(!is.na(tissueCount) | !is.na(genbankCount)) %>% count()
+tot.all <- combined.df %>% filter(commonSpecies==FALSE) %>% count()
+got.all.prop <- paste0(round(((got.all$n/tot.all$n)*100), digits=0), "%")
+#
+med.com <- combined.df %>% filter(commonSpecies==TRUE) %>% mutate(tots=tissueCount+genbankCount) %>% summarise(m=median(tots,na.rm=TRUE))
+singles <- combined.df %>% filter(commonSpecies==TRUE) %>% rowwise() %>% mutate(tots=sum(tissueCount,genbankCount, na.rm=TRUE)) %>% filter(tots==1) %>% count()
+singles.prop <- paste0(round(((singles$n/tot.com$n)*100), digits=0), "%")
+```
+
+##### Results
+The total number of UK species is estimated to be around `r uk.all`.
+Currently we have access to tissue samples or GenBank sequence data for `r got.com.prop` of the `r tot.com` common species (Table 2), and `r got.all.prop` of the `r tot.all` rare species (Table 3).
+For the common species, median number count tissues/sequences per species is `r med.com`, while `r singles` (`r singles.prop`) are represented by only one tissue or sequence.
+Table 1 lists the species of the highest priority to source.
+
+
+###### Table 1. Highest priority species (common species with no tissue sample or GenBank data).
+```{r print_needed, echo=FALSE, results="asis"}
+# print the needed species table
+needed.species %>% #
+    mutate(sciName=str_replace_all(sciName, pattern="$|^", replacement="*")) %>% #
+    rename(Family=family, `Scientific Name`=sciName, `Common Name`=commonName) %>% #
+kable()
+```
+---
+
+
+###### Table 2. All common UK species with counts for tissue samples collected and sequence data obtained from GenBank (number of individuals).
+```{r print_common, echo=FALSE, results="asis"}
+options(knitr.kable.NA="")
+# print the common species table
+common.df %>% #
+    mutate(sciName=str_replace_all(sciName, pattern="$|^", replacement="*")) %>% #
+    rename(Family=family, `Scientific Name`=sciName, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>% #
+kable()
+```
+---
+
+
+###### Table 3. All other UK species (reported in UK waters, but not listed in common species).
+```{r print_rare, echo=FALSE, results="asis"}
+options(knitr.kable.NA="")
+# print the all UK species table
+rare.df %>% #
+    mutate(sciName=str_replace_all(sciName, pattern="$|^", replacement="*")) %>% #
+    rename(Family=family, `Scientific Name`=sciName, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>% #
+kable()
+```
+
