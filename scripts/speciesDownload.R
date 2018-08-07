@@ -65,6 +65,13 @@ lapply(ncbi.all, write.dna, file="../temp/ncbi_uk.fas", format="fasta", append=T
 # returns a DNAbin object of the sequences matched by hmmer 
 prefix <- "12s.miya.primers"
 prefix <- "12s.miya.noprimers"
+prefix <- "coi.lerayxt.primers"
+prefix <- "coi.lerayxt.noprimers"
+prefix <- "coi.seamid.primers"
+prefix <- "coi.seamid.noprimers"
+prefix <- "coi.seashort.primers"
+prefix <- "coi.seashort.noprimers"
+# run hmmer
 dat.frag <- run_hmmer(dir="../temp", infile="ncbi_uk.fas", prefix=prefix, evalue="4e-10")
 
 # delete that temp fasta file
@@ -85,7 +92,7 @@ frag.df <- as.tibble(bind_rows(ncbi.frag))
 #end_time - start_time
 
 # write out to check
-write_csv(frag.df, path="../references/uk-fishes-miya-12s-noprimers.csv")
+write_csv(frag.df, path=paste0("../references/uk-fishes-",prefix,".csv"))
 
 # make into a fasta file if needed 
 #dtmp <- strsplit(ncbi.df$sequence, "")
