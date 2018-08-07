@@ -21,4 +21,9 @@ cat ../mitogenomes/mitogenomes/*.fa > ../mitogenomes/mitogenomes/mitogenomes.fsa
 echo -e "file\tgene\tlocation\tproduct\tgrep" > ../mitogenomes/mitoannotations/indices12S.tsv
 grep "12S rRNA" ../mitogenomes/mitoannotations/*.txt >> ../mitogenomes/mitoannotations/indices12S.tsv
 
+# make a file of COI gene positions
+echo -e "file\tcds\tlocation\tcodon\tposition" > ../mitogenomes/mitoannotations/indicesCOI.tsv
+grep -B 1 -A 1 "COI$" ../mitogenomes/mitoannotations/*.txt | grep "codon_start" >> ../mitogenomes/mitoannotations/indicesCOI.tsv
+
+
 # open Rscript mitoExtract.R
