@@ -4,8 +4,15 @@
 #vsearch --threads 8 --cluster_fast 12s.fas --id 0.70 --clusters ../temp/clusters/clusters.fas
 
 GENE="12s"
+GENE="coi"
 FRAG="miya.primers"
 FRAG="miya.noprimers"
+FRAG="lerayxt.primers"
+FRAG="lerayxt.noprimers"
+FRAG="seamid.primers"
+FRAG="seamid.noprimers"
+FRAG="seashort.primers"
+FRAG="seashort.noprimers"
 
 
 # mafft auto align
