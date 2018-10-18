@@ -87,16 +87,16 @@ ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE
 # join all the data sets
 frag.df <- as.tibble(bind_rows(ncbi.frag))
 
-# timing the code
-#end_time <- Sys.time()
-#end_time - start_time
+# remove ncbi genome and other duplicates
+frag.df <- frag.df %>% filter(gi_no!="NCBI_GENOMES") %>% distinct(gi_no, .keep_all=TRUE)
 
-# write out to check
-write_csv(frag.df, path=paste0("../references/uk-fishes-",prefix,".csv"))
+# extract DNA from the hmmer output
+nucs.list <- lapply(as.character(dat.frag), str_flatten)
+nucs.df <- data_frame(names=names(nucs.list), seqs=unlist(nucs.list))
 
-# make into a fasta file if needed 
-#dtmp <- strsplit(ncbi.df$sequence, "")
-#names(dtmp) <- ncbi.df$acc_no
-#dat <- as.DNAbin(dtmp)
-#print(dat)
-#write.dna(dat, file="../temp/ncbi_uk.fas", format="fasta", colw=99999)
+# add the just fragment
+frag.df <- frag.df %>% mutate(frag=nucs.df$seqs[match(frag.df$gi_no, nucs.df$names)])
+
+# write out
+write_csv(frag.df, path=paste0("../references/uk-fishes.",prefix,".csv"))
+
