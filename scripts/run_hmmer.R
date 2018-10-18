@@ -22,6 +22,6 @@ run_hmmer <- function(dir, infile, hmm, prefix, evalue){#
     system(command=string.hmmer)
     system(command=string.format)
     nuc <- read.dna(file=paste0(dir, "/", prefix, ".hmmer.fas"), format="fasta")
-    names(nuc) <- sapply(strsplit(names(nuc), split="/"), function(x) x[1])
+    names(nuc) <- str_split_fixed(str_split_fixed(names(nuc), "\\|", 2)[,2], "/", 2)[,1]#sapply(strsplit(names(nuc), split="/"), function(x) x[2])
     return(nuc)
 }#
