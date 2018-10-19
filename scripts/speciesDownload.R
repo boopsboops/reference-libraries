@@ -97,6 +97,26 @@ nucs.df <- data_frame(names=names(nucs.list), seqs=unlist(nucs.list))
 # add the just fragment
 frag.df <- frag.df %>% mutate(frag=nucs.df$seqs[match(frag.df$gi_no, nucs.df$names)])
 
+# calculate fragment lengths
+frag.df %>% mutate(fragLength=str_length(frag))
+
+# get the proper fishbase taxonomy, not the ncbi nonsense
+data(fishbase)
+
+# get genera from list
+# correct a couple of inconsistencies in the fishbase data
+frag.df$taxon[is.na(fishbase[match(str_split_fixed(frag.df$taxon, " ", 3)[,1],fishbase$Genus),]$Order)]
+fishbase$Genus[fishbase$Species=="zillii"] <- "Coptodon"
+fishbase$Genus[fishbase$Species=="crepidater"] <- "Centroselachus"
+# subset
+fishbase.sub <- fishbase[match(str_split_fixed(frag.df$taxon, " ", 3)[,1],fishbase$Genus),]
+# check length
+dim(fishbase.sub)[1] == dim(frag.df)[1] 
+
+# add taxonomy to frame and get lengths of frags and add to frame
+frag.df <- frag.df %>% mutate(fragLength=str_length(frag), subphylum="Vertebrata", class=fishbase.sub$Class, order=fishbase.sub$Order, family=fishbase.sub$Family, genus=fishbase.sub$Genus)
+
 # write out
 write_csv(frag.df, path=paste0("../references/uk-fishes.",prefix,".csv"))
+# frag.df <- read_csv(file=paste0("../references/uk-fishes.",prefix,".csv"))
 
