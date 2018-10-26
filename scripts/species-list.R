@@ -39,14 +39,14 @@ gbif.db <- gbif.db %>% filter(taxonRank == "SPECIES") %>% filter(!(decimalLatitu
 
 # get the names and write out to temp 
 gbif.sp <- gbif.db %>% mutate(species=paste(genus, specificEpithet)) %>% select(species) %>% distinct(species, .keep_all=TRUE) %>% arrange(species)
-#write_csv(gbif.sp, path="../temp/temp/gbif_tmp.csv")
+#write_csv(gbif.sp, path="../temp/gbif_tmp.csv")
 
 
 ## Once GBIF is done add to list from FishBase and the WFD 
 # these both need to be done BY HAND from website and pdf
 
 # load up the combined species list
-uk.list <- read_csv(file="../data/uk_species_list.csv")
+uk.list <- read_csv(file="../data/uk-species-list.csv")
 
 # get uniques
 uniqs <- uk.list %>% filter(source!="common") %>% select(species) %>% distinct(species)
@@ -105,4 +105,4 @@ syns.table <- syns.table %>% select(SpecCode,SynGenus,SynSpecies,sciName,synonym
 tidy.uk.list.syns <- bind_rows(tidy.uk.list,syns.table)
 
 # write out
-write_csv(tidy.uk.list.syns, path="../data/uk_species_table.csv")
+write_csv(tidy.uk.list.syns, path="../data/uk-species-table.csv")
