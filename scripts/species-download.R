@@ -1,8 +1,8 @@
 #!/usr/bin/env Rscript
 
-# R script to make a 12S (Miya fragment) reference database for UK dishes
+# R script to make reference databases for UK fishes for multiple markers
 # downloads all mtDNA sequence data from GenBank, for a provided list of species 
-# then, it uses a hidden markov model to pull out the Miya fragment from all that mtDNA data
+# then, it uses a hidden markov model to pull out the fragment of interest from all that mtDNA data
 # then, it queries NCBI for those accessions, and retrieves full metadata for them to allow better curation of reference database
 
 # Rupert A. Collins :: 06/08/18
@@ -23,15 +23,15 @@ library("ape")
 # function for removing duplicate haplotypes
 # source("https://raw.githubusercontent.com/legalLab/protocols-scripts/master/scripts/hapCollapse.R")
 # function for running hmmer in R
-source("run_hmmer.R")
+source("run-hmmer.R")
 
 ### ### ### ###
 
-# timing the code
+# timing the code (takes about 10 mins)
 #start_time <- Sys.time()
 
 # load up the uk species table
-uk.species.table <- read_csv(file="../species/uk_species_table.csv")
+uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 
 # make a query for genbank
 range <- "1:20000" # includes mt genomes
@@ -55,8 +55,12 @@ id.split <- unname(split(search.ids, ceiling(seq_along(search.ids)/chunk)))
 # download with ape (fast)
 ncbi.all <- mcmapply(FUN=function(x) read.GenBank(x, species.names=FALSE), id.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
 
-# write out a temporary file (it's about 70 MB) for hmmer to pull out the 12S Miya sequences 
-lapply(ncbi.all, write.dna, file="../temp/ncbi_uk.fas", format="fasta", append=TRUE, colw=99999)
+# write out a temporary file (it's about 70 MB) 
+lapply(ncbi.all, write.dna, file="../temp/ncbi-uk.fas", format="fasta", append=TRUE, colw=99999)
+
+# times
+#end_time <- Sys.time()
+#end_time-start_time 
 
 # now run hmmer
 # need to have "hmmer" and "biosquid" installed 
@@ -71,11 +75,16 @@ prefix <- "coi.seamid.primers"
 prefix <- "coi.seamid.noprimers"
 prefix <- "coi.seashort.primers"
 prefix <- "coi.seashort.noprimers"
+prefix <- "12s.riaz.primers"
+prefix <- "12s.riaz.noprimers"
+prefix <- "12s.valentini.primers"
+prefix <- "12s.valentini.noprimers"
+
 # run hmmer
-dat.frag <- run_hmmer(dir="../temp", infile="ncbi_uk.fas", prefix=prefix, evalue="4e-10")
+dat.frag <- run_hmmer(dir="../temp", infile="ncbi-uk.fas", prefix=prefix, evalue="4e-10")
 
 # delete that temp fasta file
-#file.remove("../temp/ncbi_uk.fas")
+#file.remove("../temp/ncbi-uk.fas")
 
 # now for the same sequences, get the tabular data from NCBI using 'ncbi_byid' to make a proper reference database
 chunk <- 100
