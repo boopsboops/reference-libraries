@@ -8,5 +8,5 @@
 
 # to execute, simply run "make" in the terminal from the scripts dir
  
-../docs/reference_library_tables.md : reference_library_tables.Rmd ../species/tissues.csv ../references/uk-fishes-miya-12s-noprimers.csv
-	Rscript -e "require('rmarkdown'); rmarkdown::render(input='reference_library_tables.Rmd', output_dir='../docs/')"
+../docs/reference-library-tables.md : reference-library-tables.Rmd ../species/tissues.csv ../references/uk-fishes-miya-12s-noprimers.csv
+	Rscript -e "require('rmarkdown'); rmarkdown::render(input='reference-library-tables.Rmd', output_dir='../docs/')"
