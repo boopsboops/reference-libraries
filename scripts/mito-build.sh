@@ -13,6 +13,10 @@ FRAG="seamid.primers"
 FRAG="seamid.noprimers"
 FRAG="seashort.primers"
 FRAG="seashort.noprimers"
+FRAG="valentini.primers"
+FRAG="valentini.noprimers"
+FRAG="riaz.primers"
+FRAG="riaz.noprimers"
 
 
 # mafft auto align

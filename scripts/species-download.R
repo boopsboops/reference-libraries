@@ -55,8 +55,12 @@ id.split <- unname(split(search.ids, ceiling(seq_along(search.ids)/chunk)))
 # download with ape (fast)
 ncbi.all <- mcmapply(FUN=function(x) read.GenBank(x, species.names=FALSE), id.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
 
-# write out a temporary file (it's about 70 MB) 
-lapply(ncbi.all, write.dna, file="../temp/ncbi-uk.fas", format="fasta", append=TRUE, colw=99999)
+# write out a temporary file (it's about 86 MB) 
+file.create("../temp/mtdna-uk.fas")
+lapply(ncbi.all, write.FASTA, file="../temp/mtdna-uk.fas", append=TRUE)
+
+
+
 
 # times
 #end_time <- Sys.time()
@@ -81,14 +85,17 @@ prefix <- "12s.valentini.primers"
 prefix <- "12s.valentini.noprimers"
 
 # run hmmer
-dat.frag <- run_hmmer(dir="../temp", infile="ncbi-uk.fas", prefix=prefix, evalue="4e-10")
+dat.frag <- run_hmmer(dir="../temp", infile="mtdna-uk.fas", prefix=prefix, evalue="4e-10")
+
+in.bold <- labels(dat.frag)[labels(dat.frag) %in% bold.red$processid]
+in.gb <- labels(dat.frag)[!labels(dat.frag) %in% bold.red$processid]
 
 # delete that temp fasta file
 #file.remove("../temp/ncbi-uk.fas")
 
 # now for the same sequences, get the tabular data from NCBI using 'ncbi_byid' to make a proper reference database
 chunk <- 100
-chunk.frag <- unname(split(names(dat.frag), ceiling(seq_along(names(dat.frag))/chunk)))
+chunk.frag <- unname(split(in.gb, ceiling(seq_along(in.gb)/chunk)))
 ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
 # if parallel package not available, use lapply (slower)
 # ncbi.frag <- lapply(chunk.frag, ncbi_byid)
@@ -97,7 +104,18 @@ ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE
 frag.df <- as.tibble(bind_rows(ncbi.frag))
 
 # remove ncbi genome and other duplicates
-frag.df <- frag.df %>% filter(gi_no!="NCBI_GENOMES") %>% distinct(gi_no, .keep_all=TRUE)
+frag.df <- frag.df %>% filter(gi_no!="NCBI_GENOMES") %>% 
+    distinct(gi_no, .keep_all=TRUE) %>% 
+    mutate(acc_no=str_replace_all(acc_no,"\\.[0-9]",""), source="GENBANK") %>% 
+    
+    
+
+bold.red %>% filter(processid %in% in.bold) %>% 
+    filter(!genbank_accession %in% frag.df$acc_no) %>% 
+    select(genbank_accession,species_name,lat,lon,country,institution_storing,catalognum,run_dates) %>% 
+    mutate(source="BOLD")
+
+
 
 # extract DNA from the hmmer output
 nucs.list <- lapply(as.character(dat.frag), str_flatten)
