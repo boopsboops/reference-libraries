@@ -90,8 +90,7 @@ dat.frag <- run_hmmer(dir="../temp", infile="mtdna-uk.fas", prefix=prefix, evalu
 in.bold <- labels(dat.frag)[labels(dat.frag) %in% bold.red$processid]
 in.gb <- labels(dat.frag)[!labels(dat.frag) %in% bold.red$processid]
 
-# delete that temp fasta file
-#file.remove("../temp/ncbi-uk.fas")
+
 
 # now for the same sequences, get the tabular data from NCBI using 'ncbi_byid' to make a proper reference database
 chunk <- 100
@@ -106,35 +105,58 @@ frag.df <- as.tibble(bind_rows(ncbi.frag))
 # remove ncbi genome and other duplicates
 frag.df <- frag.df %>% filter(gi_no!="NCBI_GENOMES") %>% 
     distinct(gi_no, .keep_all=TRUE) %>% 
-    mutate(acc_no=str_replace_all(acc_no,"\\.[0-9]",""), source="GENBANK") %>% 
+    mutate(acc_no=str_replace_all(acc_no,"\\.[0-9]",""), source="GENBANK") %>%
+    # fix the lat_lon into decimal
+    mutate(lat=paste(str_split_fixed(lat_lon, " ", 4)[,1], str_split_fixed(lat_lon, " ", 4)[,2]), lon=paste(str_split_fixed(lat_lon, " ", 4)[,3], str_split_fixed(lat_lon, " ", 4)[,4])) %>%
+    mutate(lat=if_else(grepl(" N",lat), true=str_replace_all(lat," N",""), false=if_else(grepl(" S",lat), true=paste0("-",str_replace_all(lat," S","")), false=lat))) %>%
+    mutate(lon=if_else(grepl(" E",lon), true=str_replace_all(lon," E",""), false=if_else(grepl(" W",lon), true=paste0("-",str_replace_all(lon," W","")), false=lon))) %>% 
+    mutate(lat=str_replace_all(lat,"^ ", NA_character_), lon=str_replace_all(lon,"^ ", NA_character_)) %>%
+    mutate(lat=as.numeric(lat), lon=as.numeric(lon)) %>% 
+    # tidy up
+    select(-taxonomy,-organelle,-keyword,-lat_lon) %>% 
+    rename(sciName=taxon,notesGenBank=gene_desc,dbid=gi_no,gbAccession=acc_no,catalogNumber=specimen_voucher,
+    publishedAs=paper_title,publishedIn=journal,publishedBy=first_author,date=uploaded_date,decimalLatitude=lat,decimalLongitude=lon,nucleotides=sequence)
+
+#bold.red %>% distinct(markercode)
+bold.red <- bold.red %>% filter(processid %in% in.bold) %>% 
+    filter(markercode=="COI-5P") %>% # CHANGE MARKERCODE FOR 12S
+    filter(!genbank_accession %in% frag.df$gbAccession) %>% 
+    mutate(source="BOLD") %>% 
+    select(source,processid,genbank_accession,species_name,lat,lon,country,institution_storing,catalognum,nucleotides) %>%
+    rename(dbid=processid,gbAccession=genbank_accession,sciName=species_name,decimalLatitude=lat,decimalLongitude=lon,institutionCode=institution_storing,catalogNumber=catalognum)
+
     
+# merge gb and bold
+dbs.merged <- bind_rows(frag.df,bold.red)
+#write_csv(dbs.merged, path="../temp/genbank_bold_merged.csv")
     
-
-bold.red %>% filter(processid %in% in.bold) %>% 
-    filter(!genbank_accession %in% frag.df$acc_no) %>% 
-    select(genbank_accession,species_name,lat,lon,country,institution_storing,catalognum,run_dates) %>% 
-    mutate(source="BOLD")
-
-
 
 # extract DNA from the hmmer output
 nucs.list <- lapply(as.character(dat.frag), str_flatten)
 nucs.df <- data_frame(names=names(nucs.list), seqs=unlist(nucs.list))
 
 # add the just fragment
-frag.df <- frag.df %>% mutate(frag=nucs.df$seqs[match(frag.df$gi_no, nucs.df$names)])
+dbs.merged <- dbs.merged %>% mutate(nucleotidesFrag=nucs.df$seqs[match(dbs.merged$dbid, nucs.df$names)])
 
 # calculate fragment lengths
-frag.df %>% mutate(fragLength=str_length(frag))
+dbs.merged %>% mutate(lengthFrag=str_length(nucleotidesFrag))
 
 # get the proper fishbase taxonomy, not the ncbi nonsense
 data(fishbase)
 
 # get genera from list
 # correct a couple of inconsistencies in the fishbase data
-frag.df$taxon[is.na(fishbase[match(str_split_fixed(frag.df$taxon, " ", 3)[,1],fishbase$Genus),]$Order)]
-fishbase$Genus[fishbase$Species=="zillii"] <- "Coptodon"
-fishbase$Genus[fishbase$Species=="crepidater"] <- "Centroselachus"
+dbs.merged$sciName[is.na(fishbase[match(str_split_fixed(dbs.merged$sciName, " ", 3)[,1],fishbase$Genus),]$Order)]
+
+
+u.sci <- unique(apply(str_split_fixed(dbs.merged$sciName, " ", 3)[,1:2], 1, paste, collapse=" "))
+v.sci <- validate_names(u.sci, limit=1)
+names.df <- data_frame(orig=u.sci, validated=v.sci)
+
+dbs.merged %>% mutate(sciNameValid=match
+names.df
+
+
 # subset
 fishbase.sub <- fishbase[match(str_split_fixed(frag.df$taxon, " ", 3)[,1],fishbase$Genus),]
 # check length
