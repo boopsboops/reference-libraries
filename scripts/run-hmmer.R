@@ -17,11 +17,11 @@
 # returns a DNAbin object of the sequences matched by hmmer 
 
 run_hmmer <- function(dir, infile, hmm, prefix, evalue){#
-    string.hmmer <- paste0("nhmmer -E ", evalue, " -A", " ", dir, "/", prefix, ".hmmer.stk", " ", "--notextw", " ", "--tblout", " ", dir, "/", prefix, ".hmmer.tbl", " ", "-o", " ", dir, "/", prefix, ".hmmer.out", " ", "../hmms/", prefix, ".hmm", " ", dir, "/", infile)
+    string.hmmer <- paste0("nhmmer -E ", evalue, " --incE ", evalue, " -A", " ", dir, "/", prefix, ".hmmer.stk", " ", "--notextw", " ", "--tblout", " ", dir, "/", prefix, ".hmmer.tbl", " ", "-o", " ", dir, "/", prefix, ".hmmer.out", " ", "../hmms/", prefix, ".hmm", " ", dir, "/", infile)
     string.format <- paste0("sreformat fasta", " ", dir, "/", prefix, ".hmmer.stk", " > ", dir, "/", prefix, ".hmmer.fas")
     system(command=string.hmmer)
     system(command=string.format)
     nuc <- read.dna(file=paste0(dir, "/", prefix, ".hmmer.fas"), format="fasta")
-    names(nuc) <- str_split_fixed(str_split_fixed(names(nuc), "\\|", 2)[,2], "/", 2)[,1]#sapply(strsplit(names(nuc), split="/"), function(x) x[2])
+    names(nuc) <- str_split_fixed(names(nuc), " \\[subseq from\\] ", 2)[,2]
     return(nuc)
 }#
