@@ -1,0 +1,16 @@
+source,dbid,taxon,action,note,replacement
+GENBANK,827522401,Coregonus autumnalis,REMOVE,"Species not found in UK",
+GENBANK,586829400,Leuciscus idus,REMOVE,"Specimen from China-Kazakhstan border, poorly documented",
+GENBANK,51339761,Carassius carassius,REMOVE,"Paper states fish is a goldfish (C. auratus)",
+GENBANK,52221010,Carassius carassius,REMOVE,"Paper states fish is a goldfish (C. auratus)",
+GENBANK,1197011479,Carassius carassius,REMOVE,"No information that this is not a goldfish",
+GENBANK,1314948533,Ameiurus nebulosus,REMOVE,"This is a RefSeq of GenBank MF621731.1, record was removed at the submitter's request because the source organism cannot be confirmed.",
+GENBANK,1173213948,Thunnus thynnus,REMOVE,"Nested in a large cluster of Thunnus alalunga",
+GENBANK,73611133,Cottus gobio,REMOVE,"Polish specimen of C. gobio, UK species is C. perifretum",
+GENBANK,1476682361,Cottus gobio,REPLACE,"Specimen from UK, should conform to C. perifretum",Cottus perifretum
+GENBANK,1018242409,Pungitius pungitius,REMOVE,"Pungitius laevis is the species present in the UK, no collection data to reassign",
+GENBANK,212374551,Pungitius pungitius,REMOVE,"Pungitius laevis is the species present in the UK, no collection data to reassign",
+GENBANK,212725480,Pungitius pungitius,REMOVE,"Pungitius laevis is the species present in the UK, no collection data to reassign",
+GENBANK,988043889,Pungitius pungitius,REMOVE,"Pungitius laevis is the species present in the UK, no collection data to reassign",
+GENBANK,1476682340,Pungitius pungitius,REPLACE,"Specimen from Belgium, should conform to P. laevis",Pungitius laevis
+GENBANK,33317222,Carcharodon carcharias,REMOVE,"Nested in a large cluster of Cetorhinus maximus",
