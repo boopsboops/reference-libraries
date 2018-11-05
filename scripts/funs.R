@@ -27,8 +27,8 @@ get_sames <- function(df,ids,nucs,sppVec,query){
 # species_lost(df=reflib,thresh=0.5)
 # threshold is a proportion of the mean sequence length
 species_lost <- function(df,thresh){
-    removed <- df %>% filter(lengthFrag < (mean(lengthFrag)*thresh)) %>% select(sciNameValid)
-    kept <- df %>% filter(lengthFrag >= (mean(lengthFrag)*thresh)) %>% select(sciNameValid)
+    removed <- df %>% filter(lengthFrag < (median(lengthFrag)*thresh)) %>% select(sciNameValid)
+    kept <- df %>% filter(lengthFrag >= (median(lengthFrag)*thresh)) %>% select(sciNameValid)
     tot <- setdiff(removed$sciNameValid, kept$sciNameValid)
     return(tot)
 }
@@ -38,7 +38,7 @@ species_lost <- function(df,thresh){
 # sequences_removed(df=reflib,thresh=0.5)
 # threshold is a proportion of the mean sequence length
 sequences_removed <- function(df,thresh){
-    removed <- df %>% filter(lengthFrag < (mean(lengthFrag)*thresh)) %>% select(dbid)
+    removed <- df %>% filter(lengthFrag < (median(lengthFrag)*thresh)) %>% select(dbid)
     n.removed <- length(removed$dbid)
     return(n.removed)
 }
