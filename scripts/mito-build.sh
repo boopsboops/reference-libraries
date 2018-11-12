@@ -17,6 +17,8 @@ FRAG="valentini.primers"
 FRAG="valentini.noprimers"
 FRAG="riaz.primers"
 FRAG="riaz.noprimers"
+FRAG="taberlet.primers"
+FRAG="taberlet.noprimers"
 
 
 # mafft auto align
