@@ -42,3 +42,13 @@ sequences_removed <- function(df,thresh){
     n.removed <- length(removed$dbid)
     return(n.removed)
 }
+
+
+# function to calculate primer ID rates from MFE primer results 
+primerID <- function(refs,mfe){
+    spp.amp <- unique(refs$sciNameValid[match(mfe$X1, refs$dbid)])
+    spp.tot <- unique(refs$sciNameValid)
+    num <- length(spp.amp)/length(spp.tot)
+    names(num) <- paste0(prefix, ", ", length(spp.tot), " total species")
+    return(num)
+}
