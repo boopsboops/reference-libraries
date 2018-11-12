@@ -44,6 +44,8 @@ prefix <- "12s.riaz.primers"
 prefix <- "12s.riaz.noprimers"
 prefix <- "12s.valentini.primers"
 prefix <- "12s.valentini.noprimers"
+prefix <- "12s.taberlet.primers"
+prefix <- "12s.taberlet.noprimers"
 
 # run hmmer
 dat.frag <- run_hmmer(dir="../temp", infile="mtdna-uk.fas", prefix=prefix, evalue="0.05")
