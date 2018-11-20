@@ -302,7 +302,7 @@ Actinopterygii,Perciformes,Sparidae,Dentex,maroccanus,4538,Morocco dentex,Dentex
 Actinopterygii,Perciformes,Sparidae,Pagellus,acarne,889,Axillary seabream,Pagellus acarne,FALSE,FALSE
 Actinopterygii,Perciformes,Sparidae,Pagellus,bogaraveo,890,Blackspot seabream,Pagellus bogaraveo,TRUE,FALSE
 Actinopterygii,Perciformes,Sparidae,Pagellus,erythrinus,893,Common pandora,Pagellus erythrinus,FALSE,FALSE
-Actinopterygii,Perciformes,Sparidae,Pagrus,pagrus,1756,Red porgy,Pagrus pagrus,FALSE,FALSE
+Actinopterygii,Perciformes,Sparidae,Pagrus,pagrus,1756,Red porgy,Pagrus pagrus,TRUE,FALSE
 Actinopterygii,Perciformes,Sparidae,Sarpa,salpa,204,Salema,Sarpa salpa,FALSE,FALSE
 Actinopterygii,Perciformes,Sparidae,Sparus,aurata,1164,Gilthead seabream,Sparus aurata,TRUE,FALSE
 Actinopterygii,Perciformes,Sparidae,Spondyliosoma,cantharus,1356,Black seabream,Spondyliosoma cantharus,TRUE,FALSE
