@@ -33,7 +33,7 @@ require("knitr")
 ```{r load_data, include=FALSE}
 # load up the data
 tissues.df <- read_csv(file="../species/tissues.csv")
-genbank.df <- read_csv(file="../references/uk-fishes-miya-12s-noprimers.csv")
+genbank.df <- read_csv(file="../references/uk-fishes.12s.miya.noprimers.csv")
 uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 ```
 

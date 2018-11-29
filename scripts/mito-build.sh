@@ -1,8 +1,5 @@
 #!/usr/bin/env/sh
 
-# check for crappy data if required (e.g. mis-specified 12S regions)
-#vsearch --threads 8 --cluster_fast 12s.fas --id 0.70 --clusters ../temp/clusters/clusters.fas
-
 GENE="12s"
 GENE="coi"
 FRAG="miya.primers"
