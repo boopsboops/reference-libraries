@@ -1,5 +1,7 @@
 #!/usr/bin/env Rscript
 
+# this script cleans and annotates the uk fish species list using fishbase
+
 # load libs
 require("tidyverse")
 require("rfishbase")
@@ -53,11 +55,14 @@ syns <- synonyms %>% filter(SpecCode==code)
 return(syns)
 }
 
+# get all synonyms from rfishbase
+synonyms.all <- synonyms(server="fishbase")
+
 # run function for all spp
 fish.syns <-  bind_rows(lapply(tidy.uk.list$specCode, function(x) grab_synonyms(synonyms=synonyms.all,code=x)))
 
 # subset the synonyms and the subspecific names
-fish.syns <- bind_rows((fish.syns %>% filter(Status=="synonym")), (fish.syns %>% filter(Status=="accepted name" & TaxonLevel=="Nominotypical")))
+fish.syns <- bind_rows((fish.syns %>% filter(Status!="accepted name")), (fish.syns %>% filter(Status=="accepted name" & TaxonLevel=="Nominotypical")))
 
 # tidy and filter
 syns.table <- fish.syns %>% 

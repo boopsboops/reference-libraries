@@ -3,7 +3,7 @@
 
 # R script to make reference databases for UK fishes for multiple markers
 # downloads all mtDNA sequence data from GenBank/BOLD, for a provided list of species 
-# last run 27/10/18
+# last run 29/11/2018
 
 # load libs
 library("tidyverse")
@@ -17,7 +17,8 @@ source("https://raw.githubusercontent.com/legalLab/protocols-scripts/master/scri
 
 
 # timing the code
-#start_time <- Sys.time()
+# this script take about 15 mins to run
+start_time <- Sys.time()
 
 # load up the uk species table
 uk.species.table <- read_csv(file="../species/uk-species-table.csv")
@@ -29,7 +30,8 @@ uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 range <- "1:20000" # includes mt genomes
 query <- paste0("(", uk.species.table$sciName, "[ORGN] AND mitochondrion[ALL] AND ", range, "[SLEN]) OR (", uk.species.table$sciName, "[ORGN] AND mitochondrial[ALL] AND ", range, "[SLEN])")
 
-# run the search for accessions with rentrez - takes about 10 mins
+# run the search for accessions with rentrez
+# sometimes an error occurs, just run again
 search.res <- mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=1000), query, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
 # if parallel package not available, use lapply (slower)
 # search.res <- lapply(query, function(x) entrez_search(db="nuccore", term=x, retmax=1000))
@@ -47,7 +49,7 @@ id.split <- unname(split(search.ids, ceiling(seq_along(search.ids)/chunk)))
 # download with ape (fast)
 ncbi.all <- mcmapply(FUN=function(x) read.GenBank(x, species.names=FALSE), id.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
 
-# write out a temporary file (it's about 86 MB) 
+# write out a temporary file
 file.create("../temp/mtdna-uk.fas")
 lapply(ncbi.all, write.FASTA, file="../temp/mtdna-uk.fas", append=TRUE)
 
@@ -62,20 +64,20 @@ bold.split <- unname(split(uk.species.table$sciName, ceiling(seq_along(uk.specie
 bold.all <- mcmapply(FUN=function(x) bold_seqspec(x,format="tsv",sepfasta=FALSE,response=FALSE), bold.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
 
 # tidy it up and join it together
-bold.red <- lapply(lapply(bold.all, as_tibble), function(x) select(x, -image_ids,-copyright_years,-sex))
+bold.red <- lapply(lapply(bold.all, as_tibble), function(x) mutate_all(x,as.character))
 bold.red <- bind_rows(bold.red)
 bold.red <- bold.red %>% 
     mutate(nucleotides=str_replace_all(nucleotides,"-",""), nucleotides=str_replace_all(nucleotides,"N",""), num_bases=nchar(nucleotides)) %>% 
     filter(num_bases > 0)
 
-# write and read a temp copy of the bold dump if required
-#write_csv(bold.red, path="../temp/bold-dump.csv")
+# write temp copy of the bold dump
+write_csv(bold.red, path="../temp/bold-dump.csv")
 
 # create a fasta file of BOLD
 bold.fas <- tab2fas(df=bold.red, seqcol="nucleotides", namecol="processid")
 
-# add it to the GenBank file allredy created
+# add it to the GenBank file already created
 write.FASTA(bold.fas, file="../temp/mtdna-uk.fas", append=TRUE)
 
-#end_time <- Sys.time()
-#end_time-start_time 
+end_time <- Sys.time()
+end_time-start_time 
