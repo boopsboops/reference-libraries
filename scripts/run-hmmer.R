@@ -16,12 +16,26 @@
 
 # returns a DNAbin object of the sequences matched by hmmer 
 
-run_hmmer <- function(dir, infile, hmm, prefix, evalue){#
-    string.hmmer <- paste0("nhmmer -E ", evalue, " --incE ", evalue, " -A", " ", dir, "/", prefix, ".hmmer.stk", " ", "--notextw", " ", "--tblout", " ", dir, "/", prefix, ".hmmer.tbl", " ", "-o", " ", dir, "/", prefix, ".hmmer.out", " ", "../hmms/", prefix, ".hmm", " ", dir, "/", infile)
-    string.format <- paste0("sreformat fasta", " ", dir, "/", prefix, ".hmmer.stk", " > ", dir, "/", prefix, ".hmmer.fas")
-    system(command=string.hmmer)
-    system(command=string.format)
-    nuc <- read.dna(file=paste0(dir, "/", prefix, ".hmmer.fas"), format="fasta")
-    names(nuc) <- str_split_fixed(names(nuc), " \\[subseq from\\] ", 2)[,2]
-    return(nuc)
-}#
+### OLD func
+#run_hmmer <- function(dir, infile, hmm, prefix, evalue){#
+#    string.hmmer <- paste0("nhmmer -E ", evalue, " --incE ", evalue, " -A", " ", dir, "/", prefix, ".hmmer.stk", " ", "--notextw", " ", "--tblout", " ", dir, "/", prefix, ".hmmer.tbl", " ", "-o", " ", dir, "/", prefix, ".hmmer.out", " ", "../hmms/", prefix, ".hmm", " ", dir, "/", infile)
+#    string.format <- paste0("sreformat fasta", " ", dir, "/", prefix, ".hmmer.stk", " > ", dir, "/", prefix, ".hmmer.fas")
+#    system(command=string.hmmer)
+#    system(command=string.format)
+#    nuc <- read.dna(file=paste0(dir, "/", prefix, ".hmmer.fas"), format="fasta")
+#    names(nuc) <- str_split_fixed(names(nuc), " \\[subseq from\\] ", 2)[,2]
+#    return(nuc)
+#}#
+
+
+run_hmmer3 <- function(dir, infile, hmm, prefix, evalue){#
+    string.hmmer <- paste0("nhmmer -E ", evalue, " --incE ", evalue, " --dfamtblout ", dir, "/", prefix, ".hmmer.tbl ", "../hmms/", prefix, ".hmm ", dir, "/", infile)
+    system(command=string.hmmer, ignore.stdout=TRUE)
+    hmm.tbl <- read_delim(file=paste0(dir, "/", prefix, ".hmmer.tbl"), delim=" ", col_names=FALSE, trim_ws=TRUE, progress=FALSE, comment="#", col_types=cols())
+    names(hmm.tbl) <- c("targetName","acc","queryName","bits","eValue","bias","hmmStart","hmmEnd","strand","aliStart","aliEnd","envStart","envEnd","sqLen","descriptionTarget")
+    hmm.tbl %<>% filter(strand=="+") %>% distinct(targetName, .keep_all=TRUE) %>% mutate(coords=paste(envStart,envEnd,sep=":"))
+    mtdna <- read.FASTA(file=paste0(dir,"/",infile))
+    mtdna.sub <- as.character(mtdna[match(hmm.tbl$targetName,names(mtdna))])
+    mtdna.sub.coords <- as.DNAbin(mapply(function(x,y,z) x[y:z], mtdna.sub, hmm.tbl$envStart, hmm.tbl$envEnd, SIMPLIFY=TRUE, USE.NAMES=TRUE))
+    return(mtdna.sub.coords)
+}
