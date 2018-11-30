@@ -7,6 +7,7 @@
 
 # load libs
 library("tidyverse")
+library("magrittr")
 library("rentrez")
 library("parallel")
 library("ape")
@@ -32,7 +33,7 @@ query <- paste0("(", uk.species.table$sciName, "[ORGN] AND mitochondrion[ALL] AN
 
 # run the search for accessions with rentrez
 # sometimes an error occurs, just run again
-search.res <- mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=1000), query, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
+search.res <- mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=10000), query, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
 # if parallel package not available, use lapply (slower)
 # search.res <- lapply(query, function(x) entrez_search(db="nuccore", term=x, retmax=1000))
 
@@ -42,8 +43,8 @@ search.res.nz <- search.res[which(lapply(search.res, function(x) x$count) > 0)]
 # get IDs and remove dups
 search.ids <- unique(unlist(lapply(search.res.nz, function(x) x$ids)))
 
-# chunk up into 300s to stop server from rejecting request 
-chunk <- 300
+# chunk up into 100s to stop server from rejecting request 
+chunk <- 100
 id.split <- unname(split(search.ids, ceiling(seq_along(search.ids)/chunk)))
 
 # download with ape (fast)
@@ -57,24 +58,27 @@ lapply(ncbi.all, write.FASTA, file="../temp/mtdna-uk.fas", append=TRUE)
 ## Now repeat the same for the BOLD database
 
 # chunk up the BOLD requests
-chunk <- 300
+chunk <- 80
 bold.split <- unname(split(uk.species.table$sciName, ceiling(seq_along(uk.species.table$sciName)/chunk)))
 
 # query BOLD and retrieve a table
+# sometimes an error occurs, just run again
 bold.all <- mcmapply(FUN=function(x) bold_seqspec(x,format="tsv",sepfasta=FALSE,response=FALSE), bold.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
 
 # tidy it up and join it together
 bold.red <- lapply(lapply(bold.all, as_tibble), function(x) mutate_all(x,as.character))
 bold.red <- bind_rows(bold.red)
-bold.red <- bold.red %>% 
+bold.red %<>% 
     mutate(nucleotides=str_replace_all(nucleotides,"-",""), nucleotides=str_replace_all(nucleotides,"N",""), num_bases=nchar(nucleotides)) %>% 
-    filter(num_bases > 0)
+    filter(num_bases > 0) %>%
+    filter(institution_storing!="Mined from GenBank, NCBI") %>% 
+    mutate(processidUniq=paste(processid,markercode,sep="."))
 
 # write temp copy of the bold dump
 write_csv(bold.red, path="../temp/bold-dump.csv")
 
 # create a fasta file of BOLD
-bold.fas <- tab2fas(df=bold.red, seqcol="nucleotides", namecol="processid")
+bold.fas <- tab2fas(df=bold.red, seqcol="nucleotides", namecol="processidUniq")
 
 # add it to the GenBank file already created
 write.FASTA(bold.fas, file="../temp/mtdna-uk.fas", append=TRUE)
