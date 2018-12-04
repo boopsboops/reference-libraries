@@ -39,4 +39,5 @@ rsconnect/
 *.kate-swp
 
 # temp
-temp/
+temp
+temp-local-only
