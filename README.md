@@ -3,7 +3,7 @@ Metabarcoding reference libraries for UK fish species
 
 ### Contents (A-Z)
 
-* **`docs/`** - Output of the species coverage reports. Can be accessed at [boopsboops.github.io/reference-libraries/reference_library_tables.html](https://boopsboops.github.io/reference-libraries/reference_library_tables.html).
+* **`docs/`** - Output of the species coverage reports. Can be accessed at [boopsboops.github.io/reference-libraries/reference-library-tables.html](https://boopsboops.github.io/reference-libraries/reference-library-tables.html).
 * **`hmms/`** - Hidden Markov models (HMMs) and fasta files of gene markers of interest.
 * **`mitogenomes/`** - Complete curated mitogenomes and their annotation files downloaded from the Miya's MitoFish website at [mitofish.aori.u-tokyo.ac.jp/](http://mitofish.aori.u-tokyo.ac.jp/).
 * **`references/`** - Completed reference libraries in CSV format.
@@ -37,4 +37,4 @@ The workflow comes in three parts: (1) assemble the raw materials including mito
    * Run `sequences-download.R` to get all mtDNA data from NCBI/BOLD for a species list
    * Run `references-assemble.R` to subset (with hmmer), annotate and save reference libraries for a given primer set
 
-3. * Type `make` in a terminal in the scripts directory (this creates a new version of  [boopsboops.github.io/reference-libraries/reference_library_tables.html](https://boopsboops.github.io/reference-libraries/reference_library_tables.html))
+3. * Type `make` in a terminal in the scripts directory (this creates a new version of  [boopsboops.github.io/reference-libraries/reference_library_tables.html](https://boopsboops.github.io/reference-libraries/reference-library-tables.html))
