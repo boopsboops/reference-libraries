@@ -20,13 +20,14 @@ To calculate coverage we used the Bristol SeaDNA tissue catalogue, and also perf
 Because of inconsistencies in how researchers annotate their GenBank submissions and the differing internal coverage of primer pairs for particular gene fragments, we performed a search requesting all mitochondrial DNA.
 Then we pulled out the ~170 bp Miya fragment from all the mtDNA using a hidden markov model. This enabled us to have greater confidence that useful sequences had not been missed. 
 For the resulting sequences we then tabulated all their metadata from GenBank in order to allow us to curate a custom reference library according to various criteria (e.g. must have reference specimen or locality data).
-<!-- NEED TO ALSO SEARCH GENBANK UNDER SYNONYMS, CHANGE/CHECK STREAKED GURNARD, INVESTIGATE REFSEQ SEQUENCES FOR REPETITION -->
 
 
 ```{r load_libs, include=FALSE}
 # load up libs
 require("tidyverse")
+require("magrittr")
 require("knitr")
+require("rfishbase")
 ```
 
 
@@ -40,55 +41,65 @@ uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 
 ```{r tissue_clean, include=FALSE}
 # clean up the tissues data
-tissues.sp <- tissues.df %>% #
-    mutate(sciName=paste(genus, specificEpithet)) %>% #
-    filter(class!="Malacostraca") %>% #
-    filter(!is.na(specificEpithet)) %>% #
-    select(sciName) %>% #
-    count(sciName) %>% #
+tissues.sp <- tissues.df %>%
+    mutate(sciName=paste(genus, specificEpithet)) %>%
+    filter(class!="Malacostraca") %>%
+    filter(!is.na(specificEpithet)) %>%
+    select(sciName) %>%
+    count(sciName) %>%
     rename(tissueCount=n)
+# validate names
+    tissues.sp %<>% mutate(sciNameValid=validate_names(sciName, server="fishbase"))
 ```
 
 
 ```{r genbank_clean, include=FALSE}
 # clean up the GenBank data
-genbank.sp <- genbank.df %>% #
-    mutate(sciName=sapply(strsplit(taxon, " "), function(x) paste(x[1], x[2]))) %>% #
-    select(sciName) %>% #
-    count(sciName) %>% #
+genbank.sp <- genbank.df %>%
+    mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius laevis","Pungitius pungitius")) %>% 
+    mutate(sciNameValid=str_replace_all(sciNameValid,"Cottus perifretum","Cottus gobio")) %>% 
+    select(sciNameValid) %>%
+    count(sciNameValid) %>%
     rename(genbankCount=n)
+```
+
+```{r species_clean, include=FALSE}
+# clean up the species data
+uk.species.table.val <- uk.species.table %>%
+    filter(synonym==FALSE) %>% 
+    rename(sciNameValid=sciName)
 ```
 
 
 ```{r tables_join, include=FALSE}
 # join to the uk species table
-combined.df <- dplyr::left_join(uk.species.table, tissues.sp, by="sciName")
-combined.df <- dplyr::left_join(combined.df, genbank.sp, by="sciName")
+combined.df <- dplyr::left_join(uk.species.table.val, tissues.sp, by="sciNameValid")
+combined.df <- dplyr::left_join(combined.df, genbank.sp, by="sciNameValid")
 ```
 
 
 ```{r common_subset, include=FALSE}
 # subset the common species
-common.df <- combined.df %>% #
-    filter(commonSpecies==TRUE) %>% #
-    arrange(class, order, family, sciName) %>% #
-    select(family, sciName, commonName, tissueCount, genbankCount)
+common.df <- combined.df %>%
+    filter(commonSpecies==TRUE) %>%
+    arrange(class, order, family, sciNameValid) %>%
+    select(family, sciNameValid, commonName, tissueCount, genbankCount)
 ```
 
 ```{r rare_subset, include=FALSE}
 # subset the rare species
-rare.df <- combined.df %>% #
-    filter(commonSpecies==FALSE) %>% #
-    arrange(class, order, family, sciName) %>% #
-    select(family, sciName, commonName, tissueCount, genbankCount)
+rare.df <- combined.df %>%
+    filter(commonSpecies==FALSE) %>%
+    arrange(class, order, family, sciNameValid) %>%
+    select(family, sciNameValid, commonName, tissueCount, genbankCount)
 ```
 
 
 ```{r needed_subset, include=FALSE}
 # subset the common species with no data
-needed.species <- common.df %>% #
-    filter(is.na(tissueCount) & is.na(genbankCount)) %>% #
-    select(family, sciName, commonName)
+needed.species <- common.df %>%
+    filter(is.na(tissueCount) & is.na(genbankCount)) %>%
+    select(family, sciNameValid, commonName)
 ```
 
 ```{r percentages, include=FALSE}
@@ -103,7 +114,7 @@ tot.all <- combined.df %>% filter(commonSpecies==FALSE) %>% count()
 got.all.prop <- paste0(round(((got.all$n/tot.all$n)*100), digits=0), "%")
 #
 med.com <- combined.df %>% filter(commonSpecies==TRUE) %>% mutate(tots=tissueCount+genbankCount) %>% summarise(m=median(tots,na.rm=TRUE))
-singles <- combined.df %>% filter(commonSpecies==TRUE) %>% rowwise() %>% mutate(tots=sum(tissueCount,genbankCount, na.rm=TRUE)) %>% filter(tots==1) %>% count()
+singles <- combined.df %>% filter(commonSpecies==TRUE) %>% rowwise() %>% mutate(tots=sum(tissueCount,genbankCount,na.rm=TRUE)) %>% filter(tots==1) %>% count()
 singles.prop <- paste0(round(((singles$n/tot.com$n)*100), digits=0), "%")
 ```
 
@@ -117,9 +128,9 @@ Table 1 lists the species of the highest priority to source.
 ###### Table 1. Highest priority species (common species with no tissue sample or GenBank data).
 ```{r print_needed, echo=FALSE, results="asis"}
 # print the needed species table
-needed.species %>% #
-    mutate(sciName=str_replace_all(sciName, pattern="$|^", replacement="*")) %>% #
-    rename(Family=family, `Scientific Name`=sciName, `Common Name`=commonName) %>% #
+needed.species %>%
+    mutate(sciNameValid=str_replace_all(sciNameValid, pattern="$|^", replacement="*")) %>%
+    rename(Family=family, `Scientific Name`=sciNameValid, `Common Name`=commonName) %>%
 kable()
 ```
 ---
@@ -129,9 +140,9 @@ kable()
 ```{r print_common, echo=FALSE, results="asis"}
 options(knitr.kable.NA="")
 # print the common species table
-common.df %>% #
-    mutate(sciName=str_replace_all(sciName, pattern="$|^", replacement="*")) %>% #
-    rename(Family=family, `Scientific Name`=sciName, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>% #
+common.df %>%
+    mutate(sciNameValid=str_replace_all(sciNameValid, pattern="$|^", replacement="*")) %>%
+    rename(Family=family, `Scientific Name`=sciNameValid, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>%
 kable()
 ```
 ---
@@ -141,9 +152,9 @@ kable()
 ```{r print_rare, echo=FALSE, results="asis"}
 options(knitr.kable.NA="")
 # print the all UK species table
-rare.df %>% #
-    mutate(sciName=str_replace_all(sciName, pattern="$|^", replacement="*")) %>% #
-    rename(Family=family, `Scientific Name`=sciName, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>% #
+rare.df %>%
+    mutate(sciNameValid=str_replace_all(sciNameValid, pattern="$|^", replacement="*")) %>%
+    rename(Family=family, `Scientific Name`=sciNameValid, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>%
 kable()
 ```
 
