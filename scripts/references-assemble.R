@@ -49,17 +49,19 @@ prefix <- "12s.taberlet.primers"
 prefix <- "12s.taberlet.noprimers"
 
 # run hmmer
-#dat.frag <- run_hmmer(dir="../temp", infile="mtdna-uk.fas", prefix=prefix, evalue="0.05")
-dat.frag <- run_hmmer3(dir="../temp", infile="mtdna-uk.fas", prefix=prefix, evalue="0.05")
+dat.frag <- run_hmmer3(dir="../temp", infile="mtdna-uk.fas", prefix=prefix, evalue="0.05", coords="env")
 
 # separate the extracted sequences that are in GenBank or BOLD
 in.bold <- labels(dat.frag)[labels(dat.frag) %in% bold.red$processidUniq]
 in.gb <- labels(dat.frag)[!labels(dat.frag) %in% bold.red$processidUniq]
 
 # now for the same sequences, get the tabular data from NCBI using 'ncbi_byid' to make a proper reference database
-chunk <- 80
+chunk <- 70
 chunk.frag <- unname(split(in.gb, ceiling(seq_along(in.gb)/chunk)))
-ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)# sometimes this errors, so repeat a few times
+ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=1)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
+
+# check for errors (should all be "data.frame")
+table(sapply(ncbi.frag,class))
 
 # join all the data sets
 frag.df <- as.tibble(bind_rows(ncbi.frag))
@@ -111,22 +113,20 @@ data(fishbase)
 # make a binomial scientific name
 dbs.merged.all %<>% mutate(sciNameBinomen=apply(str_split_fixed(sciNameOrig, " ", 3)[,1:2], 1, paste, collapse=" "))
 
+# fix by hand all the binomials that aren't in fishbase (see below)
+dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Xenocypris argentea")] <- "Xenocypris macrolepis"
+dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Gobio balcanicus")] <- "Gobio gobio"
+dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Sebastes marinus")] <- "Sebastes norvegicus"
+dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Chelon ramada")] <- "Liza ramada"
+
 # get unique species names from db output
 u.sci <- unique(dbs.merged.all$sciNameBinomen)
 # validate using fishbase and select the first match
-v.sci <- mclapply(u.sci, validate_names, server="fishbase")
+v.sci <- mclapply(u.sci, validate_names, server="fishbase", mc.cores=8)
 v.sci <- lapply(v.sci, function(x) x[1])
 
-# potential problem - search for na responses not in fishbase, and fix by hand :(
-# go back to v.sci and repeat validate_names
+# potential problem - search for na responses not in fishbase synonyms, and fix by hand (see above)
 u.sci[which(lapply(v.sci, is.na)==TRUE)]
-u.sci[which(u.sci=="Xenocypris argentea")] <- "Xenocypris macrolepis"
-u.sci[which(u.sci=="Gobio balcanicus")] <- "Gobio gobio"
-u.sci[which(u.sci=="Sebastes marinus")] <- "Sebastes norvegicus"
-u.sci[which(u.sci=="Chelon ramada")] <- "Liza ramada"
-
-# replace the null values with a value from "limit=1" - not sure why these were generated
-#v.sci[which(lapply(v.sci, function(x) is.null(x))==TRUE)] <- validate_names(u.sci[which(lapply(v.sci, function(x) is.null(x))==TRUE)], limit=1)
 
 # make a df
 names.df <- data_frame(orig=u.sci, validated=unlist(v.sci))
@@ -153,7 +153,7 @@ dbs.merged %<>% mutate(nucleotides=str_to_lower(nucleotides)) %>%
 
 # find names that are in dbs.merged, but not in the uk species table (valid names only)
 extras <- unique(dbs.merged$sciNameValid)[!unique(dbs.merged$sciNameValid) %in% uk.species.table$sciName[uk.species.table$synonym==FALSE]]
-print(extras)
+print(sort(extras))
 
 # if theses are okay, drop them from the table
 dbs.merged %<>% filter(!sciNameValid %in% extras)
@@ -167,25 +167,5 @@ write_csv(dbs.merged, path=paste0("../temp/uk-fishes.",prefix,".csv"))
 # important - clear memory before re-running
 rm(list=ls())
 
-######## checking #######
-oriig <- read_csv(file="../temp/libraries_29-10-18/uk-fishes.coi.seamid.noprimers.csv")
-
-setdiff(oriig$dbid,dbs.merged$dbid)
-setdiff(dbs.merged$dbid,oriig$dbid)
-
-mis <- oriig[match(setdiff(oriig$dbid,dbs.merged$dbid), oriig$dbid),]
-mis %<>% filter(!gbAccession %in% dbs.merged$gbAccession)
-
-write_csv(mis, path="../temp/missing.csv")
-
-
-bold_seqspec("Nessorhamphus ingolfianus",format="tsv",sepfasta=FALSE,response=FALSE)
-
-which(uk.species.table$sciName=="Phoxinus phoxinus")
-
-bold.red[which(bold.red$species_name=="Nessorhamphus ingolfianus"),]
-
-
-range <- "1:20000" # includes mt genomes
-query <- paste0("(", "Phoxinus phoxinus", "[ORGN] AND mitochondrion[ALL] AND ", range, "[SLEN]) OR (","Phoxinus phoxinus", "[ORGN] AND mitochondrial[ALL] AND ", range, "[SLEN])")
-validate_names(species="Chelon ramada",server="fishbase")
+# to check
+#write.FASTA(tab2fas(df=dbs.merged, seqcol="nucleotidesFrag", namecol="dbid"), file="../temp/test.fas")
