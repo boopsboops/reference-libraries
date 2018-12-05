@@ -174,3 +174,8 @@ rm(list=ls())
 
 # to check
 write.FASTA(tab2fas(df=dbs.merged, seqcol="nucleotidesFrag", namecol="dbid"), file="../temp/test.fas")
+
+
+# check dups
+dbs.merged[duplicated(dbs.merged$dbid),] %>% print(n=Inf)
+dbs.merged$dbid[duplicated(dbs.merged$dbid)]
