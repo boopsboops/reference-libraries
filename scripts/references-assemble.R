@@ -19,7 +19,8 @@ library("ape")
 
 # function for running hmmer in R
 source("run-hmmer.R")
-
+# function for making fasta files from tables
+source("https://raw.githubusercontent.com/legalLab/protocols-scripts/master/scripts/tab2fas.R")
 
 ## Data
 # load up the uk species table
@@ -58,11 +59,12 @@ in.gb <- labels(dat.frag)[!labels(dat.frag) %in% bold.red$processidUniq]
 # now for the same sequences, get the tabular data from NCBI using 'ncbi_byid' to make a proper reference database
 chunk <- 70
 chunk.frag <- unname(split(in.gb, ceiling(seq_along(in.gb)/chunk)))
-ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=1)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
+ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=2)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
 
 # check for errors (should all be "data.frame")
 table(sapply(ncbi.frag,class))
 
+##
 # join all the data sets
 frag.df <- as.tibble(bind_rows(ncbi.frag))
 
@@ -105,7 +107,8 @@ dbs.merged.all %<>% mutate(nucleotidesFrag=nucs.df$seqs[match(dbs.merged.all$dbi
 table(dbs.merged.all$lengthFrag)
 
 
-## Now add the taxonomy 
+## 
+# Now add the taxonomy 
 
 # get the proper fishbase taxonomy, not the ncbi nonsense
 data(fishbase)
@@ -128,6 +131,8 @@ v.sci <- lapply(v.sci, function(x) x[1])
 # potential problem - search for na responses not in fishbase synonyms, and fix by hand (see above)
 u.sci[which(lapply(v.sci, is.na)==TRUE)]
 
+
+##
 # make a df
 names.df <- data_frame(orig=u.sci, validated=unlist(v.sci))
 
@@ -168,4 +173,4 @@ write_csv(dbs.merged, path=paste0("../temp/uk-fishes.",prefix,".csv"))
 rm(list=ls())
 
 # to check
-#write.FASTA(tab2fas(df=dbs.merged, seqcol="nucleotidesFrag", namecol="dbid"), file="../temp/test.fas")
+write.FASTA(tab2fas(df=dbs.merged, seqcol="nucleotidesFrag", namecol="dbid"), file="../temp/test.fas")
