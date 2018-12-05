@@ -27,9 +27,9 @@ Metabarcoding reference libraries for UK fish species
 
 The workflow comes in three parts: (1) assemble the raw materials including mitogenome data and species lists; (2) clean and annotate the species lists and download the sequences; and (3) update the summary table document. All the files produced by steps 1 and 2 are committed into the git reposito
 
-1. * Run `mito-download.sh` to download all fish mitochondrial genomes and annotations [06/08/2017]
-   * Run `mito-extract.R` to extract the single genes (e.g. 12S) from the mitogenomes [06/08/2017]
-   *  Run `mito-build.sh` to align genes and generate the HMMs [12/11/2017]
+1. * Run `mito-download.sh` to download all fish mitochondrial genomes and annotations
+   * Run `mito-extract.R` to extract the single genes (e.g. 12S) from the mitogenomes
+   *  Run `mito-build.sh` to align genes and generate the HMMs
    *  Run `species-list-gbif.R` to generate a species list from the UK
    *  
 
@@ -37,4 +37,4 @@ The workflow comes in three parts: (1) assemble the raw materials including mito
    * Run `sequences-download.R` to get all mtDNA data from NCBI/BOLD for a species list
    * Run `references-assemble.R` to subset (with hmmer), annotate and save reference libraries for a given primer set
 
-3. * Type `make` in a terminal in the scripts directory (this creates a new version of  [boopsboops.github.io/reference-libraries/reference_library_tables.html](https://boopsboops.github.io/reference-libraries/reference-library-tables.html))
+3. * Type `make` in a terminal in the scripts directory (this creates a new version of  [boopsboops.github.io/reference-libraries/reference-library-tables.html](https://boopsboops.github.io/reference-libraries/reference-library-tables.html))
