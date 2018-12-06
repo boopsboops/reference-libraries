@@ -39,7 +39,7 @@ All of these steps need not be carried out every time, depending on the goal of 
 
 **Step 6**  is an optional quality control step, that should be carried periodically, expecially when large numbers of sequences are added to the reference libraries.
 
-More information is found in each individal script. Generally to identify potential errors, scripts should be run line-by-line in an R console such as RStudio rather than in batch from the terminal. All packages required are listed in `scripts/funs.R`, and are standard CRAN packages with the exception of traits, which needs to be installed via GitHub (sees script for more details). 
+More information is found in each individal script. Generally to identify potential errors, scripts should be run line-by-line in an R console such as RStudio rather than in batch from the terminal. All packages required are listed in `scripts/funs.R`, and are standard CRAN packages with the exception of traits, which needs to be installed via GitHub (sees script for more details). The programs HMMER, MAFFT, and RAxML need to be installed on your system. 
 
 1. * Run `scripts/mito-download.sh` to download all fish mitochondrial genomes and annotations
    * Run `scripts/mito-extract.R` to extract the single genes (e.g. 12S) from the mitogenomes
