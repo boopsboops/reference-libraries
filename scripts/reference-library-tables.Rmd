@@ -36,6 +36,7 @@ require("rfishbase")
 tissues.df <- read_csv(file="../species/tissues.csv")
 genbank.df <- read_csv(file="../references/uk-fishes.12s.miya.noprimers.csv")
 uk.species.table <- read_csv(file="../species/uk-species-table.csv")
+exclusions.df <- read_csv(file="../references/exclusions.csv")
 ```
 
 
@@ -58,9 +59,10 @@ tissues.sp <- tissues.df %>%
 genbank.sp <- genbank.df %>%
     mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius laevis","Pungitius pungitius")) %>% 
     mutate(sciNameValid=str_replace_all(sciNameValid,"Cottus perifretum","Cottus gobio")) %>% 
+    filter(!dbid %in% exclusions.df$dbid[exclusions.df$action=="REMOVE"]) %>%
     select(sciNameValid) %>%
     count(sciNameValid) %>%
-    rename(genbankCount=n)
+    rename(genbankCount=n) 
 ```
 
 ```{r species_clean, include=FALSE}
