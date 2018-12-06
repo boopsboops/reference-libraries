@@ -25,21 +25,21 @@ Metabarcoding reference libraries for UK fish species. This README outlines the 
 
 ### Workflow
 
-The workflow comes in four steps: (1) assemble the mitogenome data and make the HMMs for each marker; (2) create, validate and annotate the list of UK species; (3) download all sequence data for every species and synonyms; (4) assemble reference libraries for specified markers from the downloaded sequence dump; and (5) create and update a markdown summary report.
+The workflow comes in five steps: (1) assemble the mitogenome data and make the HMMs for each marker; (2) create, validate and annotate the list of UK species; (3) download all sequence data for every species and synonyms; (4) assemble reference libraries for specified markers from the downloaded sequence dump; and (5) create and update a markdown summary report.
 
-All of these steps need not be carried out every time, depending on the goal of the update. 
+All of these steps need not be carried out every time, depending on the goal of the update:
 
-Step 1 does not need to be repeated as the HMMs are generated and committed to the repository, so these scripts/data are only for reference purposes. 
+**Step 1** does not need to be repeated as the HMMs are generated and committed to the repository, so these scripts/data are only for reference purposes. 
 
-Step 2 does not need to be repeated unless there are taxonomic changes or a mistake that needs to be corrected. If a species "common" status needs to changed, the `uk-species-list.csv` and `uk-species-table.csv` can be edited directly (be sure to edit both).
+**Step 2** does not need to be repeated unless there are taxonomic changes or a mistake that needs to be corrected. If a species "common" status needs to changed, the `uk-species-list.csv` and `uk-species-table.csv` can be edited directly (be sure to edit both).
 
-Steps 3/4 needs to be repeated each time the reference library is refreshed with new data from GenBank. These steps should be carried out every few months.
+**Steps 3/4**  needs to be repeated each time the reference library is refreshed with new data from GenBank. These steps should be carried out every few months.
 
-Step 5 needs to be repeated after either the GenBank data is updated (i.e. when steps 3/4 are run), or after the tissue samples spreadsheet (`species/tissues.csv`) is updated.
+**Step 5**  needs to be repeated after either the GenBank data is updated (i.e. when steps 3/4 are run), or after the tissue samples spreadsheet (`species/tissues.csv`) is updated.
 
-Step 6 is an optional quality control step, that should be carried periodically when larger numbers of sequences are added to the reference libraries.
+**Step 6**  is an optional quality control step, that should be carried periodically, expecially when large numbers of sequences are added to the reference libraries.
 
-More information is found in each individal script. Generally scripts are best run line-by-line in an R console such as RStudio rather than in batch from the terminal.
+More information is found in each individal script. Generally to identify potential errors, scripts should be run line-by-line in an R console such as RStudio rather than in batch from the terminal. All packages required are listed in `scripts/funs.R`, and are standard CRAN packages with the exception of traits, which needs to be installed via GitHub (sees script for more details). 
 
 1. * Run `scripts/mito-download.sh` to download all fish mitochondrial genomes and annotations
    * Run `scripts/mito-extract.R` to extract the single genes (e.g. 12S) from the mitogenomes
