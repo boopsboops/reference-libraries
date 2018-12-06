@@ -1,11 +1,7 @@
 #!/usr/bin/env Rscript
 # script to quality control the reference libraries and identify erroneous sequences.
 
-# load funs and libs
-library("tidyverse")
-library("phangorn")
-library("ips")
-library("stringdist")
+# load functions and libs
 source("funs.R")
 
 # load up the reference lib

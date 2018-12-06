@@ -2,9 +2,8 @@
 
 # this script cleans and annotates the uk fish species list using fishbase
 
-# load libs
-require("tidyverse")
-require("rfishbase")
+# load functions and libs
+source("funs.R")
 
 # load up the combined species list (generated 20/12/2017)
 uk.list <- read_csv(file="../species/uk-species-list.csv")

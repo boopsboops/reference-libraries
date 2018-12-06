@@ -1,8 +1,7 @@
 #!/usr/bin/env Rscript
 
-# load libs
-require("tidyverse")
-require("rgbif")
+# load functions and libs
+source("funs.R")
 
 # script makes a list of all UK marine and freshwater species of fishes (inc sharks and rays).
 # uses (1) gbif records; (2) fishbase; and (3) WFD transitional species list.
@@ -10,7 +9,7 @@ require("rgbif")
 
 
 ## Get list from GBIF
-# # Don't need to run once already done (done 20/12/2017)
+# don't need to run once already done 
 # just load up "../species/uk-species-list.csv" (see "scripts/species-list-clean.R")
 
 # get taxa names for sharks and fish

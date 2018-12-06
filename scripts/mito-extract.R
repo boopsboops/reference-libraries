@@ -1,8 +1,7 @@
 #!/usr/bin/env Rscript
 
-# libs
-library(tidyverse)
-library(ape)
+# load functions and libs
+source("funs.R")
 
 # read index file and fasta file
 tab.indices <- read_tsv(file="../mitogenomes/mitoannotations/indices12S.tsv")
