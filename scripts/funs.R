@@ -92,7 +92,7 @@ read_GenBank <- function (access.nb, seq.names = access.nb, species.names = TRUE
     fl <- tempfile()
     repeat {
         URL <- paste0("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=", 
-            paste(access.nb[a:b], collapse = ","), "&rettype=fasta&retmode=text","&", api.key)
+            paste(access.nb[a:b], collapse = ","), "&rettype=fasta&retmode=text&api_key=", api.key)
         X <- scan(file = URL, what = "", sep = "\n", quiet = TRUE)
         cat(X, sep = "\n", file = fl, append = TRUE)
         if (b == N) 
@@ -124,7 +124,7 @@ read_GenBank <- function (access.nb, seq.names = access.nb, species.names = TRUE
         sp <- character(0)
         repeat {
             URL <- paste("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=", 
-                paste(access.nb[a:b], collapse = ","), "&rettype=gb&retmode=text", 
+                paste(access.nb[a:b], collapse = ","), "&rettype=gb&retmode=text&api_key=", api.key,
                 sep = "")
             X <- scan(file = URL, what = "", sep = "\n", quiet = TRUE, 
                 n = -1)
