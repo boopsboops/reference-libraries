@@ -33,7 +33,7 @@ All of these steps need not be carried out every time, depending on the goal of 
 
 **Step 2** does not need to be repeated unless there are taxonomic changes or a mistake that needs to be corrected. If a species "common" status needs to changed, the `uk-species-list.csv` and `uk-species-table.csv` can be edited directly (be sure to edit both).
 
-**Steps 3/4**  needs to be repeated each time the reference library is refreshed with new data from GenBank. These steps should be carried out every few months.
+**Steps 3/4**  needs to be repeated each time the reference library is refreshed with new data from GenBank. These steps should be carried out every few months. The script `scripts/sequences-download.R` contains code to check the current GenBank version against the version that was last used to assemble the reference library.
 
 **Step 5**  needs to be repeated after either the GenBank data is updated (i.e. when steps 3/4 are run), or after the tissue samples spreadsheet (`species/tissues.csv`) is updated.
 
