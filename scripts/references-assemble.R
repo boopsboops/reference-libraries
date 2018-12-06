@@ -4,23 +4,9 @@
 # then, it uses a hidden markov model to pull out the fragment of interest from all that mtDNA data
 # then, it queries NCBI/BOLD for those accessions, and retrieves full metadata for them to allow better curation of reference database
 
-# until changes come through to CRAN, need to run dev version of traits and install with sudo R in the terminal 
-# either 'install_github("ropensci/traits")' or for root lib locations:
-# sudo R
-# library(devtools); withr::with_libpaths(new = "/usr/local/lib/R/site-library/", install_github("ropensci/traits"))
+# load functions and libs
+source("funs.R")
 
-# load libs
-library("tidyverse")
-library("magrittr")
-library("rfishbase")
-library("traits")
-library("parallel")
-library("ape")
-
-# function for running hmmer in R
-source("run-hmmer.R")
-# function for making fasta files from tables
-source("https://raw.githubusercontent.com/legalLab/protocols-scripts/master/scripts/tab2fas.R")
 
 ## Data
 # load up the uk species table
@@ -59,7 +45,7 @@ in.gb <- labels(dat.frag)[!labels(dat.frag) %in% bold.red$processidUniq]
 # now for the same sequences, get the tabular data from NCBI using 'ncbi_byid' to make a proper reference database
 chunk <- 70
 chunk.frag <- unname(split(in.gb, ceiling(seq_along(in.gb)/chunk)))
-ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=2)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
+ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=3)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
 
 # check for errors (should all be "data.frame")
 table(sapply(ncbi.frag,class))
@@ -121,6 +107,8 @@ dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Xenocypris a
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Gobio balcanicus")] <- "Gobio gobio"
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Sebastes marinus")] <- "Sebastes norvegicus"
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Chelon ramada")] <- "Liza ramada"
+dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Hippocampus ramulosus")] <- "Hippocampus guttulatus"
+
 
 # get unique species names from db output
 u.sci <- unique(dbs.merged.all$sciNameBinomen)
@@ -170,12 +158,9 @@ unique(paste(dbs.merged$sciNameValid[which(dbs.merged$sciNameValid != dbs.merged
 #write_csv(dbs.merged, path=paste0("../references/uk-fishes.",prefix,".csv"))
 write_csv(dbs.merged, path=paste0("../temp/uk-fishes.",prefix,".csv"))
 # important - clear memory before re-running
+
+# to write out a fasta
+write.FASTA(tab2fas(df=dbs.merged, seqcol="nucleotidesFrag", namecol="dbid"), file=paste0("../temp/uk-fishes.",prefix,".fas"))
+
+# clean
 rm(list=ls())
-
-# to check
-write.FASTA(tab2fas(df=dbs.merged, seqcol="nucleotidesFrag", namecol="dbid"), file="../temp/test.fas")
-
-
-# check dups
-dbs.merged[duplicated(dbs.merged$dbid),] %>% print(n=Inf)
-dbs.merged$dbid[duplicated(dbs.merged$dbid)]
