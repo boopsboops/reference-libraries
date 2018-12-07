@@ -3,6 +3,7 @@
 # R script to make reference databases for UK fishes for multiple markers
 # then, it uses a hidden markov model to pull out the fragment of interest from all that mtDNA data
 # then, it queries NCBI/BOLD for those accessions, and retrieves full metadata for them to allow better curation of reference database
+# output is a csv dataframe of all accessions with data for all primer sets if present
 
 # load functions and libs
 source("funs.R")
@@ -14,38 +15,47 @@ uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 # load the BOLD dump
 bold.red <- read_csv(file="../temp/bold-dump.csv", guess_max=100000)
 
+
 ## Extract the frag of interest using the HMMs
 # now run hmmer
 # need to have "hmmer" and "biosquid" installed 
 # if not, run 'sudo apt install hmmer biosquid'
 # assumes the hidden markov model is located in hmms/ directory and is named '$prefix.hmm'
 # returns a DNAbin object of the sequences matched by hmmer 
-prefix <- "12s.miya.primers"
-prefix <- "12s.miya.noprimers"
-prefix <- "coi.lerayxt.primers"
-prefix <- "coi.lerayxt.noprimers"
-prefix <- "coi.seamid.primers"
-prefix <- "coi.seamid.noprimers"
-prefix <- "coi.seashort.primers"
-prefix <- "coi.seashort.noprimers"
-prefix <- "12s.riaz.primers"
-prefix <- "12s.riaz.noprimers"
-prefix <- "12s.valentini.primers"
-prefix <- "12s.valentini.noprimers"
-prefix <- "12s.taberlet.primers"
-prefix <- "12s.taberlet.noprimers"
+
+prefixes.all <- c("12s.miya.primers",
+"12s.miya.noprimers",
+"coi.lerayxt.primers",
+"coi.lerayxt.noprimers",
+"coi.seamid.primers",
+"coi.seamid.noprimers",
+"coi.seashort.primers",
+"coi.seashort.noprimers",
+"12s.riaz.primers",
+"12s.riaz.noprimers",
+"12s.valentini.primers",
+"12s.valentini.noprimers",
+"12s.taberlet.primers",
+"12s.taberlet.noprimers")
+
 
 # run hmmer
-dat.frag <- run_hmmer3(dir="../temp", infile="mtdna-uk.fas", prefix=prefix, evalue="0.05", coords="env")
+dat.frag.all <- lapply(prefixes.all, function(x) run_hmmer3(dir="../temp", infile="mtdna-uk.fas", prefix=x, evalue="0.05", coords="env"))
+
+# concatentate all
+dat.frag.cat <- do.call(c,dat.frag.all)
+
+# get unique names
+dat.frag.names <- unique(labels(dat.frag.cat))
 
 # separate the extracted sequences that are in GenBank or BOLD
-in.bold <- labels(dat.frag)[labels(dat.frag) %in% bold.red$processidUniq]
-in.gb <- labels(dat.frag)[!labels(dat.frag) %in% bold.red$processidUniq]
+in.bold <- dat.frag.names[dat.frag.names %in% bold.red$processidUniq]
+in.gb <- dat.frag.names[!dat.frag.names %in% bold.red$processidUniq]
 
 # now for the same sequences, get the tabular data from NCBI using 'ncbi_byid' to make a proper reference database
 chunk <- 70
 chunk.frag <- unname(split(in.gb, ceiling(seq_along(in.gb)/chunk)))
-ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=3)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
+ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=1)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
 
 # check for errors (should all be "data.frame")
 table(sapply(ncbi.frag,class))
@@ -70,27 +80,33 @@ frag.df %<>% filter(gi_no!="NCBI_GENOMES") %>%
     publishedAs=paper_title,publishedIn=journal,publishedBy=first_author,date=uploaded_date,decimalLatitude=lat,decimalLongitude=lon,nucleotides=sequence)
 
 # do the same for BOLD
-#bold.red %>% distinct(markercode)
-# first check if anything exists in BOLD
-bold.red %>% filter(processidUniq %in% in.bold) %>% filter(!genbank_accession %in% frag.df$gbAccession)
 # run
 bold.red %<>% filter(processidUniq %in% in.bold) %>% 
     filter(!genbank_accession %in% frag.df$gbAccession) %>% 
-    mutate(source="BOLD") %>% 
-    select(source,processid,genbank_accession,species_name,lat,lon,country,institution_storing,catalognum,nucleotides) %>%
-    rename(dbid=processid,gbAccession=genbank_accession,sciNameOrig=species_name,decimalLatitude=lat,decimalLongitude=lon,institutionCode=institution_storing,catalogNumber=catalognum)
+    mutate(source="BOLD",nucleotides=str_to_lower(nucleotides), length=as.character(str_length(nucleotides))) %>% 
+    select(source,processidUniq,genbank_accession,species_name,lat,lon,country,institution_storing,catalognum,nucleotides,length) %>%
+    rename(dbid=processidUniq,gbAccession=genbank_accession,sciNameOrig=species_name,decimalLatitude=lat,decimalLongitude=lon,institutionCode=institution_storing,catalogNumber=catalognum)
 
 # merge gb and bold data
 dbs.merged.all <- bind_rows(frag.df,bold.red)
 
-# extract DNA from the hmmer output and add the fragment to the merged db
-nucs.list <- lapply(as.character(dat.frag), str_flatten)
-nucs.df <- data_frame(names=names(nucs.list), seqs=unlist(nucs.list))
-nucs.df %<>% mutate(names=str_split_fixed(names,"\\.",2)[,1])
+# name each DNAbin object
+names(dat.frag.all) <- prefixes.all
 
-dbs.merged.all %<>% mutate(nucleotidesFrag=nucs.df$seqs[match(dbs.merged.all$dbid, nucs.df$names)], lengthFrag=str_length(nucleotidesFrag))
-# take a quick look at the fragment sizes
-table(dbs.merged.all$lengthFrag)
+# extract nucleotides out of the DNAbin objects
+dat.frag.flat <- lapply(dat.frag.all, function(x) mcmapply(str_flatten, as.character(x), mc.cores=8, SIMPLIFY=TRUE,USE.NAMES=TRUE))
+
+# turn each into a dataframe
+dat.frag.df <- lapply(dat.frag.flat, function(x) data_frame(names=names(x), seqs=unlist(x), lengthFrag=str_length(seqs)))
+
+# rename each df with names of the fragment
+dat.frag.df <- mapply(function(x,y,z) dplyr::rename(x,dbid=names, !!y:=seqs, !!z:=lengthFrag), dat.frag.df, paste("nucleotidesFrag",names(dat.frag.df),sep="."), paste("lengthFrag",names(dat.frag.df),sep="."), SIMPLIFY=FALSE)
+
+# merge all the data frames 
+dat.frag.merged <- dat.frag.df %>% purrr::reduce(full_join, by="dbid")
+
+# join with the metadata dataframe
+dbs.merged.all <- dplyr::left_join(dbs.merged.all,dat.frag.merged,by="dbid")
 
 
 ## 
@@ -136,13 +152,9 @@ dim(fishbase.sub)[1] == dim(dbs.merged)[1]
 # add taxonomy 
 dbs.merged %<>% mutate(subphylum="Vertebrata", class=fishbase.sub$Class, order=fishbase.sub$Order, family=fishbase.sub$Family, genus=fishbase.sub$Genus,speciesCodeFishbase=fishbase.sub$SpecCode)
 
-# clean up and sort columns and remove trinomials AGAIN
+# clean up and remove trinomials AGAIN
 dbs.merged %<>% mutate(nucleotides=str_to_lower(nucleotides)) %>% 
-    mutate(sciNameValid=apply(str_split_fixed(sciNameValid, " ", 3)[,1:2], 1, paste, collapse=" ")) %>% 
-    select(source,dbid,gbAccession,sciNameValid,subphylum,class,order,family,genus,sciNameBinomen,sciNameOrig,speciesCodeFishbase,
-    country,catalogNumber,institutionCode,decimalLatitude,decimalLongitude,publishedAs,publishedIn,publishedBy,
-    date,notesGenBank,length,lengthFrag,nucleotidesFrag,nucleotides) %>% 
-    arrange(class,order,family,genus,sciNameValid)
+    mutate(sciNameValid=apply(str_split_fixed(sciNameValid, " ", 3)[,1:2], 1, paste, collapse=" ")) 
 
 # find names that are in dbs.merged, but not in the uk species table (valid names only)
 extras <- unique(dbs.merged$sciNameValid)[!unique(dbs.merged$sciNameValid) %in% uk.species.table$sciName[uk.species.table$synonym==FALSE]]
@@ -154,13 +166,28 @@ dbs.merged %<>% filter(!sciNameValid %in% extras)
 # check the FB synonyms! Are these okay?
 unique(paste(dbs.merged$sciNameValid[which(dbs.merged$sciNameValid != dbs.merged$sciNameOrig)], dbs.merged$sciNameOrig[which(dbs.merged$sciNameValid != dbs.merged$sciNameOrig)], sep=" | "))
 
+
+##
+# now clean up to make the table human readable
+# drop the DNA fragments and reorder the columns 
+dbs.merged.info <- dbs.merged %>% select(-matches("Frag")) %>% 
+   select(source,dbid,gbAccession,sciNameValid,subphylum,class,order,family,genus,sciNameBinomen,sciNameOrig,speciesCodeFishbase,
+    country,catalogNumber,institutionCode,decimalLatitude,decimalLongitude,publishedAs,publishedIn,publishedBy,
+    date,notesGenBank,length,nucleotides)
+
+# make a data frame of just the sequence data
+dbs.merged.seqs <- dbs.merged %>% select(matches("Frag|dbid"))
+
+# remerge with the reorganised dataframe and remove any ids with no nucleotides
+dbs.merged.final <- left_join(dbs.merged.info,dbs.merged.seqs,by="dbid") %>%
+    arrange(class,order,family,genus,sciNameValid) %>% 
+    filter(!is.na(nucleotides))
+
+
+##
 # write out
-#write_csv(dbs.merged, path=paste0("../references/uk-fishes.",prefix,".csv"))
-write_csv(dbs.merged, path=paste0("../temp/uk-fishes.",prefix,".csv"))
-# important - clear memory before re-running
+write_csv(dbs.merged.final, path="../references/uk-fish-references.csv", na="")
 
 # to write out a fasta
-write.FASTA(tab2fas(df=dbs.merged, seqcol="nucleotidesFrag", namecol="dbid"), file=paste0("../temp/uk-fishes.",prefix,".fas"))
-
-# clean
-rm(list=ls())
+filter(dbs.merged.final, !is.na(nucleotidesFrag.coi.lerayxt.noprimers))
+#write.FASTA(tab2fas(df=dbs.merged, seqcol="nucleotidesFrag", namecol="dbid"), file=paste0("../temp/uk-fishes.",prefix,".fas"))
