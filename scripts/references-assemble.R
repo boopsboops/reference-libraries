@@ -185,8 +185,10 @@ dbs.merged.final <- left_join(dbs.merged.info,dbs.merged.seqs,by="dbid") %>%
 
 
 ##
-# write out
-write_csv(dbs.merged.final, path="../references/uk-fish-references.csv", na="")
+# write out a gzipped file (orig is too big for github)
+write_csv(dbs.merged.final, path=gzfile("../references/uk-fish-references.csv.gz"), na="")
+write_csv(dbs.merged.final, path="../temp/uk-fish-references.csv", na="")
+
 
 # to write out a fasta
 filter(dbs.merged.final, !is.na(nucleotidesFrag.coi.lerayxt.noprimers))
