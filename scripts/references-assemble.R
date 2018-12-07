@@ -23,14 +23,17 @@ bold.red <- read_csv(file="../temp/bold-dump.csv", guess_max=100000)
 # assumes the hidden markov model is located in hmms/ directory and is named '$prefix.hmm'
 # returns a DNAbin object of the sequences matched by hmmer 
 
-prefixes.all <- c("12s.miya.primers",
-"12s.miya.noprimers",
+prefixes.all <- c(
 "coi.lerayxt.primers",
 "coi.lerayxt.noprimers",
 "coi.seamid.primers",
 "coi.seamid.noprimers",
 "coi.seashort.primers",
 "coi.seashort.noprimers",
+"coi.ward.primers",
+"coi.ward.noprimers",
+"12s.miya.primers",
+"12s.miya.noprimers",
 "12s.riaz.primers",
 "12s.riaz.noprimers",
 "12s.valentini.primers",
@@ -39,7 +42,7 @@ prefixes.all <- c("12s.miya.primers",
 "12s.taberlet.noprimers")
 
 
-# run hmmer
+# run hmmer (takes about 5 mins)
 dat.frag.all <- lapply(prefixes.all, function(x) run_hmmer3(dir="../temp", infile="mtdna-uk.fas", prefix=x, evalue="0.05", coords="env"))
 
 # concatentate all
@@ -59,6 +62,7 @@ ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE
 
 # check for errors (should all be "data.frame")
 table(sapply(ncbi.frag,class))
+
 
 ##
 # join all the data sets
@@ -110,8 +114,6 @@ dbs.merged.all <- dplyr::left_join(dbs.merged.all,dat.frag.merged,by="dbid")
 
 
 ## 
-# Now add the taxonomy 
-
 # get the proper fishbase taxonomy, not the ncbi nonsense
 data(fishbase)
 
@@ -124,7 +126,6 @@ dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Gobio balcan
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Sebastes marinus")] <- "Sebastes norvegicus"
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Chelon ramada")] <- "Liza ramada"
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Hippocampus ramulosus")] <- "Hippocampus guttulatus"
-
 
 # get unique species names from db output
 u.sci <- unique(dbs.merged.all$sciNameBinomen)
@@ -183,6 +184,9 @@ dbs.merged.final <- left_join(dbs.merged.info,dbs.merged.seqs,by="dbid") %>%
     arrange(class,order,family,genus,sciNameValid) %>% 
     filter(!is.na(nucleotides))
 
+# take a look 
+glimpse(dbs.merged.final)
+
 
 ##
 # write out a gzipped file (orig is too big for github)
@@ -191,5 +195,5 @@ write_csv(dbs.merged.final, path="../temp/uk-fish-references.csv", na="")
 
 
 # to write out a fasta
-filter(dbs.merged.final, !is.na(nucleotidesFrag.coi.lerayxt.noprimers))
-#write.FASTA(tab2fas(df=dbs.merged, seqcol="nucleotidesFrag", namecol="dbid"), file=paste0("../temp/uk-fishes.",prefix,".fas"))
+#filter(dbs.merged.final, !is.na(nucleotidesFrag.coi.lerayxt.noprimers))
+#write.FASTA(tab2fas(df=filter(dbs.merged.final, !is.na(nucleotidesFrag.coi.lerayxt.noprimers)), seqcol="nucleotidesFrag.coi.lerayxt.noprimers", namecol="dbid"), file=paste0("../temp/uk-fishes.",prefix,".fas"))
