@@ -1,7 +1,7 @@
 SeaDNA 12S rRNA reference library coverage
 ================
 Rupert A. Collins
-04 December 2018
+07 December 2018
 
 ##### Methods and description
 
@@ -74,8 +74,8 @@ The total number of UK species is estimated to be around 533. Currently we have 
 | Cyprinidae      | *Abramis brama*               | Freshwater bream         |              |              5|
 | Cyprinidae      | *Alburnus alburnus*           | Bleak                    |              |              2|
 | Cyprinidae      | *Barbus barbus*               | Barbel                   |              |              3|
-| Cyprinidae      | *Carassius auratus*           | Goldfish                 |              |             61|
-| Cyprinidae      | *Carassius carassius*         | Crucian carp             |              |              5|
+| Cyprinidae      | *Carassius auratus*           | Goldfish                 |              |             60|
+| Cyprinidae      | *Carassius carassius*         | Crucian carp             |              |              2|
 | Cyprinidae      | *Cyprinus carpio*             | Common carp              |              |             53|
 | Cyprinidae      | *Gobio gobio*                 | Gudgeon                  |              |              4|
 | Cyprinidae      | *Leuciscus idus*              | Ide                      |              |              1|
@@ -515,7 +515,7 @@ The total number of UK species is estimated to be around 533. Currently we have 
 | Triglidae          | *Chelidonichthys obscurus*     | Longfin gurnard                  |              |               |
 | Triglidae          | *Trigla lyra*                  | Piper gurnard                    |              |               |
 | Ictaluridae        | *Ameiurus melas*               | Black bullhead                   |              |              2|
-| Ictaluridae        | *Ameiurus nebulosus*           | Brown bullhead                   |              |              6|
+| Ictaluridae        | *Ameiurus nebulosus*           | Brown bullhead                   |              |              5|
 | Ictaluridae        | *Ictalurus punctatus*          | Channel catfish                  |              |             10|
 | Melamphaidae       | *Melamphaes suborbitalis*      | Shoulderspine bigscale           |              |               |
 | Melamphaidae       | *Poromitra nigriceps*          |                                  |              |               |
@@ -555,7 +555,7 @@ The total number of UK species is estimated to be around 533. Currently we have 
 | Chlamydoselachidae | *Chlamydoselachus anguineus*   | Frilled shark                    |              |              4|
 | Hexanchidae        | *Heptranchias perlo*           | Sharpnose sevengill shark        |              |              4|
 | Hexanchidae        | *Hexanchus griseus*            | Bluntnose sixgill shark          |              |             43|
-| Lamnidae           | *Carcharodon carcharias*       | Great white shark                |              |            133|
+| Lamnidae           | *Carcharodon carcharias*       | Great white shark                |              |            132|
 | Lamnidae           | *Isurus oxyrinchus*            | Shortfin mako                    |              |              4|
 | Dasyatidae         | *Pteroplatytrygon violacea*    | Pelagic stingray                 |              |              3|
 | Myliobatidae       | *Mobula mobular*               | Devil fish                       |              |              4|

@@ -34,7 +34,7 @@ require("rfishbase")
 ```{r load_data, include=FALSE}
 # load up the data
 tissues.df <- read_csv(file="../species/tissues.csv")
-genbank.df <- read_csv(file="../references/uk-fishes.12s.miya.noprimers.csv")
+genbank.df <- read_csv(file="../references/uk-fish-references.csv.gz")
 uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 exclusions.df <- read_csv(file="../references/exclusions.csv")
 ```
@@ -56,6 +56,7 @@ tissues.sp <- tissues.df %>%
 
 ```{r genbank_clean, include=FALSE}
 # clean up the GenBank data
+genbank.df %<>% filter(!is.na(nucleotidesFrag.12s.miya.noprimers))
 genbank.sp <- genbank.df %>%
     mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius laevis","Pungitius pungitius")) %>% 
     mutate(sciNameValid=str_replace_all(sciNameValid,"Cottus perifretum","Cottus gobio")) %>% 
@@ -64,6 +65,7 @@ genbank.sp <- genbank.df %>%
     count(sciNameValid) %>%
     rename(genbankCount=n) 
 ```
+
 
 ```{r species_clean, include=FALSE}
 # clean up the species data
@@ -88,6 +90,7 @@ common.df <- combined.df %>%
     select(family, sciNameValid, commonName, tissueCount, genbankCount)
 ```
 
+
 ```{r rare_subset, include=FALSE}
 # subset the rare species
 rare.df <- combined.df %>%
@@ -103,6 +106,7 @@ needed.species <- common.df %>%
     filter(is.na(tissueCount) & is.na(genbankCount)) %>%
     select(family, sciNameValid, commonName)
 ```
+
 
 ```{r percentages, include=FALSE}
 # calculate percentages for each group
