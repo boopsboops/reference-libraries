@@ -16,7 +16,7 @@ These were species that we believe are likely to be encountered in eDNA surveys 
 Most of the remaining are either introduced species, rarely encountered migrants, oceanic pelagics, or deep sea organisms.
 
 
-To calculate coverage we used the Bristol SeaDNA tissue catalogue, and also performed a search of the GenBank database. 
+To calculate coverage we used the Bristol SeaDNA tissue catalogue, and also performed a search of the GenBank/BOLD databases. 
 Because of inconsistencies in how researchers annotate their GenBank submissions and the differing internal coverage of primer pairs for particular gene fragments, we performed a search requesting all mitochondrial DNA.
 Then we pulled out the ~170 bp Miya fragment from all the mtDNA using a hidden markov model. This enabled us to have greater confidence that useful sequences had not been missed. 
 For the resulting sequences we then tabulated all their metadata from GenBank in order to allow us to curate a custom reference library according to various criteria (e.g. must have reference specimen or locality data).
@@ -37,6 +37,15 @@ tissues.df <- read_csv(file="../species/tissues.csv")
 genbank.df <- read_csv(file="../references/uk-fish-references.csv.gz")
 uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 exclusions.df <- read_csv(file="../references/exclusions.csv")
+activity.df <- read_csv(file="../references/activity-dates.csv")
+```
+
+
+```{r activities, include=FALSE}
+# get dates and genbank version
+gb.dl <- activity.df %>% filter(activity=="download mtDNA all uk species")
+gb.version <- gb.dl$version
+gb.date <- gb.dl$date
 ```
 
 
@@ -57,6 +66,7 @@ tissues.sp <- tissues.df %>%
 ```{r genbank_clean, include=FALSE}
 # clean up the GenBank data
 genbank.df %<>% filter(!is.na(nucleotidesFrag.12s.miya.noprimers))
+gb.dim <- genbank.df %>% summarise(n=n())
 genbank.sp <- genbank.df %>%
     mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius laevis","Pungitius pungitius")) %>% 
     mutate(sciNameValid=str_replace_all(sciNameValid,"Cottus perifretum","Cottus gobio")) %>% 
@@ -126,6 +136,8 @@ singles.prop <- paste0(round(((singles$n/tot.com$n)*100), digits=0), "%")
 
 ##### Results
 The total number of UK species is estimated to be around `r uk.all`.
+GenBank and BOLD were searched on `r gb.date` (GenBank version `r gb.version`).
+A total of `r gb.dim` records were recovered.
 Currently we have access to tissue samples or GenBank sequence data for `r got.com.prop` of the `r tot.com` common species (Table 2), and `r got.all.prop` of the `r tot.all` rare species (Table 3).
 For the common species, median number count tissues/sequences per species is `r med.com`, while `r singles` (`r singles.prop`) are represented by only one tissue or sequence.
 Table 1 lists the species of the highest priority to source.
