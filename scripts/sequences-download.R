@@ -19,7 +19,7 @@ uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 
 # check the GenBank data release number against the record of previous download
 read.table("ftp://ftp.ncbi.nih.gov/genbank/GB_Release_Number")$V1
-read_csv(file="activity-dates.csv",col_types=cols()) %>% filter(activity=="download mtDNA all uk species") %>% select(version)
+read_csv(file="../references/activity-dates.csv",col_types=cols()) %>% filter(activity=="download mtDNA all uk species") %>% select(version)
 
 
 ## Download all GenBank sequences for species in the UK species table (including synonyms) with mtDNA
