@@ -5,7 +5,23 @@
 source("funs.R")
 
 # load up the reference lib
-reflib <- read_csv(file="../temp/libraries_29-10-18/uk-fishes.12s.miya.noprimers.csv",guess_max=100000)
+reflib <- read_csv("https://github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz", guess_max=100000)
+
+# list primer prefixes
+prefix <- "coi.lerayxt.noprimers"
+prefix <- "coi.seamid.noprimers"
+prefix <- "coi.seashort.noprimers"
+prefix <- "coi.ward.noprimers"
+prefix <- "12s.miya.noprimers"
+prefix <- "12s.riaz.noprimers"
+prefix <- "12s.valentini.noprimers"
+prefix <- "12s.taberlet.noprimers"
+
+# subset by primer
+reflib %<>% rename(nucleotidesFrag=!!as.name(paste0("nucleotidesFrag.",prefix)), lengthFrag=!!as.name(paste0("lengthFrag.",prefix)))
+
+# subset DNAs
+reflib %<>% filter(!is.na(nucleotidesFrag))
 
 # plot the length distributions
 reflib %>% ggplot(aes(lengthFrag)) + geom_histogram(binwidth=1)
@@ -36,12 +52,38 @@ print(lsp)
 # the suspect sequences are added to the exclusions file
 exclusions <- read_csv(file="../references/exclusions.csv")
 
+# exclude
+reflib %<>% filter(!dbid %in% exclusions$dbid[exclusions$action=="REMOVE"])
+
+# add num individuals per sp
+reflib %<>% group_by(sciNameValid) %>% mutate(numIndividuals=length(sciNameValid)) %>% ungroup()
+
+# collapse haps by spp
+reflib.red <- mcmapply(FUN=function(x) hap_collapse_df(df=x,lengthcol="lengthFrag",nuccol="nucleotidesFrag"), split(reflib,reflib$sciNameValid), SIMPLIFY=FALSE, mc.cores=8)
+# join 
+reflib.red <- bind_rows(reflib.red)
+
+###
+hap_collapse_df <- function(df,lengthcol,nuccol){
+    odf <- df[order(df[[lengthcol]],decreasing=TRUE),]
+    reps <- mcmapply(FUN=function(x) which(str_detect(string=odf[[nuccol]], pattern=x) == TRUE)[1], odf[[nuccol]], SIMPLIFY=TRUE, USE.NAMES=FALSE, mc.cores=8)
+    ind <- unique(reps)
+    dat <- odf[ind,]
+    dat[["nHaps"]] <- as.numeric(table(reps))
+    return(dat)
+}
+###
+
+
+
+
+
 # format some temp names
 # make col with seq duplicates
-sames <- mclapply(FUN=function(x) get_sames(df=reflib,ids="dbid",nucs="nucleotidesFrag",sppVec="sciNameValid",query=x), reflib$nucleotidesFrag, mc.cores=8)
-reflib <- reflib %>% mutate(nMatches=sapply(sames, function(x) length(unique(x))), matchTax=sapply(sames, function(x) paste(unique(x),collapse=" | ")))
+sames <- mclapply(FUN=function(x) get_sames(df=reflib.red,ids="dbid",nucs="nucleotidesFrag",sppVec="sciNameValid",query=x), reflib.red$nucleotidesFrag, mc.cores=8)
+reflib.red %<>% mutate(nMatches=sapply(sames, function(x) length(unique(x))), matchTax=sapply(sames, function(x) paste(unique(x),collapse=" | ")))
 
-reflib.tmp <- reflib %>% mutate(noms=paste(dbid,str_replace_all(sciNameValid," ","_"),sep="|")) %>% arrange(class,order,family,genus,sciNameValid,lengthFrag,dbid)
+reflib.tmp <- reflib.red %>% mutate(noms=paste(dbid,str_replace_all(sciNameValid," ","_"),nHaps,sep="|")) %>% arrange(class,order,family,genus,sciNameValid,lengthFrag,dbid)
 # make fasta 
 reflib.fas <- tab2fas(df=reflib.tmp,seqcol="nucleotidesFrag",namecol="noms")
 #write.FASTA(reflib.fas, file="../temp/temp/riaz.fas")# write if needed
@@ -52,14 +94,14 @@ sam <- mafft(reflib.fas,path="mafft",method="retree 1")
 # make a quick ML tree with RAxML ((need to have exe on your system))
 # ignore the 'cannot open file' error
 # takes about 12 hours for full COI!
-raxml(sam, m="GTRCAT", f="d", p=111118, exec="~/Software/standard-RAxML/raxmlHPC-AVX", N=1)
+raxml(sam, m="GTRCAT", f="d", p=42, exec="~/Software/standard-RAxML/raxmlHPC-AVX", N=1)
 
 # read in the tree
 rax.tr <- read.tree("RAxML_bestTree.fromR")
 rax.tr <- midpoint(ladderize(rax.tr))
 
 # copy or delete the log info raxml created - and move the tree file elsewhere
-file.rename(from="RAxML_bestTree.fromR", to="../../temp/primer-faceoff/raxml/RAxML_bestTree.miya.nwk")
+file.rename(from="RAxML_bestTree.fromR", to=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".nwk"))
 file.remove(dir(path=".", pattern="fromR"))
 
 # color tips
@@ -69,7 +111,7 @@ cols[cols!="blue"] <- "black"
 
 # plot PDF
 # adjust margins
-pdf(file="../../temp/primer-faceoff/raxml/miya.all.pdf", width=15, height=190)
+pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=50)
 plot.phylo(rax.tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
 dev.off()
 
