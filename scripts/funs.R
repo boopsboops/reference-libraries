@@ -20,9 +20,9 @@ library("stringdist")
 # library(devtools); withr::with_libpaths(new = "/usr/local/lib/R/site-library/", install_github("ropensci/traits"))
 
 # print the R session info
-sink("../temp/RsessionInfo.txt")
-print(sessionInfo())
-sink()
+#sink("../temp/RsessionInfo.txt")
+#print(sessionInfo())
+#sink()
 
 
 # function for making fasta files from tables
