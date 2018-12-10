@@ -35,17 +35,17 @@ Actinopterygii,Beryciformes,Trachichthyidae,Gephyroberyx,darwinii,4962,Darwin's 
 Actinopterygii,Beryciformes,Trachichthyidae,Hoplostethus,atlanticus,334,Orange roughy,Hoplostethus atlanticus,FALSE,FALSE
 Actinopterygii,Beryciformes,Trachichthyidae,Hoplostethus,mediterraneus,4964,Mediterranean slimehead,Hoplostethus mediterraneus,FALSE,FALSE
 Actinopterygii,Clupeiformes,Clupeidae,Alosa,alosa,101,Allis shad,Alosa alosa,TRUE,FALSE
-Actinopterygii,Clupeiformes,Clupeidae,Alosa,fallax,5355,Twaite shad,Alosa fallax,FALSE,FALSE
+Actinopterygii,Clupeiformes,Clupeidae,Alosa,fallax,5355,Twaite shad,Alosa fallax,TRUE,FALSE
 Actinopterygii,Clupeiformes,Clupeidae,Clupea,harengus,24,Atlantic herring,Clupea harengus,TRUE,FALSE
 Actinopterygii,Clupeiformes,Clupeidae,Sardina,pilchardus,1350,European pilchard,Sardina pilchardus,TRUE,FALSE
 Actinopterygii,Clupeiformes,Clupeidae,Sprattus,sprattus,1357,European sprat,Sprattus sprattus,TRUE,FALSE
 Actinopterygii,Clupeiformes,Engraulidae,Engraulis,encrasicolus,66,European anchovy,Engraulis encrasicolus,TRUE,FALSE
-Actinopterygii,Cypriniformes,Cobitidae,Cobitis,taenia,6378,Spined loach,Cobitis taenia,FALSE,FALSE
+Actinopterygii,Cypriniformes,Cobitidae,Cobitis,taenia,6378,Spined loach,Cobitis taenia,TRUE,FALSE
 Actinopterygii,Cypriniformes,Cobitidae,Misgurnus,fossilis,4790,Weatherfish,Misgurnus fossilis,FALSE,FALSE
 Actinopterygii,Cypriniformes,Cyprinidae,Abramis,brama,268,Freshwater bream,Abramis brama,TRUE,FALSE
 Actinopterygii,Cypriniformes,Cyprinidae,Alburnus,alburnus,4730,Bleak,Alburnus alburnus,TRUE,FALSE
 Actinopterygii,Cypriniformes,Cyprinidae,Barbus,barbus,4472,Barbel,Barbus barbus,TRUE,FALSE
-Actinopterygii,Cypriniformes,Cyprinidae,Blicca,bjoerkna,4471,White bream,Blicca bjoerkna,FALSE,FALSE
+Actinopterygii,Cypriniformes,Cyprinidae,Blicca,bjoerkna,4471,White bream,Blicca bjoerkna,TRUE,FALSE
 Actinopterygii,Cypriniformes,Cyprinidae,Carassius,auratus,271,Goldfish,Carassius auratus,TRUE,FALSE
 Actinopterygii,Cypriniformes,Cyprinidae,Carassius,carassius,270,Crucian carp,Carassius carassius,TRUE,FALSE
 Actinopterygii,Cypriniformes,Cyprinidae,Cyprinus,carpio,1450,Common carp,Cyprinus carpio,TRUE,FALSE
@@ -73,7 +73,7 @@ Actinopterygii,Gadiformes,Gadidae,Merlangius,merlangus,29,Whiting,Merlangius mer
 Actinopterygii,Gadiformes,Gadidae,Micromesistius,poutassou,31,Blue whiting,Micromesistius poutassou,TRUE,FALSE
 Actinopterygii,Gadiformes,Gadidae,Pollachius,pollachius,34,Pollack,Pollachius pollachius,TRUE,FALSE
 Actinopterygii,Gadiformes,Gadidae,Pollachius,virens,1343,Saithe,Pollachius virens,TRUE,FALSE
-Actinopterygii,Gadiformes,Gadidae,Raniceps,raninus,1349,Tadpole fish,Raniceps raninus,FALSE,FALSE
+Actinopterygii,Gadiformes,Gadidae,Raniceps,raninus,1349,Tadpole fish,Raniceps raninus,TRUE,FALSE
 Actinopterygii,Gadiformes,Gadidae,Trisopterus,esmarkii,1023,Norway pout,Trisopterus esmarkii,TRUE,FALSE
 Actinopterygii,Gadiformes,Gadidae,Trisopterus,luscus,1367,Pouting,Trisopterus luscus,TRUE,FALSE
 Actinopterygii,Gadiformes,Gadidae,Trisopterus,minutus,481,Poor cod,Trisopterus minutus,TRUE,FALSE
@@ -241,7 +241,7 @@ Actinopterygii,Perciformes,Gempylidae,Nesiarchus,nasutus,7573,Black gemfish,Nesi
 Actinopterygii,Perciformes,Gempylidae,Ruvettus,pretiosus,1044,Oilfish,Ruvettus pretiosus,FALSE,FALSE
 Actinopterygii,Perciformes,Gobiidae,Aphia,minuta,39,Transparent goby,Aphia minuta,TRUE,FALSE
 Actinopterygii,Perciformes,Gobiidae,Buenia,jeffreysii,52,Jeffrey's goby,Buenia jeffreysii,FALSE,FALSE
-Actinopterygii,Perciformes,Gobiidae,Crystallogobius,linearis,60,Crystal goby,Crystallogobius linearis,FALSE,FALSE
+Actinopterygii,Perciformes,Gobiidae,Crystallogobius,linearis,60,Crystal goby,Crystallogobius linearis,TRUE,FALSE
 Actinopterygii,Perciformes,Gobiidae,Gobius,cobitis,4579,Giant goby,Gobius cobitis,TRUE,FALSE
 Actinopterygii,Perciformes,Gobiidae,Gobius,couchi,9201,Couch's goby,Gobius couchi,FALSE,FALSE
 Actinopterygii,Perciformes,Gobiidae,Gobius,cruentatus,7648,Red-mouthed goby,Gobius cruentatus,FALSE,FALSE
@@ -489,7 +489,7 @@ Elasmobranchii,Rajiformes,Arhynchobatidae,Bathyraja,spinicauda,2569,Spinytail sk
 Elasmobranchii,Rajiformes,Rajidae,Amblyraja,hyperborea,9256,Arctic skate,Amblyraja hyperborea,FALSE,FALSE
 Elasmobranchii,Rajiformes,Rajidae,Amblyraja,jenseni,27757,Shorttail skate,Amblyraja jenseni,FALSE,FALSE
 Elasmobranchii,Rajiformes,Rajidae,Amblyraja,radiata,2565,Starry ray,Amblyraja radiata,TRUE,FALSE
-Elasmobranchii,Rajiformes,Rajidae,Dipturus,batis,2058,Blue skate,Dipturus batis,TRUE,FALSE
+Elasmobranchii,Rajiformes,Rajidae,Dipturus,batis,2058,Blue skate,Dipturus batis,FALSE,FALSE
 Elasmobranchii,Rajiformes,Rajidae,Dipturus,nidarosiensis,8900,Norwegian skate,Dipturus nidarosiensis,FALSE,FALSE
 Elasmobranchii,Rajiformes,Rajidae,Dipturus,oxyrinchus,7616,Longnosed skate,Dipturus oxyrinchus,FALSE,FALSE
 Elasmobranchii,Rajiformes,Rajidae,Leucoraja,circularis,7614,Sandy ray,Leucoraja circularis,FALSE,FALSE
