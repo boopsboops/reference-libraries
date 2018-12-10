@@ -420,7 +420,7 @@ FishBase,Zeugopterus punctatus
 FishBase,Zeugopterus regius
 FishBase,Zeus faber
 FishBase,Zoarces viviparus
-WFD,Blicca bjoerkna
+WFD,Abramis bjoerkna
 WFD,Abramis brama
 WFD,Acipenser sturio
 WFD,Alburnus alburnus
@@ -435,7 +435,7 @@ WFD,Cottus gobio
 WFD,Cyprinus carpio
 WFD,Esox lucius
 WFD,Gobio gobio
-WFD,Gymnocephalus cernua
+WFD,Gymnocephalus cernuus
 WFD,Lampetra fluviatilis
 WFD,Lampetra planeri
 WFD,Leuciscus cephalus
@@ -1155,3 +1155,5 @@ common,Cobitis taenia
 common,Blicca bjoerkna
 common,Raniceps raninus
 common,Crystallogobius linearis
+common,Hippoglossoides platessoides
+common,Anarhichas lupus
