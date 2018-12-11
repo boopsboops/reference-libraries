@@ -32,10 +32,13 @@ source("https://raw.githubusercontent.com/legalLab/protocols-scripts/master/scri
 # collapses haplotypes (from a dataframe format to a dataframe format)
 # need to specify columns that contain sequence lengths, and nucleotides
 # hap_collapse_df(df=mydataframe,lengthcol="lengthFrag",nuccol="nucleotidesFrag")
+# add a number of each haplotype
 hap_collapse_df <- function(df,lengthcol,nuccol){
     odf <- df[order(df[[lengthcol]],decreasing=TRUE),]
-    ind <- unique(mcmapply(FUN=function(x) which(str_detect(string=odf[[nuccol]], pattern=x) == TRUE)[1], odf[[nuccol]], SIMPLIFY=TRUE, USE.NAMES=FALSE, mc.cores=8))
+    reps <- mcmapply(FUN=function(x) which(str_detect(string=odf[[nuccol]], pattern=x) == TRUE)[1], odf[[nuccol]], SIMPLIFY=TRUE, USE.NAMES=FALSE, mc.cores=8)
+    ind <- unique(reps)
     dat <- odf[ind,]
+    dat[["nHaps"]] <- as.numeric(table(reps))
     return(dat)
 }
 
