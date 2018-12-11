@@ -2,6 +2,7 @@
 # script to quality control the reference libraries and identify erroneous sequences.
 
 # load functions and libs
+rm(list=ls())
 source("funs.R")
 
 # load up the reference lib
@@ -17,12 +18,14 @@ prefix <- "12s.riaz.noprimers"
 prefix <- "12s.valentini.noprimers"
 prefix <- "12s.taberlet.noprimers"
 
-# subset by primer
+# subset by primer, renaming the fragment columns
 reflib %<>% rename(nucleotidesFrag=!!as.name(paste0("nucleotidesFrag.",prefix)), lengthFrag=!!as.name(paste0("lengthFrag.",prefix)))
 
 # subset DNAs
 reflib %<>% filter(!is.na(nucleotidesFrag))
 
+
+## Stats on seq lengths
 # plot the length distributions
 reflib %>% ggplot(aes(lengthFrag)) + geom_histogram(binwidth=1)
 
@@ -63,20 +66,6 @@ reflib.red <- mcmapply(FUN=function(x) hap_collapse_df(df=x,lengthcol="lengthFra
 # join 
 reflib.red <- bind_rows(reflib.red)
 
-###
-hap_collapse_df <- function(df,lengthcol,nuccol){
-    odf <- df[order(df[[lengthcol]],decreasing=TRUE),]
-    reps <- mcmapply(FUN=function(x) which(str_detect(string=odf[[nuccol]], pattern=x) == TRUE)[1], odf[[nuccol]], SIMPLIFY=TRUE, USE.NAMES=FALSE, mc.cores=8)
-    ind <- unique(reps)
-    dat <- odf[ind,]
-    dat[["nHaps"]] <- as.numeric(table(reps))
-    return(dat)
-}
-###
-
-
-
-
 
 # format some temp names
 # make col with seq duplicates
@@ -93,16 +82,18 @@ sam <- mafft(reflib.fas,path="mafft",method="retree 1")
 
 # make a quick ML tree with RAxML ((need to have exe on your system))
 # ignore the 'cannot open file' error
-# takes about 12 hours for full COI!
+# takes about 1.5 hours for COI
 raxml(sam, m="GTRCAT", f="d", p=42, exec="~/Software/standard-RAxML/raxmlHPC-AVX", N=1)
 
 # read in the tree
 rax.tr <- read.tree("RAxML_bestTree.fromR")
+#rax.tr <- drop.tip(rax.tr,"")
 rax.tr <- midpoint(ladderize(rax.tr))
 
 # copy or delete the log info raxml created - and move the tree file elsewhere
 file.rename(from="RAxML_bestTree.fromR", to=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".nwk"))
 file.remove(dir(path=".", pattern="fromR"))
+
 
 # color tips
 cols <- vector("character", length(rax.tr$tip.label))
@@ -111,7 +102,7 @@ cols[cols!="blue"] <- "black"
 
 # plot PDF
 # adjust margins
-pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=50)
+pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=300)
 plot.phylo(rax.tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
 dev.off()
 
