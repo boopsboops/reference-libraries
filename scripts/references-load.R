@@ -22,7 +22,7 @@ reflib.orig <- read_csv("https://github.com/boopsboops/reference-libraries/raw/m
 exclusions <- read_csv(file="https://raw.githubusercontent.com/boopsboops/reference-libraries/master/references/exclusions.csv", col_types=cols())
 
 # exclude bad seqs and clean
-reflib %<>% filter(!dbid %in% exclusions$dbid[exclusions$action=="REMOVE"])
+reflib.orig %<>% filter(!dbid %in% exclusions$dbid[exclusions$action=="REMOVE"])
 
 # reassign taxonomy for some recently changed species
 reflib.orig %<>% mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius laevis","Pungitius pungitius")) %>% 
