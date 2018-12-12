@@ -14,7 +14,7 @@ uk.species.table.common <- uk.species.table %>% filter(commonSpecies==TRUE)
 
 
 ## load up the reference library
-reflib <- read_csv("https://github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz", guess_max=100000, col_types=cols())
+reflib.orig <- read_csv("https://github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz", guess_max=100000, col_types=cols())
 
 
 ## clean
@@ -25,9 +25,9 @@ exclusions <- read_csv(file="https://raw.githubusercontent.com/boopsboops/refere
 reflib %<>% filter(!dbid %in% exclusions$dbid[exclusions$action=="REMOVE"])
 
 # reassign taxonomy for some recently changed species
-reflib %<>% mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius laevis","Pungitius pungitius")) %>% 
+reflib.orig %<>% mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius laevis","Pungitius pungitius")) %>% 
     mutate(sciNameValid=str_replace_all(sciNameValid,"Cottus perifretum","Cottus gobio")) %>% 
     mutate(sciNameValid=str_replace_all(sciNameValid,"Atherina presbyter","Atherina boyeri"))
 
 # remove unverified sequences
-reflib %<>% filter(!grepl("UNVERIFIED:",notesGenBank))
+reflib.orig %<>% filter(!grepl("UNVERIFIED:",notesGenBank))
