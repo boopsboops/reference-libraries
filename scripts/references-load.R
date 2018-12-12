@@ -33,4 +33,4 @@ reflib.orig %<>% mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius lae
 reflib.orig %<>% filter(!grepl("UNVERIFIED:",notesGenBank))
 
 # remove any NA nucleotides
-reflib %<>% filter(!is.na(nucleotides))
+reflib.orig %<>% filter(!is.na(nucleotides))
