@@ -34,9 +34,8 @@ require("rfishbase")
 ```{r load_data, include=FALSE}
 # load up the data
 tissues.df <- read_csv(file="../species/tissues.csv")
-genbank.df <- read_csv(file="../references/uk-fish-references.csv.gz")
-uk.species.table <- read_csv(file="../species/uk-species-table.csv")
-exclusions.df <- read_csv(file="../references/exclusions.csv")
+source("https://raw.githubusercontent.com/boopsboops/reference-libraries/master/scripts/references-load.R")
+genbank.df <- reflib.orig
 activity.df <- read_csv(file="../references/activity-dates.csv")
 ```
 
@@ -67,11 +66,8 @@ tissues.sp <- tissues.df %>%
 # clean up the GenBank data
 genbank.df %<>% filter(!is.na(nucleotidesFrag.12s.miya.noprimers))
 gb.dim <- genbank.df %>% summarise(n=n())
+
 genbank.sp <- genbank.df %>%
-    mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius laevis","Pungitius pungitius")) %>% 
-    mutate(sciNameValid=str_replace_all(sciNameValid,"Cottus perifretum","Cottus gobio")) %>% 
-    mutate(sciNameValid=str_replace_all(sciNameValid,"Atherina presbyter","Atherina boyeri")) %>% 
-    filter(!dbid %in% exclusions.df$dbid[exclusions.df$action=="REMOVE"]) %>%
     select(sciNameValid) %>%
     count(sciNameValid) %>%
     rename(genbankCount=n) 
@@ -81,10 +77,6 @@ genbank.sp <- genbank.df %>%
 ```{r species_clean, include=FALSE}
 # clean up the species data
 uk.species.table.val <- uk.species.table %>%
-    filter(synonym==FALSE) %>% 
-    filter(sciName!="Pungitius laevis") %>%
-    filter(sciName!="Cottus perifretum") %>%
-    filter(sciName!="Atherina presbyter") %>%
     rename(sciNameValid=sciName)
 ```
 

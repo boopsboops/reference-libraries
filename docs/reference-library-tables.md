@@ -1,7 +1,7 @@
 SeaDNA 12S rRNA reference library coverage
 ================
 Rupert A. Collins
-11 December 2018
+12 December 2018
 
 ##### Methods and description
 
@@ -11,7 +11,7 @@ To calculate coverage we used the Bristol SeaDNA tissue catalogue, and also perf
 
 ##### Results
 
-The total number of UK species is estimated to be around 530. GenBank and BOLD were searched on 2018.12.06 (GenBank version 228). A total of 1877 records were recovered. Currently we have access to tissue samples or GenBank sequence data for 78% of the 177 common species (Table 2), and 59% of the 353 rare species (Table 3). For the common species, median number count tissues/sequences per species is 9, while 29 (16%) are represented by only one tissue or sequence. Table 1 lists the species of the highest priority to source.
+The total number of UK species is estimated to be around 530. GenBank and BOLD were searched on 2018.12.06 (GenBank version 228). A total of 1829 records were recovered. Currently we have access to tissue samples or GenBank sequence data for 77% of the 177 common species (Table 2), and 59% of the 353 rare species (Table 3). For the common species, median number count tissues/sequences per species is 9, while 28 (16%) are represented by only one tissue or sequence. Table 1 lists the species of the highest priority to source.
 
 ###### Table 1. Highest priority species (common species with no tissue sample or GenBank data).
 
@@ -20,6 +20,7 @@ The total number of UK species is estimated to be around 530. GenBank and BOLD w
 | Congridae      | *Conger conger*               | European conger        |
 | Belonidae      | *Belone belone*               | Garfish                |
 | Clupeidae      | *Alosa fallax*                | Twaite shad            |
+| Cyprinidae     | *Leuciscus idus*              | Ide                    |
 | Lotidae        | *Ciliata septentrionalis*     | Northern rockling      |
 | Lotidae        | *Gaidropsarus mediterraneus*  | Shore rockling         |
 | Lotidae        | *Gaidropsarus vulgaris*       | Three-bearded rockling |
@@ -80,7 +81,7 @@ The total number of UK species is estimated to be around 530. GenBank and BOLD w
 | Cyprinidae      | *Carassius carassius*          | Crucian carp             |              |              2|
 | Cyprinidae      | *Cyprinus carpio*              | Common carp              |              |             53|
 | Cyprinidae      | *Gobio gobio*                  | Gudgeon                  |              |              4|
-| Cyprinidae      | *Leuciscus idus*               | Ide                      |              |              1|
+| Cyprinidae      | *Leuciscus idus*               | Ide                      |              |               |
 | Cyprinidae      | *Leuciscus leuciscus*          | Common dace              |              |              2|
 | Cyprinidae      | *Phoxinus phoxinus*            | Eurasian minnow          |              |              9|
 | Cyprinidae      | *Pseudorasbora parva*          | Stone moroko             |              |              8|
@@ -192,7 +193,7 @@ The total number of UK species is estimated to be around 530. GenBank and BOLD w
 | Soleidae        | *Solea solea*                  | Common sole              |             6|              2|
 | Salmonidae      | *Oncorhynchus mykiss*          | Rainbow trout            |              |             18|
 | Salmonidae      | *Salmo salar*                  | Atlantic salmon          |             1|             13|
-| Salmonidae      | *Salmo trutta*                 | Sea trout                |              |             20|
+| Salmonidae      | *Salmo trutta*                 | Sea trout                |              |             19|
 | Salmonidae      | *Thymallus thymallus*          | Grayling                 |              |              4|
 | Agonidae        | *Agonus cataphractus*          | Hooknose                 |              |               |
 | Cottidae        | *Cottus gobio*                 | Bullhead                 |              |              3|
@@ -430,7 +431,7 @@ The total number of UK species is estimated to be around 530. GenBank and BOLD w
 | Scombridae         | *Katsuwonus pelamis*           | Skipjack tuna                 |              |              4|
 | Scombridae         | *Orcynopsis unicolor*          | Plain bonito                  |              |               |
 | Scombridae         | *Sarda sarda*                  | Atlantic bonito               |              |               |
-| Scombridae         | *Thunnus alalunga*             | Albacore                      |              |             80|
+| Scombridae         | *Thunnus alalunga*             | Albacore                      |              |             42|
 | Scombridae         | *Thunnus albacares*            | Yellowfin tuna                |              |              6|
 | Scombridae         | *Thunnus thynnus*              | Atlantic bluefin tuna         |              |             10|
 | Serranidae         | *Acanthistius sebastoides*     | Koester                       |              |               |
@@ -551,7 +552,7 @@ The total number of UK species is estimated to be around 530. GenBank and BOLD w
 | Chlamydoselachidae | *Chlamydoselachus anguineus*   | Frilled shark                 |              |              4|
 | Hexanchidae        | *Heptranchias perlo*           | Sharpnose sevengill shark     |              |              4|
 | Hexanchidae        | *Hexanchus griseus*            | Bluntnose sixgill shark       |              |             43|
-| Lamnidae           | *Carcharodon carcharias*       | Great white shark             |              |            132|
+| Lamnidae           | *Carcharodon carcharias*       | Great white shark             |              |            131|
 | Lamnidae           | *Isurus oxyrinchus*            | Shortfin mako                 |              |              4|
 | Dasyatidae         | *Pteroplatytrygon violacea*    | Pelagic stingray              |              |              3|
 | Myliobatidae       | *Mobula mobular*               | Devil fish                    |              |              4|

@@ -27,12 +27,12 @@ body {
 
 <h1 id="seadna-12s-rrna-reference-library-coverage">SeaDNA 12S rRNA reference library coverage</h1>
 <p>Rupert A. Collins<br />
-11 December 2018</p>
+12 December 2018</p>
 <h5 id="methods-and-description">Methods and description</h5>
 <p>This document describes the current sampling for the 12S rRNA fish reference library for the SeaDNA project. The document is a dynamic knitr document and can be updated quickly using the Makefile in SeaDNA/scripts. A list of species from the UK was generated from three sources: GBIF, FishBase, and the Water Framework Directive list of transitional species. This list was filtered to identify synonyms and duplicates, and annotated with FishBase taxonomic classification and FishBase common names. Next a sub-list of &quot;common&quot; species was generated. These were species that we believe are likely to be encountered in eDNA surveys of inshore and transitional waters of the UK, and comprise most of the species in Henderson (2015). Most of the remaining are either introduced species, rarely encountered migrants, oceanic pelagics, or deep sea organisms.</p>
 <p>To calculate coverage we used the Bristol SeaDNA tissue catalogue, and also performed a search of the GenBank/BOLD databases. Because of inconsistencies in how researchers annotate their GenBank submissions and the differing internal coverage of primer pairs for particular gene fragments, we performed a search requesting all mitochondrial DNA. Then we pulled out the ~170 bp Miya fragment from all the mtDNA using a hidden markov model. This enabled us to have greater confidence that useful sequences had not been missed. For the resulting sequences we then tabulated all their metadata from GenBank in order to allow us to curate a custom reference library according to various criteria (e.g. must have reference specimen or locality data).</p>
 <h5 id="results">Results</h5>
-<p>The total number of UK species is estimated to be around 530. GenBank and BOLD were searched on 2018.12.06 (GenBank version 228). A total of 1877 records were recovered. Currently we have access to tissue samples or GenBank sequence data for 78% of the 177 common species (Table 2), and 59% of the 353 rare species (Table 3). For the common species, median number count tissues/sequences per species is 9, while 29 (16%) are represented by only one tissue or sequence. Table 1 lists the species of the highest priority to source.</p>
+<p>The total number of UK species is estimated to be around 530. GenBank and BOLD were searched on 2018.12.06 (GenBank version 228). A total of 1829 records were recovered. Currently we have access to tissue samples or GenBank sequence data for 77% of the 177 common species (Table 2), and 59% of the 353 rare species (Table 3). For the common species, median number count tissues/sequences per species is 9, while 28 (16%) are represented by only one tissue or sequence. Table 1 lists the species of the highest priority to source.</p>
 <h6 id="table-1.-highest-priority-species-common-species-with-no-tissue-sample-or-genbank-data.">Table 1. Highest priority species (common species with no tissue sample or GenBank data).</h6>
 <table>
 <thead>
@@ -59,181 +59,186 @@ body {
 <td align="left">Twaite shad</td>
 </tr>
 <tr class="even">
+<td align="left">Cyprinidae</td>
+<td align="left"><em>Leuciscus idus</em></td>
+<td align="left">Ide</td>
+</tr>
+<tr class="odd">
 <td align="left">Lotidae</td>
 <td align="left"><em>Ciliata septentrionalis</em></td>
 <td align="left">Northern rockling</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Lotidae</td>
 <td align="left"><em>Gaidropsarus mediterraneus</em></td>
 <td align="left">Shore rockling</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Lotidae</td>
 <td align="left"><em>Gaidropsarus vulgaris</em></td>
 <td align="left">Three-bearded rockling</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gobiesocidae</td>
 <td align="left"><em>Apletodon dentatus</em></td>
 <td align="left">Small-headed clingfish</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gobiesocidae</td>
 <td align="left"><em>Diplecogaster bimaculata</em></td>
 <td align="left">Two-spotted clingfish</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gobiesocidae</td>
 <td align="left"><em>Lepadogaster candolii</em></td>
 <td align="left">Connemarra clingfish</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gobiesocidae</td>
 <td align="left"><em>Lepadogaster lepadogaster</em></td>
 <td align="left">Shore clingfish</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Osmeridae</td>
 <td align="left"><em>Osmerus eperlanus</em></td>
 <td align="left">European smelt</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Ammodytidae</td>
 <td align="left"><em>Ammodytes marinus</em></td>
 <td align="left">Lesser sand-eel</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Ammodytidae</td>
 <td align="left"><em>Ammodytes tobianus</em></td>
 <td align="left">Small sandeel</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Ammodytidae</td>
 <td align="left"><em>Gymnammodytes semisquamatus</em></td>
 <td align="left">Smooth sandeel</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Ammodytidae</td>
 <td align="left"><em>Hyperoplus lanceolatus</em></td>
 <td align="left">Great sandeel</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Blenniidae</td>
 <td align="left"><em>Blennius ocellaris</em></td>
 <td align="left">Butterfly blenny</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Blenniidae</td>
 <td align="left"><em>Parablennius gattorugine</em></td>
 <td align="left">Tompot blenny</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Callionymidae</td>
 <td align="left"><em>Callionymus reticulatus</em></td>
 <td align="left">Reticulated dragonet</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Gobiusculus flavescens</em></td>
 <td align="left">Two-spotted goby</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Pomatoschistus lozanoi</em></td>
 <td align="left">Lozano's goby</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Pomatoschistus norvegicus</em></td>
 <td align="left">Norway goby</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Thorogobius ephippiatus</em></td>
 <td align="left">Leopard-spotted goby</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Labridae</td>
 <td align="left"><em>Labrus bergylta</em></td>
 <td align="left">Ballan wrasse</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Labridae</td>
 <td align="left"><em>Symphodus bailloni</em></td>
 <td align="left">Baillon's wrasse</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Mullidae</td>
 <td align="left"><em>Mullus barbatus</em></td>
 <td align="left">Red mullet</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stichaeidae</td>
 <td align="left"><em>Chirolophis ascanii</em></td>
 <td align="left">Yarrell's blenny</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scophthalmidae</td>
 <td align="left"><em>Scophthalmus rhombus</em></td>
 <td align="left">Brill</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Scophthalmidae</td>
 <td align="left"><em>Zeugopterus punctatus</em></td>
 <td align="left">Topknot</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scophthalmidae</td>
 <td align="left"><em>Zeugopterus regius</em></td>
 <td align="left">Eckstrom's topknot</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Agonidae</td>
 <td align="left"><em>Agonus cataphractus</em></td>
 <td align="left">Hooknose</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Liparidae</td>
 <td align="left"><em>Liparis liparis</em></td>
 <td align="left">Striped seasnail</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Liparidae</td>
 <td align="left"><em>Liparis montagui</em></td>
 <td align="left">Montagus seasnail</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Syngnathidae</td>
 <td align="left"><em>Entelurus aequoreus</em></td>
 <td align="left">Snake pipefish</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Syngnathidae</td>
 <td align="left"><em>Hippocampus guttulatus</em></td>
 <td align="left">Long-snouted seahorse</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Syngnathidae</td>
 <td align="left"><em>Hippocampus hippocampus</em></td>
 <td align="left">Short snouted seahorse</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Syngnathidae</td>
 <td align="left"><em>Nerophis ophidion</em></td>
 <td align="left">Straightnose pipefish</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scyliorhinidae</td>
 <td align="left"><em>Scyliorhinus stellaris</em></td>
 <td align="left">Nursehound</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Triakidae</td>
 <td align="left"><em>Galeorhinus galeus</em></td>
 <td align="left">Tope shark</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Dasyatidae</td>
 <td align="left"><em>Dasyatis pastinaca</em></td>
 <td align="left">Common stingray</td>
@@ -390,7 +395,7 @@ body {
 <td align="left"><em>Leuciscus idus</em></td>
 <td align="left">Ide</td>
 <td align="right"></td>
-<td align="right">1</td>
+<td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">Cyprinidae</td>
@@ -1174,7 +1179,7 @@ body {
 <td align="left"><em>Salmo trutta</em></td>
 <td align="left">Sea trout</td>
 <td align="right"></td>
-<td align="right">20</td>
+<td align="right">19</td>
 </tr>
 <tr class="odd">
 <td align="left">Salmonidae</td>
@@ -2819,7 +2824,7 @@ body {
 <td align="left"><em>Thunnus alalunga</em></td>
 <td align="left">Albacore</td>
 <td align="right"></td>
-<td align="right">80</td>
+<td align="right">42</td>
 </tr>
 <tr class="odd">
 <td align="left">Scombridae</td>
@@ -3666,7 +3671,7 @@ body {
 <td align="left"><em>Carcharodon carcharias</em></td>
 <td align="left">Great white shark</td>
 <td align="right"></td>
-<td align="right">132</td>
+<td align="right">131</td>
 </tr>
 <tr class="even">
 <td align="left">Lamnidae</td>
