@@ -17,6 +17,7 @@ Metabarcoding reference libraries for UK fish species. This README outlines the 
     - `qc.R` - quality control a reference library
     - `reference-library-tables.Rmd` - knitr file to prepare species coverage reports
     - `references-assemble.R` - extract and annotate reference libraries from ncbi/bold dumps 
+    - `references-load.R` - load up and filter/clean reference library and species list, and correct the taxonomic names
     - `sequences-download.R` - pulls all the mitochondrial DNA from NCBI and BOLD for a list of species
     - `species-list-clean.R` - cleans and annotates a names list for UK fish species and their synonyms
     - `species-list-gbif.R` - generates a species names list for UK fish species from GBIF
