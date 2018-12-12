@@ -3,10 +3,15 @@
 
 # load functions and libs
 rm(list=ls())
-source("funs.R")
+# load functions
+source("https://raw.githubusercontent.com/boopsboops/reference-libraries/master/scripts/funs.R")
+# load reference lib
+source("https://raw.githubusercontent.com/boopsboops/reference-libraries/master/scripts/references-load.R")
+# loads objects: uk.species.table, uk.species.table.common, reflib.orig
 
-# load up the reference lib
-reflib <- read_csv("https://github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz", guess_max=100000)
+# make a copy so don't have to keep reloading the reflib
+reflib <- reflib.orig
+
 
 # list primer prefixes
 prefix <- "coi.lerayxt.noprimers"
@@ -52,20 +57,8 @@ print(lsp)
 # lack of information in BOLD or GenBank record 
 # phylogenetically implausible (clear sample mixup)
 
-# the suspect sequences are added to the exclusions file
-exclusions <- read_csv(file="../references/exclusions.csv")
-
-# exclude
-reflib %<>% filter(!dbid %in% exclusions$dbid[exclusions$action=="REMOVE"])
-
-# add num individuals per sp
-reflib %<>% group_by(sciNameValid) %>% mutate(numIndividuals=length(sciNameValid)) %>% ungroup()
-
 # collapse haps by spp
-reflib.red <- mcmapply(FUN=function(x) hap_collapse_df(df=x,lengthcol="lengthFrag",nuccol="nucleotidesFrag"), split(reflib,reflib$sciNameValid), SIMPLIFY=FALSE, mc.cores=8)
-# join 
-reflib.red <- bind_rows(reflib.red)
-
+reflib.red <- bind_rows(mcmapply(FUN=function(x) hap_collapse_df(df=x,lengthcol="lengthFrag",nuccol="nucleotidesFrag"), split(reflib,reflib$sciNameValid), SIMPLIFY=FALSE, mc.cores=8))
 
 # format some temp names
 # make col with seq duplicates
@@ -94,7 +87,6 @@ rax.tr <- midpoint(ladderize(rax.tr))
 file.rename(from="RAxML_bestTree.fromR", to=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".nwk"))
 file.remove(dir(path=".", pattern="fromR"))
 
-
 # color tips
 cols <- vector("character", length(rax.tr$tip.label))
 cols[match(reflib.tmp$noms[which(reflib.tmp$nMatches>1)], rax.tr$tip.label)] <- "blue"
@@ -102,7 +94,7 @@ cols[cols!="blue"] <- "black"
 
 # plot PDF
 # adjust margins
-pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=300)
+pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=40)
 plot.phylo(rax.tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
 dev.off()
 
