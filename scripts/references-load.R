@@ -5,6 +5,7 @@
 ## load up the species info table
 # species data
 uk.species.table <- read_csv(file="https://raw.githubusercontent.com/boopsboops/reference-libraries/master/species/uk-species-table.csv", col_types=cols())
+uk.species.table.orig <- uk.species.table
 # remove synonyms
 uk.species.table %<>% filter(synonym==FALSE)
 # change taxonomy for some common species
