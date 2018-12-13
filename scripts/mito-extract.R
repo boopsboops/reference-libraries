@@ -4,13 +4,13 @@
 source("funs.R")
 
 # read index file and fasta file
-tab.indices <- read_tsv(file="../mitogenomes/mitoannotations/indices12S.tsv")
-tab.indices <- read_tsv(file="../mitogenomes/mitoannotations/indicesCOI.tsv")
+tab.indices <- read_tsv(file="../temp/mitoannotations/indices12S.tsv")
+tab.indices <- read_tsv(file="../temp/mitoannotations/indicesCOI.tsv")
 all.mito <- read.dna("../temp/mitogenomes/mitogenomes.fsa", format="fasta", as.character=TRUE)
 
 
 # strip out the file path
-tab.indices <- tab.indices %>% mutate(file=str_replace_all(file,"../mitogenomes/mitoannotations/",""))
+tab.indices <- tab.indices %>% mutate(file=str_replace_all(file,"../temp/mitoannotations/",""))
 
 # break up the file name
 split.names <- str_split_fixed(tab.indices$file,"_",3)
@@ -38,5 +38,3 @@ write.dna(unaligned, file="../hmms/mitogenome.12s.unaligned.fas", format="fasta"
 write.dna(unaligned, file="../hmms/mitogenome.coi.unaligned.fas", format="fasta", colw=999999)
 
 # now align using 'mitoBuild.sh'
-
-

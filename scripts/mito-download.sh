@@ -1,29 +1,31 @@
 #!/usr/bin/env/sh
 
+# create a temp directory
+mkdir ../temp
+
 # download the curated mitogenome data from Miya's website
-wget -v http://mitofish.aori.u-tokyo.ac.jp/files/mitogenomes.zip -P ../mitogenomes/
-wget -v http://mitofish.aori.u-tokyo.ac.jp/files/mitoannotations.zip -P ../mitogenomes/
+wget -v http://mitofish.aori.u-tokyo.ac.jp/files/mitogenomes.zip -P ../temp/
+wget -v http://mitofish.aori.u-tokyo.ac.jp/files/mitoannotations.zip -P ../temp/
 
 # unzip
-unzip ../mitogenomes/mitogenomes.zip -d ../mitogenomes/mitogenomes/
-unzip ../mitogenomes/mitoannotations.zip -d ../mitogenomes/mitoannotations/
+unzip ../temp/mitogenomes.zip -d ../temp/mitogenomes/
+unzip ../temp/mitoannotations.zip -d ../temp/mitoannotations/
 
 # remove zips
-rm ../mitogenomes/*.zip
+rm ../temp/*.zip
 
 # remove the 'genes' files
-rm ../mitogenomes/mitogenomes/*_genes.fa
+rm ../temp/mitogenomes/*_genes.fa
 
 # concatentate the fasta
-cat ../mitogenomes/mitogenomes/*.fa > ../temp/mitogenomes/mitogenomes.fsa
+cat ../temp/mitogenomes/*.fa > ../temp/mitogenomes/mitogenomes.fsa
 
 # make a file of 12S gene positions
-echo -e "file\tgene\tlocation\tproduct\tgrep" > ../mitogenomes/mitoannotations/indices12S.tsv
-grep "12S rRNA" ../mitogenomes/mitoannotations/*.txt >> ../mitogenomes/mitoannotations/indices12S.tsv
+echo -e "file\tgene\tlocation\tproduct\tgrep" > ../temp/mitoannotations/indices12S.tsv
+grep "12S rRNA" ../temp/mitoannotations/*.txt >> ../temp/mitoannotations/indices12S.tsv
 
 # make a file of COI gene positions
-echo -e "file\tcds\tlocation\tcodon\tposition" > ../mitogenomes/mitoannotations/indicesCOI.tsv
-grep -B 1 -A 1 "COI$" ../mitogenomes/mitoannotations/*.txt | grep "codon_start" >> ../mitogenomes/mitoannotations/indicesCOI.tsv
-
+echo -e "file\tcds\tlocation\tcodon\tposition" > ../temp/mitoannotations/indicesCOI.tsv
+grep -B 1 -A 1 "COI$" ../temp/mitoannotations/*.txt | grep "codon_start" >> ../temp/mitoannotations/indicesCOI.tsv
 
 # open Rscript mitoExtract.R
