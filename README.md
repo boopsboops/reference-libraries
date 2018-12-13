@@ -61,13 +61,13 @@ All of these steps need not be carried out every time, depending on the goal of 
 
 **Step 2** does not need to be repeated unless there are taxonomic changes or a mistake that needs to be corrected. If a species "common" status needs to changed, the `uk-species-list.csv` and `uk-species-table.csv` can be edited directly (be sure to edit both).
 
-**Steps 3/4**  needs to be repeated each time the reference library is refreshed with new data from GenBank. These steps should be carried out every few months. The script `scripts/sequences-download.R` contains code to check the current GenBank version against the version that was last used to assemble the reference library.
+**Steps 3/4**  needs to be repeated each time the reference library needs to be refreshed with new data from GenBank. These steps should be carried out for each GenBank release every two months. The script `scripts/sequences-download.R` contains code to check the current GenBank version against the version that was last used to assemble the reference library.
 
 **Step 5**  needs to be repeated after either the GenBank data is updated (i.e. when steps 3/4 are run), or after the tissue samples spreadsheet (`species/tissues.csv`) is updated.
 
 **Step 6**  is an optional quality control step, that should be carried periodically, expecially when large numbers of sequences are added to the reference libraries.
 
-More information is found in each individal script. Generally to identify potential errors, scripts should be run line-by-line in an R console such as RStudio rather than in batch from the terminal. All packages required are listed in `scripts/funs.R`, and are standard CRAN packages with the exception of traits, which needs to be installed via GitHub (sees script for more details). The programs HMMER, MAFFT, and RAxML need to be installed on your system. 
+More information is found in each individal script. Generally to identify potential errors, scripts should be run line-by-line in an R console such as RStudio rather than in batch from the terminal. All packages required are listed in `scripts/funs.R`, and are standard CRAN packages with the exception of [traits](https://github.com/ropensci/traits), which needs to be installed via GitHub (sees script for more details). The programs HMMER, MAFFT, and RAxML need to be installed on your system. Unfortunately, these scripts are optimised for a Unix system, and I'm unable to offer any Windows support ([Windows is now able to run Ubuntu Linux ](https://tutorials.ubuntu.com/tutorial/tutorial-ubuntu-on-windows#0)).
 
 1. * Run `scripts/mito-download.sh` to download all fish mitochondrial genomes and annotations
    * Run `scripts/mito-extract.R` to extract the single genes (e.g. 12S) from the mitogenomes
