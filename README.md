@@ -1,5 +1,31 @@
-# Reference Libraries
-Metabarcoding reference libraries for UK fish species. This README outlines the contents of the repository and a brief description of the workflow involved in creating a metabarcoding reference library from scratch.
+# A generalised, dynamic DNA reference library for UK fishes
+![SeaDNA Logo](docs/logo.svg)
+
+This repository hosts a comprehensive mitochondrial DNA reference library dataset for UK fish species, derived from the NCBI GenBank and Barcode of Life BOLD databases. The dataset includes freshwater and marine species, and can be used in a variety of applications from DNA barcoding of human food products using full COI barcodes, to metabarcoding of gut or environmental samples using fragments of 12S. The library will be updated with each new GenBank release.
+
+A species coverage report for the current MiFish 12S dataset can be found at [boopsboops.github.io/reference-libraries/reference-library-tables.html](https://boopsboops.github.io/reference-libraries/reference-library-tables.html).
+
+This README outlines the contents of the repository and a brief description of the workflow involved in creating a metabarcoding reference library from scratch, as well instructions to simply access the data immediately. Cloning or forking the repository will allow custom modifications to be made. If an error is apparent, raise a ticket in [Issues](https://github.com/boopsboops/reference-libraries/issues) or submit a pull request.
+
+The work is part of the NERC funded [SeaDNA Project](https://twitter.com/SeaDNAproject), and should be cited using the following DOI: [doi](doi).
+
+### TL;DR
+
+If you just want the to use the final reference database, it can be downloaded at [github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz](https://github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz). The file is 6.2 MB compressed (gzip), but is 106 MB uncompressed. The readr package function `read_csv()` will automatically decompress a gz file, but if the file needs to be unpacked to disk, the WinRAR or 7-Zip software on Windows can be used. The final dataset is in tabular CSV format; follow the Gist at [gist.github.com/boopsboops/a1c790064fe0a14af5226d098645ca60](https://gist.github.com/boopsboops/a1c790064fe0a14af5226d098645ca60) to extract the region you want, and then convert to fasta format if required. The currently available regions are as follows below in Table 1. Any additional mitochondrial primer set can be trivially added.
+
+The dataset offered above is raw, but is cleaned when the `scripts/references-load.R` script is run. Particular attention should be paid to how this operates; sequences flagged as unreliable (using phylogenetic quality control) are listed in `references/exclusions.csv` and excluded, while sequences flagged by NCBI as "unverified" are also removed. Taxonomic changes are also made, with for example, *Cottus perifretum* relabelled as *Cottus cottus*, and *Pungitius laevis* relabelled as *Pungitius pungitius*.
+
+**Table 1: Available primer sets**
+Study | Official name | Nickname | Locus
+----- | ----- | ----- | -----
+[Miya et al. (2015)](http://dx.doi.org/10.1098/rsos.150088) | MiFish U/E | miya | 12S
+[Taberlet et al. (2018)](http://dx.doi.org/10.1093/oso/9780198767220.001.0001) | Tele02 | taberlet | 12S
+[Valentini et al. (2016)](http://dx.doi.org/10.1111/mec.13428) | L1848/H1913 | valentini | 12S
+[Riaz et al. (2011)](http://dx.doi.org/10.1093/nar/gkr732) | 12S-V5 | riaz | 12S
+[Wangensteen et al. (2018)](http://dx.doi.org/10.7717/peerj.4705) | Leray-XT | leray | COI
+SeaDNA unpublished | SeaDNA-mid | seamid | COI
+SeaDNA unpublished | SeaDNA-short | seashort | COI
+[Ward et al. (2005)](http://dx.doi.org/10.1098/rstb.2005.1716) | FishF1/R1 | ward | COI
 
 ### Contents (A-Z)
 
