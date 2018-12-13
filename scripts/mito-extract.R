@@ -6,7 +6,7 @@ source("funs.R")
 # read index file and fasta file
 tab.indices <- read_tsv(file="../mitogenomes/mitoannotations/indices12S.tsv")
 tab.indices <- read_tsv(file="../mitogenomes/mitoannotations/indicesCOI.tsv")
-all.mito <- read.dna("../mitogenomes/mitogenomes/mitogenomes.fsa", format="fasta", as.character=TRUE)
+all.mito <- read.dna("../temp/mitogenomes/mitogenomes.fsa", format="fasta", as.character=TRUE)
 
 
 # strip out the file path

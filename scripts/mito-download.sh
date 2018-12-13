@@ -15,7 +15,7 @@ rm ../mitogenomes/*.zip
 rm ../mitogenomes/mitogenomes/*_genes.fa
 
 # concatentate the fasta
-cat ../mitogenomes/mitogenomes/*.fa > ../mitogenomes/mitogenomes/mitogenomes.fsa
+cat ../mitogenomes/mitogenomes/*.fa > ../temp/mitogenomes/mitogenomes.fsa
 
 # make a file of 12S gene positions
 echo -e "file\tgene\tlocation\tproduct\tgrep" > ../mitogenomes/mitoannotations/indices12S.tsv
