@@ -16,6 +16,7 @@ If you just want the to use the final reference database, it can be downloaded a
 The dataset offered above is raw, but is cleaned when the `scripts/references-load.R` script is run. Particular attention should be paid to how this operates; sequences flagged as unreliable (using phylogenetic quality control) are listed in `references/exclusions.csv` and excluded, while sequences flagged by NCBI as "unverified" are also removed. Taxonomic changes are also made, with for example, *Cottus perifretum* relabelled as *Cottus cottus*, and *Pungitius laevis* relabelled as *Pungitius pungitius*.
 
 **Table 1: Available primer sets**
+
 Study | Official name | Nickname | Locus
 ----- | ----- | ----- | -----
 [Miya et al. (2015)](http://dx.doi.org/10.1098/rsos.150088) | MiFish U/E | miya | 12S
