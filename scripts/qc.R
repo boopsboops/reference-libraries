@@ -75,7 +75,7 @@ sam <- mafft(reflib.fas,path="mafft",method="retree 1")
 
 # make a quick ML tree with RAxML ((need to have exe on your system))
 # ignore the 'cannot open file' error
-# takes about 1.5 hours for COI
+# takes several hours for COI full
 raxml(sam, m="GTRCAT", f="d", p=42, exec="~/Software/standard-RAxML/raxmlHPC-AVX", N=1)
 
 # read in the tree
@@ -94,7 +94,7 @@ cols[cols!="blue"] <- "black"
 
 # plot PDF
 # adjust margins
-pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=30)
+pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=50)
 plot.phylo(rax.tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
 dev.off()
 
