@@ -32,14 +32,13 @@ SeaDNA unpublished | SeaDNA-short | seashort | COI
 
 * **`docs/`** - Output of the species coverage reports. Can be accessed at [boopsboops.github.io/reference-libraries/reference-library-tables.html](https://boopsboops.github.io/reference-libraries/reference-library-tables.html).
 * **`hmms/`** - Hidden Markov models (HMMs) and fasta files of gene markers of interest. Currently these are various markers of COI and 12S, priming sites included and not included.
-* **`mitogenomes/`** - Complete curated mitogenomes and their annotation files downloaded from the Miya's MitoFish website at [mitofish.aori.u-tokyo.ac.jp/](http://mitofish.aori.u-tokyo.ac.jp/).
 * **`references/`** - Completed reference libraries in CSV format. Also contains an exclusions file containing GIs of questionable sequences.
 * **`scripts/`** - R and shell scripts.
     - `activity-dates.csv` - table of dates that sequences were searched/downloaded/assembled
     - `funs.R` - helper functions, including script to run the HMMER programs via R
     - `Makefile` - makefile to generate the species coverage reports
     - `mito-build.sh` - align sequences and create HMMs 
-    - `mito-download.sh` - downloads mitochondrial genomes and annotations from MitoFish
+    - `mito-download.sh` - downloads mitochondrial genomes and annotations from the MitoFish website at [mitofish.aori.u-tokyo.ac.jp/](http://mitofish.aori.u-tokyo.ac.jp/)
     - `mito-extract.R` - extracts the gene of interest using genome annotations
     - `qc.R` - quality control a reference library
     - `reference-library-tables.Rmd` - knitr file to prepare species coverage reports
