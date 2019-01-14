@@ -24,22 +24,23 @@ bold.red <- read_csv(file="../temp/bold-dump.csv", guess_max=100000)
 # returns a DNAbin object of the sequences matched by hmmer 
 
 prefixes.all <- c(
-"coi.lerayxt.primers",
+#"coi.lerayxt.primers",
 "coi.lerayxt.noprimers",
-"coi.seamid.primers",
+#"coi.seamid.primers",
 "coi.seamid.noprimers",
-"coi.seashort.primers",
+#"coi.seashort.primers",
 "coi.seashort.noprimers",
-"coi.ward.primers",
+#"coi.ward.primers",
 "coi.ward.noprimers",
-"12s.miya.primers",
+#"12s.miya.primers",
 "12s.miya.noprimers",
-"12s.riaz.primers",
+#"12s.riaz.primers",
 "12s.riaz.noprimers",
-"12s.valentini.primers",
+#"12s.valentini.primers",
 "12s.valentini.noprimers",
-"12s.taberlet.primers",
-"12s.taberlet.noprimers")
+#"12s.taberlet.primers",
+"12s.taberlet.noprimers",
+"16s.berry.noprimers")
 
 
 # run hmmer (takes about 5 mins)

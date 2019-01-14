@@ -22,6 +22,7 @@ prefix <- "12s.miya.noprimers"
 prefix <- "12s.riaz.noprimers"
 prefix <- "12s.valentini.noprimers"
 prefix <- "12s.taberlet.noprimers"
+prefix <- "16s.berry.noprimers"
 
 # subset by primer, renaming the fragment columns
 reflib %<>% rename(nucleotidesFrag=!!as.name(paste0("nucleotidesFrag.",prefix)), lengthFrag=!!as.name(paste0("lengthFrag.",prefix)))
@@ -68,7 +69,7 @@ reflib.red %<>% mutate(nMatches=sapply(sames, function(x) length(unique(x))), ma
 reflib.tmp <- reflib.red %>% mutate(noms=paste(dbid,str_replace_all(sciNameValid," ","_"),nHaps,sep="|")) %>% arrange(class,order,family,genus,sciNameValid,lengthFrag,dbid)
 # make fasta 
 reflib.fas <- tab2fas(df=reflib.tmp,seqcol="nucleotidesFrag",namecol="noms")
-#write.FASTA(reflib.fas, file="../temp/temp/riaz.fas")# write if needed
+#write.FASTA(reflib.fas, file="../temp/temp/berry.fas")# write if needed
 
 # align the sequences with MAFFT (need to have exe in PATH)
 sam <- mafft(reflib.fas,path="mafft",method="retree 1")
@@ -94,7 +95,7 @@ cols[cols!="blue"] <- "black"
 
 # plot PDF
 # adjust margins
-pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=50)
+pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=120)
 plot.phylo(rax.tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
 dev.off()
 

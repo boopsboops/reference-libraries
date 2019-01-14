@@ -28,4 +28,7 @@ grep "12S rRNA" ../temp/mitoannotations/*.txt >> ../temp/mitoannotations/indices
 echo -e "file\tcds\tlocation\tcodon\tposition" > ../temp/mitoannotations/indicesCOI.tsv
 grep -B 1 -A 1 "COI$" ../temp/mitoannotations/*.txt | grep "codon_start" >> ../temp/mitoannotations/indicesCOI.tsv
 
+echo -e "file\tgene\tlocation\tproduct\tgrep" > ../temp/mitoannotations/indices16S.tsv
+grep "16S rRNA" ../temp/mitoannotations/*.txt >> ../temp/mitoannotations/indices16S.tsv
+
 # open Rscript mitoExtract.R
