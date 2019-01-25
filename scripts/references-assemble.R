@@ -40,7 +40,8 @@ prefixes.all <- c(
 "12s.valentini.noprimers",
 #"12s.taberlet.primers",
 "12s.taberlet.noprimers",
-"16s.berry.noprimers")
+"16s.berry.noprimers",
+"cytb.minamoto.noprimers")
 
 
 # run hmmer (takes about 5 mins)
@@ -127,6 +128,9 @@ dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Gobio balcan
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Sebastes marinus")] <- "Sebastes norvegicus"
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Chelon ramada")] <- "Liza ramada"
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Hippocampus ramulosus")] <- "Hippocampus guttulatus"
+dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Cichlasoma portalagrense")] <- "Cichlasoma portalegrense"
+dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Hirundichthys volador")] <- "Exocoetus volador"
+
 
 # get unique species names from db output
 u.sci <- unique(dbs.merged.all$sciNameBinomen)
@@ -136,7 +140,6 @@ v.sci <- lapply(v.sci, function(x) x[1])
 
 # potential problem - search for na responses not in fishbase synonyms, and fix by hand (see above)
 u.sci[which(lapply(v.sci, is.na)==TRUE)]
-
 
 ##
 # make a df
@@ -187,7 +190,7 @@ dbs.merged.final <- left_join(dbs.merged.info,dbs.merged.seqs,by="dbid") %>%
 
 # take a look 
 glimpse(dbs.merged.final)
-
+names(dbs.merged.final)
 
 ##
 # write out a gzipped file (orig is too big for github)
