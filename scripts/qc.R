@@ -23,6 +23,7 @@ prefix <- "12s.riaz.noprimers"
 prefix <- "12s.valentini.noprimers"
 prefix <- "12s.taberlet.noprimers"
 prefix <- "16s.berry.noprimers"
+prefix <- "cytb.minamoto.noprimers"
 
 # subset by primer, renaming the fragment columns
 reflib %<>% rename(nucleotidesFrag=!!as.name(paste0("nucleotidesFrag.",prefix)), lengthFrag=!!as.name(paste0("lengthFrag.",prefix)))
@@ -95,7 +96,7 @@ cols[cols!="blue"] <- "black"
 
 # plot PDF
 # adjust margins
-pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=120)
+pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=300)
 plot.phylo(rax.tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
 dev.off()
 
