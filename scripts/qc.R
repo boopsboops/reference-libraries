@@ -71,6 +71,8 @@ reflib.tmp <- reflib.red %>% mutate(noms=paste(dbid,str_replace_all(sciNameValid
 # make fasta 
 reflib.fas <- tab2fas(df=reflib.tmp,seqcol="nucleotidesFrag",namecol="noms")
 #write.FASTA(reflib.fas, file="../temp/temp/berry.fas")# write if needed
+#add some unassigned seqs
+#reflib.fas <- c(reflib.fas,tab2fas(df=fish.otus.unassigned, seqcol="dnas", namecol="qseqid"))
 
 # align the sequences with MAFFT (need to have exe in PATH)
 sam <- mafft(reflib.fas,path="mafft",method="retree 1")
@@ -93,10 +95,11 @@ file.remove(dir(path=".", pattern="fromR"))
 cols <- vector("character", length(rax.tr$tip.label))
 cols[match(reflib.tmp$noms[which(reflib.tmp$nMatches>1)], rax.tr$tip.label)] <- "blue"
 cols[cols!="blue"] <- "black"
+#cols[grep("^otu",rax.tr$tip.label)] <- "red"
 
 # plot PDF
 # adjust margins
-pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=300)
+pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=70)
 plot.phylo(rax.tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
 dev.off()
 
