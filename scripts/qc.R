@@ -72,7 +72,7 @@ reflib.tmp <- reflib.red %>% mutate(noms=paste(dbid,str_replace_all(sciNameValid
 reflib.fas <- tab2fas(df=reflib.tmp,seqcol="nucleotidesFrag",namecol="noms")
 #write.FASTA(reflib.fas, file="../temp/temp/berry.fas")# write if needed
 #add some unassigned seqs
-#reflib.fas <- c(reflib.fas,tab2fas(df=fish.otus.unassigned, seqcol="dnas", namecol="qseqid"))
+#reflib.fas <- c(reflib.fas,tab2fas(df=bad.matches, seqcol="dnas", namecol="qseqid"))
 
 # align the sequences with MAFFT (need to have exe in PATH)
 sam <- mafft(reflib.fas,path="mafft",method="retree 1")
