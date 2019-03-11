@@ -85,6 +85,7 @@ uk.species.table.val <- uk.species.table %>%
 # join to the uk species table
 combined.df <- dplyr::left_join(uk.species.table.val, tissues.sp, by="sciNameValid")
 combined.df <- dplyr::left_join(combined.df, genbank.sp, by="sciNameValid")
+combined.df %<>% mutate(tissueCount=as.integer(replace_na(tissueCount,0)), genbankCount=as.integer(replace_na(genbankCount,0)))
 ```
 
 
@@ -109,7 +110,7 @@ rare.df <- combined.df %>%
 ```{r needed_subset, include=FALSE}
 # subset the common species with no data
 needed.species <- common.df %>%
-    filter(is.na(tissueCount) & is.na(genbankCount)) %>%
+    filter(tissueCount==0 & genbankCount==0) %>%
     select(family, sciNameValid, commonName)
 ```
 
@@ -117,16 +118,16 @@ needed.species <- common.df %>%
 ```{r percentages, include=FALSE}
 # calculate percentages for each group
 uk.all <- combined.df %>% count()
-got.com <- combined.df %>% filter(commonSpecies==TRUE) %>% filter(!is.na(tissueCount) | !is.na(genbankCount)) %>% count()
+got.com <- combined.df %>% filter(commonSpecies==TRUE) %>% filter(tissueCount>0 | genbankCount>0) %>% count()
 tot.com <- combined.df %>% filter(commonSpecies==TRUE) %>% count()
 got.com.prop <- paste0(round(((got.com$n/tot.com$n)*100), digits=0), "%")
 #
-got.all <- combined.df %>% filter(commonSpecies==FALSE) %>% filter(!is.na(tissueCount) | !is.na(genbankCount)) %>% count()
+got.all <- combined.df %>% filter(commonSpecies==FALSE) %>% filter(tissueCount>0 | genbankCount>0) %>% count()
 tot.all <- combined.df %>% filter(commonSpecies==FALSE) %>% count()
 got.all.prop <- paste0(round(((got.all$n/tot.all$n)*100), digits=0), "%")
 #
-med.com <- combined.df %>% filter(commonSpecies==TRUE) %>% mutate(tots=tissueCount+genbankCount) %>% summarise(m=median(tots,na.rm=TRUE))
-singles <- combined.df %>% filter(commonSpecies==TRUE) %>% rowwise() %>% mutate(tots=sum(tissueCount,genbankCount,na.rm=TRUE)) %>% filter(tots==1) %>% count()
+med.com <- combined.df %>% filter(commonSpecies==TRUE) %>% mutate(tots=tissueCount+genbankCount) %>% summarise(m=median(tots))
+singles <- combined.df %>% filter(commonSpecies==TRUE) %>% mutate(tots=tissueCount+genbankCount) %>% filter(tots==1) %>% count()
 singles.prop <- paste0(round(((singles$n/tot.com$n)*100), digits=0), "%")
 ```
 
@@ -156,6 +157,7 @@ options(knitr.kable.NA="")
 # print the common species table
 common.df %>%
     mutate(sciNameValid=str_replace_all(sciNameValid, pattern="$|^", replacement="*")) %>%
+    mutate(tissueCount=replace(tissueCount,which(tissueCount==0),NA), genbankCount=replace(genbankCount,which(genbankCount==0),NA)) %>%
     rename(Family=family, `Scientific Name`=sciNameValid, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>%
 kable()
 ```
@@ -168,6 +170,7 @@ options(knitr.kable.NA="")
 # print the all UK species table
 rare.df %>%
     mutate(sciNameValid=str_replace_all(sciNameValid, pattern="$|^", replacement="*")) %>%
+    mutate(tissueCount=if_else(tissueCount==0,"",as.character(tissueCount)), genbankCount=if_else(genbankCount==0,"",as.character(genbankCount))) %>%
     rename(Family=family, `Scientific Name`=sciNameValid, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>%
 kable()
 ```
