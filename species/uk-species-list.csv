@@ -513,7 +513,7 @@ WFD,Hyperoplus immaculatus
 WFD,Hyperoplus lanceolatus
 WFD,Labrus bergylta
 WFD,Labrus mixtus
-WFD,Lepadogaster lepadogaster
+WFD,Lepadogaster purpurea
 WFD,Lepidorhombus whiffiagonis
 WFD,Lesueurigobius friesii
 WFD,Limanda limanda
@@ -1046,7 +1046,6 @@ common,Merluccius merluccius
 common,Micromesistius poutassou
 common,Microstomus kitt
 common,Molva molva
-common,Mullus barbatus
 common,Mullus surmuletus
 common,Mustelus asterias
 common,Myoxocephalus scorpius
@@ -1129,7 +1128,7 @@ common,Tinca tinca
 common,Gadiculus argenteus
 common,Trisopterus esmarkii
 common,Ciliata septentrionalis
-common,Lepadogaster lepadogaster
+common,Lepadogaster purpurea
 common,Gymnammodytes semisquamatus
 common,Hyperoplus immaculatus
 common,Callionymus maculatus
