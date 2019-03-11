@@ -170,7 +170,7 @@ options(knitr.kable.NA="")
 # print the all UK species table
 rare.df %>%
     mutate(sciNameValid=str_replace_all(sciNameValid, pattern="$|^", replacement="*")) %>%
-    mutate(tissueCount=if_else(tissueCount==0,"",as.character(tissueCount)), genbankCount=if_else(genbankCount==0,"",as.character(genbankCount))) %>%
+    mutate(tissueCount=replace(tissueCount,which(tissueCount==0),NA), genbankCount=replace(genbankCount,which(genbankCount==0),NA)) %>%
     rename(Family=family, `Scientific Name`=sciNameValid, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>%
 kable()
 ```
