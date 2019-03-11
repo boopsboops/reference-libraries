@@ -119,7 +119,7 @@ Actinopterygii,Gasterosteiformes,Gasterosteidae,Spinachia,spinachia,1355,Sea sti
 Actinopterygii,Gobiesociformes,Gobiesocidae,Apletodon,dentatus,9196,Small-headed clingfish,Apletodon dentatus,TRUE,FALSE
 Actinopterygii,Gobiesociformes,Gobiesocidae,Diplecogaster,bimaculata,64,Two-spotted clingfish,Diplecogaster bimaculata,TRUE,FALSE
 Actinopterygii,Gobiesociformes,Gobiesocidae,Lepadogaster,candolii,640,Connemarra clingfish,Lepadogaster candolii,TRUE,FALSE
-Actinopterygii,Gobiesociformes,Gobiesocidae,Lepadogaster,lepadogaster,643,Shore clingfish,Lepadogaster lepadogaster,TRUE,FALSE
+Actinopterygii,Gobiesociformes,Gobiesocidae,Lepadogaster,purpurea,16746,Cornish sucker,Lepadogaster purpurea,TRUE,FALSE
 Actinopterygii,Lampriformes,Lampridae,Lampris,guttatus,1072,Opah,Lampris guttatus,FALSE,FALSE
 Actinopterygii,Lampriformes,Regalecidae,Regalecus,glesne,3267,King of herrings,Regalecus glesne,FALSE,FALSE
 Actinopterygii,Lampriformes,Trachipteridae,Trachipterus,arcticus,3265,Dealfish,Trachipterus arcticus,FALSE,FALSE
@@ -272,7 +272,7 @@ Actinopterygii,Perciformes,Labridae,Symphodus,melops,59,Corkwing wrasse,Symphodu
 Actinopterygii,Perciformes,Lethrinidae,Lethrinus,nebulosus,1846,Spangled emperor,Lethrinus nebulosus,FALSE,FALSE
 Actinopterygii,Perciformes,Luvaridae,Luvarus,imperialis,1725,Luvar,Luvarus imperialis,FALSE,FALSE
 Actinopterygii,Perciformes,Moronidae,Dicentrarchus,labrax,63,European seabass,Dicentrarchus labrax,TRUE,FALSE
-Actinopterygii,Perciformes,Mullidae,Mullus,barbatus barbatus,790,Red mullet,Mullus barbatus,TRUE,FALSE
+Actinopterygii,Perciformes,Mullidae,Mullus,barbatus barbatus,790,Red mullet,Mullus barbatus,FALSE,FALSE
 Actinopterygii,Perciformes,Mullidae,Mullus,surmuletus,1327,Surmullet,Mullus surmuletus,TRUE,FALSE
 Actinopterygii,Perciformes,Nomeidae,Cubiceps,gracilis,1710,Driftfish,Cubiceps gracilis,FALSE,FALSE
 Actinopterygii,Perciformes,Nomeidae,Psenes,maculatus,3926,Silver driftfish,Psenes maculatus,FALSE,FALSE
@@ -355,6 +355,7 @@ Actinopterygii,Salmoniformes,Salmonidae,Coregonus,albula,231,Vendace,Coregonus a
 Actinopterygii,Salmoniformes,Salmonidae,Coregonus,autumnalis,2669,Arctic cisco,Coregonus autumnalis,FALSE,FALSE
 Actinopterygii,Salmoniformes,Salmonidae,Coregonus,clupeoides,49276,Powan,Coregonus clupeoides,FALSE,FALSE
 Actinopterygii,Salmoniformes,Salmonidae,Coregonus,lavaretus,232,European whitefish,Coregonus lavaretus,FALSE,FALSE
+Actinopterygii,Salmoniformes,Salmonidae,Coregonus,oxyrinchus,233,Houting,Coregonus oxyrinchus,FALSE,FALSE
 Actinopterygii,Salmoniformes,Salmonidae,Coregonus,pennantii,49284,Gwyniad,Coregonus pennantii,FALSE,FALSE
 Actinopterygii,Salmoniformes,Salmonidae,Coregonus,pollan,4646,Irish pollan,Coregonus pollan,FALSE,FALSE
 Actinopterygii,Salmoniformes,Salmonidae,Coregonus,stigmaticus,49288,Schelly,Coregonus stigmaticus,FALSE,FALSE
@@ -2091,23 +2092,18 @@ NA,NA,NA,NA,NA,640,NA,Lepadogaster ruber,NA,TRUE
 NA,NA,NA,NA,NA,640,NA,Lepidogaster chupasangue,NA,TRUE
 NA,NA,NA,NA,NA,640,NA,Mirbelia candollei,NA,TRUE
 NA,NA,NA,NA,NA,640,NA,Mirbelia decandollii,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Cyclopterus lepadogaster,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Cyclopterus lepodogaster,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster acutus,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster adriatica,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster balbis,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster biciliatus,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster bitentaculatus,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster brownii,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster ciliatus,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster gouanii,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster lepadogaster lepadogaster,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster natator,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster webbianus,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster zebrina,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Lepadogaster zebrinus,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Piecephalus adherens,NA,TRUE
-NA,NA,NA,NA,NA,643,NA,Piescephalus adherens,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Cycloptera spathulata,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Cyclopterus cornubicus,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Cyclopterus ocellatus,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Cyclopterus purpureus,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Cyclopterus spatula,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Lepadogaster bitentaculatus,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Lepadogaster cornubiensis,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Lepadogaster gouanii,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Lepadogaster lepadogaster purpurea,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Lepadogaster lepadogaster purpureus,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Lepadogaster rostratus,NA,TRUE
+NA,NA,NA,NA,NA,16746,NA,Lepadogaster webbianus,NA,TRUE
 NA,NA,NA,NA,NA,1072,NA,Lampris immaculata,NA,TRUE
 NA,NA,NA,NA,NA,1072,NA,Lampris lauta,NA,TRUE
 NA,NA,NA,NA,NA,1072,NA,Lampris luna,NA,TRUE
@@ -3689,6 +3685,14 @@ NA,NA,NA,NA,NA,232,NA,Salmo lavaretus,NA,TRUE
 NA,NA,NA,NA,NA,232,NA,Salmo maraena,NA,TRUE
 NA,NA,NA,NA,NA,232,NA,Salmo maraena media,NA,TRUE
 NA,NA,NA,NA,NA,232,NA,Salmo wartmanni,NA,TRUE
+NA,NA,NA,NA,NA,233,NA,Coregonus lavaretus oxyrhynchus,NA,TRUE
+NA,NA,NA,NA,NA,233,NA,Coregonus lavaretus oxyrinchus,NA,TRUE
+NA,NA,NA,NA,NA,233,NA,Coregonus lavaretus oxyrynchus,NA,TRUE
+NA,NA,NA,NA,NA,233,NA,Coregonus oxyrhynchus,NA,TRUE
+NA,NA,NA,NA,NA,233,NA,Salmo oxyrinchus,NA,TRUE
+NA,NA,NA,NA,NA,233,NA,Salmo rostratus,NA,TRUE
+NA,NA,NA,NA,NA,233,NA,Salmo thymallus var. latus,NA,TRUE
+NA,NA,NA,NA,NA,233,NA,Tripteronotus hautin,NA,TRUE
 NA,NA,NA,NA,NA,4646,NA,Coregonus altior,NA,TRUE
 NA,NA,NA,NA,NA,4646,NA,Coregonus autumnalis pollan,NA,TRUE
 NA,NA,NA,NA,NA,4646,NA,Coregonus elegans,NA,TRUE
