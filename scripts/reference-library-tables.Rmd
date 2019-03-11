@@ -33,7 +33,7 @@ require("rfishbase")
 
 ```{r load_data, include=FALSE}
 # load up the data
-tissues.df <- read_csv(file="../species/tissues.csv")
+tissues.df <- read_csv(file="../species/tissues-master.csv")
 source("https://raw.githubusercontent.com/boopsboops/reference-libraries/master/scripts/references-load.R")
 genbank.df <- reflib.orig
 activity.df <- read_csv(file="../references/activity-dates.csv")
