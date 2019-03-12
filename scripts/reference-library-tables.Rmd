@@ -129,13 +129,19 @@ got.all.prop <- paste0(round(((got.all$n/tot.all$n)*100), digits=0), "%")
 med.com <- combined.df %>% filter(commonSpecies==TRUE) %>% mutate(tots=tissueCount+genbankCount) %>% summarise(m=median(tots))
 singles <- combined.df %>% filter(commonSpecies==TRUE) %>% mutate(tots=tissueCount+genbankCount) %>% filter(tots==1) %>% count()
 singles.prop <- paste0(round(((singles$n/tot.com$n)*100), digits=0), "%")
+#
+tis.n <- tissues.sp %>% select(sciNameValid) %>% count()
+tis.sp <- tissues.sp %>% select(sciNameValid) %>% distinct() %>% count()
+tis.sp.loc <- tissues.sp %>% filter(!is.na(locality)) %>% select(sciNameValid) %>% distinct() %>% count()
 ```
 
 ##### Results
 The total number of UK species is estimated to be around `r uk.all`.
 GenBank and BOLD were searched on `r gb.date` (GenBank version `r gb.version`).
 A total of `r gb.dim` records were recovered.
-Currently we have access to tissue samples or GenBank sequence data for `r got.com.prop` of the `r tot.com` common species (Table 2), and `r got.all.prop` of the `r tot.all` rare species (Table 3).
+In terms of tissue sampling, `r tis.n` samples have been taken from `r tis.sp` fish species identified to species level. 
+Of these, `r tis.sp.loc` species have locality data. 
+Combined with the GenBank sequence data, `r got.com.prop` of the `r tot.com` common species have been sampled (Table 2), and `r got.all.prop` of the `r tot.all` rare species (Table 3).
 For the common species, median number count tissues/sequences per species is `r med.com`, while `r singles` (`r singles.prop`) are represented by only one tissue or sequence.
 Table 1 lists the species of the highest priority to source.
 
