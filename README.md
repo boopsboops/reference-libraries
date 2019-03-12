@@ -27,11 +27,13 @@ Study | Official name | Nickname | Locus
 SeaDNA unpublished | SeaDNA-mid | seamid | COI
 SeaDNA unpublished | SeaDNA-short | seashort | COI
 [Ward et al. (2005)](http://dx.doi.org/10.1098/rstb.2005.1716) | FishF1/R1 | ward | COI
+[Berry et al. (2017)](http://dx.doi.org/10.1002/ece3.3123) | Fish16sF/D | berry | 16S
+[Minamoto et al. (2012)](http://dx.doi.org/10.1007/s10201-011-0362-4) | L14912-CYB | minamoto | cytb
 
 ### Contents (A-Z)
 
 * **`docs/`** - Output of the species coverage reports. Can be accessed at [boopsboops.github.io/reference-libraries/reference-library-tables.html](https://boopsboops.github.io/reference-libraries/reference-library-tables.html).
-* **`hmms/`** - Hidden Markov models (HMMs) and fasta files of gene markers of interest. Currently these are various markers of COI and 12S, priming sites included and not included.
+* **`hmms/`** - Hidden Markov models (HMMs) and fasta files of gene markers of interest. Currently these are various markers of COI, 12S, 16S and cytochrome b, with priming sites included and not included.
 * **`references/`** - Completed reference libraries in CSV format. Also contains an exclusions file containing GIs of questionable sequences.
 * **`scripts/`** - R and shell scripts.
     - `activity-dates.csv` - table of dates that sequences were searched/downloaded/assembled
