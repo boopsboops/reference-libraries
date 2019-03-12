@@ -49,16 +49,17 @@ gb.date <- gb.dl$date
 
 
 ```{r tissue_clean, include=FALSE}
-# clean up the tissues data
-tissues.sp <- tissues.df %>%
+# clean up the tissues data and validate names
+tissues.filt <- tissues.df %>%
     mutate(sciName=paste(genus, specificEpithet)) %>%
     filter(class!="Malacostraca") %>%
-    filter(!is.na(specificEpithet)) %>%
+    filter(!is.na(specificEpithet)) %>% 
+    mutate(sciNameValid=validate_names(sciName, server="fishbase"))
+#
+tissues.sp <- tissues.filt %>%
     select(sciName) %>%
     count(sciName) %>%
     rename(tissueCount=n)
-# validate names
-    tissues.sp %<>% mutate(sciNameValid=validate_names(sciName, server="fishbase"))
 ```
 
 
