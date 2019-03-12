@@ -131,9 +131,9 @@ med.com <- combined.df %>% filter(commonSpecies==TRUE) %>% mutate(tots=tissueCou
 singles <- combined.df %>% filter(commonSpecies==TRUE) %>% mutate(tots=tissueCount+genbankCount) %>% filter(tots==1) %>% count()
 singles.prop <- paste0(round(((singles$n/tot.com$n)*100), digits=0), "%")
 #
-tis.n <- tissues.sp %>% select(sciNameValid) %>% count()
-tis.sp <- tissues.sp %>% select(sciNameValid) %>% distinct() %>% count()
-tis.sp.loc <- tissues.sp %>% filter(!is.na(locality)) %>% select(sciNameValid) %>% distinct() %>% count()
+tis.n <- tissues.filt %>% select(sciNameValid) %>% count()
+tis.sp <- tissues.filt %>% select(sciNameValid) %>% distinct() %>% count()
+tis.sp.loc <- tissues.filt %>% filter(!is.na(locality)) %>% select(sciNameValid) %>% distinct() %>% count()
 ```
 
 ##### Results
