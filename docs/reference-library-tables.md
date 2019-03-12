@@ -11,7 +11,7 @@ To calculate coverage we used the Bristol SeaDNA tissue catalogue, and also perf
 
 ##### Results
 
-The total number of UK species is estimated to be around 531. GenBank and BOLD were searched on 2018.12.06 (GenBank version 228). A total of 1829 records were recovered. In terms of tissue sampling, 581 samples have been taken from 93 fish species identified to species level. Of these, 85 species have locality data. Combined with the GenBank sequence data, 89% of the 176 common species have been sampled (Table 2), and 59% of the 355 rare species (Table 3). For the common species, median number count tissues/sequences per species is 4, while 19 (11%) are represented by only one tissue or sequence. Table 1 lists the species of the highest priority to source.
+The total number of UK species is estimated to be around 531. GenBank and BOLD were searched on 2018.12.06 (GenBank version 228). A total of 1829 records were recovered. In terms of tissue sampling, 581 samples have been taken from 93 fish species identified to species level. Of these, 85 species have locality data. Combined with the GenBank sequence data, 89% of the 176 common species have been sampled (Table 2), and 59% of the 355 rare species (Table 3). For the common species, the median number of tissues or GenBank sequences per species is 4, while 19 (11%) are represented by only one tissue or sequence. Table 1 lists the species of the highest priority to source.
 
 ###### Table 1. Highest priority species (common species with no tissue sample or GenBank data).
 
