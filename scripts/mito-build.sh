@@ -4,6 +4,7 @@ GENE="12s"
 GENE="16s"
 GENE="coi"
 GENE="cytb"
+GENE="nd2"
 FRAG="miya.primers"
 FRAG="miya.noprimers"
 FRAG="lerayxt.primers"
@@ -22,6 +23,7 @@ FRAG="ward.primers"
 FRAG="ward.noprimers"
 FRAG="berry.noprimers"
 FRAG="minamoto.noprimers"
+FRAG="frag.noprimers"
 
 # mafft auto align
 mafft --auto --thread 8 ../hmms/mitogenome.$GENE.unaligned.fas > ../hmms/mitogenome.$GENE.aligned.fas

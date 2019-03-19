@@ -8,6 +8,7 @@ tab.indices <- read_tsv(file="../temp/mitoannotations/indices12S.tsv")
 tab.indices <- read_tsv(file="../temp/mitoannotations/indicesCOI.tsv")
 tab.indices <- read_tsv(file="../temp/mitoannotations/indices16S.tsv")
 tab.indices <- read_tsv(file="../temp/mitoannotations/indicesCYTB.tsv")
+tab.indices <- read_tsv(file="../temp/mitoannotations/indicesND2.tsv")
 all.mito <- read.dna("../temp/mitogenomes/mitogenomes.fsa", format="fasta", as.character=TRUE)
 
 
@@ -40,5 +41,7 @@ write.dna(unaligned, file="../hmms/mitogenome.12s.unaligned.fas", format="fasta"
 write.dna(unaligned, file="../hmms/mitogenome.coi.unaligned.fas", format="fasta", colw=999999)
 write.dna(unaligned, file="../hmms/mitogenome.16s.unaligned.fas", format="fasta", colw=999999)
 write.dna(unaligned, file="../hmms/mitogenome.cytb.unaligned.fas", format="fasta", colw=999999)
+write.dna(unaligned, file="../hmms/mitogenome.nd2.unaligned.fas", format="fasta", colw=999999)
+
 
 # now align using 'mitoBuild.sh'

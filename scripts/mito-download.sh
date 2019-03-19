@@ -34,4 +34,8 @@ grep "16S rRNA" ../temp/mitoannotations/*.txt >> ../temp/mitoannotations/indices
 echo -e "file\tgene\tlocation\tproduct\tgrep" > ../temp/mitoannotations/indicesCYTB.tsv
 grep -B 1 -A 1 "Cyt b$" ../temp/mitoannotations/*.txt | grep "codon_start" >> ../temp/mitoannotations/indicesCYTB.tsv
 
+# for ND2
+echo -e "file\tgene\tlocation\tproduct\tgrep" > ../temp/mitoannotations/indicesND2.tsv
+grep -B 1 -A 1 "ND2$" ../temp/mitoannotations/*.txt | grep "codon_start" >> ../temp/mitoannotations/indicesND2.tsv
+
 # open Rscript mitoExtract.R
