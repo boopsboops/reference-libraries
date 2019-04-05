@@ -25,22 +25,27 @@ read_csv(file="../references/activity-dates.csv",col_types=cols()) %>% filter(ac
 ## Download all GenBank sequences for species in the UK species table (including synonyms) with mtDNA
 
 # make a query for genbank
-range <- "1:20000" # includes mt genomes
-query <- paste0("(", uk.species.table$sciName, "[ORGN] AND mitochondrion[ALL] AND ", range, "[SLEN]) OR (", uk.species.table$sciName, "[ORGN] AND mitochondrial[ALL] AND ", range, "[SLEN])")
+range <- "1:20000" # includes mt genomes, no bigger
+gene.syns <- c("COI","12S","16S","RNA","ribosomal","cytb","CO1","cox1","cytochrome","subunit","COB","CYB","mitochondrial","mitochondrion") 
+query <- unlist(mapply(function(x) paste0("(", uk.species.table$sciName, "[ORGN] AND ", x, "[ALL] AND ", range, "[SLEN])"), gene.syns, SIMPLIFY=FALSE, USE.NAMES=FALSE))
+#query <- paste0("(", uk.species.table$sciName, "[ORGN] AND mitochondrion[ALL] AND ", range, "[SLEN]) OR (", uk.species.table$sciName, "[ORGN] AND mitochondrial[ALL] AND ", range, "[SLEN])")
 
 # randomise the query
 set.seed(42)
 query <- sample(query,length(query))
 
-# break up into 10s
-query.split  <- split(query, ceiling(seq_along(query)/10))
+# break up into 6s
+query.split  <- split(query, ceiling(seq_along(query)/6))
 
-# collapse into strings of 10 species per string
+# collapse into strings of 6 species per string
 query.cat <- unname(sapply(query.split, paste, collapse=" OR "))
+
+# check max string length is < 500
+max(sapply(query.cat, str_length))
 
 # run the search for accessions with rentrez
 # mc.cores=1 is the safest option, but 8 cores is faster if there are no errors
-search.res <- mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=99999999, api_key=ncbi.key, use_history=FALSE), query.cat, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
+search.res <- mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=99999999, api_key=ncbi.key, use_history=FALSE), query.cat, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=4)
 # if parallel package not available or NCBI API is throttling, use lapply (slower)
 #search.res <- lapply(query.cat, function(x) entrez_search(db="nuccore", term=x, retmax=99999999, api_key=ncbi.key))
 
