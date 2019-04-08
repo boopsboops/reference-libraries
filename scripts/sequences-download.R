@@ -26,7 +26,7 @@ read_csv(file="../references/activity-dates.csv",col_types=cols()) %>% filter(ac
 
 # make a query for genbank
 range <- "1:20000" # includes mt genomes, no bigger
-gene.syns <- c("COI","12S","16S","RNA","ribosomal","cytb","CO1","cox1","cytochrome","subunit","COB","CYB","mitochondrial","mitochondrion") 
+gene.syns <- c("COI","12S","16S","rRNA","ribosomal","cytb","CO1","cox1","cytochrome","subunit","COB","CYB","mitochondrial","mitochondrion") 
 query <- unlist(mapply(function(x) paste0("(", uk.species.table$sciName, "[ORGN] AND ", x, "[ALL] AND ", range, "[SLEN])"), gene.syns, SIMPLIFY=FALSE, USE.NAMES=FALSE))
 #query <- paste0("(", uk.species.table$sciName, "[ORGN] AND mitochondrion[ALL] AND ", range, "[SLEN]) OR (", uk.species.table$sciName, "[ORGN] AND mitochondrial[ALL] AND ", range, "[SLEN])")
 
