@@ -34,14 +34,19 @@ query <- unlist(mapply(function(x) paste0("(", uk.species.table$sciName, "[ORGN]
 set.seed(42)
 query <- sample(query,length(query))
 
-# break up into 6s
-query.split  <- split(query, ceiling(seq_along(query)/6))
+# break up into chunks
+# longest query should be no larger than about 2600 chars
+query.split  <- split(query, ceiling(seq_along(query)/38))
 
-# collapse into strings of 6 species per string
+# collapse into strings of n species per string
 query.cat <- unname(sapply(query.split, paste, collapse=" OR "))
 
-# check max string length is < 500
+# check max string length is < 2600 (ish)
+length(query.cat)
 max(sapply(query.cat, str_length))
+tst <- query.cat[which(sapply(query.cat, str_length,USE.NAMES=FALSE)==max(sapply(query.cat, str_length,USE.NAMES=FALSE)))]
+entrez_search(db="nuccore", term=tst[1], retmax=99999999, api_key=ncbi.key, use_history=FALSE)
+
 
 # run the search for accessions with rentrez
 # mc.cores=1 is the safest option, but 8 cores is faster if there are no errors
@@ -64,9 +69,9 @@ id.split <- unname(split(search.ids, ceiling(seq_along(search.ids)/chunk)))
 
 # download with modifed ape function (fast)
 # mc.cores=1 is the safest option, but more cores is faster if there are no errors
-ncbi.all <- mcmapply(FUN=function(x) read_GenBank(x, species.names=FALSE, api.key=ncbi.key), id.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=3)
+ncbi.all <- mcmapply(FUN=function(x) read_GenBank(x, species.names=FALSE, api.key=ncbi.key), id.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=4)
 
-# check for errors (should be all DNAbin
+# check for errors (should be all DNAbin)
 table(sapply(ncbi.all, class))
 
 
