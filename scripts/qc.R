@@ -74,8 +74,31 @@ reflib.fas <- tab2fas(df=reflib.tmp,seqcol="nucleotidesFrag",namecol="noms")
 #add some unassigned seqs
 #reflib.fas <- c(reflib.fas,tab2fas(df=bad.matches, seqcol="dnas", namecol="qseqid"))
 
+## read in the generated 12S data from our tissue sample collection to add to and QC also
+## skip if you just dealing with GenBank records
+# code to set the names from the well number
+mac <- read.FASTA(file="../../SeaDNA/temp/reference-library/macrogen-results.fasta")
+plate.tab <- read_csv(file="../../SeaDNA/temp/reference-library/sequencing-results/12S-sequencing-plates.csv")
+names(mac) <- plate.tab$catalogNumber[match(names(mac), plate.tab$well)]
+names(mac) <- paste0("12S|",names(mac))
+write.FASTA(mac,file="../../SeaDNA/data/reference-library.fasta",append=TRUE)
+# filter 12S
+refs.tissue <- read.FASTA(file="../../SeaDNA/data/reference-library.fasta")
+refs.tissue <- refs.tissue[grep("12S",names(refs.tissue))]
+names(refs.tissue) <- str_replace_all(names(refs.tissue), "12S\\|", "")
+# generate names
+tissues.master <- read_csv(file="../species/tissues-master.csv")
+tissues.master %<>% mutate(sciName=paste(genus,specificEpithet,sep="_"))
+names(refs.tissue) <- paste(names(refs.tissue), tissues.master$sciName[match(names(refs.tissue), tissues.master$otherCatalogNumbers)], sep="|")
+reflib.fas <- c(reflib.fas,refs.tissue)
+##
+
 # align the sequences with MAFFT (need to have exe in PATH)
 sam <- mafft(reflib.fas,path="mafft",method="retree 1")
+# write out matrix to check alignment
+# write.FASTA(sam,file="../temp/temp/12S.matrix.fas")
+# sam <- sam[,299:542]
+# as.character(sam[1,])
 
 # make a quick ML tree with RAxML ((need to have exe on your system))
 # ignore the 'cannot open file' error
