@@ -60,7 +60,7 @@ in.gb <- dat.frag.names[!dat.frag.names %in% bold.red$processidUniq]
 # now for the same sequences, get the tabular data from NCBI using 'ncbi_byid' to make a proper reference database
 chunk <- 70
 chunk.frag <- unname(split(in.gb, ceiling(seq_along(in.gb)/chunk)))
-ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=1)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
+ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=2)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
 
 # check for errors (should all be "data.frame")
 table(sapply(ncbi.frag,class))
@@ -68,7 +68,7 @@ table(sapply(ncbi.frag,class))
 
 ##
 # join all the data sets
-frag.df <- as.tibble(bind_rows(ncbi.frag))
+frag.df <- as_tibble(bind_rows(ncbi.frag))
 
 # from GenBank remove ncbi genome and other duplicates etc, and clean the lat/lon data
 frag.df %<>% filter(gi_no!="NCBI_GENOMES") %>% 
@@ -103,7 +103,7 @@ names(dat.frag.all) <- prefixes.all
 dat.frag.flat <- lapply(dat.frag.all, function(x) mcmapply(str_flatten, as.character(x), mc.cores=8, SIMPLIFY=TRUE,USE.NAMES=TRUE))
 
 # turn each into a dataframe
-dat.frag.df <- lapply(dat.frag.flat, function(x) data_frame(names=names(x), seqs=unlist(x), lengthFrag=str_length(seqs)))
+dat.frag.df <- lapply(dat.frag.flat, function(x) tibble(names=names(x), seqs=unlist(x), lengthFrag=str_length(seqs)))
 
 # rename each df with names of the fragment
 dat.frag.df <- mapply(function(x,y,z) dplyr::rename(x,dbid=names, !!y:=seqs, !!z:=lengthFrag), dat.frag.df, paste("nucleotidesFrag",names(dat.frag.df),sep="."), paste("lengthFrag",names(dat.frag.df),sep="."), SIMPLIFY=FALSE)
