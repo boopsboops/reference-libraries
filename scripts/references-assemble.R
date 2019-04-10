@@ -45,7 +45,7 @@ prefixes.all <- c(
 
 
 # run hmmer (takes about 5 mins)
-dat.frag.all <- lapply(prefixes.all, function(x) run_hmmer3(dir="../temp", infile="mtdna-uk.fas", prefix=x, evalue="1", coords="env"))
+dat.frag.all <- lapply(prefixes.all, function(x) run_hmmer3(dir="../temp", infile="mtdna-uk.fas", prefix=x, evalue="10", coords="env"))
 
 # concatentate all
 dat.frag.cat <- do.call(c,dat.frag.all)
