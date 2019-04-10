@@ -31,7 +31,16 @@ reflib.orig %<>% mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius lae
     mutate(sciNameValid=str_replace_all(sciNameValid,"Atherina presbyter","Atherina boyeri"))
 
 # remove unverified sequences
-reflib.orig %<>% filter(!grepl("UNVERIFIED:",notesGenBank))
-
 # remove any NA nucleotides
-reflib.orig %<>% filter(!is.na(nucleotides))
+# remove mRNA
+# remove cDNA
+reflib.orig %<>% 
+    filter(!grepl("UNVERIFIED:",notesGenBank)) %>%
+    filter(!is.na(nucleotides)) %>% 
+    filter(!grepl("similar to",notesGenBank)) %>% 
+    filter(!grepl("mRNA",notesGenBank)) %>% 
+    filter(!grepl("cDNA",notesGenBank))
+
+# count num additional spp.
+#reflib.orig %>% filter(source=="GENBANK") %>% filter(!grepl("mitochondr",notesGenBank)) 
+#%>% write_csv(path="~/excl.csv")
