@@ -176,3 +176,10 @@ run_hmmer3 <- function(dir, infile, hmm, prefix, evalue, coords){#
     }
     return(mtdna.sub.coords)
 }
+
+# function to subset the reference dataframe by marker and filter by sequence length
+subset_by_marker <- function(prefix,df,thresh){
+    df1 <- df %>% filter(!is.na(!!as.name(paste0("nucleotidesFrag.",prefix))))
+    df1 %<>% filter(!!as.name(paste0("lengthFrag.",prefix)) >= (median(!!as.name(paste0("lengthFrag.",prefix)))*thresh))
+    return(df1)
+}
