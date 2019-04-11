@@ -74,12 +74,33 @@ sequences_removed <- function(df,thresh){
 
 
 # function to calculate primer ID rates from MFE primer results 
-primerID <- function(refs,mfe){
-    spp.amp <- unique(refs$sciNameValid[which(refs$dbid %in% mfe$X1)])
-    spp.tot <- unique(refs$sciNameValid)
-    num <- length(spp.amp)/length(spp.tot)
-    names(num) <- paste0(prefix, ", ", length(spp.tot), " total species")
-    return(num)
+# results processing function to:
+# remove long and short hits (20% of amplicon length)
+# add taxonomy
+# get best PPC per hit
+# add marker and common spp etc
+process_MFE <- function(mfe,primers,prefixes,references,common){
+    len <- primers %>% filter(name==prefixes) %>% slice(1) %>% pull(lengthAmplicon)
+    lenMax <- len+(len*0.2)
+    lenMin <- len-(len*0.2)
+    # filter results
+    mfe %<>% filter(PPC>=0) %>% 
+        filter(Size>lenMin & Size<lenMax) %>% 
+        mutate(dbid=as.character(HitID)) %>%
+        group_by(dbid) %>% 
+        summarise(bestPPC=max(PPC))
+    # join
+    mfe.annotated <- left_join(references,mfe)
+    # choose best PPC
+    mfe.annotated %<>% select(dbid,sciNameValid,class,bestPPC) %>% 
+        mutate(bestPPC=if_else(is.na(bestPPC),0,bestPPC)) %>% 
+        group_by(sciNameValid) %>% 
+        arrange(desc(bestPPC),.by_group=TRUE) %>% 
+        slice(1) %>% 
+        ungroup() %>% 
+        mutate(marker=prefixes) %>% 
+        mutate(common=if_else(sciNameValid %in% common$sciName, "common", "rare"))
+    return(mfe.annotated)
 }
 
 
