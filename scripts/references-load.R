@@ -35,11 +35,13 @@ reflib.orig %<>% mutate(sciNameValid=str_replace_all(sciNameValid,"Pungitius lae
 # remove mRNA
 # remove cDNA
 reflib.orig %<>% 
-    filter(!grepl("UNVERIFIED:",notesGenBank)) %>%
     filter(!is.na(nucleotides)) %>% 
+    filter(!grepl("UNVERIFIED:",notesGenBank)) %>%
     filter(!grepl("similar to",notesGenBank)) %>% 
     filter(!grepl("mRNA",notesGenBank)) %>% 
-    filter(!grepl("cDNA",notesGenBank))
+    filter(!grepl("cDNA",notesGenBank)) %>% 
+    filter(!grepl("transcribed",notesGenBank)) %>% 
+    filter(!grepl("-like",notesGenBank)) 
 
 # count num additional spp.
 #reflib.orig %>% filter(source=="GENBANK") %>% filter(!grepl("mitochondr",notesGenBank)) 
