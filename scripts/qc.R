@@ -77,11 +77,12 @@ reflib.fas <- tab2fas(df=reflib.tmp,seqcol="nucleotidesFrag",namecol="noms")
 ## read in the generated 12S data from our tissue sample collection to add to and QC also
 ## skip if you just dealing with GenBank records
 # code to set the names from the well number
-mac <- read.FASTA(file="../../SeaDNA/temp/reference-library/macrogen-results.fasta")
-plate.tab <- read_csv(file="../../SeaDNA/temp/reference-library/sequencing-results/12S-sequencing-plates.csv")
-names(mac) <- plate.tab$catalogNumber[match(names(mac), plate.tab$well)]
-names(mac) <- paste0("12S|",names(mac))
-write.FASTA(mac,file="../../SeaDNA/data/reference-library.fasta",append=TRUE)
+#mac <- read.FASTA(file="../../SeaDNA/temp/reference-library/macrogen-results.fasta")
+#plate.tab <- read_csv(file="../../SeaDNA/temp/reference-library/sequencing-results/12S-sequencing-plates.csv")
+#names(mac) <- plate.tab$catalogNumber[match(names(mac), plate.tab$well)]
+#names(mac) <- paste0("12S|",names(mac))
+#write.FASTA(mac,file="../../SeaDNA/data/reference-library.fasta",append=TRUE)
+
 # filter 12S
 refs.tissue <- read.FASTA(file="../../SeaDNA/data/reference-library.fasta")
 refs.tissue <- refs.tissue[grep("12S",names(refs.tissue))]
@@ -126,6 +127,15 @@ pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,
 plot.phylo(rax.tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
 dev.off()
 
+# list of species missing from reflib
+got <- str_replace_all(names(refs.tissue), "\\|.*", "")
+
+spp.got <- tissues.master %>% filter(otherCatalogNumbers %in% got) %>% pull(sciName) %>% unique()
+
+tissues.master %>% filter(phylum!="Arthropoda", locality!="NA", specificEpithet!="NA") %>% 
+    filter(!sciName %in% spp.got) %>% 
+    select(otherCatalogNumbers,sciName,locality) %>% #print(n=Inf)
+    write_csv(path="../../SeaDNA/temp/reference-library/outstanding_species.csv")
 
 # to make a Levenstein distance tree
 seqs.char <- as.character(lapply(as.character(reflib.fas), str_flatten))
