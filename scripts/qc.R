@@ -76,12 +76,6 @@ reflib.fas <- tab2fas(df=reflib.tmp,seqcol="nucleotidesFrag",namecol="noms")
 
 ## read in the generated 12S data from our tissue sample collection to add to and QC also
 ## skip if you just dealing with GenBank records
-# code to set the names from the well number
-#mac <- read.FASTA(file="../../SeaDNA/temp/reference-library/macrogen-results.fasta")
-#plate.tab <- read_csv(file="../../SeaDNA/temp/reference-library/sequencing-results/12S-sequencing-plates.csv")
-#names(mac) <- plate.tab$catalogNumber[match(names(mac), plate.tab$well)]
-#names(mac) <- paste0("12S|",names(mac))
-#write.FASTA(mac,file="../../SeaDNA/data/reference-library.fasta",append=TRUE)
 
 # filter 12S
 refs.tissue <- read.FASTA(file="../../SeaDNA/data/reference-library.fasta")
@@ -91,7 +85,29 @@ names(refs.tissue) <- str_replace_all(names(refs.tissue), "12S\\|", "")
 tissues.master <- read_csv(file="../species/tissues-master.csv")
 tissues.master %<>% mutate(sciName=paste(genus,specificEpithet,sep="_"))
 names(refs.tissue) <- paste(names(refs.tissue), tissues.master$sciName[match(names(refs.tissue), tissues.master$otherCatalogNumbers)], sep="|")
-reflib.fas <- c(reflib.fas,refs.tissue)
+# sort
+refs.tissue.sorted <- refs.tissue[order(str_split_fixed(names(refs.tissue),"\\|",2)[,2])]
+
+# list of species missing from reflib
+got <- str_replace_all(names(refs.tissue.sorted), "\\|.*", "")
+
+spp.got <- tissues.master %>% filter(otherCatalogNumbers %in% got) %>% pull(sciName) %>% unique()
+
+tissues.master %>% filter(phylum!="Arthropoda", locality!="NA", specificEpithet!="NA") %>% 
+    filter(!sciName %in% spp.got) %>% 
+    select(otherCatalogNumbers,sciName,locality) %>% #print(n=Inf)
+    #write_csv(path="../../SeaDNA/temp/reference-library/outstanding_species.csv")
+
+# write out fas quick
+write.FASTA(refs.tissue.sorted, file="../temp/temp/12Sreflib.fas")
+
+# get just the miya frag with hmm
+# run hmmer (takes about 5 mins)
+dat.frag <- run_hmmer3(dir="../temp/temp", infile="12Sreflib.fas", prefix="12s.miya.noprimers", evalue="10", coords="env")
+
+# join with master reflib
+reflib.fas <- c(reflib.fas,dat.frag)
+
 ##
 
 # align the sequences with MAFFT (need to have exe in PATH)
@@ -127,15 +143,7 @@ pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,
 plot.phylo(rax.tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
 dev.off()
 
-# list of species missing from reflib
-got <- str_replace_all(names(refs.tissue), "\\|.*", "")
 
-spp.got <- tissues.master %>% filter(otherCatalogNumbers %in% got) %>% pull(sciName) %>% unique()
-
-tissues.master %>% filter(phylum!="Arthropoda", locality!="NA", specificEpithet!="NA") %>% 
-    filter(!sciName %in% spp.got) %>% 
-    select(otherCatalogNumbers,sciName,locality) %>% #print(n=Inf)
-    write_csv(path="../../SeaDNA/temp/reference-library/outstanding_species.csv")
 
 # to make a Levenstein distance tree
 seqs.char <- as.character(lapply(as.character(reflib.fas), str_flatten))
