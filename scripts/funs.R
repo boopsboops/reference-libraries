@@ -1,9 +1,8 @@
 #!/usr/bin/env Rscript
 library("stringr")
+library("seqinr")
 library("parallel")
 library("ape")
-library("tidyverse")
-library("magrittr")
 library("rfishbase")
 library("traits")
 library("rentrez")
@@ -12,6 +11,8 @@ library("rgbif")
 library("phangorn")
 library("ips")
 library("stringdist")
+library("tidyverse")
+library("magrittr")
 
 ## NOTE ##
 # until changes come through to CRAN, need to run dev version of traits and install with sudo R in the terminal 
@@ -216,3 +217,8 @@ rm_ns <-function(bin){
     bin.bin <- as.DNAbin(bin.split)
     return(bin.bin)
 }
+
+# fun to revcomp a sequence
+flip <- function(x){
+    revcomp <- c2s(rev(comp(s2c(x),ambiguous=TRUE)))
+    return(revcomp)}
