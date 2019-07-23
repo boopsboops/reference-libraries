@@ -89,7 +89,10 @@ process_MFE <- function(mfe,primers,prefixes,references,common){
         filter(Size>lenMin & Size<lenMax) %>% 
         mutate(dbid=as.character(HitID)) %>%
         group_by(dbid) %>% 
-        summarise(bestPPC=max(PPC))
+        summarise(bestPPC=max(PPC)) %>% 
+        ungroup() %>%
+        mutate(maxPPC=max(bestPPC)) %>%
+        mutate(bestPPC=(bestPPC/maxPPC)*100)
     # join
     mfe.annotated <- left_join(references,mfe)
     # choose best PPC
