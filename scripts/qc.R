@@ -95,7 +95,7 @@ spp.got <- tissues.master %>% filter(otherCatalogNumbers %in% got) %>% pull(sciN
 
 tissues.master %>% filter(phylum!="Arthropoda", locality!="NA", specificEpithet!="NA") %>% 
     filter(!sciName %in% spp.got) %>% 
-    select(otherCatalogNumbers,sciName,locality) %>% #print(n=Inf)
+    select(otherCatalogNumbers,sciName,locality) #%>% #print(n=Inf)
     #write_csv(path="../../SeaDNA/temp/reference-library/outstanding_species.csv")
 
 # write out fas quick
@@ -111,7 +111,7 @@ reflib.fas <- c(reflib.fas,dat.frag)
 ##
 
 # align the sequences with MAFFT (need to have exe in PATH)
-sam <- mafft(reflib.fas,path="mafft",method="retree 1")
+sam <- ips::mafft(reflib.fas,exec="mafft",method="retree 1")
 # write out matrix to check alignment
 # write.FASTA(sam,file="../temp/temp/12S.matrix.fas")
 # sam <- sam[,299:542]
@@ -120,15 +120,13 @@ sam <- mafft(reflib.fas,path="mafft",method="retree 1")
 # make a quick ML tree with RAxML ((need to have exe on your system))
 # ignore the 'cannot open file' error
 # takes several hours for COI full
-raxml(sam, m="GTRCAT", f="d", p=42, exec="~/Software/standard-RAxML/raxmlHPC-AVX", N=1)
+rax.tr <- ips::raxml(sam, m="GTRCAT", f="d", p=42, exec="~/Software/standard-RAxML/raxmlHPC-AVX", N=1)
 
-# read in the tree
-rax.tr <- read.tree("RAxML_bestTree.fromR")
-#rax.tr <- drop.tip(rax.tr,"")
-rax.tr <- midpoint(ladderize(rax.tr))
+# ladderise
+rax.tr <- midpoint(ladderize(rax.tr$bestTree))
 
-# copy or delete the log info raxml created - and move the tree file elsewhere
-file.rename(from="RAxML_bestTree.fromR", to=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".nwk"))
+# clean up after raxml
+write.tree(rax.tr,file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".nwk"))
 file.remove(dir(path=".", pattern="fromR"))
 
 # color tips
@@ -142,7 +140,6 @@ cols[cols!="blue"] <- "black"
 pdf(file=paste0("../../SeaDNA/temp/primer-faceoff/raxml/RAxML_bestTree.",prefix,".pdf"), width=15, height=70)#900 for COI
 plot.phylo(rax.tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
 dev.off()
-
 
 
 # to make a Levenstein distance tree
