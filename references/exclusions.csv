@@ -173,3 +173,4 @@ BOLD,HNDSA001-19.COI-5P,Anguilla anguilla,REMOVE,"Not a COI sequence, bacterial 
 BOLD,UEZPQ003-14.COI-5P,Lethrinus nebulosus,REMOVE,Low quality sequence,
 GENBANK,1013181134,Thunnus albacares,REMOVE,Low quality sequence,
 GENBANK,1013181152,Thunnus thynnus,REMOVE,Low quality sequence,
+GENBANK,33317232,Isurus oxyrinchus,REMOVE,"Very close to Prionace, not Isurus",
