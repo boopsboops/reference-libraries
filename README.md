@@ -24,8 +24,8 @@ Study | Official name | Nickname | Locus
 [Valentini et al. (2016)](http://dx.doi.org/10.1111/mec.13428) | L1848/H1913 | valentini | 12S
 [Riaz et al. (2011)](http://dx.doi.org/10.1093/nar/gkr732) | 12S-V5 | riaz | 12S
 [Wangensteen et al. (2018)](http://dx.doi.org/10.7717/peerj.4705) | Leray-XT | leray | COI
-SeaDNA unpublished | SeaDNA-mid | seamid | COI
-SeaDNA unpublished | SeaDNA-short | seashort | COI
+[Collins et al. (2019)](http://dx.doi.org/10.1111/2041-210X.13276) | SeaDNA-mid | seamid | COI
+[Collins et al. (2019)](http://dx.doi.org/10.1111/2041-210X.13276) | SeaDNA-short | seashort | COI
 [Ward et al. (2005)](http://dx.doi.org/10.1098/rstb.2005.1716) | FishF1/R1 | ward | COI
 [Berry et al. (2017)](http://dx.doi.org/10.1002/ece3.3123) | Fish16sF/D | berry | 16S
 [Minamoto et al. (2012)](http://dx.doi.org/10.1007/s10201-011-0362-4) | L14912-CYB | minamoto | cytb
