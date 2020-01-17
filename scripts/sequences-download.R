@@ -18,9 +18,10 @@ start_time <- Sys.time()
 uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 
 # check the GenBank data release number against the record of previous download
-read.table("ftp://ftp.ncbi.nih.gov/genbank/GB_Release_Number")$V1
-read_csv(file="../references/activity-dates.csv",col_types=cols()) %>% filter(activity=="download mtDNA all uk species") %>% select(version)
-
+gb.version <- read.table("ftp://ftp.ncbi.nih.gov/genbank/GB_Release_Number")$V1
+local.version <- read_csv(file="../references/activity-dates.csv",col_types=cols()) %>% filter(activity=="download mtDNA all uk species") %>% select(version) %>% pull(version)
+print(paste("GenBank is at version",gb.version))
+print(paste("Repository is at version",local.version))
 
 ## Download all GenBank sequences for species in the UK species table (including synonyms) with mtDNA
 
@@ -28,24 +29,23 @@ read_csv(file="../references/activity-dates.csv",col_types=cols()) %>% filter(ac
 range <- "1:20000" # includes mt genomes, no bigger
 gene.syns <- c("COI","12S","16S","rRNA","ribosomal","cytb","CO1","cox1","cytochrome","subunit","COB","CYB","mitochondrial","mitochondrion") 
 query <- unlist(mapply(function(x) paste0("(", uk.species.table$sciName, "[ORGN] AND ", x, "[ALL] AND ", range, "[SLEN])"), gene.syns, SIMPLIFY=FALSE, USE.NAMES=FALSE))
-#query <- paste0("(", uk.species.table$sciName, "[ORGN] AND mitochondrion[ALL] AND ", range, "[SLEN]) OR (", uk.species.table$sciName, "[ORGN] AND mitochondrial[ALL] AND ", range, "[SLEN])")
 
 # randomise the query
 set.seed(42)
 query <- sample(query,length(query))
 
 # break up into chunks
-# longest query should be no larger than about 2600 chars
-query.split  <- split(query, ceiling(seq_along(query)/38))
+# longest query should be no larger than about 2000 chars
+query.split  <- split(query, ceiling(seq_along(query)/28))
 
 # collapse into strings of n species per string
 query.cat <- unname(sapply(query.split, paste, collapse=" OR "))
 
-# check max string length is < 2600 (ish)
-length(query.cat)
-max(sapply(query.cat, str_length))
-tst <- query.cat[which(sapply(query.cat, str_length,USE.NAMES=FALSE)==max(sapply(query.cat, str_length,USE.NAMES=FALSE)))]
-entrez_search(db="nuccore", term=tst[1], retmax=99999999, api_key=ncbi.key, use_history=FALSE)
+# check max string length is < 2000 (ish)
+length(query.cat)# num queries
+max(sapply(query.cat, str_length))# max query lengh
+tst <- query.cat[which(sapply(query.cat, str_length,USE.NAMES=FALSE)==max(sapply(query.cat, str_length,USE.NAMES=FALSE)))]#get longest
+entrez_search(db="nuccore", term=tst[1], retmax=99999999, api_key=ncbi.key, use_history=FALSE)# test it works
 
 
 # run the search for accessions with rentrez
