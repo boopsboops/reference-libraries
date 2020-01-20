@@ -24,21 +24,13 @@ bold.red <- read_csv(file="../temp/bold-dump.csv", guess_max=100000)
 # returns a DNAbin object of the sequences matched by hmmer 
 
 prefixes.all <- c(
-#"coi.lerayxt.primers",
 "coi.lerayxt.noprimers",
-#"coi.seamid.primers",
 "coi.seamid.noprimers",
-#"coi.seashort.primers",
 "coi.seashort.noprimers",
-#"coi.ward.primers",
 "coi.ward.noprimers",
-#"12s.miya.primers",
 "12s.miya.noprimers",
-#"12s.riaz.primers",
 "12s.riaz.noprimers",
-#"12s.valentini.primers",
 "12s.valentini.noprimers",
-#"12s.taberlet.primers",
 "12s.taberlet.noprimers",
 "16s.berry.noprimers",
 "cytb.minamoto.noprimers")
@@ -60,7 +52,7 @@ in.gb <- dat.frag.names[!dat.frag.names %in% bold.red$processidUniq]
 # now for the same sequences, get the tabular data from NCBI using 'ncbi_byid' to make a proper reference database
 chunk <- 70
 chunk.frag <- unname(split(in.gb, ceiling(seq_along(in.gb)/chunk)))
-ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=2)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
+ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=4)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
 
 # check for errors (should all be "data.frame")
 table(sapply(ncbi.frag,class))
@@ -100,7 +92,7 @@ dbs.merged.all <- bind_rows(frag.df,bold.red)
 names(dat.frag.all) <- prefixes.all
 
 # extract nucleotides out of the DNAbin objects
-dat.frag.flat <- lapply(dat.frag.all, function(x) mcmapply(str_flatten, as.character(x), mc.cores=8, SIMPLIFY=TRUE,USE.NAMES=TRUE))
+dat.frag.flat <- lapply(dat.frag.all, function(x) mcmapply(str_flatten, as.character(x), mc.cores=4, SIMPLIFY=TRUE,USE.NAMES=TRUE))
 
 # turn each into a dataframe
 dat.frag.df <- lapply(dat.frag.flat, function(x) tibble(names=names(x), seqs=unlist(x), lengthFrag=str_length(seqs)))
@@ -117,12 +109,43 @@ dbs.merged.all <- dplyr::left_join(dbs.merged.all,dat.frag.merged,by="dbid")
 
 ## 
 # get the proper fishbase taxonomy, not the ncbi nonsense
-data(fishbase)
 
 # make a binomial scientific name
 dbs.merged.all %<>% mutate(sciNameBinomen=apply(str_split_fixed(sciNameOrig, " ", 3)[,1:2], 1, paste, collapse=" "))
 
-# fix by hand all the binomials that aren't in fishbase (see below)
+# get up to date spp list and taxonomy
+fishbase.species <- rfishbase::species(server="fishbase")
+fishbase.taxonomy <- rfishbase::load_taxa(server="fishbase")
+fishbase.synonyms <- rfishbase::synonyms(server="fishbase")
+
+#data(fishbase)
+
+#fishbase.synonyms %>% filter(synonym=="Xenocypris argentea")
+#fishbase.species %>% filter(SpecCode==11099) %>% pull(Species)
+
+# get the spp not in fishbase
+u.sci <- unique(pull(dbs.merged.all,sciNameBinomen))
+
+# warm what was dropped
+print(paste("The following taxa could not be found in FishBase and have been dropped:",paste(setdiff(u.sci,pull(fishbase.synonyms,synonym)),collapse=", ")))
+
+# drop
+dbs.merged.all %<>% filter(!sciNameBinomen %in% setdiff(u.sci,pull(fishbase.synonyms,synonym)))
+
+# add validated names to db
+dbs.merged.all %<>% mutate(fbSpecCode=pull(fishbase.synonyms,SpecCode)[match(sciNameBinomen,pull(fishbase.synonyms,synonym))], 
+    sciNameValid=pull(fishbase.species,Species)[match(fbSpecCode,pull(fishbase.species,SpecCode))])
+
+# add taxonomy --- GOT UP TO HERE
+
+dbs.merged.all %<>% mutate(subphylum="Vertebrata",
+    class=pull(fishbase.taxonomy,Class)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))],
+    order=pull(fishbase.taxonomy,Order)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))],
+    family=pull(fishbase.taxonomy,Family)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))],
+    genus=pull(fishbase.taxonomy,Genus)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))])
+
+
+    # fix by hand all the binomials that aren't in fishbase (see below)
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Xenocypris argentea")] <- "Xenocypris macrolepis"
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Gobio balcanicus")] <- "Gobio gobio"
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Sebastes marinus")] <- "Sebastes norvegicus"
