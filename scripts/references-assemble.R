@@ -136,15 +136,30 @@ dbs.merged.all %<>% filter(!sciNameBinomen %in% setdiff(u.sci,pull(fishbase.syno
 dbs.merged.all %<>% mutate(fbSpecCode=pull(fishbase.synonyms,SpecCode)[match(sciNameBinomen,pull(fishbase.synonyms,synonym))], 
     sciNameValid=pull(fishbase.species,Species)[match(fbSpecCode,pull(fishbase.species,SpecCode))])
 
-# add taxonomy --- GOT UP TO HERE
-
+# add taxonomy
 dbs.merged.all %<>% mutate(subphylum="Vertebrata",
     class=pull(fishbase.taxonomy,Class)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))],
     order=pull(fishbase.taxonomy,Order)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))],
     family=pull(fishbase.taxonomy,Family)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))],
     genus=pull(fishbase.taxonomy,Genus)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))])
 
+# clean up and remove trinomials AGAIN
+dbs.merged.all %<>% mutate(nucleotides=str_to_lower(nucleotides)) %>%
+    mutate(sciNameValid=apply(str_split_fixed(sciNameValid, " ", 3)[,1:2], 1, paste, collapse=" "))
 
+# find names that are in dbs.merged, but not in the uk species table (valid names only)
+pull(dbs.merged.all,sciNameValid)[!pull(dbs.merged.all,sciNameValid) %in% pull(filter(uk.species.table,synonym==FALSE),sciName)] %>% unique()
+
+
+
+extras <- unique(dbs.merged.all$sciNameValid)[!unique(dbs.merged.all$sciNameValid) %in% uk.species.table$sciName[uk.species.table$synonym==TRUE]]
+print(sort(extras))
+
+# if theses are okay, drop them from the table
+dbs.merged %<>% filter(!sciNameValid %in% extras)
+    
+    
+   
     # fix by hand all the binomials that aren't in fishbase (see below)
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Xenocypris argentea")] <- "Xenocypris macrolepis"
 dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Gobio balcanicus")] <- "Gobio gobio"
