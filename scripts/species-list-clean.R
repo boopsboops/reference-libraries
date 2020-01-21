@@ -8,8 +8,41 @@ source("funs.R")
 # load up the combined species list (generated 20/12/2017)
 uk.list <- read_csv(file="../species/uk-species-list.csv")
 
+# get up to date spp list and taxonomy
+fishbase.species <- rfishbase::species(server="fishbase")
+fishbase.taxonomy <- rfishbase::load_taxa(server="fishbase")
+fishbase.synonyms <- rfishbase::synonyms(server="fishbase")
+
 # get uniques
 uniqs <- uk.list %>% filter(source!="common") %>% select(species) %>% distinct(species)
+
+# annotate with SpecCode
+fishbase.synonyms.acc <- fishbase.synonyms %>% filter(Status=="accepted name")
+fishbase.synonyms.syn <- fishbase.synonyms %>% filter(Status=="synonym" | Status=="Synonym")
+
+# annotate with synonym status
+uniqs.ann <- as_tibble(uniqs) %>% mutate(status=pull(fishbase.synonyms.acc,Status)[match(species,pull(fishbase.synonyms.acc,synonym))]) %>% 
+    mutate(status=if_else(is.na(status),pull(fishbase.synonyms.syn,Status)[match(species,pull(fishbase.synonyms.syn,synonym))],status)) %>% 
+    mutate(status=str_replace_all(status,"Synonym","synonym"))
+
+# print those without syns
+print("Synonyms/accepted names for the following species could not be found in FishBase. They have been dropped.")
+uniqs.ann %>% filter(is.na(status)) %>% pull(species)
+
+# drop those without status
+uniqs.ann %<>% filter(!is.na(status))
+
+# annotate with SpecCode
+uniqs.ann %<>% mutate(fbSpecCode=pull(fishbase.synonyms.acc,SpecCode)[match(species,pull(fishbase.synonyms.acc,synonym))]) %>% 
+    mutate(fbSpecCode=if_else(is.na(fbSpecCode),pull(fishbase.synonyms.syn,SpecCode)[match(species,pull(fishbase.synonyms.syn,synonym))],fbSpecCode))
+
+# get the accepted name
+uniqs.ann %>% mutate(validName=pull(fishbase.species,Species)[match(fbSpecCode,pull(fishbase.species,SpecCode))])
+    #mutate(validName=apply(str_split_fixed(validName, " ", 3)[,1:2], 1, paste, collapse=" ")) %>% 
+#filter(species!=validName) %>% print(n=Inf)
+
+fishbase.synonyms 
+
 
 # get valid names using fishbase and remove mispellings and synonyms
 # takes a few minutes
