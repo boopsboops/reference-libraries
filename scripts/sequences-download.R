@@ -20,19 +20,24 @@ uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 # check the GenBank data release number against the record of previous download
 gb.version <- read.table("ftp://ftp.ncbi.nih.gov/genbank/GB_Release_Number")$V1
 local.version <- read_csv(file="../references/activity-dates.csv",col_types=cols()) %>% filter(activity=="download mtDNA all uk species") %>% select(version) %>% pull(version)
-print(paste("GenBank is at version",gb.version))
-print(paste("Repository is at version",local.version))
+writeLines(paste("\n\nGenBank is at version",gb.version))
+writeLines(paste("Repository is at version",local.version,"\n"))
 
 ## Download all GenBank sequences for species in the UK species table (including synonyms) with mtDNA
 
 # make a query for genbank
 range <- "1:20000" # includes mt genomes, no bigger
-gene.syns <- c("COI","12S","16S","rRNA","ribosomal","cytb","CO1","cox1","cytochrome","subunit","COB","CYB","mitochondrial","mitochondrion") 
-query <- unlist(mapply(function(x) paste0("(", uk.species.table$sciName, "[ORGN] AND ", x, "[ALL] AND ", range, "[SLEN])"), gene.syns, SIMPLIFY=FALSE, USE.NAMES=FALSE))
+gene.syns <- c("COI","12S","16S","rRNA","ribosomal","cytb","CO1","cox1","cytochrome","subunit","COB","CYB","mitochondrial","mitochondrion")
+spp.list <- unique(c(pull(uk.species.table,speciesName),pull(uk.species.table,validName)))
+query <- unlist(mapply(function(x) paste0("(",spp.list,"[ORGN] AND ",x,"[ALL] AND ",range,"[SLEN])"), gene.syns, SIMPLIFY=FALSE, USE.NAMES=FALSE))
 
 # randomise the query
 set.seed(42)
 query <- sample(query,length(query))
+
+# set n cores 
+# cores=1 is the safest option, but 8 cores is faster if there are no errors
+cores <- 2
 
 # break up into chunks
 # longest query should be no larger than about 2000 chars
@@ -42,15 +47,16 @@ query.split  <- split(query, ceiling(seq_along(query)/28))
 query.cat <- unname(sapply(query.split, paste, collapse=" OR "))
 
 # check max string length is < 2000 (ish)
-length(query.cat)# num queries
-max(sapply(query.cat, str_length))# max query lengh
+writeLines(paste("There are",length(query.cat),"queries"))# num queries
+writeLines(paste("Maximum query length is",max(sapply(query.cat, str_length)),"chars"))# max query length
+writeLines("\nTesting ...")
 tst <- query.cat[which(sapply(query.cat, str_length,USE.NAMES=FALSE)==max(sapply(query.cat, str_length,USE.NAMES=FALSE)))]#get longest
 entrez_search(db="nuccore", term=tst[1], retmax=99999999, api_key=ncbi.key, use_history=FALSE)# test it works
 
-
+writeLines(paste("\nNow running Rentrez on",cores,"cores ..."))
 # run the search for accessions with rentrez
-# mc.cores=1 is the safest option, but 8 cores is faster if there are no errors
-search.res <- mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=99999999, api_key=ncbi.key, use_history=FALSE), query.cat, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=4)
+
+search.res <- mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=99999999, api_key=ncbi.key, use_history=FALSE), query.cat, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=cores)
 # if parallel package not available or NCBI API is throttling, use lapply (slower)
 #search.res <- lapply(query.cat, function(x) entrez_search(db="nuccore", term=x, retmax=99999999, api_key=ncbi.key))
 
@@ -69,7 +75,7 @@ id.split <- unname(split(search.ids, ceiling(seq_along(search.ids)/chunk)))
 
 # download with modifed ape function (fast)
 # mc.cores=1 is the safest option, but more cores is faster if there are no errors
-ncbi.all <- mcmapply(FUN=function(x) read_GenBank(x, species.names=FALSE, api.key=ncbi.key), id.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=4)
+ncbi.all <- mcmapply(FUN=function(x) read_GenBank(x, species.names=FALSE, api.key=ncbi.key), id.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=cores)
 
 # check for errors (should be all DNAbin)
 table(sapply(ncbi.all, class))
@@ -84,11 +90,11 @@ lapply(ncbi.all, write.FASTA, file="../temp/mtdna-uk.fas", append=TRUE)
 
 # chunk up the BOLD requests
 chunk <- 70
-bold.split <- unname(split(uk.species.table$sciName, ceiling(seq_along(uk.species.table$sciName)/chunk)))
+bold.split <- unname(split(spp.list, ceiling(seq_along(spp.list)/chunk)))
 
 # query BOLD and retrieve a table
 # sometimes an error occurs, just run again
-bold.all <- mcmapply(FUN=function(x) bold_seqspec(x,format="tsv",sepfasta=FALSE,response=FALSE), bold.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=8)
+bold.all <- mcmapply(FUN=function(x) bold_seqspec(x,format="tsv",sepfasta=FALSE,response=FALSE), bold.split, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=cores)
 
 # check for errors (should be "data.frame" or "logical", not "character")
 table(sapply(bold.all, class))
