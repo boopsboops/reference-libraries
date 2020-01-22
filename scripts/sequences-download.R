@@ -37,7 +37,7 @@ query <- sample(query,length(query))
 
 # set n cores 
 # cores=1 is the safest option, but 8 cores is faster if there are no errors
-cores <- 2
+cores <- 1
 
 # break up into chunks
 # longest query should be no larger than about 2000 chars
