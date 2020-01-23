@@ -37,28 +37,31 @@ query <- sample(query,length(query))
 
 # set n cores 
 # cores=1 is the safest option, but 8 cores is faster if there are no errors
-cores <- 1
+cores <- 4
 
 # break up into chunks
-# longest query should be no larger than about 2000 chars
-query.split  <- split(query, ceiling(seq_along(query)/28))
+# longest query should be no larger than about 2500 chars - reduce chunk.size to get smaller queries
+chunk.size <- 37
+query.split  <- split(query, ceiling(seq_along(query)/chunk.size))
 
 # collapse into strings of n species per string
 query.cat <- unname(sapply(query.split, paste, collapse=" OR "))
 
-# check max string length is < 2000 (ish)
+# check max string length is < 2500 (ish)
 writeLines(paste("There are",length(query.cat),"queries"))# num queries
 writeLines(paste("Maximum query length is",max(sapply(query.cat, str_length)),"chars"))# max query length
 writeLines("\nTesting ...")
 tst <- query.cat[which(sapply(query.cat, str_length,USE.NAMES=FALSE)==max(sapply(query.cat, str_length,USE.NAMES=FALSE)))]#get longest
-entrez_search(db="nuccore", term=tst[1], retmax=99999999, api_key=ncbi.key, use_history=FALSE)# test it works
+options("scipen"=100)
+entrez_search(db="nuccore", term=tst[1], retmax=100000, api_key=ncbi.key, use_history=FALSE)# test it works
 
 writeLines(paste("\nNow running Rentrez on",cores,"cores ..."))
 # run the search for accessions with rentrez
-
-search.res <- mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=99999999, api_key=ncbi.key, use_history=FALSE), query.cat, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=cores)
+options("scipen"=100)#stop sci numbers
+search.res <- mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=100000, api_key=ncbi.key, use_history=FALSE), query.cat, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=cores)
 # if parallel package not available or NCBI API is throttling, use lapply (slower)
-#search.res <- lapply(query.cat, function(x) entrez_search(db="nuccore", term=x, retmax=99999999, api_key=ncbi.key))
+#options("scipen"=100)
+#search.res <- lapply(query.cat[1:100], function(x) entrez_search(db="nuccore", term=x, retmax=100000, api_key=ncbi.key, use_history=FALSE))
 
 # check for errors - should be all false
 table(sapply(search.res, function(x) grepl("Error",x)[1]))
