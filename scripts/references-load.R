@@ -7,9 +7,9 @@
 uk.species.table <- read_csv(file="https://raw.githubusercontent.com/boopsboops/reference-libraries/master/species/uk-species-table.csv", col_types=cols())
 uk.species.table.orig <- uk.species.table
 # remove synonyms
-uk.species.table %<>% filter(synonym==FALSE)
+uk.species.table %<>% select(validName,commonSpecies) %>% distinct()
 # change taxonomy for some common species
-uk.species.table %<>% filter(sciName!="Pungitius laevis",sciName!="Cottus perifretum",sciName!="Atherina presbyter")
+uk.species.table %<>% filter(validName!="Pungitius laevis",validName!="Cottus perifretum",validName!="Atherina presbyter")
 # filter common
 uk.species.table.common <- uk.species.table %>% filter(commonSpecies==TRUE)
 
