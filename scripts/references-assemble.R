@@ -5,8 +5,10 @@
 # then, it queries NCBI/BOLD for those accessions, and retrieves full metadata for them to allow better curation of reference database
 # output is a csv dataframe of all accessions with data for all primer sets if present
 
-# load functions and libs
+## Load functions and libs
 source("funs.R")
+# set cores - mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
+cores <- 2
 
 
 ## Data
@@ -35,7 +37,6 @@ prefixes.all <- c(
 "16s.berry.noprimers",
 "cytb.minamoto.noprimers")
 
-
 # run hmmer (takes about 5 mins)
 dat.frag.all <- lapply(prefixes.all, function(x) run_hmmer3(dir="../temp", infile="mtdna-uk.fas", prefix=x, evalue="10", coords="env"))
 
@@ -52,13 +53,11 @@ in.gb <- dat.frag.names[!dat.frag.names %in% bold.red$processidUniq]
 # now for the same sequences, get the tabular data from NCBI using 'ncbi_byid' to make a proper reference database
 chunk <- 70
 chunk.frag <- unname(split(in.gb, ceiling(seq_along(in.gb)/chunk)))
-ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=4)# mc.cores=1 is the safest option, but try extra cores to speed up if there are no errors
+ncbi.frag <- mcmapply(FUN=ncbi_byid, chunk.frag, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=cores)
 
 # check for errors (should all be "data.frame")
 table(sapply(ncbi.frag,class))
 
-
-##
 # join all the data sets
 frag.df <- as_tibble(bind_rows(ncbi.frag))
 
@@ -92,7 +91,7 @@ dbs.merged.all <- bind_rows(frag.df,bold.red)
 names(dat.frag.all) <- prefixes.all
 
 # extract nucleotides out of the DNAbin objects
-dat.frag.flat <- lapply(dat.frag.all, function(x) mcmapply(str_flatten, as.character(x), mc.cores=4, SIMPLIFY=TRUE,USE.NAMES=TRUE))
+dat.frag.flat <- lapply(dat.frag.all, function(x) mcmapply(str_flatten, as.character(x), mc.cores=cores, SIMPLIFY=TRUE,USE.NAMES=TRUE))
 
 # turn each into a dataframe
 dat.frag.df <- lapply(dat.frag.flat, function(x) tibble(names=names(x), seqs=unlist(x), lengthFrag=str_length(seqs)))
@@ -107,119 +106,55 @@ dat.frag.merged <- dat.frag.df %>% purrr::reduce(full_join, by="dbid")
 dbs.merged.all <- dplyr::left_join(dbs.merged.all,dat.frag.merged,by="dbid")
 
 
-## 
-# get the proper fishbase taxonomy, not the ncbi nonsense
+## Get the proper fishbase taxonomy, not the NCBI nonsense
 
-# make a binomial scientific name
+# make a binomial scientific name - clean mess
 dbs.merged.all %<>% mutate(sciNameBinomen=apply(str_split_fixed(sciNameOrig, " ", 3)[,1:2], 1, paste, collapse=" "))
 
 # get up to date spp list and taxonomy
-fishbase.species <- rfishbase::species(server="fishbase")
-fishbase.taxonomy <- rfishbase::load_taxa(server="fishbase")
 fishbase.synonyms <- rfishbase::synonyms(server="fishbase")
+# clean up fishbase - just accepted names and synonyms
+fishbase.synonyms.acc <- fishbase.synonyms %>% mutate(TaxonLevel=str_replace_all(TaxonLevel,"^species","Species")) %>% filter(Status=="accepted name" & TaxonLevel=="Species")
+fishbase.synonyms.syn <- fishbase.synonyms %>% mutate(Status=str_replace_all(Status,"Synonym","synonym")) %>% filter(Status=="synonym")
 
-#data(fishbase)
+# make ref of valid uk species 
+uk.species.valid <- uk.species.table %>% select(fbSpecCode,validName,class,order,family,genus,commonName) %>% distinct()
 
-#fishbase.synonyms %>% filter(synonym=="Xenocypris argentea")
-#fishbase.species %>% filter(SpecCode==11099) %>% pull(Species)
+# annotate with fishbase codes and valid species names
+dbs.merged.all %<>% mutate(fbSpecCode=pull(fishbase.synonyms.acc,SpecCode)[match(sciNameBinomen,pull(fishbase.synonyms.acc,synonym))]) %>% 
+    mutate(fbSpecCode=if_else(is.na(fbSpecCode),pull(fishbase.synonyms.syn,SpecCode)[match(sciNameBinomen,pull(fishbase.synonyms.syn,synonym))],fbSpecCode)) %>%
+    mutate(sciNameValid=pull(uk.species.valid,validName)[match(fbSpecCode,pull(uk.species.valid,fbSpecCode))])
 
-# get the spp not in fishbase
-u.sci <- unique(pull(dbs.merged.all,sciNameBinomen))
+# drop missing taxa
+missing <- dbs.merged.all %>% filter(is.na(sciNameValid)) %>% pull(sciNameOrig) %>% unique()
+writeLines(paste("The following taxa could not be found in UK fishes database and have been dropped:",paste(missing,collapse=", ")))
+dbs.merged.all %<>% filter(!is.na(sciNameValid))
 
-# warm what was dropped
-print(paste("The following taxa could not be found in FishBase and have been dropped:",paste(setdiff(u.sci,pull(fishbase.synonyms,synonym)),collapse=", ")))
-
-# drop
-dbs.merged.all %<>% filter(!sciNameBinomen %in% setdiff(u.sci,pull(fishbase.synonyms,synonym)))
-
-# add validated names to db
-dbs.merged.all %<>% mutate(fbSpecCode=pull(fishbase.synonyms,SpecCode)[match(sciNameBinomen,pull(fishbase.synonyms,synonym))], 
-    sciNameValid=pull(fishbase.species,Species)[match(fbSpecCode,pull(fishbase.species,SpecCode))])
+# print all the species that had their names updated
+writeLines("\nThe following taxa had their GenBank names updated using FishBase:")
+dbs.merged.all %>% filter(sciNameOrig != sciNameValid) %>% select(sciNameOrig,sciNameBinomen,fbSpecCode,sciNameValid) %>% arrange(sciNameOrig) %>% distinct() %>% print(n=Inf)
 
 # add taxonomy
 dbs.merged.all %<>% mutate(subphylum="Vertebrata",
-    class=pull(fishbase.taxonomy,Class)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))],
-    order=pull(fishbase.taxonomy,Order)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))],
-    family=pull(fishbase.taxonomy,Family)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))],
-    genus=pull(fishbase.taxonomy,Genus)[match(fbSpecCode,pull(fishbase.taxonomy,SpecCode))])
+    class=pull(uk.species.valid,class)[match(fbSpecCode,pull(uk.species.valid,fbSpecCode))],
+    order=pull(uk.species.valid,order)[match(fbSpecCode,pull(uk.species.valid,fbSpecCode))],
+    family=pull(uk.species.valid,family)[match(fbSpecCode,pull(uk.species.valid,fbSpecCode))],
+    genus=pull(uk.species.valid,genus)[match(fbSpecCode,pull(uk.species.valid,fbSpecCode))])
 
-# clean up and remove trinomials AGAIN
-dbs.merged.all %<>% mutate(nucleotides=str_to_lower(nucleotides)) %>%
-    mutate(sciNameValid=apply(str_split_fixed(sciNameValid, " ", 3)[,1:2], 1, paste, collapse=" "))
-
-# find names that are in dbs.merged, but not in the uk species table (valid names only)
-pull(dbs.merged.all,sciNameValid)[!pull(dbs.merged.all,sciNameValid) %in% pull(filter(uk.species.table,synonym==FALSE),sciName)] %>% unique()
+# clean up nucs
+dbs.merged.all %<>% mutate(nucleotides=str_to_lower(nucleotides))
 
 
+## Clean up to make the table human readable
 
-extras <- unique(dbs.merged.all$sciNameValid)[!unique(dbs.merged.all$sciNameValid) %in% uk.species.table$sciName[uk.species.table$synonym==TRUE]]
-print(sort(extras))
-
-# if theses are okay, drop them from the table
-dbs.merged %<>% filter(!sciNameValid %in% extras)
-    
-    
-   
-    # fix by hand all the binomials that aren't in fishbase (see below)
-dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Xenocypris argentea")] <- "Xenocypris macrolepis"
-dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Gobio balcanicus")] <- "Gobio gobio"
-dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Sebastes marinus")] <- "Sebastes norvegicus"
-dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Chelon ramada")] <- "Liza ramada"
-dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Hippocampus ramulosus")] <- "Hippocampus guttulatus"
-dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Cichlasoma portalagrense")] <- "Cichlasoma portalegrense"
-dbs.merged.all$sciNameBinomen[which(dbs.merged.all$sciNameBinomen=="Hirundichthys volador")] <- "Exocoetus volador"
-
-
-# get unique species names from db output
-u.sci <- unique(dbs.merged.all$sciNameBinomen)
-# validate using fishbase and select the first match
-v.sci <- mclapply(u.sci, validate_names, server="fishbase", mc.cores=8)
-v.sci <- lapply(v.sci, function(x) x[1])
-
-# potential problem - search for na responses not in fishbase synonyms, and fix by hand (see above)
-u.sci[which(lapply(v.sci, is.na)==TRUE)]
-
-##
-# make a df
-names.df <- data_frame(orig=u.sci, validated=unlist(v.sci))
-
-# add the validated names to the merged db
-dbs.merged <- dbs.merged.all %>% mutate(sciNameValid=names.df$validated[match(dbs.merged.all$sciNameBinomen,names.df$orig)])
-
-# create new fishbase species/genus and subset fishbase
-fishbase %<>% mutate(genusSpecies=paste(Genus,Species))
-fishbase.sub <-fishbase[match(dbs.merged$sciNameValid,fishbase$genusSpecies),]
-# check length is okay
-dim(fishbase.sub)[1] == dim(dbs.merged)[1] 
-
-# add taxonomy 
-dbs.merged %<>% mutate(subphylum="Vertebrata", class=fishbase.sub$Class, order=fishbase.sub$Order, family=fishbase.sub$Family, genus=fishbase.sub$Genus,speciesCodeFishbase=fishbase.sub$SpecCode)
-
-# clean up and remove trinomials AGAIN
-dbs.merged %<>% mutate(nucleotides=str_to_lower(nucleotides)) %>% 
-    mutate(sciNameValid=apply(str_split_fixed(sciNameValid, " ", 3)[,1:2], 1, paste, collapse=" ")) 
-
-# find names that are in dbs.merged, but not in the uk species table (valid names only)
-extras <- unique(dbs.merged$sciNameValid)[!unique(dbs.merged$sciNameValid) %in% uk.species.table$sciName[uk.species.table$synonym==FALSE]]
-print(sort(extras))
-
-# if theses are okay, drop them from the table
-dbs.merged %<>% filter(!sciNameValid %in% extras)
-
-# check the FB synonyms! Are these okay?
-unique(paste(dbs.merged$sciNameValid[which(dbs.merged$sciNameValid != dbs.merged$sciNameOrig)], dbs.merged$sciNameOrig[which(dbs.merged$sciNameValid != dbs.merged$sciNameOrig)], sep=" | "))
-
-
-##
-# now clean up to make the table human readable
 # drop the DNA fragments and reorder the columns 
-dbs.merged.info <- dbs.merged %>% select(-matches("Frag")) %>% 
-   select(source,dbid,gbAccession,sciNameValid,subphylum,class,order,family,genus,sciNameBinomen,sciNameOrig,speciesCodeFishbase,
+dbs.merged.info <- dbs.merged.all %>% select(-matches("Frag")) %>% 
+   select(source,dbid,gbAccession,sciNameValid,subphylum,class,order,family,genus,sciNameBinomen,sciNameOrig,fbSpecCode,
     country,catalogNumber,institutionCode,decimalLatitude,decimalLongitude,publishedAs,publishedIn,publishedBy,
     date,notesGenBank,length,nucleotides)
 
 # make a data frame of just the sequence data
-dbs.merged.seqs <- dbs.merged %>% select(matches("Frag|dbid"))
+dbs.merged.seqs <- dbs.merged.all %>% select(matches("Frag|dbid"))
 
 # remerge with the reorganised dataframe and remove any ids with no nucleotides
 dbs.merged.final <- left_join(dbs.merged.info,dbs.merged.seqs,by="dbid") %>%
@@ -230,11 +165,17 @@ dbs.merged.final <- left_join(dbs.merged.info,dbs.merged.seqs,by="dbid") %>%
 glimpse(dbs.merged.final)
 names(dbs.merged.final)
 
-##
+
+## Write out
+
+# first, see what was added/removed from last time
+#old <- read_csv("../references/uk-fish-references.csv.gz")
+#old %>% filter(!dbid %in% pull(dbs.merged.final,dbid)) %>% filter(source=="GENBANK") %>% select(dbid,sciNameOrig,sciNameBinomen,sciNameValid) %>% print(n=Inf)
+#dbs.merged.final %>% filter(!dbid %in% pull(old,dbid)) %>% select(dbid,sciNameOrig,sciNameBinomen,sciNameValid) %>% print(n=Inf)
+
 # write out a gzipped file (orig is too big for github)
 write_csv(dbs.merged.final, path=gzfile("../references/uk-fish-references.csv.gz"), na="")
 write_csv(dbs.merged.final, path="../temp/uk-fish-references.csv", na="")
-
 
 # to write out a fasta
 #filter(dbs.merged.final, !is.na(nucleotidesFrag.coi.lerayxt.noprimers))
