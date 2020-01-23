@@ -54,7 +54,7 @@ tissues.filt <- tissues.df %>%
     mutate(sciName=paste(genus, specificEpithet)) %>%
     filter(class!="Malacostraca") %>%
     filter(!is.na(specificEpithet)) %>% 
-    mutate(sciNameValid=validate_names(sciName, server="fishbase"))
+    mutate(sciNameValid=pull(uk.species.table.orig,validName)[match(sciName,pull(uk.species.table.orig,speciesName))])
 #
 tissues.sp <- tissues.filt %>%
     select(sciNameValid) %>%
@@ -71,14 +71,14 @@ gb.dim <- genbank.df %>% summarise(n=n())
 genbank.sp <- genbank.df %>%
     select(sciNameValid) %>%
     count(sciNameValid) %>%
-    rename(genbankCount=n) 
+    rename(genbankCount=n)
 ```
 
 
 ```{r species_clean, include=FALSE}
 # clean up the species data
 uk.species.table.val <- uk.species.table %>%
-    rename(sciNameValid=sciName)
+    rename(sciNameValid=validName)
 ```
 
 
