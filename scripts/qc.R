@@ -9,6 +9,9 @@ source("https://raw.githubusercontent.com/boopsboops/reference-libraries/master/
 source("https://raw.githubusercontent.com/boopsboops/reference-libraries/master/scripts/references-load.R")
 # loads objects: uk.species.table, uk.species.table.common, reflib.orig
 
+# set cores
+cores <- 8
+
 # make a copy so don't have to keep reloading the reflib
 reflib <- reflib.orig
 
@@ -37,7 +40,7 @@ reflib %<>% filter(!is.na(nucleotidesFrag))
 reflib %>% ggplot(aes(lengthFrag)) + geom_histogram(binwidth=1)
 
 # make a dataframe of trimming stats
-trimming.df <- data_frame(percMed=seq(0,1,by=0.05), 
+trimming.df <- tibble(percMed=seq(0,1,by=0.05), 
     bp=sapply(seq(0,1,by=0.05), function(x) round(median(reflib$lengthFrag)*x)),
     speciesLost=sapply(seq(0,1,by=0.05), function(x) length(species_lost(df=reflib,thresh=x))),
     seqsRemoved=sapply(seq(0,1,by=0.05), function(x) sequences_removed(df=reflib,thresh=x)))
@@ -60,11 +63,11 @@ print(lsp)
 # phylogenetically implausible (clear sample mixup)
 
 # collapse haps by spp
-reflib.red <- bind_rows(mcmapply(FUN=function(x) hap_collapse_df(df=x,lengthcol="lengthFrag",nuccol="nucleotidesFrag"), split(reflib,reflib$sciNameValid), SIMPLIFY=FALSE, mc.cores=8))
+reflib.red <- bind_rows(mcmapply(FUN=function(x) hap_collapse_df(df=x,lengthcol="lengthFrag",nuccol="nucleotidesFrag"), split(reflib,reflib$sciNameValid), SIMPLIFY=FALSE, mc.cores=cores))
 
 # format some temp names
 # make col with seq duplicates
-sames <- mclapply(FUN=function(x) get_sames(df=reflib.red,ids="dbid",nucs="nucleotidesFrag",sppVec="sciNameValid",query=x), reflib.red$nucleotidesFrag, mc.cores=8)
+sames <- mclapply(FUN=function(x) get_sames(df=reflib.red,ids="dbid",nucs="nucleotidesFrag",sppVec="sciNameValid",query=x), reflib.red$nucleotidesFrag, mc.cores=cores)
 reflib.red %<>% mutate(nMatches=sapply(sames, function(x) length(unique(x))), matchTax=sapply(sames, function(x) paste(unique(x),collapse=" | ")))
 
 reflib.tmp <- reflib.red %>% mutate(noms=paste(dbid,str_replace_all(sciNameValid," ","_"),nHaps,sep="|")) %>% arrange(class,order,family,genus,sciNameValid,lengthFrag,dbid)
@@ -74,7 +77,8 @@ reflib.fas <- tab2fas(df=reflib.tmp,seqcol="nucleotidesFrag",namecol="noms")
 #add some unassigned seqs
 #reflib.fas <- c(reflib.fas,tab2fas(df=bad.matches, seqcol="dnas", namecol="qseqid"))
 
-## read in the generated 12S data from our tissue sample collection to add to and QC also
+## <----
+## read in the generated 12S data from our tissue sample collection to add to and QC also 
 ## skip if you just dealing with GenBank records
 
 # filter 12S
@@ -91,9 +95,9 @@ refs.tissue.sorted <- refs.tissue[order(str_split_fixed(names(refs.tissue),"\\|"
 # list of species missing from reflib
 got <- str_replace_all(names(refs.tissue.sorted), "\\|.*", "")
 
-spp.got <- tissues.master %>% filter(otherCatalogNumbers %in% got) %>% pull(sciName) %>% unique()
+spp.got <- tissues.master %>% filter(otherCatalogNumbers %in% got) %>% pull(sciName) %>% unique() %>% str_replace_all("_"," ")
 
-tissues.master %>% filter(phylum!="Arthropoda", locality!="NA", specificEpithet!="NA") %>% 
+tissues.master %>% filter(phylum!="Arthropoda",!is.na(locality),!is.na(specificEpithet)) %>% 
     filter(!sciName %in% spp.got) %>% 
     select(otherCatalogNumbers,sciName,locality) #%>% #print(n=Inf)
     #write_csv(path="../../SeaDNA/temp/reference-library/outstanding_species.csv")
@@ -102,13 +106,12 @@ tissues.master %>% filter(phylum!="Arthropoda", locality!="NA", specificEpithet!
 write.FASTA(refs.tissue.sorted, file="../temp/temp/12Sreflib.fas")
 
 # get just the miya frag with hmm
-# run hmmer (takes about 5 mins)
 dat.frag <- run_hmmer3(dir="../temp/temp", infile="12Sreflib.fas", prefix="12s.miya.noprimers", evalue="10", coords="env")
 
 # join with master reflib
 reflib.fas <- c(reflib.fas,dat.frag)
+## < ---
 
-##
 
 # align the sequences with MAFFT (need to have exe in PATH)
 sam <- ips::mafft(reflib.fas,exec="mafft",method="retree 1")
@@ -143,10 +146,10 @@ dev.off()
 
 
 # to make a Levenstein distance tree
-seqs.char <- as.character(lapply(as.character(reflib.fas), str_flatten))
-names(seqs.char) <- names(lapply(as.character(reflib.fas), str_flatten))
+#seqs.char <- as.character(lapply(as.character(reflib.fas), str_flatten))
+#names(seqs.char) <- names(lapply(as.character(reflib.fas), str_flatten))
 
 # construct matrix - takes a LONG time on COI data
-smat <- stringdistmatrix(seqs.char, method="lv", useNames="names")
-rax.tr <- midpoint(ladderize(nj(smat)))
+#smat <- stringdistmatrix(seqs.char, method="lv", useNames="names")
+#rax.tr <- midpoint(ladderize(nj(smat)))
 # go to prev code to format and print tree
