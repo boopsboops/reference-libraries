@@ -14,12 +14,6 @@ library("stringdist")
 library("tidyverse")
 library("magrittr")
 
-## NOTE ##
-# until changes come through to CRAN, need to run dev version of traits and install with sudo R in the terminal 
-# either 'install_github("ropensci/traits")' or for root lib locations:
-# sudo R
-# library(devtools); withr::with_libpaths(new = "/usr/local/lib/R/site-library/", install_github("ropensci/traits"))
-
 # print the R session info
 #sink("../temp/RsessionInfo.txt")
 #print(sessionInfo())
@@ -34,9 +28,9 @@ source("https://raw.githubusercontent.com/legalLab/protocols-scripts/master/scri
 # need to specify columns that contain sequence lengths, and nucleotides
 # hap_collapse_df(df=mydataframe,lengthcol="lengthFrag",nuccol="nucleotidesFrag")
 # add a number of each haplotype
-hap_collapse_df <- function(df,lengthcol,nuccol){
+hap_collapse_df <- function(df,lengthcol,nuccol,cores){
     odf <- df[order(df[[lengthcol]],decreasing=TRUE),]
-    reps <- mcmapply(FUN=function(x) which(str_detect(string=odf[[nuccol]], pattern=x) == TRUE)[1], odf[[nuccol]], SIMPLIFY=TRUE, USE.NAMES=FALSE, mc.cores=8)
+    reps <- mcmapply(FUN=function(x) which(str_detect(string=odf[[nuccol]], pattern=x) == TRUE)[1], odf[[nuccol]], SIMPLIFY=TRUE, USE.NAMES=FALSE, mc.cores=cores)
     ind <- unique(reps)
     dat <- odf[ind,]
     dat[["nHaps"]] <- as.numeric(table(reps))
@@ -225,3 +219,45 @@ rm_ns <-function(bin){
 flip <- function(x){
     revcomp <- c2s(rev(comp(s2c(x),ambiguous=TRUE)))
     return(revcomp)}
+
+# fun to subset a reference lib for each marker
+subset_nucs <- function(pref,df){
+    df %<>% rename(nucleotidesFrag=!!as.name(paste0("nucleotidesFrag.",pref)), lengthFrag=!!as.name(paste0("lengthFrag.",pref)))
+    df %<>% filter(!is.na(nucleotidesFrag))
+    return(df)
+}
+
+# fun to annotate a reference library table with number haplotypes per species
+haps2fas <- function(df){
+    df <- bind_rows(mcmapply(FUN=function(x) hap_collapse_df(df=x,lengthcol="lengthFrag",nuccol="nucleotidesFrag",cores=1), split(df,pull(df,sciNameValid)), SIMPLIFY=FALSE,mc.cores=1))
+    sames <- mclapply(FUN=function(x) get_sames(df=df,ids="dbid",nucs="nucleotidesFrag",sppVec="sciNameValid",query=x), pull(df,nucleotidesFrag), mc.cores=1)
+    df %<>% mutate(nMatches=sapply(sames, function(x) length(unique(x))), matchTax=sapply(sames, function(x) paste(unique(x),collapse=" | ")))
+    df %<>% mutate(noms=paste(dbid,str_replace_all(sciNameValid," ","_"),nHaps,sep="|")) %>% arrange(class,order,family,genus,sciNameValid,lengthFrag,dbid)
+    return(df)
+}
+
+# fun to align seqs and make a phylogentic tree
+phylogenize <- function(fas,prefix,binLoc){
+    fas <- ips::mafft(fas,exec="mafft",method="retree 1")
+    tr <- ips::raxml(fas, file=paste0("fromR-",prefix), m="GTRCAT", f="d", p=42, exec=binLoc, N=1)
+    tr <- tr$bestTree
+    tmp.path <- paste0("../temp/qc_",Sys.Date())
+    dir.create(path=tmp.path)
+    flist <- list.files(pattern=prefix)
+    file.copy(flist, paste0(tmp.path,"/",flist))
+    file.remove(flist)
+    write.tree(tr,file=paste0(tmp.path,"/",prefix,".nwk"))
+    return(tr)
+}
+
+# fun to plot and annotate phylogenetic trees
+plot_trees <- function(tr,df,prefix){
+    tr <- ape::ladderize(phangorn::midpoint(tr))
+    cols <- vector("character", length(tr$tip.label))
+    cols[match(df$noms[which(df$nMatches>1)], tr$tip.label)] <- "blue"
+    cols[cols!="blue"] <- "black"
+    tmp.path <- paste0("../temp/qc_",Sys.Date())
+    pdf(file=paste0(tmp.path,"/RAxML_bestTree.",prefix,".pdf"), width=15, height=length(tr$tip.label)/10)
+    plot.phylo(tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
+    dev.off()
+}
