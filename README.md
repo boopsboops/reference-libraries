@@ -7,7 +7,7 @@ A species coverage report for the current MiFish 12S dataset can be found at [bo
 
 This README outlines the contents of the repository and a brief description of the workflow involved in creating a metabarcoding reference library from scratch, as well instructions to simply access the data immediately. Cloning or forking the repository will allow custom modifications to be made. If an error is apparent, raise a ticket in [Issues](https://github.com/boopsboops/reference-libraries/issues) or submit a pull request.
 
-The work is part of the NERC funded [SeaDNA Project](https://twitter.com/SeaDNAproject), and should be cited using the following DOI: [10.6084/m9.figshare.7464521.v2](https://doi.org/10.6084/m9.figshare.7464521.v3).
+The work is part of the NERC funded [SeaDNA Project](https://twitter.com/SeaDNAproject), and should be cited using the following DOI: [10.6084/m9.figshare.7464521.v3](https://doi.org/10.6084/m9.figshare.7464521.v3).
 
 ### TL;DR
 
