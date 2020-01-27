@@ -55,6 +55,7 @@ reflibs.haps <- mcmapply(function(x) haps2fas(df=x), reflibs.sub, SIMPLIFY=FALSE
 reflibs.fas <- mcmapply(function(x) tab2fas(df=x,seqcol="nucleotidesFrag",namecol="noms"), reflibs.haps, SIMPLIFY=FALSE,USE.NAMES=TRUE,mc.cores=cores)
 
 # make trees for each marker - may take up to 5 h for the biggest COI tree
+# outputs into '/temp/qc_MONTH-YEAR' --- careful if running overnight when months change!
 trs.list <- mcmapply(function(x,y) phylogenize(fas=x, prefix=y, binLoc="~/Software/standard-RAxML/raxmlHPC-AVX"), reflibs.fas, prefixes, SIMPLIFY=FALSE,USE.NAMES=TRUE,mc.cores=cores)
 
 # plot the trees in a temp dir
