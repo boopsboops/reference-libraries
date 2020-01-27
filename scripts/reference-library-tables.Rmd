@@ -8,7 +8,7 @@ output: github_document
 
 ##### Methods and description
 This document describes the current sampling for the 12S rRNA fish reference library for the SeaDNA project. 
-The document is a dynamic knitr document and can be updated quickly using the Makefile in SeaDNA/scripts.
+The document is a dynamic knitr document and can be updated quickly using the Makefile in `scripts/`.
 A list of species from the UK was generated from three sources: GBIF, FishBase, and the Water Framework Directive list of transitional species.
 This list was filtered to identify synonyms and duplicates, and annotated with FishBase taxonomic classification and FishBase common names.
 Next a sub-list of "common" species was generated. 
@@ -144,7 +144,7 @@ In terms of tissue sampling, `r tis.n` samples have been taken from `r tis.sp` f
 Of these, `r tis.sp.loc` species have locality data. 
 Combined with the GenBank sequence data, `r got.com.prop` of the `r tot.com` common species have been sampled (Table 2), and `r got.all.prop` of the `r tot.all` rare species (Table 3).
 For the common species, the median number of tissues or GenBank sequences per species is `r med.com`, while `r singles` (`r singles.prop`) are represented by only one tissue or sequence.
-Table 1 lists the species of the highest priority to source.
+Table 1 lists the common species currently missing from reference library, i.e. those of highest priority to source.
 
 
 ###### Table 1. Highest priority species (common species with no tissue sample or GenBank data).
