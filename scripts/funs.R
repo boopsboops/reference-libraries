@@ -13,6 +13,8 @@ library("ips")
 library("stringdist")
 library("tidyverse")
 library("magrittr")
+library("spider")
+library("lubridate")
 
 # print the R session info
 #sink("../temp/RsessionInfo.txt")
@@ -241,7 +243,7 @@ phylogenize <- function(fas,prefix,binLoc){
     fas <- ips::mafft(fas,exec="mafft",method="retree 1")
     tr <- ips::raxml(fas, file=paste0("fromR-",prefix), m="GTRCAT", f="d", p=42, exec=binLoc, N=1)
     tr <- tr$bestTree
-    tmp.path <- paste0("../temp/qc_",Sys.Date())
+    tmp.path <- paste0("../temp/qc_",paste(month(ymd(Sys.Date()),label=TRUE),year(ymd(Sys.Date())),sep="-"))
     dir.create(path=tmp.path)
     flist <- list.files(pattern=prefix)
     file.copy(flist, paste0(tmp.path,"/",flist))
@@ -253,11 +255,17 @@ phylogenize <- function(fas,prefix,binLoc){
 # fun to plot and annotate phylogenetic trees
 plot_trees <- function(tr,df,prefix){
     tr <- ape::ladderize(phangorn::midpoint(tr))
-    cols <- vector("character", length(tr$tip.label))
-    cols[match(df$noms[which(df$nMatches>1)], tr$tip.label)] <- "blue"
-    cols[cols!="blue"] <- "black"
-    tmp.path <- paste0("../temp/qc_",Sys.Date())
+    sppv <- pull(df,sciNameValid)[match(str_split_fixed(tr$tip.label,"\\|",3)[,1],pull(df,dbid))]
+    monov <- spider::monophyly(tr,sppVector=sppv)
+    allmono <- monov[match(sppv, unique(sppv))]
+    cols <- rep("gray20",length(tr$tip.label))
+    cols[which(allmono==FALSE)] <- "hotpink"
+    cols[match(df$noms[which(df$nMatches>1)], tr$tip.label)] <- "green3"
+    tmp.path <- paste0("../temp/qc_",paste(month(ymd(Sys.Date()),label=TRUE),year(ymd(Sys.Date())),sep="-"))
+    dfs <- df %>% summarise(nSeqs=sum(nHaps),nHaps=length(nHaps),nSpp=length(unique(sciNameValid)))
+    tit <- paste0(str_replace_all(prefix,"\\.noprimers",""),"\n(n=",pull(dfs,nSeqs),", n haps=",pull(dfs,nHaps),", n spp.=",pull(dfs,nSpp),")\npink = non-monophyletic species\ngreen = shared haplotypes\nscroll down for tree ...")
     pdf(file=paste0(tmp.path,"/RAxML_bestTree.",prefix,".pdf"), width=15, height=length(tr$tip.label)/10)
     plot.phylo(tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
+    title(tit, line=-10)
     dev.off()
 }
