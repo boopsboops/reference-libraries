@@ -7,13 +7,13 @@ A species coverage report for the current MiFish 12S dataset can be found at [bo
 
 This README outlines the contents of the repository and a brief description of the workflow involved in creating a metabarcoding reference library from scratch, as well instructions to simply access the data immediately. Cloning or forking the repository will allow custom modifications to be made. If an error is apparent, raise a ticket in [Issues](https://github.com/boopsboops/reference-libraries/issues) or submit a pull request.
 
-The work is part of the NERC funded [SeaDNA Project](https://twitter.com/SeaDNAproject), and should be cited using the following DOI: [10.6084/m9.figshare.7464521.v2](https://doi.org/10.6084/m9.figshare.7464521.v2).
+The work is part of the NERC funded [SeaDNA Project](https://twitter.com/SeaDNAproject), and should be cited using the following DOI: [10.6084/m9.figshare.7464521.v2](https://doi.org/10.6084/m9.figshare.7464521.v3).
 
 ### TL;DR
 
-If you just want the to use the final reference database, it can be downloaded at [github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz](https://github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz). The file is 6.2 MB compressed (gzip), but is 106 MB uncompressed. The readr package function `read_csv()` will automatically decompress a gz file, but if the file needs to be unpacked to disk, the WinRAR or 7-Zip software on Windows can be used. The final dataset is in tabular CSV format; follow the Gist at [gist.github.com/boopsboops/a1c790064fe0a14af5226d098645ca60](https://gist.github.com/boopsboops/a1c790064fe0a14af5226d098645ca60) to extract the region you want, and then convert to fasta format if required. The currently available regions are as follows below in Table 1. Any additional mitochondrial primer set can be trivially added.
+If you just want the to use the final reference database (last updated 2020-01-23), it can be downloaded at [github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz](https://github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz). The file is 7.5 MB compressed (gzip), but is 111 MB uncompressed. The readr package function `read_csv()` will automatically decompress a gz file, but if the file needs to be unpacked to disk, the WinRAR or 7-Zip software on Windows can be used. The final dataset is in tabular CSV format; follow the Gist at [gist.github.com/boopsboops/a1c790064fe0a14af5226d098645ca60](https://gist.github.com/boopsboops/a1c790064fe0a14af5226d098645ca60) to extract the region you want, and then convert to fasta format if required. The currently available regions are as follows below in Table 1. Any additional mitochondrial primer set can be trivially added.
 
-The dataset offered above is raw, but is cleaned when the `scripts/references-load.R` script is run. Particular attention should be paid to how this operates; sequences flagged as unreliable (using phylogenetic quality control) are listed in `references/exclusions.csv` and excluded, while sequences flagged by NCBI as "unverified" are also removed. Taxonomic changes are also made, with for example, *Cottus perifretum* relabelled as *Cottus cottus*, and *Pungitius laevis* relabelled as *Pungitius pungitius*.
+The dataset offered above is raw, but is cleaned when the `scripts/references-load.R` script is run. Particular attention should be paid to how this operates; sequences flagged as unreliable (using phylogenetic quality control) are listed in `references/exclusions.csv` and excluded, while sequences flagged by NCBI as "unverified" are also removed. Taxonomic changes are also made, with for example, *Cottus perifretum* relabelled as *Cottus cottus*, *Atherina presbyter* relabelled as *Atherina boyeri*, and *Pungitius laevis* relabelled as *Pungitius pungitius*. Both the original GenBank names and the validated FishBase names are provided.
 
 **Table 1: Available primer sets**
 
@@ -52,7 +52,7 @@ Study | Official name | Nickname | Locus
 * **`species/`** - Tables of species lists and tissue samples.
 * **`temp/`** - Temporary file directory that is not committed to the repository, but needs to be created locally to run the scripts. Ignored by git.
 
-### Workflow
+### Overview
 
 The workflow comes in five steps: (1) assemble the mitogenome data and make the HMMs for each marker; (2) create, validate and annotate the list of UK species; (3) download all sequence data for every species and synonyms; (4) assemble reference libraries for specified markers from the downloaded sequence dump; and (5) create and update a markdown summary report.
 
@@ -71,16 +71,18 @@ The workflow comes in five steps: (1) assemble the mitogenome data and make the 
 
 6. * [Optional] Run `scripts/qc.R` to quality control the reference sequences and add low quality sequences to the `species/exclusions.csv` file
 
-All of these steps need not be carried out every time, depending on the goal of the update:
+### To update from GenBank
 
-**Step 1** does not need to be repeated as the HMMs are generated and committed to the repository, so these scripts/data are only for reference purposes. 
+To update the reference library by running a fresh GenBank search, not all steps need to be carried out:
 
-**Step 2** does not need to be repeated unless there are taxonomic changes or a mistake that needs to be corrected. If a species "common" status needs to be changed, the `uk-species-list.csv` and `uk-species-table.csv` can be edited directly (be sure to edit both).
+**Step 1 (not required)** the HMMs are generated and committed to the repository, so these scripts/data are only for reference purposes.
 
-**Steps 3/4**  needs to be repeated each time the reference library needs to be refreshed with new data from GenBank. These steps should be carried out for each GenBank release every two months. The script `scripts/sequences-download.R` contains code to check the current GenBank version against the version that was last used to assemble the reference library.
+**Step 2 (not required)** don't run unless there are taxonomic changes or a mistake that needs to be corrected. If a species "common" status needs to be changed, the `uk-species-list.csv` and `uk-species-table.csv` can be edited directly (be sure to edit both).
+
+**Steps 3/4** need to be repeated each time the reference library needs to be refreshed with new data from GenBank. These steps should be carried out for each GenBank release every two months. The script `scripts/sequences-download.R` contains code to check the current GenBank version against the version that was last used to assemble the reference library.
 
 **Step 5**  needs to be repeated after either the GenBank data is updated (i.e. when steps 3/4 are run), or after the tissue samples spreadsheet (`species/tissues.csv`) is updated.
 
-**Step 6**  is an optional quality control step, that should be carried periodically, expecially when large numbers of sequences are added to the reference libraries.
+**Step 6**  is an optional (but recommended) phylogenetic quality control step that should be carried periodically, expecially when large numbers of sequences are added to the reference libraries.
 
 More information is found in each individual script. Generally to identify potential errors, scripts should be run line-by-line in an R console such as RStudio rather than in batch from the terminal (although this will work). All packages required are listed in `scripts/funs.R`, and are standard CRAN packages. The programs HMMER, MAFFT, and RAxML need to be installed on your system. Unfortunately, these scripts are optimised for a Unix system, and I'm unable to offer any Windows support ([Windows is now able to run Ubuntu Linux ](https://tutorials.ubuntu.com/tutorial/tutorial-ubuntu-on-windows#0)).
