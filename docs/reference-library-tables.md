@@ -1,17 +1,17 @@
 SeaDNA 12S rRNA reference library coverage
 ================
 Rupert A. Collins
-29 April 2019
+27 January 2020
 
 ##### Methods and description
 
-This document describes the current sampling for the 12S rRNA fish reference library for the SeaDNA project. The document is a dynamic knitr document and can be updated quickly using the Makefile in SeaDNA/scripts. A list of species from the UK was generated from three sources: GBIF, FishBase, and the Water Framework Directive list of transitional species. This list was filtered to identify synonyms and duplicates, and annotated with FishBase taxonomic classification and FishBase common names. Next a sub-list of "common" species was generated. These were species that we believe are likely to be encountered in eDNA surveys of inshore and transitional waters of the UK, and comprise most of the species in Henderson (2015). Most of the remaining are either introduced species, rarely encountered migrants, oceanic pelagics, or deep sea organisms.
+This document describes the current sampling for the 12S rRNA fish reference library for the SeaDNA project. The document is a dynamic knitr document and can be updated quickly using the Makefile in `scripts/`. A list of species from the UK was generated from three sources: GBIF, FishBase, and the Water Framework Directive list of transitional species. This list was filtered to identify synonyms and duplicates, and annotated with FishBase taxonomic classification and FishBase common names. Next a sub-list of "common" species was generated. These were species that we believe are likely to be encountered in eDNA surveys of inshore and transitional waters of the UK, and comprise most of the species in Henderson (2015). Most of the remaining are either introduced species, rarely encountered migrants, oceanic pelagics, or deep sea organisms.
 
 To calculate coverage we used the Bristol SeaDNA tissue catalogue, and also performed a search of the GenBank/BOLD databases. Because of inconsistencies in how researchers annotate their GenBank submissions and the differing internal coverage of primer pairs for particular gene fragments, we performed a search requesting all mitochondrial DNA. Then we pulled out the ~170 bp Miya fragment from all the mtDNA using a hidden markov model. This enabled us to have greater confidence that useful sequences had not been missed. For the resulting sequences we then tabulated all their metadata from GenBank in order to allow us to curate a custom reference library according to various criteria (e.g. must have reference specimen or locality data).
 
 ##### Results
 
-The total number of UK species is estimated to be around 531. GenBank and BOLD were searched on 2018.04.09 (GenBank version 230). A total of 1904 records were recovered. In terms of tissue sampling, 581 samples have been taken from 93 fish species identified to species level. Of these, 85 species have locality data. Combined with the GenBank sequence data, 90% of the 176 common species have been sampled (Table 2), and 60% of the 355 rare species (Table 3). For the common species, the median number of tissues or GenBank sequences per species is 4.5, while 18 (10%) are represented by only one tissue or sequence. Table 1 lists the species of the highest priority to source.
+The total number of UK species is estimated to be around 530. GenBank and BOLD were searched on 2020-01-23 (GenBank version 235). A total of 1945 records were recovered. In terms of tissue sampling, 588 samples have been taken from 96 fish species identified to species level. Of these, 87 species have locality data. Combined with the GenBank sequence data, 91% of the 176 common species have been sampled (Table 2), and 61% of the 354 rare species (Table 3). For the common species, the median number of tissues or GenBank sequences per species is 5, while 19 (11%) are represented by only one tissue or sequence. Table 1 lists the common species currently missing from reference library, i.e. those of highest priority to source.
 
 ###### Table 1. Highest priority species (common species with no tissue sample or GenBank data).
 
@@ -22,7 +22,6 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Lotidae        | *Gaidropsarus mediterraneus*  | Shore rockling         |
 | Lotidae        | *Gaidropsarus vulgaris*       | Three-bearded rockling |
 | Gobiesocidae   | *Lepadogaster candolii*       | Connemarra clingfish   |
-| Ammodytidae    | *Ammodytes marinus*           | Lesser sand-eel        |
 | Ammodytidae    | *Gymnammodytes semisquamatus* | Smooth sandeel         |
 | Callionymidae  | *Callionymus reticulatus*     | Reticulated dragonet   |
 | Gobiidae       | *Pomatoschistus norvegicus*   | Norway goby            |
@@ -32,8 +31,6 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Agonidae       | *Agonus cataphractus*         | Hooknose               |
 | Syngnathidae   | *Hippocampus guttulatus*      | Long-snouted seahorse  |
 | Syngnathidae   | *Nerophis ophidion*           | Straightnose pipefish  |
-| Scyliorhinidae | *Scyliorhinus stellaris*      | Nursehound             |
-| Triakidae      | *Galeorhinus galeus*          | Tope shark             |
 | Dasyatidae     | *Dasyatis pastinaca*          | Common stingray        |
 
 ###### Table 2. All common UK species with counts for tissue samples collected and sequence data obtained from GenBank (number of individuals).
@@ -52,22 +49,22 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Engraulidae     | *Engraulis encrasicolus*       | European anchovy         |             1|              4|
 | Cobitidae       | *Cobitis taenia*               | Spined loach             |              |              1|
 | Cyprinidae      | *Abramis brama*                | Freshwater bream         |              |              6|
-| Cyprinidae      | *Alburnus alburnus*            | Bleak                    |              |              2|
-| Cyprinidae      | *Barbus barbus*                | Barbel                   |              |              3|
+| Cyprinidae      | *Alburnus alburnus*            | Bleak                    |              |              4|
+| Cyprinidae      | *Barbus barbus*                | Barbel                   |              |              6|
 | Cyprinidae      | *Blicca bjoerkna*              | White bream              |              |              4|
-| Cyprinidae      | *Carassius auratus*            | Goldfish                 |              |             61|
+| Cyprinidae      | *Carassius auratus*            | Goldfish                 |              |             56|
 | Cyprinidae      | *Carassius carassius*          | Crucian carp             |              |              2|
-| Cyprinidae      | *Cyprinus carpio*              | Common carp              |              |             57|
-| Cyprinidae      | *Gobio gobio*                  | Gudgeon                  |              |              5|
+| Cyprinidae      | *Cyprinus carpio*              | Common carp              |              |             59|
+| Cyprinidae      | *Gobio gobio*                  | Gudgeon                  |              |              8|
 | Cyprinidae      | *Leuciscus idus*               | Ide                      |              |               |
-| Cyprinidae      | *Leuciscus leuciscus*          | Common dace              |              |              3|
-| Cyprinidae      | *Phoxinus phoxinus*            | Eurasian minnow          |              |              9|
-| Cyprinidae      | *Pseudorasbora parva*          | Stone moroko             |              |              8|
+| Cyprinidae      | *Leuciscus leuciscus*          | Common dace              |              |              5|
+| Cyprinidae      | *Phoxinus phoxinus*            | Eurasian minnow          |              |             11|
+| Cyprinidae      | *Pseudorasbora parva*          | Stone moroko             |              |              9|
 | Cyprinidae      | *Rutilus rutilus*              | Roach                    |              |              3|
 | Cyprinidae      | *Scardinius erythrophthalmus*  | Rudd                     |              |              2|
-| Cyprinidae      | *Squalius cephalus*            | Chub                     |              |              4|
+| Cyprinidae      | *Squalius cephalus*            | Chub                     |              |              5|
 | Cyprinidae      | *Tinca tinca*                  | Tench                    |              |              6|
-| Nemacheilidae   | *Barbatula barbatula*          | Stone loach              |              |              5|
+| Nemacheilidae   | *Barbatula barbatula*          | Stone loach              |              |              7|
 | Esocidae        | *Esox lucius*                  | Northern pike            |              |              8|
 | Gadidae         | *Gadiculus argenteus*          | Silvery pout             |              |              2|
 | Gadidae         | *Gadus morhua*                 | Atlantic cod             |             1|            170|
@@ -78,8 +75,8 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Gadidae         | *Pollachius virens*            | Saithe                   |              |              9|
 | Gadidae         | *Raniceps raninus*             | Tadpole fish             |              |              4|
 | Gadidae         | *Trisopterus esmarkii*         | Norway pout              |              |              3|
-| Gadidae         | *Trisopterus luscus*           | Pouting                  |             4|              1|
-| Gadidae         | *Trisopterus minutus*          | Poor cod                 |             6|              3|
+| Gadidae         | *Trisopterus luscus*           | Pouting                  |             5|              1|
+| Gadidae         | *Trisopterus minutus*          | Poor cod                 |             5|              3|
 | Lotidae         | *Ciliata mustela*              | Fivebeard rockling       |            11|              2|
 | Lotidae         | *Ciliata septentrionalis*      | Northern rockling        |             3|               |
 | Lotidae         | *Enchelyopus cimbrius*         | Fourbeard rockling       |             1|              2|
@@ -87,24 +84,24 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Lotidae         | *Gaidropsarus vulgaris*        | Three-bearded rockling   |              |               |
 | Lotidae         | *Molva molva*                  | Ling                     |              |              3|
 | Merlucciidae    | *Merluccius merluccius*        | European hake            |             1|              3|
-| Gasterosteidae  | *Gasterosteus aculeatus*       | Three-spined stickleback |              |             10|
+| Gasterosteidae  | *Gasterosteus aculeatus*       | Three-spined stickleback |              |             11|
 | Gasterosteidae  | *Pungitius pungitius*          | Ninespine stickleback    |             1|              8|
 | Gasterosteidae  | *Spinachia spinachia*          | Sea stickleback          |             7|              2|
 | Gobiesocidae    | *Apletodon dentatus*           | Small-headed clingfish   |             1|               |
 | Gobiesocidae    | *Diplecogaster bimaculata*     | Two-spotted clingfish    |             9|               |
 | Gobiesocidae    | *Lepadogaster candolii*        | Connemarra clingfish     |              |               |
 | Gobiesocidae    | *Lepadogaster purpurea*        | Cornish sucker           |             3|               |
-| Lophiidae       | *Lophius piscatorius*          | Angler                   |             3|              3|
+| Lophiidae       | *Lophius piscatorius*          | Angler                   |             3|              4|
+| Mugilidae       | *Chelon auratus*               | Golden grey mullet       |              |              4|
 | Mugilidae       | *Chelon labrosus*              | Thicklip grey mullet     |              |              6|
-| Mugilidae       | *Liza aurata*                  | Golden grey mullet       |              |              4|
-| Mugilidae       | *Liza ramada*                  | Thinlip grey mullet      |            13|              2|
+| Mugilidae       | *Chelon ramada*                | Thinlip grey mullet      |            13|              2|
 | Osmeridae       | *Osmerus eperlanus*            | European smelt           |              |              2|
-| Ammodytidae     | *Ammodytes marinus*            | Lesser sand-eel          |              |               |
+| Ammodytidae     | *Ammodytes marinus*            | Lesser sand-eel          |             3|               |
 | Ammodytidae     | *Ammodytes tobianus*           | Small sandeel            |             8|               |
 | Ammodytidae     | *Gymnammodytes semisquamatus*  | Smooth sandeel           |              |               |
 | Ammodytidae     | *Hyperoplus immaculatus*       | Greater sand-eel         |             1|               |
 | Ammodytidae     | *Hyperoplus lanceolatus*       | Great sandeel            |             3|               |
-| Anarhichadidae  | *Anarhichas lupus*             | Atlantic wolffish        |              |             88|
+| Anarhichadidae  | *Anarhichas lupus*             | Atlantic wolffish        |              |             89|
 | Blenniidae      | *Blennius ocellaris*           | Butterfly blenny         |             8|               |
 | Blenniidae      | *Coryphoblennius galerita*     | Montagu's blenny         |            17|               |
 | Blenniidae      | *Lipophrys pholis*             | Shanny                   |            33|               |
@@ -123,7 +120,7 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Gobiidae        | *Gobius paganellus*            | Rock goby                |            11|              1|
 | Gobiidae        | *Lesueurigobius friesii*       | Fries's goby             |              |              1|
 | Gobiidae        | *Pomatoschistus lozanoi*       | Lozano's goby            |             3|               |
-| Gobiidae        | *Pomatoschistus microps*       | Common goby              |            12|               |
+| Gobiidae        | *Pomatoschistus microps*       | Common goby              |            14|               |
 | Gobiidae        | *Pomatoschistus minutus*       | Sand goby                |            21|              1|
 | Gobiidae        | *Pomatoschistus norvegicus*    | Norway goby              |              |               |
 | Gobiidae        | *Pomatoschistus pictus*        | Painted goby             |            11|               |
@@ -137,21 +134,21 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Moronidae       | *Dicentrarchus labrax*         | European seabass         |             7|              3|
 | Mullidae        | *Mullus surmuletus*            | Surmullet                |             4|               |
 | Percidae        | *Gymnocephalus cernua*         | Ruffe                    |              |              3|
-| Percidae        | *Perca fluviatilis*            | European perch           |              |             17|
+| Percidae        | *Perca fluviatilis*            | European perch           |              |             18|
 | Percidae        | *Sander lucioperca*            | Pike-perch               |              |              6|
 | Pholidae        | *Pholis gunnellus*             | Rock gunnel              |            11|              3|
 | Scombridae      | *Scomber scombrus*             | Atlantic mackerel        |             7|              3|
 | Sparidae        | *Pagellus bogaraveo*           | Blackspot seabream       |             1|              2|
 | Sparidae        | *Pagrus pagrus*                | Red porgy                |              |              3|
-| Sparidae        | *Sparus aurata*                | Gilthead seabream        |             6|              3|
-| Sparidae        | *Spondyliosoma cantharus*      | Black seabream           |             6|               |
+| Sparidae        | *Sparus aurata*                | Gilthead seabream        |             7|              2|
+| Sparidae        | *Spondyliosoma cantharus*      | Black seabream           |             5|               |
 | Stichaeidae     | *Chirolophis ascanii*          | Yarrell's blenny         |              |               |
-| Stichaeidae     | *Lumpenus lampretaeformis*     | Snakeblenny              |              |              1|
+| Stichaeidae     | *Lumpenus lampretaeformis*     | Snakeblenny              |              |              2|
 | Trachinidae     | *Echiichthys vipera*           | Lesser weever            |             6|               |
 | Trachinidae     | *Trachinus draco*              | Greater weever           |             5|              2|
 | Zoarcidae       | *Zoarces viviparus*            | Eelpout                  |              |              1|
 | Bothidae        | *Arnoglossus laterna*          | Mediterranean scaldfish  |             5|               |
-| Pleuronectidae  | *Glyptocephalus cynoglossus*   | Witch flounder           |             1|              1|
+| Pleuronectidae  | *Glyptocephalus cynoglossus*   | Witch flounder           |             1|              3|
 | Pleuronectidae  | *Hippoglossoides platessoides* | American plaice          |              |              3|
 | Pleuronectidae  | *Hippoglossus hippoglossus*    | Atlantic halibut         |             1|              6|
 | Pleuronectidae  | *Limanda limanda*              | Common dab               |             6|              1|
@@ -160,10 +157,10 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Pleuronectidae  | *Pleuronectes platessa*        | European plaice          |            10|               |
 | Scophthalmidae  | *Lepidorhombus whiffiagonis*   | Megrim                   |             4|               |
 | Scophthalmidae  | *Phrynorhombus norvegicus*     | Norwegian topknot        |             9|               |
-| Scophthalmidae  | *Scophthalmus maximus*         | Turbot                   |             1|              2|
+| Scophthalmidae  | *Scophthalmus maximus*         | Turbot                   |             1|              3|
 | Scophthalmidae  | *Scophthalmus rhombus*         | Brill                    |             5|               |
 | Scophthalmidae  | *Zeugopterus punctatus*        | Topknot                  |              |               |
-| Scophthalmidae  | *Zeugopterus regius*           | Eckstrom's topknot       |             5|               |
+| Scophthalmidae  | *Zeugopterus regius*           | Eckstr<f6>m's topknot    |             5|               |
 | Soleidae        | *Buglossidium luteum*          | Solenette                |             9|               |
 | Soleidae        | *Microchirus variegatus*       | Thickback sole           |             5|               |
 | Soleidae        | *Pegusa lascaris*              | Sand sole                |             8|               |
@@ -175,19 +172,19 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Agonidae        | *Agonus cataphractus*          | Hooknose                 |              |               |
 | Cottidae        | *Cottus gobio*                 | Bullhead                 |              |              3|
 | Cottidae        | *Micrenophrys lilljeborgii*    | Norway bullhead          |             1|               |
-| Cottidae        | *Myoxocephalus scorpius*       | Shorthorn sculpin        |              |              2|
+| Cottidae        | *Myoxocephalus scorpius*       | Shorthorn sculpin        |              |              4|
 | Cottidae        | *Taurulus bubalis*             | Longspined bullhead      |            13|              1|
 | Cyclopteridae   | *Cyclopterus lumpus*           | Lumpfish                 |              |              2|
 | Liparidae       | *Liparis liparis*              | Striped seasnail         |             4|               |
 | Liparidae       | *Liparis montagui*             | Montagus seasnail        |             2|               |
 | Triglidae       | *Chelidonichthys cuculus*      | Red gurnard              |            12|               |
+| Triglidae       | *Chelidonichthys lastoviza*    | Streaked gurnard         |             5|               |
 | Triglidae       | *Chelidonichthys lucerna*      | Tub gurnard              |             6|               |
 | Triglidae       | *Eutrigla gurnardus*           | Grey gurnard             |             8|               |
-| Triglidae       | *Trigloporus lastoviza*        | Streaked gurnard         |             5|               |
 | Siluridae       | *Silurus glanis*               | Wels catfish             |              |              2|
 | Syngnathidae    | *Entelurus aequoreus*          | Snake pipefish           |             1|               |
 | Syngnathidae    | *Hippocampus guttulatus*       | Long-snouted seahorse    |              |               |
-| Syngnathidae    | *Hippocampus hippocampus*      | Short snouted seahorse   |             6|               |
+| Syngnathidae    | *Hippocampus hippocampus*      | Short snouted seahorse   |             6|              2|
 | Syngnathidae    | *Nerophis lumbriciformis*      | Worm pipefish            |             6|               |
 | Syngnathidae    | *Nerophis ophidion*            | Straightnose pipefish    |              |               |
 | Syngnathidae    | *Syngnathus acus*              | Greater pipefish         |            11|               |
@@ -201,8 +198,8 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Petromyzontidae | *Petromyzon marinus*           | Sea lamprey              |              |              3|
 | Carcharhinidae  | *Prionace glauca*              | Blue shark               |              |              5|
 | Scyliorhinidae  | *Scyliorhinus canicula*        | Lesser spotted dogfish   |             3|              1|
-| Scyliorhinidae  | *Scyliorhinus stellaris*       | Nursehound               |              |               |
-| Triakidae       | *Galeorhinus galeus*           | Tope shark               |              |               |
+| Scyliorhinidae  | *Scyliorhinus stellaris*       | Nursehound               |             1|               |
+| Triakidae       | *Galeorhinus galeus*           | Tope shark               |             1|               |
 | Triakidae       | *Mustelus asterias*            | Starry smooth-hound      |             3|               |
 | Alopiidae       | *Alopias vulpinus*             | Thresher                 |              |              4|
 | Cetorhinidae    | *Cetorhinus maximus*           | Basking shark            |              |             25|
@@ -223,7 +220,6 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 |:-------------------|:-------------------------------|:------------------------------|-------------:|--------------:|
 | Acipenseridae      | *Acipenser ruthenus*           | Sterlet sturgeon              |              |              4|
 | Acipenseridae      | *Acipenser sturio*             | Sturgeon                      |              |              2|
-| Anguillidae        | *Anguilla bengalensis*         | Indian mottled eel            |              |              4|
 | Derichthyidae      | *Nessorhamphus ingolfianus*    | Duckbill oceanic eel          |              |              5|
 | Muraenidae         | *Muraena helena*               | Mediterranean moray           |              |              3|
 | Nemichthyidae      | *Avocettina infans*            | Avocet snipe eel              |              |              5|
@@ -243,7 +239,7 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Paralepididae      | *Paralepis coregonoides*       | Sharpchin barracudina         |              |               |
 | Belonidae          | *Belone svetovidovi*           |                               |              |               |
 | Exocoetidae        | *Cheilopogon heterurus*        | Mediterranean flyingfish      |              |              1|
-| Exocoetidae        | *Hirundichthys rondeletii*     | Black wing flyingfish         |              |              3|
+| Exocoetidae        | *Hirundichthys rondeletii*     | Black wing flyingfish         |              |              2|
 | Scomberesocidae    | *Scomberesox saurus*           | Atlantic saury                |              |               |
 | Anoplogastridae    | *Anoplogaster cornuta*         | Common fangtooth              |              |              3|
 | Berycidae          | *Beryx decadactylus*           | Alfonsino                     |              |              4|
@@ -254,11 +250,11 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Cobitidae          | *Misgurnus fossilis*           | Weatherfish                   |              |              2|
 | Cyprinidae         | *Leucaspius delineatus*        | Belica                        |              |              2|
 | Cyprinidae         | *Pimephales promelas*          | Fathead minnow                |              |              6|
-| Cyprinidae         | *Rhodeus amarus*               |                               |              |              3|
+| Cyprinidae         | *Rhodeus amarus*               | European bitterling           |              |              3|
 | Cyprinidae         | *Rhodeus sericeus*             | Bitterling                    |              |              3|
 | Poeciliidae        | *Poecilia reticulata*          | Guppy                         |              |              5|
 | Gadidae            | *Gadiculus thori*              |                               |              |               |
-| Lotidae            | *Brosme brosme*                | Tusk                          |              |              2|
+| Lotidae            | *Brosme brosme*                | Cusk                          |              |              2|
 | Lotidae            | *Gaidropsarus argentatus*      | Arctic rockling               |              |              3|
 | Lotidae            | *Gaidropsarus macrophthalmus*  | Bigeye rockling               |              |               |
 | Lotidae            | *Lota lota*                    | Burbot                        |              |              8|
@@ -270,7 +266,7 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Macrouridae        | *Coelorinchus occa*            | Swordsnout grenadier          |              |              1|
 | Macrouridae        | *Coryphaenoides armatus*       | Abyssal grenadier             |              |              1|
 | Macrouridae        | *Coryphaenoides brevibarbis*   |                               |              |              1|
-| Macrouridae        | *Coryphaenoides guentheri*     | Gunther's grenadier           |              |              2|
+| Macrouridae        | *Coryphaenoides guentheri*     | G<fc>nther's grenadier        |              |              2|
 | Macrouridae        | *Coryphaenoides mediterraneus* | Mediterranean grenadier       |              |               |
 | Macrouridae        | *Coryphaenoides rupestris*     | Roundnose grenadier           |              |              4|
 | Macrouridae        | *Macrourus berglax*            | Roughhead grenadier           |              |              2|
@@ -279,7 +275,7 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Macrouridae        | *Nezumia sclerorhynchus*       | Roughtip grenadier            |              |               |
 | Macrouridae        | *Trachyrincus murrayi*         | Roughnose grenadier           |              |              4|
 | Macrouridae        | *Trachyrincus scabrus*         | Roughsnout grenadier          |              |              1|
-| Melanonidae        | *Melanonus zugmayeri*          | Arrowtail                     |              |              3|
+| Melanonidae        | *Melanonus zugmayeri*          | Arrowtail                     |              |              4|
 | Moridae            | *Antimora rostrata*            | Blue antimora                 |              |              3|
 | Moridae            | *Guttigadus latifrons*         |                               |              |               |
 | Moridae            | *Halargyreus johnsonii*        | Slender codling               |              |              2|
@@ -297,7 +293,7 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Melanocetidae      | *Melanocetus johnsonii*        | Humpback anglerfish           |              |              2|
 | Oneirodidae        | *Chaenophryne draco*           | Smooth dreamer                |              |              1|
 | Oneirodidae        | *Oneirodes eschrichtii*        | Bulbous dreamer               |              |               |
-| Mugilidae          | *Mugil cephalus*               | Flathead grey mullet          |              |             28|
+| Mugilidae          | *Mugil cephalus*               | Flathead grey mullet          |              |             29|
 | Myctophidae        | *Benthosema glaciale*          | Glacier lantern fish          |              |              1|
 | Myctophidae        | *Bolinichthys supralateralis*  | Stubby lanternfish            |              |               |
 | Myctophidae        | *Ceratoscopelus maderensis*    | Madeira lantern fish          |              |              1|
@@ -358,7 +354,7 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Platytroctidae     | *Searsia koefoedi*             | Koefoed's searsid             |              |               |
 | Ammodytidae        | *Ammodytes americanus*         | American sand lance           |              |              1|
 | Ammodytidae        | *Gymnammodytes cicerelus*      | Mediterranean sand eel        |              |               |
-| Anarhichadidae     | *Anarhichas denticulatus*      | Northern wolffish             |              |             23|
+| Anarhichadidae     | *Anarhichas denticulatus*      | Northern wolffish             |              |             24|
 | Anarhichadidae     | *Anarhichas minor*             | Spotted wolffish              |              |             20|
 | Bramidae           | *Brama brama*                  | Atlantic pomfret              |              |               |
 | Bramidae           | *Pterycombus brama*            | Atlantic fanfish              |              |               |
@@ -377,8 +373,8 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Chiasmodontidae    | *Chiasmodon niger*             | Black swallower               |              |               |
 | Chiasmodontidae    | *Pseudoscopelus altipinnis*    |                               |              |               |
 | Cichlidae          | *Cichlasoma bimaculatum*       | Black acara                   |              |               |
-| Cichlidae          | *Oreochromis niloticus*        | Nile tilapia                  |              |             10|
-| Cichlidae          | *Tilapia zillii*               | Redbelly tilapia              |              |              2|
+| Cichlidae          | *Coptodon zillii*              | Redbelly tilapia              |              |              2|
+| Cichlidae          | *Oreochromis niloticus*        | Nile tilapia                  |              |             12|
 | Echeneidae         | *Remora remora*                | Shark sucker                  |              |              2|
 | Epigonidae         | *Epigonus telescopus*          | Black cardinal fish           |              |               |
 | Gempylidae         | *Lepidocybium flavobrunneum*   | Escolar                       |              |              4|
@@ -396,7 +392,7 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Labridae           | *Acantholabrus palloni*        | Scale-rayed wrasse            |              |              1|
 | Labridae           | *Coris julis*                  | Mediterranean rainbow wrasse  |              |              2|
 | Lethrinidae        | *Lethrinus nebulosus*          | Spangled emperor              |              |              3|
-| Luvaridae          | *Luvarus imperialis*           | Luvar                         |              |              4|
+| Luvaridae          | *Luvarus imperialis*           | Luvar                         |              |              5|
 | Mullidae           | *Mullus barbatus*              | Red mullet                    |              |               |
 | Nomeidae           | *Cubiceps gracilis*            | Driftfish                     |              |               |
 | Nomeidae           | *Psenes maculatus*             | Silver driftfish              |              |              2|
@@ -405,7 +401,7 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Sciaenidae         | *Umbrina cirrosa*              | Shi drum                      |              |               |
 | Scombridae         | *Auxis rochei*                 | Bullet tuna                   |              |              6|
 | Scombridae         | *Auxis thazard*                | Frigate tuna                  |              |              4|
-| Scombridae         | *Euthynnus alletteratus*       | Little tunny                  |              |              3|
+| Scombridae         | *Euthynnus alletteratus*       | Little tunny                  |              |              4|
 | Scombridae         | *Katsuwonus pelamis*           | Skipjack tuna                 |              |              4|
 | Scombridae         | *Orcynopsis unicolor*          | Plain bonito                  |              |               |
 | Scombridae         | *Sarda sarda*                  | Atlantic bonito               |              |               |
@@ -420,22 +416,22 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Sparidae           | *Pagellus acarne*              | Axillary seabream             |              |              2|
 | Sparidae           | *Pagellus erythrinus*          | Common pandora                |              |              2|
 | Sparidae           | *Sarpa salpa*                  | Salema                        |              |               |
-| Stichaeidae        | *Leptoclinus maculatus*        | Daubed shanny                 |              |              5|
+| Stichaeidae        | *Leptoclinus maculatus*        | Daubed shanny                 |              |              6|
 | Stromateidae       | *Peprilus triacanthus*         | Atlantic butterfish           |              |              3|
 | Trichiuridae       | *Aphanopus carbo*              | Black scabbardfish            |              |              4|
 | Trichiuridae       | *Lepidopus caudatus*           | Silver scabbardfish           |              |              1|
-| Trichiuridae       | *Trichiurus lepturus*          | Largehead hairtail            |              |             11|
+| Trichiuridae       | *Trichiurus lepturus*          | Largehead hairtail            |              |             13|
 | Tripterygiidae     | *Tripterygion delaisi*         | Black-faced blenny            |              |              1|
 | Xiphiidae          | *Xiphias gladius*              | Swordfish                     |              |              4|
-| Zoarcidae          | *Lycenchelys sarsii*           | Sar's wolf eel                |              |               |
-| Zoarcidae          | *Lycodes esmarkii*             | Greater eelpout               |              |               |
+| Zoarcidae          | *Lycenchelys sarsii*           | Sar's wolf eel                |              |              1|
+| Zoarcidae          | *Lycodes esmarkii*             | Greater eelpout               |              |              2|
 | Zoarcidae          | *Lycodes eudipleurostictus*    | Doubleline eelpout            |              |               |
 | Zoarcidae          | *Lycodes pallidus*             | Pale eelpout                  |              |               |
 | Zoarcidae          | *Lycodes squamiventer*         | Scalebelly eelpout            |              |               |
 | Zoarcidae          | *Lycodes terraenovae*          |                               |              |              1|
 | Zoarcidae          | *Lycodes vahlii*               | Vahl's eelpout                |              |              1|
 | Zoarcidae          | *Lycodonus flagellicauda*      |                               |              |               |
-| Zoarcidae          | *Melanostigma atlanticum*      | Atlantic soft pout            |              |              1|
+| Zoarcidae          | *Melanostigma atlanticum*      | Atlantic soft pout            |              |              2|
 | Bothidae           | *Arnoglossus imperialis*       | Imperial scaldfish            |              |               |
 | Bothidae           | *Arnoglossus thori*            | Thor's scaldfish              |              |               |
 | Pleuronectidae     | *Reinhardtius hippoglossoides* | Greenland halibut             |              |             10|
@@ -456,7 +452,7 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Salmonidae         | *Salmo ferox*                  |                               |              |               |
 | Salmonidae         | *Salmo nigripinnis*            |                               |              |               |
 | Salmonidae         | *Salmo stomachicus*            |                               |              |               |
-| Salmonidae         | *Salvelinus alpinus*           | Arctic char                   |              |              7|
+| Salmonidae         | *Salvelinus alpinus*           | Arctic char                   |              |              9|
 | Salmonidae         | *Salvelinus fontinalis*        | Brook trout                   |              |             10|
 | Salmonidae         | *Salvelinus gracillimus*       |                               |              |               |
 | Salmonidae         | *Salvelinus inframundus*       |                               |              |               |
@@ -471,7 +467,7 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Salmonidae         | *Salvelinus youngeri*          | Golden charr                  |              |               |
 | Cottidae           | *Artediellus atlanticus*       | Atlantic hookear sculpin      |              |               |
 | Cottidae           | *Icelus bicornis*              | Twohorn sculpin               |              |               |
-| Cottidae           | *Triglops murrayi*             | Moustache sculpin             |              |              1|
+| Cottidae           | *Triglops murrayi*             | Moustache sculpin             |              |              2|
 | Dactylopteridae    | *Dactylopterus volitans*       | Flying gurnard                |              |              2|
 | Liparidae          | *Careproctus longipinnis*      | Longfin snailfish             |              |               |
 | Liparidae          | *Careproctus reinhardti*       | Sea tadpole                   |              |              1|
@@ -480,18 +476,18 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Liparidae          | *Paraliparis hystrix*          |                               |              |               |
 | Liparidae          | *Paraliparis kreffti*          |                               |              |               |
 | Peristediidae      | *Peristedion cataphractum*     | African armoured searobin     |              |               |
-| Psychrolutidae     | *Cottunculus microps*          | Polar sculpin                 |              |               |
+| Psychrolutidae     | *Cottunculus microps*          | Polar sculpin                 |              |              1|
 | Psychrolutidae     | *Cottunculus thomsonii*        | Pallid sculpin                |              |              3|
 | Scorpaenidae       | *Scorpaena porcus*             | Black scorpionfish            |              |               |
 | Scorpaenidae       | *Scorpaena scrofa*             | Red scorpionfish              |              |               |
-| Sebastidae         | *Helicolenus dactylopterus*    | Blackbelly rosefish           |              |              1|
+| Sebastidae         | *Helicolenus dactylopterus*    | Blackbelly rosefish           |              |              3|
 | Sebastidae         | *Sebastes norvegicus*          | Golden redfish                |              |              1|
-| Sebastidae         | *Sebastes viviparus*           | Norway redfish                |              |               |
+| Sebastidae         | *Sebastes viviparus*           | Norway redfish                |              |              1|
 | Sebastidae         | *Trachyscorpia cristulata*     | Atlantic thornyhead           |              |               |
 | Triglidae          | *Chelidonichthys obscurus*     | Longfin gurnard               |              |               |
 | Triglidae          | *Trigla lyra*                  | Piper gurnard                 |              |               |
 | Ictaluridae        | *Ameiurus melas*               | Black bullhead                |              |              2|
-| Ictaluridae        | *Ameiurus nebulosus*           | Brown bullhead                |              |              5|
+| Ictaluridae        | *Ameiurus nebulosus*           | Brown bullhead                |              |              6|
 | Ictaluridae        | *Ictalurus punctatus*          | Channel catfish               |              |             10|
 | Melamphaidae       | *Melamphaes suborbitalis*      | Shoulderspine bigscale        |              |               |
 | Melamphaidae       | *Poromitra nigriceps*          |                               |              |               |
@@ -569,8 +565,8 @@ The total number of UK species is estimated to be around 531. GenBank and BOLD w
 | Somniosidae        | *Somniosus rostratus*          | Little sleeper shark          |              |               |
 | Somniosidae        | *Zameus squamulosus*           | Velvet dogfish                |              |               |
 | Squatinidae        | *Squatina squatina*            | Angelshark                    |              |              1|
+| Torpedinidae       | *Tetronarce nobiliana*         | Electric ray                  |              |               |
 | Torpedinidae       | *Torpedo marmorata*            | Marbled electric ray          |              |              1|
-| Torpedinidae       | *Torpedo nobiliana*            | Electric ray                  |              |               |
 | Chimaeridae        | *Chimaera monstrosa*           | Rabbit fish                   |              |              3|
 | Chimaeridae        | *Chimaera opalescens*          | Opal chimaera                 |              |              4|
 | Rhinochimaeridae   | *Harriotta raleighana*         | Pacific longnose chimaera     |              |              3|

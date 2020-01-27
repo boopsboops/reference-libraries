@@ -27,12 +27,12 @@ body {
 
 <h1 id="seadna-12s-rrna-reference-library-coverage">SeaDNA 12S rRNA reference library coverage</h1>
 <p>Rupert A. Collins<br />
-29 April 2019</p>
+27 January 2020</p>
 <h5 id="methods-and-description">Methods and description</h5>
-<p>This document describes the current sampling for the 12S rRNA fish reference library for the SeaDNA project. The document is a dynamic knitr document and can be updated quickly using the Makefile in SeaDNA/scripts. A list of species from the UK was generated from three sources: GBIF, FishBase, and the Water Framework Directive list of transitional species. This list was filtered to identify synonyms and duplicates, and annotated with FishBase taxonomic classification and FishBase common names. Next a sub-list of &quot;common&quot; species was generated. These were species that we believe are likely to be encountered in eDNA surveys of inshore and transitional waters of the UK, and comprise most of the species in Henderson (2015). Most of the remaining are either introduced species, rarely encountered migrants, oceanic pelagics, or deep sea organisms.</p>
+<p>This document describes the current sampling for the 12S rRNA fish reference library for the SeaDNA project. The document is a dynamic knitr document and can be updated quickly using the Makefile in <code>scripts/</code>. A list of species from the UK was generated from three sources: GBIF, FishBase, and the Water Framework Directive list of transitional species. This list was filtered to identify synonyms and duplicates, and annotated with FishBase taxonomic classification and FishBase common names. Next a sub-list of &quot;common&quot; species was generated. These were species that we believe are likely to be encountered in eDNA surveys of inshore and transitional waters of the UK, and comprise most of the species in Henderson (2015). Most of the remaining are either introduced species, rarely encountered migrants, oceanic pelagics, or deep sea organisms.</p>
 <p>To calculate coverage we used the Bristol SeaDNA tissue catalogue, and also performed a search of the GenBank/BOLD databases. Because of inconsistencies in how researchers annotate their GenBank submissions and the differing internal coverage of primer pairs for particular gene fragments, we performed a search requesting all mitochondrial DNA. Then we pulled out the ~170 bp Miya fragment from all the mtDNA using a hidden markov model. This enabled us to have greater confidence that useful sequences had not been missed. For the resulting sequences we then tabulated all their metadata from GenBank in order to allow us to curate a custom reference library according to various criteria (e.g. must have reference specimen or locality data).</p>
 <h5 id="results">Results</h5>
-<p>The total number of UK species is estimated to be around 531. GenBank and BOLD were searched on 2018.04.09 (GenBank version 230). A total of 1904 records were recovered. In terms of tissue sampling, 581 samples have been taken from 93 fish species identified to species level. Of these, 85 species have locality data. Combined with the GenBank sequence data, 90% of the 176 common species have been sampled (Table 2), and 60% of the 355 rare species (Table 3). For the common species, the median number of tissues or GenBank sequences per species is 4.5, while 18 (10%) are represented by only one tissue or sequence. Table 1 lists the species of the highest priority to source.</p>
+<p>The total number of UK species is estimated to be around 530. GenBank and BOLD were searched on 2020-01-23 (GenBank version 235). A total of 1945 records were recovered. In terms of tissue sampling, 588 samples have been taken from 96 fish species identified to species level. Of these, 87 species have locality data. Combined with the GenBank sequence data, 91% of the 176 common species have been sampled (Table 2), and 61% of the 354 rare species (Table 3). For the common species, the median number of tissues or GenBank sequences per species is 5, while 19 (11%) are represented by only one tissue or sequence. Table 1 lists the common species currently missing from reference library, i.e. those of highest priority to source.</p>
 <h6 id="table-1.-highest-priority-species-common-species-with-no-tissue-sample-or-genbank-data.">Table 1. Highest priority species (common species with no tissue sample or GenBank data).</h6>
 <table>
 <thead>
@@ -70,65 +70,50 @@ body {
 </tr>
 <tr class="even">
 <td align="left">Ammodytidae</td>
-<td align="left"><em>Ammodytes marinus</em></td>
-<td align="left">Lesser sand-eel</td>
-</tr>
-<tr class="odd">
-<td align="left">Ammodytidae</td>
 <td align="left"><em>Gymnammodytes semisquamatus</em></td>
 <td align="left">Smooth sandeel</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Callionymidae</td>
 <td align="left"><em>Callionymus reticulatus</em></td>
 <td align="left">Reticulated dragonet</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Pomatoschistus norvegicus</em></td>
 <td align="left">Norway goby</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Thorogobius ephippiatus</em></td>
 <td align="left">Leopard-spotted goby</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stichaeidae</td>
 <td align="left"><em>Chirolophis ascanii</em></td>
 <td align="left">Yarrell's blenny</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Scophthalmidae</td>
 <td align="left"><em>Zeugopterus punctatus</em></td>
 <td align="left">Topknot</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Agonidae</td>
 <td align="left"><em>Agonus cataphractus</em></td>
 <td align="left">Hooknose</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Syngnathidae</td>
 <td align="left"><em>Hippocampus guttulatus</em></td>
 <td align="left">Long-snouted seahorse</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Syngnathidae</td>
 <td align="left"><em>Nerophis ophidion</em></td>
 <td align="left">Straightnose pipefish</td>
 </tr>
-<tr class="even">
-<td align="left">Scyliorhinidae</td>
-<td align="left"><em>Scyliorhinus stellaris</em></td>
-<td align="left">Nursehound</td>
-</tr>
 <tr class="odd">
-<td align="left">Triakidae</td>
-<td align="left"><em>Galeorhinus galeus</em></td>
-<td align="left">Tope shark</td>
-</tr>
-<tr class="even">
 <td align="left">Dasyatidae</td>
 <td align="left"><em>Dasyatis pastinaca</em></td>
 <td align="left">Common stingray</td>
@@ -236,14 +221,14 @@ body {
 <td align="left"><em>Alburnus alburnus</em></td>
 <td align="left">Bleak</td>
 <td align="right"></td>
-<td align="right">2</td>
+<td align="right">4</td>
 </tr>
 <tr class="even">
 <td align="left">Cyprinidae</td>
 <td align="left"><em>Barbus barbus</em></td>
 <td align="left">Barbel</td>
 <td align="right"></td>
-<td align="right">3</td>
+<td align="right">6</td>
 </tr>
 <tr class="odd">
 <td align="left">Cyprinidae</td>
@@ -257,7 +242,7 @@ body {
 <td align="left"><em>Carassius auratus</em></td>
 <td align="left">Goldfish</td>
 <td align="right"></td>
-<td align="right">61</td>
+<td align="right">56</td>
 </tr>
 <tr class="odd">
 <td align="left">Cyprinidae</td>
@@ -271,14 +256,14 @@ body {
 <td align="left"><em>Cyprinus carpio</em></td>
 <td align="left">Common carp</td>
 <td align="right"></td>
-<td align="right">57</td>
+<td align="right">59</td>
 </tr>
 <tr class="odd">
 <td align="left">Cyprinidae</td>
 <td align="left"><em>Gobio gobio</em></td>
 <td align="left">Gudgeon</td>
 <td align="right"></td>
-<td align="right">5</td>
+<td align="right">8</td>
 </tr>
 <tr class="even">
 <td align="left">Cyprinidae</td>
@@ -292,21 +277,21 @@ body {
 <td align="left"><em>Leuciscus leuciscus</em></td>
 <td align="left">Common dace</td>
 <td align="right"></td>
-<td align="right">3</td>
+<td align="right">5</td>
 </tr>
 <tr class="even">
 <td align="left">Cyprinidae</td>
 <td align="left"><em>Phoxinus phoxinus</em></td>
 <td align="left">Eurasian minnow</td>
 <td align="right"></td>
-<td align="right">9</td>
+<td align="right">11</td>
 </tr>
 <tr class="odd">
 <td align="left">Cyprinidae</td>
 <td align="left"><em>Pseudorasbora parva</em></td>
 <td align="left">Stone moroko</td>
 <td align="right"></td>
-<td align="right">8</td>
+<td align="right">9</td>
 </tr>
 <tr class="even">
 <td align="left">Cyprinidae</td>
@@ -327,7 +312,7 @@ body {
 <td align="left"><em>Squalius cephalus</em></td>
 <td align="left">Chub</td>
 <td align="right"></td>
-<td align="right">4</td>
+<td align="right">5</td>
 </tr>
 <tr class="odd">
 <td align="left">Cyprinidae</td>
@@ -341,7 +326,7 @@ body {
 <td align="left"><em>Barbatula barbatula</em></td>
 <td align="left">Stone loach</td>
 <td align="right"></td>
-<td align="right">5</td>
+<td align="right">7</td>
 </tr>
 <tr class="odd">
 <td align="left">Esocidae</td>
@@ -417,14 +402,14 @@ body {
 <td align="left">Gadidae</td>
 <td align="left"><em>Trisopterus luscus</em></td>
 <td align="left">Pouting</td>
-<td align="right">4</td>
+<td align="right">5</td>
 <td align="right">1</td>
 </tr>
 <tr class="even">
 <td align="left">Gadidae</td>
 <td align="left"><em>Trisopterus minutus</em></td>
 <td align="left">Poor cod</td>
-<td align="right">6</td>
+<td align="right">5</td>
 <td align="right">3</td>
 </tr>
 <tr class="odd">
@@ -481,7 +466,7 @@ body {
 <td align="left"><em>Gasterosteus aculeatus</em></td>
 <td align="left">Three-spined stickleback</td>
 <td align="right"></td>
-<td align="right">10</td>
+<td align="right">11</td>
 </tr>
 <tr class="odd">
 <td align="left">Gasterosteidae</td>
@@ -530,25 +515,25 @@ body {
 <td align="left"><em>Lophius piscatorius</em></td>
 <td align="left">Angler</td>
 <td align="right">3</td>
-<td align="right">3</td>
+<td align="right">4</td>
 </tr>
 <tr class="even">
+<td align="left">Mugilidae</td>
+<td align="left"><em>Chelon auratus</em></td>
+<td align="left">Golden grey mullet</td>
+<td align="right"></td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
 <td align="left">Mugilidae</td>
 <td align="left"><em>Chelon labrosus</em></td>
 <td align="left">Thicklip grey mullet</td>
 <td align="right"></td>
 <td align="right">6</td>
 </tr>
-<tr class="odd">
-<td align="left">Mugilidae</td>
-<td align="left"><em>Liza aurata</em></td>
-<td align="left">Golden grey mullet</td>
-<td align="right"></td>
-<td align="right">4</td>
-</tr>
 <tr class="even">
 <td align="left">Mugilidae</td>
-<td align="left"><em>Liza ramada</em></td>
+<td align="left"><em>Chelon ramada</em></td>
 <td align="left">Thinlip grey mullet</td>
 <td align="right">13</td>
 <td align="right">2</td>
@@ -564,7 +549,7 @@ body {
 <td align="left">Ammodytidae</td>
 <td align="left"><em>Ammodytes marinus</em></td>
 <td align="left">Lesser sand-eel</td>
-<td align="right"></td>
+<td align="right">3</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -600,7 +585,7 @@ body {
 <td align="left"><em>Anarhichas lupus</em></td>
 <td align="left">Atlantic wolffish</td>
 <td align="right"></td>
-<td align="right">88</td>
+<td align="right">89</td>
 </tr>
 <tr class="even">
 <td align="left">Blenniidae</td>
@@ -732,7 +717,7 @@ body {
 <td align="left">Gobiidae</td>
 <td align="left"><em>Pomatoschistus microps</em></td>
 <td align="left">Common goby</td>
-<td align="right">12</td>
+<td align="right">14</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -831,7 +816,7 @@ body {
 <td align="left"><em>Perca fluviatilis</em></td>
 <td align="left">European perch</td>
 <td align="right"></td>
-<td align="right">17</td>
+<td align="right">18</td>
 </tr>
 <tr class="odd">
 <td align="left">Percidae</td>
@@ -872,14 +857,14 @@ body {
 <td align="left">Sparidae</td>
 <td align="left"><em>Sparus aurata</em></td>
 <td align="left">Gilthead seabream</td>
-<td align="right">6</td>
-<td align="right">3</td>
+<td align="right">7</td>
+<td align="right">2</td>
 </tr>
 <tr class="odd">
 <td align="left">Sparidae</td>
 <td align="left"><em>Spondyliosoma cantharus</em></td>
 <td align="left">Black seabream</td>
-<td align="right">6</td>
+<td align="right">5</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -894,7 +879,7 @@ body {
 <td align="left"><em>Lumpenus lampretaeformis</em></td>
 <td align="left">Snakeblenny</td>
 <td align="right"></td>
-<td align="right">1</td>
+<td align="right">2</td>
 </tr>
 <tr class="even">
 <td align="left">Trachinidae</td>
@@ -929,7 +914,7 @@ body {
 <td align="left"><em>Glyptocephalus cynoglossus</em></td>
 <td align="left">Witch flounder</td>
 <td align="right">1</td>
-<td align="right">1</td>
+<td align="right">3</td>
 </tr>
 <tr class="odd">
 <td align="left">Pleuronectidae</td>
@@ -992,7 +977,7 @@ body {
 <td align="left"><em>Scophthalmus maximus</em></td>
 <td align="left">Turbot</td>
 <td align="right">1</td>
-<td align="right">2</td>
+<td align="right">3</td>
 </tr>
 <tr class="even">
 <td align="left">Scophthalmidae</td>
@@ -1011,7 +996,7 @@ body {
 <tr class="even">
 <td align="left">Scophthalmidae</td>
 <td align="left"><em>Zeugopterus regius</em></td>
-<td align="left">Eckstrom's topknot</td>
+<td align="left">Eckstr<f6>m's topknot</td>
 <td align="right">5</td>
 <td align="right"></td>
 </tr>
@@ -1097,7 +1082,7 @@ body {
 <td align="left"><em>Myoxocephalus scorpius</em></td>
 <td align="left">Shorthorn sculpin</td>
 <td align="right"></td>
-<td align="right">2</td>
+<td align="right">4</td>
 </tr>
 <tr class="odd">
 <td align="left">Cottidae</td>
@@ -1136,23 +1121,23 @@ body {
 </tr>
 <tr class="even">
 <td align="left">Triglidae</td>
+<td align="left"><em>Chelidonichthys lastoviza</em></td>
+<td align="left">Streaked gurnard</td>
+<td align="right">5</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Triglidae</td>
 <td align="left"><em>Chelidonichthys lucerna</em></td>
 <td align="left">Tub gurnard</td>
 <td align="right">6</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Triglidae</td>
 <td align="left"><em>Eutrigla gurnardus</em></td>
 <td align="left">Grey gurnard</td>
 <td align="right">8</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
-<td align="left">Triglidae</td>
-<td align="left"><em>Trigloporus lastoviza</em></td>
-<td align="left">Streaked gurnard</td>
-<td align="right">5</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -1181,7 +1166,7 @@ body {
 <td align="left"><em>Hippocampus hippocampus</em></td>
 <td align="left">Short snouted seahorse</td>
 <td align="right">6</td>
-<td align="right"></td>
+<td align="right">2</td>
 </tr>
 <tr class="odd">
 <td align="left">Syngnathidae</td>
@@ -1278,14 +1263,14 @@ body {
 <td align="left">Scyliorhinidae</td>
 <td align="left"><em>Scyliorhinus stellaris</em></td>
 <td align="left">Nursehound</td>
-<td align="right"></td>
+<td align="right">1</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">Triakidae</td>
 <td align="left"><em>Galeorhinus galeus</em></td>
 <td align="left">Tope shark</td>
-<td align="right"></td>
+<td align="right">1</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -1408,2426 +1393,2426 @@ body {
 <td align="right">2</td>
 </tr>
 <tr class="odd">
-<td align="left">Anguillidae</td>
-<td align="left"><em>Anguilla bengalensis</em></td>
-<td align="left">Indian mottled eel</td>
-<td align="right"></td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
 <td align="left">Derichthyidae</td>
 <td align="left"><em>Nessorhamphus ingolfianus</em></td>
 <td align="left">Duckbill oceanic eel</td>
 <td align="right"></td>
 <td align="right">5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Muraenidae</td>
 <td align="left"><em>Muraena helena</em></td>
 <td align="left">Mediterranean moray</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Nemichthyidae</td>
 <td align="left"><em>Avocettina infans</em></td>
 <td align="left">Avocet snipe eel</td>
 <td align="right"></td>
 <td align="right">5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Nemichthyidae</td>
 <td align="left"><em>Nemichthys scolopaceus</em></td>
 <td align="left">Slender snipe eel</td>
 <td align="right"></td>
 <td align="right">7</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Serrivomeridae</td>
 <td align="left"><em>Serrivomer beanii</em></td>
 <td align="left">Stout sawpalate</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Synaphobranchidae</td>
 <td align="left"><em>Histiobranchus bathybius</em></td>
 <td align="left">Deep-water arrowtooth eel</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Synaphobranchidae</td>
 <td align="left"><em>Ilyophis blachei</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Synaphobranchidae</td>
 <td align="left"><em>Simenchelys parasitica</em></td>
 <td align="left">Snubnosed eel</td>
 <td align="right"></td>
 <td align="right">7</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Synaphobranchidae</td>
 <td align="left"><em>Synaphobranchus kaupii</em></td>
 <td align="left">Kaup's arrowtooth eel</td>
 <td align="right"></td>
 <td align="right">7</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Alepisauridae</td>
 <td align="left"><em>Alepisaurus ferox</em></td>
 <td align="left">Long snouted lancetfish</td>
 <td align="right"></td>
 <td align="right">5</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Bathysauridae</td>
 <td align="left"><em>Bathysaurus ferox</em></td>
 <td align="left">Deep-sea lizardfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Evermannellidae</td>
 <td align="left"><em>Evermannella balbo</em></td>
 <td align="left">Balbo sabretooth</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Ipnopidae</td>
 <td align="left"><em>Bathypterois dubius</em></td>
 <td align="left">Mediterranean spiderfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Notosudidae</td>
 <td align="left"><em>Scopelosaurus lepidus</em></td>
 <td align="left">Blackfin waryfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Paralepididae</td>
 <td align="left"><em>Arctozenus risso</em></td>
 <td align="left">Spotted barracudina</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Paralepididae</td>
 <td align="left"><em>Magnisudis atlantica</em></td>
 <td align="left">Duckbill barracudina</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Paralepididae</td>
 <td align="left"><em>Paralepis coregonoides</em></td>
 <td align="left">Sharpchin barracudina</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Belonidae</td>
 <td align="left"><em>Belone svetovidovi</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Exocoetidae</td>
 <td align="left"><em>Cheilopogon heterurus</em></td>
 <td align="left">Mediterranean flyingfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Exocoetidae</td>
 <td align="left"><em>Hirundichthys rondeletii</em></td>
 <td align="left">Black wing flyingfish</td>
 <td align="right"></td>
-<td align="right">3</td>
+<td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Scomberesocidae</td>
 <td align="left"><em>Scomberesox saurus</em></td>
 <td align="left">Atlantic saury</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Anoplogastridae</td>
 <td align="left"><em>Anoplogaster cornuta</em></td>
 <td align="left">Common fangtooth</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Berycidae</td>
 <td align="left"><em>Beryx decadactylus</em></td>
 <td align="left">Alfonsino</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Diretmidae</td>
 <td align="left"><em>Diretmus argenteus</em></td>
 <td align="left">Silver spinyfin</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Trachichthyidae</td>
 <td align="left"><em>Gephyroberyx darwinii</em></td>
 <td align="left">Darwin's slimehead</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Trachichthyidae</td>
 <td align="left"><em>Hoplostethus atlanticus</em></td>
 <td align="left">Orange roughy</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Trachichthyidae</td>
 <td align="left"><em>Hoplostethus mediterraneus</em></td>
 <td align="left">Mediterranean slimehead</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Cobitidae</td>
 <td align="left"><em>Misgurnus fossilis</em></td>
 <td align="left">Weatherfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Cyprinidae</td>
 <td align="left"><em>Leucaspius delineatus</em></td>
 <td align="left">Belica</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Cyprinidae</td>
 <td align="left"><em>Pimephales promelas</em></td>
 <td align="left">Fathead minnow</td>
 <td align="right"></td>
 <td align="right">6</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Cyprinidae</td>
 <td align="left"><em>Rhodeus amarus</em></td>
-<td align="left"></td>
+<td align="left">European bitterling</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Cyprinidae</td>
 <td align="left"><em>Rhodeus sericeus</em></td>
 <td align="left">Bitterling</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Poeciliidae</td>
 <td align="left"><em>Poecilia reticulata</em></td>
 <td align="left">Guppy</td>
 <td align="right"></td>
 <td align="right">5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gadidae</td>
 <td align="left"><em>Gadiculus thori</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Lotidae</td>
 <td align="left"><em>Brosme brosme</em></td>
-<td align="left">Tusk</td>
+<td align="left">Cusk</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Lotidae</td>
 <td align="left"><em>Gaidropsarus argentatus</em></td>
 <td align="left">Arctic rockling</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Lotidae</td>
 <td align="left"><em>Gaidropsarus macrophthalmus</em></td>
 <td align="left">Bigeye rockling</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Lotidae</td>
 <td align="left"><em>Lota lota</em></td>
 <td align="left">Burbot</td>
 <td align="right"></td>
 <td align="right">8</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Lotidae</td>
 <td align="left"><em>Molva dypterygia</em></td>
 <td align="left">Blue ling</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Lotidae</td>
 <td align="left"><em>Molva macrophthalma</em></td>
 <td align="left">Spanish ling</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Coelorinchus caelorhincus</em></td>
 <td align="left">Hollowsnout grenadier</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Coelorinchus caudani</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Coelorinchus labiatus</em></td>
 <td align="left">Spearsnouted grenadier</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Coelorinchus occa</em></td>
 <td align="left">Swordsnout grenadier</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Coryphaenoides armatus</em></td>
 <td align="left">Abyssal grenadier</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Coryphaenoides brevibarbis</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Coryphaenoides guentheri</em></td>
-<td align="left">Gunther's grenadier</td>
+<td align="left">G<fc>nther's grenadier</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Coryphaenoides mediterraneus</em></td>
 <td align="left">Mediterranean grenadier</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Coryphaenoides rupestris</em></td>
 <td align="left">Roundnose grenadier</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Macrourus berglax</em></td>
 <td align="left">Roughhead grenadier</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Malacocephalus laevis</em></td>
 <td align="left">Softhead grenadier</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Nezumia aequalis</em></td>
 <td align="left">Common Atlantic grenadier</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Nezumia sclerorhynchus</em></td>
 <td align="left">Roughtip grenadier</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Trachyrincus murrayi</em></td>
 <td align="left">Roughnose grenadier</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Macrouridae</td>
 <td align="left"><em>Trachyrincus scabrus</em></td>
 <td align="left">Roughsnout grenadier</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Melanonidae</td>
 <td align="left"><em>Melanonus zugmayeri</em></td>
 <td align="left">Arrowtail</td>
 <td align="right"></td>
-<td align="right">3</td>
+<td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Moridae</td>
 <td align="left"><em>Antimora rostrata</em></td>
 <td align="left">Blue antimora</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Moridae</td>
 <td align="left"><em>Guttigadus latifrons</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Moridae</td>
 <td align="left"><em>Halargyreus johnsonii</em></td>
 <td align="left">Slender codling</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Moridae</td>
 <td align="left"><em>Lepidion eques</em></td>
 <td align="left">North Atlantic codling</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Moridae</td>
 <td align="left"><em>Mora moro</em></td>
 <td align="left">Common mora</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Phycidae</td>
 <td align="left"><em>Phycis blennoides</em></td>
 <td align="left">Greater forkbeard</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Lampridae</td>
 <td align="left"><em>Lampris guttatus</em></td>
 <td align="left">Opah</td>
 <td align="right"></td>
 <td align="right">5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Regalecidae</td>
 <td align="left"><em>Regalecus glesne</em></td>
 <td align="left">King of herrings</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Trachipteridae</td>
 <td align="left"><em>Trachipterus arcticus</em></td>
 <td align="left">Dealfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Ceratiidae</td>
 <td align="left"><em>Ceratias holboelli</em></td>
 <td align="left">Kroyer's deep-sea angler fish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Ceratiidae</td>
 <td align="left"><em>Cryptopsaras couesii</em></td>
 <td align="left">Triplewart seadevil</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Himantolophidae</td>
 <td align="left"><em>Himantolophus groenlandicus</em></td>
 <td align="left">Atlantic footballfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Linophrynidae</td>
 <td align="left"><em>Photocorynus spiniceps</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Lophiidae</td>
 <td align="left"><em>Lophius budegassa</em></td>
 <td align="left">Blackbellied angler</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Melanocetidae</td>
 <td align="left"><em>Melanocetus johnsonii</em></td>
 <td align="left">Humpback anglerfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Oneirodidae</td>
 <td align="left"><em>Chaenophryne draco</em></td>
 <td align="left">Smooth dreamer</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Oneirodidae</td>
 <td align="left"><em>Oneirodes eschrichtii</em></td>
 <td align="left">Bulbous dreamer</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Mugilidae</td>
 <td align="left"><em>Mugil cephalus</em></td>
 <td align="left">Flathead grey mullet</td>
 <td align="right"></td>
-<td align="right">28</td>
+<td align="right">29</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Benthosema glaciale</em></td>
 <td align="left">Glacier lantern fish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Bolinichthys supralateralis</em></td>
 <td align="left">Stubby lanternfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Ceratoscopelus maderensis</em></td>
 <td align="left">Madeira lantern fish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Ceratoscopelus warmingii</em></td>
 <td align="left">Warming's lantern fish</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Diaphus dumerilii</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Diaphus metopoclampus</em></td>
 <td align="left">Spothead lantern fish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Diaphus rafinesquii</em></td>
 <td align="left">White-spotted lantern fish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Electrona risso</em></td>
 <td align="left">Electric lantern fish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Lampadena speculigera</em></td>
 <td align="left">Mirror lanternfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Lampanyctus crocodilus</em></td>
 <td align="left">Jewel lanternfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Lampanyctus intricarius</em></td>
 <td align="left">Diamondcheek lanternfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Lampanyctus macdonaldi</em></td>
 <td align="left">Rakery beaconlamp</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Lampanyctus pusillus</em></td>
 <td align="left">Pygmy lanternfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Myctophum nitidulum</em></td>
 <td align="left">Pearly lanternfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Myctophum punctatum</em></td>
 <td align="left">Spotted lanternfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Notolychnus valdiviae</em></td>
 <td align="left">Topside lampfish</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Notoscopelus elongatus</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Notoscopelus kroyeri</em></td>
 <td align="left">Lancet fish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Protomyctophum arcticum</em></td>
 <td align="left">Arctic telescope</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myctophidae</td>
 <td align="left"><em>Symbolophorus veranyi</em></td>
 <td align="left">Large-scale lantern fish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Neoscopelidae</td>
 <td align="left"><em>Neoscopelus macrolepidotus</em></td>
 <td align="left">Large-scaled lantern fish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Halosauridae</td>
 <td align="left"><em>Halosauropsis macrochir</em></td>
 <td align="left">Abyssal halosaur</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Halosauridae</td>
 <td align="left"><em>Halosaurus johnsonianus</em></td>
 <td align="left">Halosaur</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Notacanthidae</td>
 <td align="left"><em>Notacanthus bonaparte</em></td>
 <td align="left">Shortfin spiny eel</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Notacanthidae</td>
 <td align="left"><em>Notacanthus chemnitzii</em></td>
 <td align="left">Snubnosed spiny eel</td>
 <td align="right"></td>
 <td align="right">8</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Notacanthidae</td>
 <td align="left"><em>Polyacanthonotus challengeri</em></td>
 <td align="left">Longnose tapirfish</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Notacanthidae</td>
 <td align="left"><em>Polyacanthonotus rissoanus</em></td>
 <td align="left">Smallmouth spiny eel</td>
 <td align="right"></td>
 <td align="right">5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Bythitidae</td>
 <td align="left"><em>Cataetyx laticeps</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Carapidae</td>
 <td align="left"><em>Echiodon drummondii</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Ophidiidae</td>
 <td align="left"><em>Brotula barbata</em></td>
 <td align="left">Bearded brotula</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Ophidiidae</td>
 <td align="left"><em>Lamprogrammus shcherbachevi</em></td>
 <td align="left">Scaleline cusk</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Ophidiidae</td>
 <td align="left"><em>Ophidion barbatum</em></td>
 <td align="left">Snake blenny</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Ophidiidae</td>
 <td align="left"><em>Spectrunculus grandis</em></td>
 <td align="left">Pudgy cuskeel</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Parabrotulidae</td>
 <td align="left"><em>Leucobrotula adipata</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Parabrotulidae</td>
 <td align="left"><em>Parabrotula plagiophthalma</em></td>
 <td align="left">False cusk</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Alepocephalidae</td>
 <td align="left"><em>Alepocephalus agassizii</em></td>
 <td align="left">Agassiz' slickhead</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Alepocephalidae</td>
 <td align="left"><em>Alepocephalus bairdii</em></td>
 <td align="left">Baird's slickhead</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Alepocephalidae</td>
 <td align="left"><em>Alepocephalus rostratus</em></td>
 <td align="left">Risso's smooth-head</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Alepocephalidae</td>
 <td align="left"><em>Bajacalifornia megalops</em></td>
 <td align="left">Bigeye smooth-head</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Alepocephalidae</td>
 <td align="left"><em>Narcetes stomias</em></td>
 <td align="left">Blackhead salmon</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Alepocephalidae</td>
 <td align="left"><em>Rouleina attrita</em></td>
 <td align="left">Softskin smooth-head</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Alepocephalidae</td>
 <td align="left"><em>Rouleina maderensis</em></td>
 <td align="left">Madeiran smooth-head</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Alepocephalidae</td>
 <td align="left"><em>Xenodermichthys copei</em></td>
 <td align="left">Bluntsnout smooth-head</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Argentinidae</td>
 <td align="left"><em>Argentina silus</em></td>
 <td align="left">Greater argentine</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Argentinidae</td>
 <td align="left"><em>Argentina sphyraena</em></td>
 <td align="left">Argentine</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Bathylagidae</td>
 <td align="left"><em>Bathylagichthys greyae</em></td>
 <td align="left">Grey's deepsea smelt</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Bathylagidae</td>
 <td align="left"><em>Bathylagus euryops</em></td>
 <td align="left">Goiter blacksmelt</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Microstomatidae</td>
 <td align="left"><em>Nansenia groenlandica</em></td>
 <td align="left">Greenland argentine</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Opisthoproctidae</td>
 <td align="left"><em>Bathylychnops exilis</em></td>
 <td align="left">Javelin spookfish</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Opisthoproctidae</td>
 <td align="left"><em>Dolichopteroides binocularis</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Opisthoproctidae</td>
 <td align="left"><em>Dolichopteryx rostrata</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Platytroctidae</td>
 <td align="left"><em>Barbantus curvifrons</em></td>
 <td align="left">Palebelly searsid</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Platytroctidae</td>
 <td align="left"><em>Holtbyrnia anomala</em></td>
 <td align="left">Bighead searsid</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Platytroctidae</td>
 <td align="left"><em>Holtbyrnia macrops</em></td>
 <td align="left">Bigeye searsid</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Platytroctidae</td>
 <td align="left"><em>Maulisia mauli</em></td>
 <td align="left">Maul's searsid</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Platytroctidae</td>
 <td align="left"><em>Normichthys operosus</em></td>
 <td align="left">Multipore searsid</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Platytroctidae</td>
 <td align="left"><em>Sagamichthys schnakenbecki</em></td>
 <td align="left">Schnakenbeck's searsid</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Platytroctidae</td>
 <td align="left"><em>Searsia koefoedi</em></td>
 <td align="left">Koefoed's searsid</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Ammodytidae</td>
 <td align="left"><em>Ammodytes americanus</em></td>
 <td align="left">American sand lance</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Ammodytidae</td>
 <td align="left"><em>Gymnammodytes cicerelus</em></td>
 <td align="left">Mediterranean sand eel</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Anarhichadidae</td>
 <td align="left"><em>Anarhichas denticulatus</em></td>
 <td align="left">Northern wolffish</td>
 <td align="right"></td>
-<td align="right">23</td>
+<td align="right">24</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Anarhichadidae</td>
 <td align="left"><em>Anarhichas minor</em></td>
 <td align="left">Spotted wolffish</td>
 <td align="right"></td>
 <td align="right">20</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Bramidae</td>
 <td align="left"><em>Brama brama</em></td>
 <td align="left">Atlantic pomfret</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Bramidae</td>
 <td align="left"><em>Pterycombus brama</em></td>
 <td align="left">Atlantic fanfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Bramidae</td>
 <td align="left"><em>Taractes asper</em></td>
 <td align="left">Rough pomfret</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Bramidae</td>
 <td align="left"><em>Taractichthys longipinnis</em></td>
 <td align="left">Big-scale pomfret</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Callanthiidae</td>
 <td align="left"><em>Callanthias ruber</em></td>
 <td align="left">Parrot seaperch</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Carangidae</td>
 <td align="left"><em>Campogramma glaycos</em></td>
 <td align="left">Vadigo</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Carangidae</td>
 <td align="left"><em>Naucrates ductor</em></td>
 <td align="left">Pilotfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Carangidae</td>
 <td align="left"><em>Seriola dumerili</em></td>
 <td align="left">Greater amberjack</td>
 <td align="right"></td>
 <td align="right">6</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Carangidae</td>
 <td align="left"><em>Trachinotus ovatus</em></td>
 <td align="left">Pompano</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Centrarchidae</td>
 <td align="left"><em>Ambloplites rupestris</em></td>
 <td align="left">Rock bass</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Centrarchidae</td>
 <td align="left"><em>Lepomis gibbosus</em></td>
 <td align="left">Pumpkinseed</td>
 <td align="right"></td>
 <td align="right">6</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Centrolophidae</td>
 <td align="left"><em>Centrolophus niger</em></td>
 <td align="left">Rudderfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Centrolophidae</td>
 <td align="left"><em>Hyperoglyphe perciformis</em></td>
 <td align="left">Barrelfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Centrolophidae</td>
 <td align="left"><em>Schedophilus medusophagus</em></td>
 <td align="left">Cornish blackfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Chiasmodontidae</td>
 <td align="left"><em>Chiasmodon niger</em></td>
 <td align="left">Black swallower</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Chiasmodontidae</td>
 <td align="left"><em>Pseudoscopelus altipinnis</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Cichlidae</td>
 <td align="left"><em>Cichlasoma bimaculatum</em></td>
 <td align="left">Black acara</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
-<td align="left">Cichlidae</td>
-<td align="left"><em>Oreochromis niloticus</em></td>
-<td align="left">Nile tilapia</td>
-<td align="right"></td>
-<td align="right">10</td>
-</tr>
 <tr class="even">
 <td align="left">Cichlidae</td>
-<td align="left"><em>Tilapia zillii</em></td>
+<td align="left"><em>Coptodon zillii</em></td>
 <td align="left">Redbelly tilapia</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
 <tr class="odd">
+<td align="left">Cichlidae</td>
+<td align="left"><em>Oreochromis niloticus</em></td>
+<td align="left">Nile tilapia</td>
+<td align="right"></td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
 <td align="left">Echeneidae</td>
 <td align="left"><em>Remora remora</em></td>
 <td align="left">Shark sucker</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Epigonidae</td>
 <td align="left"><em>Epigonus telescopus</em></td>
 <td align="left">Black cardinal fish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gempylidae</td>
 <td align="left"><em>Lepidocybium flavobrunneum</em></td>
 <td align="left">Escolar</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gempylidae</td>
 <td align="left"><em>Nesiarchus nasutus</em></td>
 <td align="left">Black gemfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gempylidae</td>
 <td align="left"><em>Ruvettus pretiosus</em></td>
 <td align="left">Oilfish</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Buenia jeffreysii</em></td>
 <td align="left">Jeffrey's goby</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Gobius couchi</em></td>
 <td align="left">Couch's goby</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Gobius cruentatus</em></td>
 <td align="left">Red-mouthed goby</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Gobius gasteveni</em></td>
 <td align="left">Steven's goby</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Lebetus guilleti</em></td>
 <td align="left">Guillet's goby</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gobiidae</td>
 <td align="left"><em>Lebetus scorpioides</em></td>
 <td align="left">Diminutive goby</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Howellidae</td>
 <td align="left"><em>Howella brodiei</em></td>
 <td align="left">Pelagic basslet</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Istiophoridae</td>
 <td align="left"><em>Istiophorus albicans</em></td>
 <td align="left">Atlantic sailfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Istiophoridae</td>
 <td align="left"><em>Kajikia albida</em></td>
 <td align="left">Atlantic white marlin</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Labridae</td>
 <td align="left"><em>Acantholabrus palloni</em></td>
 <td align="left">Scale-rayed wrasse</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Labridae</td>
 <td align="left"><em>Coris julis</em></td>
 <td align="left">Mediterranean rainbow wrasse</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Lethrinidae</td>
 <td align="left"><em>Lethrinus nebulosus</em></td>
 <td align="left">Spangled emperor</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Luvaridae</td>
 <td align="left"><em>Luvarus imperialis</em></td>
 <td align="left">Luvar</td>
 <td align="right"></td>
-<td align="right">4</td>
+<td align="right">5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Mullidae</td>
 <td align="left"><em>Mullus barbatus</em></td>
 <td align="left">Red mullet</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Nomeidae</td>
 <td align="left"><em>Cubiceps gracilis</em></td>
 <td align="left">Driftfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Nomeidae</td>
 <td align="left"><em>Psenes maculatus</em></td>
 <td align="left">Silver driftfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Polyprionidae</td>
 <td align="left"><em>Polyprion americanus</em></td>
 <td align="left">Wreckfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Sciaenidae</td>
 <td align="left"><em>Argyrosomus regius</em></td>
 <td align="left">Meagre</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Sciaenidae</td>
 <td align="left"><em>Umbrina cirrosa</em></td>
 <td align="left">Shi drum</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scombridae</td>
 <td align="left"><em>Auxis rochei</em></td>
 <td align="left">Bullet tuna</td>
 <td align="right"></td>
 <td align="right">6</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Scombridae</td>
 <td align="left"><em>Auxis thazard</em></td>
 <td align="left">Frigate tuna</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scombridae</td>
 <td align="left"><em>Euthynnus alletteratus</em></td>
 <td align="left">Little tunny</td>
 <td align="right"></td>
-<td align="right">3</td>
+<td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Scombridae</td>
 <td align="left"><em>Katsuwonus pelamis</em></td>
 <td align="left">Skipjack tuna</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scombridae</td>
 <td align="left"><em>Orcynopsis unicolor</em></td>
 <td align="left">Plain bonito</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Scombridae</td>
 <td align="left"><em>Sarda sarda</em></td>
 <td align="left">Atlantic bonito</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scombridae</td>
 <td align="left"><em>Thunnus alalunga</em></td>
 <td align="left">Albacore</td>
 <td align="right"></td>
 <td align="right">42</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Scombridae</td>
 <td align="left"><em>Thunnus albacares</em></td>
 <td align="left">Yellowfin tuna</td>
 <td align="right"></td>
 <td align="right">6</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scombridae</td>
 <td align="left"><em>Thunnus thynnus</em></td>
 <td align="left">Atlantic bluefin tuna</td>
 <td align="right"></td>
 <td align="right">10</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Serranidae</td>
 <td align="left"><em>Acanthistius sebastoides</em></td>
 <td align="left">Koester</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Serranidae</td>
 <td align="left"><em>Serranus cabrilla</em></td>
 <td align="left">Comber</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Sparidae</td>
 <td align="left"><em>Boops boops</em></td>
 <td align="left">Bogue</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Sparidae</td>
 <td align="left"><em>Dentex dentex</em></td>
 <td align="left">Common dentex</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Sparidae</td>
 <td align="left"><em>Dentex maroccanus</em></td>
 <td align="left">Morocco dentex</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Sparidae</td>
 <td align="left"><em>Pagellus acarne</em></td>
 <td align="left">Axillary seabream</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Sparidae</td>
 <td align="left"><em>Pagellus erythrinus</em></td>
 <td align="left">Common pandora</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Sparidae</td>
 <td align="left"><em>Sarpa salpa</em></td>
 <td align="left">Salema</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stichaeidae</td>
 <td align="left"><em>Leptoclinus maculatus</em></td>
 <td align="left">Daubed shanny</td>
 <td align="right"></td>
-<td align="right">5</td>
+<td align="right">6</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stromateidae</td>
 <td align="left"><em>Peprilus triacanthus</em></td>
 <td align="left">Atlantic butterfish</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Trichiuridae</td>
 <td align="left"><em>Aphanopus carbo</em></td>
 <td align="left">Black scabbardfish</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Trichiuridae</td>
 <td align="left"><em>Lepidopus caudatus</em></td>
 <td align="left">Silver scabbardfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Trichiuridae</td>
 <td align="left"><em>Trichiurus lepturus</em></td>
 <td align="left">Largehead hairtail</td>
 <td align="right"></td>
-<td align="right">11</td>
+<td align="right">13</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Tripterygiidae</td>
 <td align="left"><em>Tripterygion delaisi</em></td>
 <td align="left">Black-faced blenny</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Xiphiidae</td>
 <td align="left"><em>Xiphias gladius</em></td>
 <td align="left">Swordfish</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Zoarcidae</td>
 <td align="left"><em>Lycenchelys sarsii</em></td>
 <td align="left">Sar's wolf eel</td>
 <td align="right"></td>
-<td align="right"></td>
+<td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Zoarcidae</td>
 <td align="left"><em>Lycodes esmarkii</em></td>
 <td align="left">Greater eelpout</td>
 <td align="right"></td>
-<td align="right"></td>
+<td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Zoarcidae</td>
 <td align="left"><em>Lycodes eudipleurostictus</em></td>
 <td align="left">Doubleline eelpout</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Zoarcidae</td>
 <td align="left"><em>Lycodes pallidus</em></td>
 <td align="left">Pale eelpout</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Zoarcidae</td>
 <td align="left"><em>Lycodes squamiventer</em></td>
 <td align="left">Scalebelly eelpout</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Zoarcidae</td>
 <td align="left"><em>Lycodes terraenovae</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Zoarcidae</td>
 <td align="left"><em>Lycodes vahlii</em></td>
 <td align="left">Vahl's eelpout</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Zoarcidae</td>
 <td align="left"><em>Lycodonus flagellicauda</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Zoarcidae</td>
 <td align="left"><em>Melanostigma atlanticum</em></td>
 <td align="left">Atlantic soft pout</td>
 <td align="right"></td>
-<td align="right">1</td>
+<td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Bothidae</td>
 <td align="left"><em>Arnoglossus imperialis</em></td>
 <td align="left">Imperial scaldfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Bothidae</td>
 <td align="left"><em>Arnoglossus thori</em></td>
 <td align="left">Thor's scaldfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Pleuronectidae</td>
 <td align="left"><em>Reinhardtius hippoglossoides</em></td>
 <td align="left">Greenland halibut</td>
 <td align="right"></td>
 <td align="right">10</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scophthalmidae</td>
 <td align="left"><em>Lepidorhombus boscii</em></td>
 <td align="left">Four-spot megrim</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Soleidae</td>
 <td align="left"><em>Bathysolea profundicola</em></td>
 <td align="left">Deepwater sole</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Soleidae</td>
 <td align="left"><em>Microchirus azevia</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Soleidae</td>
 <td align="left"><em>Microchirus theophila</em></td>
 <td align="left">Bastard sole</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Coregonus albula</em></td>
 <td align="left">Vendace</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Coregonus autumnalis</em></td>
 <td align="left">Arctic cisco</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Coregonus clupeoides</em></td>
 <td align="left">Powan</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Coregonus lavaretus</em></td>
 <td align="left">European whitefish</td>
 <td align="right"></td>
 <td align="right">80</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Coregonus oxyrinchus</em></td>
 <td align="left">Houting</td>
 <td align="right"></td>
 <td align="right">22</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Coregonus pennantii</em></td>
 <td align="left">Gwyniad</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Coregonus pollan</em></td>
 <td align="left">Irish pollan</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Coregonus stigmaticus</em></td>
 <td align="left">Schelly</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Coregonus vandesius</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Oncorhynchus gorbuscha</em></td>
 <td align="left">Pink salmon</td>
 <td align="right"></td>
 <td align="right">5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salmo ferox</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salmo nigripinnis</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salmo stomachicus</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus alpinus</em></td>
 <td align="left">Arctic char</td>
 <td align="right"></td>
-<td align="right">7</td>
+<td align="right">9</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus fontinalis</em></td>
 <td align="left">Brook trout</td>
 <td align="right"></td>
 <td align="right">10</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus gracillimus</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus inframundus</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus killinensis</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus lonsdalii</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus mallochi</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus maxillaris</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus obtusus</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus perisii</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus struanensis</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus willoughbii</em></td>
 <td align="left">Char</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Salmonidae</td>
 <td align="left"><em>Salvelinus youngeri</em></td>
 <td align="left">Golden charr</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Cottidae</td>
 <td align="left"><em>Artediellus atlanticus</em></td>
 <td align="left">Atlantic hookear sculpin</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Cottidae</td>
 <td align="left"><em>Icelus bicornis</em></td>
 <td align="left">Twohorn sculpin</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Cottidae</td>
 <td align="left"><em>Triglops murrayi</em></td>
 <td align="left">Moustache sculpin</td>
 <td align="right"></td>
-<td align="right">1</td>
+<td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Dactylopteridae</td>
 <td align="left"><em>Dactylopterus volitans</em></td>
 <td align="left">Flying gurnard</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Liparidae</td>
 <td align="left"><em>Careproctus longipinnis</em></td>
 <td align="left">Longfin snailfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Liparidae</td>
 <td align="left"><em>Careproctus reinhardti</em></td>
 <td align="left">Sea tadpole</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Liparidae</td>
 <td align="left"><em>Paraliparis bathybius</em></td>
 <td align="left">Black seasnail</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Liparidae</td>
 <td align="left"><em>Paraliparis challengeri</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Liparidae</td>
 <td align="left"><em>Paraliparis hystrix</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Liparidae</td>
 <td align="left"><em>Paraliparis kreffti</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Peristediidae</td>
 <td align="left"><em>Peristedion cataphractum</em></td>
 <td align="left">African armoured searobin</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Psychrolutidae</td>
 <td align="left"><em>Cottunculus microps</em></td>
 <td align="left">Polar sculpin</td>
 <td align="right"></td>
-<td align="right"></td>
+<td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Psychrolutidae</td>
 <td align="left"><em>Cottunculus thomsonii</em></td>
 <td align="left">Pallid sculpin</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Scorpaenidae</td>
 <td align="left"><em>Scorpaena porcus</em></td>
 <td align="left">Black scorpionfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scorpaenidae</td>
 <td align="left"><em>Scorpaena scrofa</em></td>
 <td align="left">Red scorpionfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Sebastidae</td>
 <td align="left"><em>Helicolenus dactylopterus</em></td>
 <td align="left">Blackbelly rosefish</td>
 <td align="right"></td>
-<td align="right">1</td>
+<td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Sebastidae</td>
 <td align="left"><em>Sebastes norvegicus</em></td>
 <td align="left">Golden redfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Sebastidae</td>
 <td align="left"><em>Sebastes viviparus</em></td>
 <td align="left">Norway redfish</td>
 <td align="right"></td>
-<td align="right"></td>
+<td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Sebastidae</td>
 <td align="left"><em>Trachyscorpia cristulata</em></td>
 <td align="left">Atlantic thornyhead</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Triglidae</td>
 <td align="left"><em>Chelidonichthys obscurus</em></td>
 <td align="left">Longfin gurnard</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Triglidae</td>
 <td align="left"><em>Trigla lyra</em></td>
 <td align="left">Piper gurnard</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Ictaluridae</td>
 <td align="left"><em>Ameiurus melas</em></td>
 <td align="left">Black bullhead</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Ictaluridae</td>
 <td align="left"><em>Ameiurus nebulosus</em></td>
 <td align="left">Brown bullhead</td>
 <td align="right"></td>
-<td align="right">5</td>
+<td align="right">6</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Ictaluridae</td>
 <td align="left"><em>Ictalurus punctatus</em></td>
 <td align="left">Channel catfish</td>
 <td align="right"></td>
 <td align="right">10</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Melamphaidae</td>
 <td align="left"><em>Melamphaes suborbitalis</em></td>
 <td align="left">Shoulderspine bigscale</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Melamphaidae</td>
 <td align="left"><em>Poromitra nigriceps</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Melamphaidae</td>
 <td align="left"><em>Scopelogadus beanii</em></td>
 <td align="left">Bean's bigscale</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Melamphaidae</td>
 <td align="left"><em>Scopelogadus mizolepis</em></td>
 <td align="left">Ragged bigscale</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gonostomatidae</td>
 <td align="left"><em>Bonapartia pedaliota</em></td>
 <td align="left">Longray fangjaw</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gonostomatidae</td>
 <td align="left"><em>Cyclothone braueri</em></td>
 <td align="left">Garrick</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gonostomatidae</td>
 <td align="left"><em>Cyclothone microdon</em></td>
 <td align="left">Veiled anglemouth</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Gonostomatidae</td>
 <td align="left"><em>Cyclothone obscura</em></td>
 <td align="left">Hidden bristlemouth</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gonostomatidae</td>
 <td align="left"><em>Sigmops bathyphilus</em></td>
 <td align="left">Spark anglemouth</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Sternoptychidae</td>
 <td align="left"><em>Argyropelecus hemigymnus</em></td>
 <td align="left">Half-naked hatchetfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Sternoptychidae</td>
 <td align="left"><em>Argyropelecus olfersii</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Sternoptychidae</td>
 <td align="left"><em>Maurolicus muelleri</em></td>
 <td align="left">Silvery lightfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Sternoptychidae</td>
 <td align="left"><em>Sternoptyx diaphana</em></td>
 <td align="left">Diaphanous hatchet fish</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stomiidae</td>
 <td align="left"><em>Borostomias antarcticus</em></td>
 <td align="left">Snaggletooth</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stomiidae</td>
 <td align="left"><em>Chauliodus sloani</em></td>
 <td align="left">Sloane's viperfish</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stomiidae</td>
 <td align="left"><em>Flagellostomias boureei</em></td>
 <td align="left">Longbarb dragonfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stomiidae</td>
 <td align="left"><em>Malacosteus niger</em></td>
 <td align="left">Stoplight loosejaw</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stomiidae</td>
 <td align="left"><em>Melanostomias bartonbeani</em></td>
 <td align="left">Scaleless black dragonfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stomiidae</td>
 <td align="left"><em>Rhadinesthes decimus</em></td>
 <td align="left">Slender snaggletooth</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Stomiidae</td>
 <td align="left"><em>Stomias boa</em></td>
 <td align="left">Boa dragonfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Stomiidae</td>
 <td align="left"><em>Trigonolampa miriceps</em></td>
 <td align="left">Threelight dragonfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Centriscidae</td>
 <td align="left"><em>Macroramphosus scolopax</em></td>
 <td align="left">Longspine snipefish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Molidae</td>
 <td align="left"><em>Ranzania laevis</em></td>
 <td align="left">Slender sunfish</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Tetraodontidae</td>
 <td align="left"><em>Lagocephalus lagocephalus</em></td>
 <td align="left">Oceanic puffer</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Tetraodontidae</td>
 <td align="left"><em>Sphoeroides pachygaster</em></td>
 <td align="left">Blunthead puffer</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Grammicolepididae</td>
 <td align="left"><em>Grammicolepis brachiusculus</em></td>
 <td align="left">Thorny tinselfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Oreosomatidae</td>
 <td align="left"><em>Neocyttus helgae</em></td>
 <td align="left">False boarfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Pseudotriakidae</td>
 <td align="left"><em>Pseudotriakis microdon</em></td>
 <td align="left">False catshark</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scyliorhinidae</td>
 <td align="left"><em>Apristurus aphyodes</em></td>
 <td align="left"></td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Scyliorhinidae</td>
 <td align="left"><em>Apristurus laurussonii</em></td>
 <td align="left">Iceland catshark</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scyliorhinidae</td>
 <td align="left"><em>Apristurus profundorum</em></td>
 <td align="left">Deep-water catshark</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Scyliorhinidae</td>
 <td align="left"><em>Galeus melastomus</em></td>
 <td align="left">Blackmouth catshark</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Scyliorhinidae</td>
 <td align="left"><em>Galeus murinus</em></td>
 <td align="left">Mouse catshark</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Sphyrnidae</td>
 <td align="left"><em>Sphyrna zygaena</em></td>
 <td align="left">Smooth hammerhead</td>
 <td align="right"></td>
 <td align="right">6</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Triakidae</td>
 <td align="left"><em>Mustelus mustelus</em></td>
 <td align="left">Smooth-hound</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Chlamydoselachidae</td>
 <td align="left"><em>Chlamydoselachus anguineus</em></td>
 <td align="left">Frilled shark</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Hexanchidae</td>
 <td align="left"><em>Heptranchias perlo</em></td>
 <td align="left">Sharpnose sevengill shark</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Hexanchidae</td>
 <td align="left"><em>Hexanchus griseus</em></td>
 <td align="left">Bluntnose sixgill shark</td>
 <td align="right"></td>
 <td align="right">43</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Lamnidae</td>
 <td align="left"><em>Carcharodon carcharias</em></td>
 <td align="left">Great white shark</td>
 <td align="right"></td>
 <td align="right">131</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Lamnidae</td>
 <td align="left"><em>Isurus oxyrinchus</em></td>
 <td align="left">Shortfin mako</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Dasyatidae</td>
 <td align="left"><em>Pteroplatytrygon violacea</em></td>
 <td align="left">Pelagic stingray</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Myliobatidae</td>
 <td align="left"><em>Mobula mobular</em></td>
 <td align="left">Devil fish</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myliobatidae</td>
 <td align="left"><em>Myliobatis aquila</em></td>
 <td align="left">Common eagle ray</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Arhynchobatidae</td>
 <td align="left"><em>Bathyraja richardsoni</em></td>
 <td align="left">Richardson's ray</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Arhynchobatidae</td>
 <td align="left"><em>Bathyraja spinicauda</em></td>
 <td align="left">Spinytail skate</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Rajidae</td>
 <td align="left"><em>Amblyraja hyperborea</em></td>
 <td align="left">Arctic skate</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Rajidae</td>
 <td align="left"><em>Amblyraja jenseni</em></td>
 <td align="left">Shorttail skate</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Rajidae</td>
 <td align="left"><em>Dipturus batis</em></td>
 <td align="left">Blue skate</td>
 <td align="right"></td>
 <td align="right">5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Rajidae</td>
 <td align="left"><em>Dipturus nidarosiensis</em></td>
 <td align="left">Norwegian skate</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Rajidae</td>
 <td align="left"><em>Dipturus oxyrinchus</em></td>
 <td align="left">Longnosed skate</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Rajidae</td>
 <td align="left"><em>Leucoraja circularis</em></td>
 <td align="left">Sandy ray</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Rajidae</td>
 <td align="left"><em>Leucoraja fullonica</em></td>
 <td align="left">Shagreen ray</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Rajidae</td>
 <td align="left"><em>Neoraja caerulea</em></td>
 <td align="left">Blue ray</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Rajidae</td>
 <td align="left"><em>Raja miraletus</em></td>
 <td align="left">Brown ray</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Rajidae</td>
 <td align="left"><em>Rajella bathyphila</em></td>
 <td align="left">Deep-water ray</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Rajidae</td>
 <td align="left"><em>Rajella bigelowi</em></td>
 <td align="left">Bigelow's ray</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Rajidae</td>
 <td align="left"><em>Rajella fyllae</em></td>
 <td align="left">Round ray</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Rajidae</td>
 <td align="left"><em>Rostroraja alba</em></td>
 <td align="left">White skate</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Centrophoridae</td>
 <td align="left"><em>Centrophorus granulosus</em></td>
 <td align="left">Gulper shark</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Centrophoridae</td>
 <td align="left"><em>Centrophorus squamosus</em></td>
 <td align="left">Leafscale gulper shark</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Centrophoridae</td>
 <td align="left"><em>Deania calcea</em></td>
 <td align="left">Birdbeak dogfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Dalatiidae</td>
 <td align="left"><em>Dalatias licha</em></td>
 <td align="left">Kitefin shark</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Echinorhinidae</td>
 <td align="left"><em>Echinorhinus brucus</em></td>
 <td align="left">Bramble shark</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Etmopteridae</td>
 <td align="left"><em>Centroscyllium fabricii</em></td>
 <td align="left">Black dogfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Etmopteridae</td>
 <td align="left"><em>Etmopterus princeps</em></td>
 <td align="left">Great lanternshark</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Etmopteridae</td>
 <td align="left"><em>Etmopterus spinax</em></td>
 <td align="left">Velvet belly</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Oxynotidae</td>
 <td align="left"><em>Oxynotus centrina</em></td>
 <td align="left">Angular roughshark</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Oxynotidae</td>
 <td align="left"><em>Oxynotus paradoxus</em></td>
 <td align="left">Sailfin roughshark</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Somniosidae</td>
 <td align="left"><em>Centroscymnus coelolepis</em></td>
 <td align="left">Portuguese dogfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Somniosidae</td>
 <td align="left"><em>Centroscymnus crepidater</em></td>
 <td align="left">Longnose velvet dogfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Somniosidae</td>
 <td align="left"><em>Centroscymnus owstonii</em></td>
 <td align="left">Roughskin dogfish</td>
 <td align="right"></td>
 <td align="right">2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Somniosidae</td>
 <td align="left"><em>Scymnodon ringens</em></td>
 <td align="left">Knifetooth dogfish</td>
 <td align="right"></td>
 <td align="right">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Somniosidae</td>
 <td align="left"><em>Somniosus microcephalus</em></td>
 <td align="left">Greenland shark</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Somniosidae</td>
 <td align="left"><em>Somniosus rostratus</em></td>
 <td align="left">Little sleeper shark</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Somniosidae</td>
 <td align="left"><em>Zameus squamulosus</em></td>
 <td align="left">Velvet dogfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Squatinidae</td>
 <td align="left"><em>Squatina squatina</em></td>
 <td align="left">Angelshark</td>
 <td align="right"></td>
 <td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Torpedinidae</td>
+<td align="left"><em>Tetronarce nobiliana</em></td>
+<td align="left">Electric ray</td>
+<td align="right"></td>
+<td align="right"></td>
 </tr>
 <tr class="odd">
 <td align="left">Torpedinidae</td>
@@ -3837,41 +3822,34 @@ body {
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">Torpedinidae</td>
-<td align="left"><em>Torpedo nobiliana</em></td>
-<td align="left">Electric ray</td>
-<td align="right"></td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
 <td align="left">Chimaeridae</td>
 <td align="left"><em>Chimaera monstrosa</em></td>
 <td align="left">Rabbit fish</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Chimaeridae</td>
 <td align="left"><em>Chimaera opalescens</em></td>
 <td align="left">Opal chimaera</td>
 <td align="right"></td>
 <td align="right">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Rhinochimaeridae</td>
 <td align="left"><em>Harriotta raleighana</em></td>
 <td align="left">Pacific longnose chimaera</td>
 <td align="right"></td>
 <td align="right">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Rhinochimaeridae</td>
 <td align="left"><em>Rhinochimaera atlantica</em></td>
 <td align="left">Straightnose rabbitfish</td>
 <td align="right"></td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Myxinidae</td>
 <td align="left"><em>Myxine glutinosa</em></td>
 <td align="left">Atlantic hagfish</td>
