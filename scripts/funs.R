@@ -15,6 +15,7 @@ library("tidyverse")
 library("magrittr")
 library("spider")
 library("lubridate")
+library("vroom")
 
 # print the R session info
 #sink("../temp/RsessionInfo.txt")
