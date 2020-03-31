@@ -1,10 +1,12 @@
 #!/usr/bin/env Rscript
 # script to load up reference libraries and clean them up
 
+# start timer
+start_time <- Sys.time()
 
 ## load up the species info table
 # species data
-uk.species.table <- read_csv(file="https://raw.githubusercontent.com/boopsboops/reference-libraries/master/species/uk-species-table.csv", col_types=cols())
+uk.species.table <- vroom::vroom("https://raw.githubusercontent.com/boopsboops/reference-libraries/master/species/uk-species-table.csv",delim=",",num_threads=1,guess_max=99999,col_types=cols())
 uk.species.table.orig <- uk.species.table
 # remove synonyms
 uk.species.table %<>% select(validName,class,order,family,genus,commonName,commonSpecies) %>% distinct()
@@ -15,12 +17,12 @@ uk.species.table.common <- uk.species.table %>% filter(commonSpecies==TRUE)
 
 
 ## load up the reference library
-reflib.orig <- read_csv("https://github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz", guess_max=100000, col_types=cols())
+reflib.orig <- vroom::vroom("https://github.com/boopsboops/reference-libraries/raw/master/references/uk-fish-references.csv.gz",delim=",",num_threads=1,guess_max=99999,col_types=cols())
 
 
 ## clean
 # load up the exclusions file to clean the data
-exclusions <- read_csv(file="https://raw.githubusercontent.com/boopsboops/reference-libraries/master/references/exclusions.csv", col_types=cols())
+exclusions <- vroom::vroom("https://raw.githubusercontent.com/boopsboops/reference-libraries/master/references/exclusions.csv",delim=",",num_threads=1,guess_max=99999,col_types=cols())
 
 # exclude bad seqs and clean
 reflib.orig %<>% filter(!dbid %in% exclusions$dbid[exclusions$action=="REMOVE"])
@@ -43,6 +45,8 @@ reflib.orig %<>%
     filter(!grepl("transcribed",notesGenBank)) %>% 
     filter(!grepl("-like",notesGenBank)) 
 
-# count num additional spp.
-#reflib.orig %>% filter(source=="GENBANK") %>% filter(!grepl("mitochondr",notesGenBank)) 
-#%>% write_csv(path="~/excl.csv")
+# end timer
+end_time <- Sys.time()
+
+# write encouraging words
+writeLines(paste(dim(reflib.orig)[1], "references loaded and filtered in", round(end_time-start_time,digits=1), "seconds ..."))
