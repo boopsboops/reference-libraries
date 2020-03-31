@@ -28,6 +28,7 @@ require("tidyverse")
 require("magrittr")
 require("knitr")
 require("rfishbase")
+require("vroom")
 ```
 
 
