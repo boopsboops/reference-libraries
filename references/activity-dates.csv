@@ -2,10 +2,10 @@ dataset,activity,date,version
 all,mitogenome assembly,2017-08-06,
 all,generate uk species list,2017-12-20,
 all,clean uk species list,2020-01-23,
-all,download mtDNA all uk species,2020-01-23,235
-all,generate references csv.gz,2020-01-23,
+all,download mtDNA all uk species,2020-03-31,236
+all,generate references csv.gz,2020-03-31,
 all,quality control,2020-01-27,
-12s.miya,generate rmarkdown report,2020-01-27,
+12s.miya,generate rmarkdown report,2020-03-31,
 12s.miya,generate hmms,2017-08-06,
 coi.lerayxt,generate hmms,2018-08-07,
 coi.seamid,generate hmms,2018-08-07,
