@@ -241,7 +241,7 @@ haps2fas <- function(df){
 
 # fun to align seqs and make a phylogentic tree
 phylogenize <- function(fas,prefix,binLoc){
-    fas <- ips::mafft(fas,exec="mafft",method="retree 1")
+    fas <- ips::mafft(fas,exec="mafft",method="retree 2",maxiterate=2)
     tr <- ips::raxml(fas, file=paste0("fromR-",prefix), m="GTRCAT", f="d", p=42, exec=binLoc, N=1)
     tr <- tr$bestTree
     tmp.path <- paste0("../temp/qc_",paste(month(ymd(Sys.Date()),label=TRUE),year(ymd(Sys.Date())),sep="-"))
