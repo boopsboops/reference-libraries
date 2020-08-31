@@ -218,6 +218,7 @@ rm_ns <-function(bin){
     return(bin.bin)
 }
 
+
 # fun to revcomp a sequence
 flip <- function(x){
     revcomp <- c2s(rev(comp(s2c(x),ambiguous=TRUE)))
@@ -230,6 +231,7 @@ subset_nucs <- function(pref,df){
     return(df)
 }
 
+
 # fun to annotate a reference library table with number haplotypes per species
 haps2fas <- function(df){
     df <- bind_rows(mcmapply(FUN=function(x) hap_collapse_df(df=x,lengthcol="lengthFrag",nuccol="nucleotidesFrag",cores=1), split(df,pull(df,sciNameValid)), SIMPLIFY=FALSE,mc.cores=1))
@@ -238,6 +240,7 @@ haps2fas <- function(df){
     df %<>% mutate(noms=paste(dbid,str_replace_all(sciNameValid," ","_"),nHaps,sep="|")) %>% arrange(class,order,family,genus,sciNameValid,lengthFrag,dbid)
     return(df)
 }
+
 
 # fun to align seqs and make a phylogentic tree
 phylogenize <- function(fas,prefix,binLoc){
@@ -252,6 +255,7 @@ phylogenize <- function(fas,prefix,binLoc){
     write.tree(tr,file=paste0(tmp.path,"/",prefix,".nwk"))
     return(tr)
 }
+
 
 # fun to plot and annotate phylogenetic trees
 plot_trees <- function(tr,df,prefix){
@@ -269,4 +273,28 @@ plot_trees <- function(tr,df,prefix){
     plot.phylo(tr, tip.col=cols, cex=0.5, font=1, label.offset=0.01, no.margin=TRUE)
     title(tit, line=-10)
     dev.off()
+}
+
+
+# FUNCTION TO RUN PARALLEL ENTREZ SEARCHES 
+entrez_search_parallel <- function(query,threads,key){  
+    start_time <- Sys.time()
+    options("scipen"=100)
+    n.res <- suppressWarnings(mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=100000, api_key=key, use_history=FALSE), query, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=threads))
+    errs <- grepl("Error",n.res)
+    if(any(errs==TRUE)) {
+        options("scipen"=100)
+        n.res.rep <- suppressWarnings(mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=100000, api_key=key, use_history=FALSE), query[which(errs==TRUE)], SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=1))
+        n.res[which(errs==TRUE)] <- n.res.rep
+    } else {
+        n.res <- n.res
+    }
+    end_time <- Sys.time()
+    errs.fin <- grepl("Error",n.res)
+    if(any(errs.fin==TRUE)) { 
+        stop(writeLines("Searches failed ... aborted")) 
+    } else {
+        writeLines(paste("Results returned for",length(which(errs.fin==FALSE)), "queries.","Search took",round(as.numeric(end_time-start_time),digits=2),"seconds.",sep=" "))
+        return(n.res)
+    }
 }
