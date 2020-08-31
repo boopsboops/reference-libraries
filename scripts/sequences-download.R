@@ -11,9 +11,6 @@ source("funs.R")
 # if you don't have one, ncbi will rate-limit your access to 3 requests per sec, and errors may occur.
 source("../temp/ncbi-key.R")
 
-# timing the code
-start_time <- Sys.time()
-
 # load up the uk species table
 uk.species.table <- read_csv(file="../species/uk-species-table.csv")
 
@@ -35,18 +32,23 @@ query <- unlist(mapply(function(x) paste0("(",spp.list,"[ORGN] AND ",x,"[ALL] AN
 set.seed(42)
 query <- sample(query,length(query))
 
-# set n cores 
-# cores=1 is the safest option, but 8 cores is faster if there are no errors
+# set n cores to parallel search in n threads
+# cores=1 is the safest option, but more cores are faster if there are no errors
+# do not try more than 10 cores (with api key)
+# do not try more than 3 cores (without api key)
+# important - try to run the search when server loads are lowest, i.e. at weekends or when the USA is not at work.
+# should take about 1.5 h with 4 cores
 cores <- 4
 
 # break up into chunks
 # longest query should be no larger than about 2500 chars - reduce chunk.size to get smaller queries
-chunk.size <- 37
+chunk.size <- 35
 query.split  <- split(query, ceiling(seq_along(query)/chunk.size))
 
 # collapse into strings of n species per string
 query.cat <- unname(sapply(query.split, paste, collapse=" OR "))
 
+# TEST and CHECK it's working
 # check max string length is < 2500 (ish)
 writeLines(paste("There are",length(query.cat),"queries"))# num queries
 writeLines(paste("Maximum query length is",max(sapply(query.cat, str_length)),"chars"))# max query length
@@ -55,23 +57,37 @@ tst <- query.cat[which(sapply(query.cat, str_length,USE.NAMES=FALSE)==max(sapply
 options("scipen"=100)
 entrez_search(db="nuccore", term=tst[1], retmax=100000, api_key=ncbi.key, use_history=FALSE)# test it works
 
+# chunk queries over the n cores
+queries.chunked  <- split(query.cat, ceiling(seq_along(query.cat)/cores))
+length(queries.chunked)
+
+# run NCBI search and time
 writeLines(paste("\nNow running Rentrez on",cores,"cores ..."))
-# run the search for accessions with rentrez
-options("scipen"=100)#stop sci numbers
-search.res <- mcmapply(FUN=function(x) entrez_search(db="nuccore", term=x, retmax=100000, api_key=ncbi.key, use_history=FALSE), query.cat, SIMPLIFY=FALSE, USE.NAMES=FALSE, mc.cores=cores)
-# if parallel package not available or NCBI API is throttling, use lapply (slower)
-#options("scipen"=100)
-#search.res <- lapply(query.cat[1:100], function(x) entrez_search(db="nuccore", term=x, retmax=100000, api_key=ncbi.key, use_history=FALSE))
+    start_time <- Sys.time()
+search.res <- lapply(queries.chunked,entrez_search_parallel,threads=cores,key=ncbi.key)
+    end_time <- Sys.time()
+    end_time-start_time
 
 # check for errors - should be all false
-table(sapply(search.res, function(x) grepl("Error",x)[1]))
+table(grepl("Error",search.res))
 
-# removed the zero counts
-search.res.nz <- search.res[which(lapply(search.res, function(x) x$count) > 0)]
+# flatten the searches
+search.flat <- search.res %>% purrr::flatten()
 
-# get IDs and remove dups
-search.ids <- unique(unlist(lapply(search.res.nz, function(x) x$ids)))
+# plot the counts of ids per search
+search.flat %>% purrr::map(~{unname(.x$count)}) %>% purrr::flatten_int() %>% tibble() %>% ggplot(aes(x=.)) + geom_histogram()
 
+# get max count
+search.flat %>% purrr::map(~{unname(.x$count)}) %>% purrr::flatten_int() %>% max()
+
+# get the ids out the the non-zero results
+search.ids <- search.flat[which(search.flat %>% purrr::map(~{unname(.x$count)}) > 0)] %>% purrr::map(~{unname(.x$ids)}) %>% purrr::flatten_chr() %>% unique()
+
+# count num unique ids
+length(search.ids)
+
+
+# now download ids using ape
 # chunk up into 70s to stop server from rejecting request 
 chunk <- 70
 id.split <- unname(split(search.ids, ceiling(seq_along(search.ids)/chunk)))
@@ -82,7 +98,6 @@ ncbi.all <- mcmapply(FUN=function(x) read_GenBank(x, species.names=FALSE, api.ke
 
 # check for errors (should be all DNAbin)
 table(sapply(ncbi.all, class))
-
 
 # write out a temporary file
 file.create("../temp/mtdna-uk.fas")
@@ -123,6 +138,3 @@ bold.fas <- tab2fas(df=bold.red, seqcol="nucleotides", namecol="processidUniq")
 
 # add it to the GenBank file already created
 write.FASTA(bold.fas, file="../temp/mtdna-uk.fas", append=TRUE)
-
-end_time <- Sys.time()
-end_time-start_time 
