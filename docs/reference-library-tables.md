@@ -11,7 +11,7 @@ To calculate coverage we used the Bristol SeaDNA tissue catalogue, and also perf
 
 ##### Results
 
-The total number of UK species is estimated to be around 530. GenBank and BOLD were searched on 2020-08-31 (GenBank version 239). A total of 2058 records were recovered. In terms of tissue sampling, 588 samples have been taken from 96 fish species identified to species level. Of these, 87 species have locality data. Combined with the GenBank sequence data, 93% of the 176 common species have been sampled (Table 2), and 64% of the 354 rare species (Table 3). For the common species, the median number of tissues or GenBank sequences per species is 5, while 16 (9%) are represented by only one tissue or sequence. Table 1 lists the common species currently missing from reference library, i.e. those of highest priority to source.
+The total number of UK species is estimated to be around 530. GenBank and BOLD were searched on 2020-08-31 (GenBank version 239). A total of 2058 records were recovered. In terms of tissue sampling, 589 samples have been taken from 97 fish species identified to species level. Of these, 87 species have locality data. Combined with the GenBank sequence data, 93% of the 176 common species have been sampled (Table 2), and 64% of the 354 rare species (Table 3). For the common species, the median number of tissues or GenBank sequences per species is 5, while 17 (10%) are represented by only one tissue or sequence. Table 1 lists the common species currently missing from reference library, i.e. those of highest priority to source.
 
 ###### Table 1. Highest priority species (common species with no tissue sample or GenBank data).
 
@@ -27,7 +27,6 @@ The total number of UK species is estimated to be around 530. GenBank and BOLD w
 | Gobiidae       | *Thorogobius ephippiatus*     | Leopard-spotted goby   |
 | Stichaeidae    | *Chirolophis ascanii*         | Yarrell's blenny       |
 | Scophthalmidae | *Zeugopterus punctatus*       | Topknot                |
-| Agonidae       | *Agonus cataphractus*         | Hooknose               |
 | Syngnathidae   | *Hippocampus guttulatus*      | Long-snouted seahorse  |
 | Dasyatidae     | *Dasyatis pastinaca*          | Common stingray        |
 
@@ -167,7 +166,7 @@ The total number of UK species is estimated to be around 530. GenBank and BOLD w
 | Salmonidae      | *Salmo salar*                  | Atlantic salmon          |             1|             13|
 | Salmonidae      | *Salmo trutta*                 | Sea trout                |              |             20|
 | Salmonidae      | *Thymallus thymallus*          | Grayling                 |              |              4|
-| Agonidae        | *Agonus cataphractus*          | Hooknose                 |              |               |
+| Agonidae        | *Agonus cataphractus*          | Hooknose                 |             1|               |
 | Cottidae        | *Cottus gobio*                 | Bullhead                 |              |              3|
 | Cottidae        | *Micrenophrys lilljeborgii*    | Norway bullhead          |             1|               |
 | Cottidae        | *Myoxocephalus scorpius*       | Shorthorn sculpin        |              |              4|
