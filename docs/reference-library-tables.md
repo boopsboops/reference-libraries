@@ -15,11 +15,202 @@ The total number of UK species is estimated to be around 530. GenBank and BOLD w
 
 ###### Table 1. Highest priority species (common species with no tissue sample or GenBank data).
 
-|Family |Scientific Name |Common Name | |:--------------|:-----------------------------|:----------------------| |Cyprinidae |*Leuciscus idus* |Ide | |Lotidae |*Gaidropsarus mediterraneus* |Shore rockling | |Lotidae |*Gaidropsarus vulgaris* |Three-bearded rockling | |Gobiesocidae |*Lepadogaster candolii* |Connemarra clingfish | |Ammodytidae |*Gymnammodytes semisquamatus* |Smooth sandeel | |Callionymidae |*Callionymus reticulatus* |Reticulated dragonet | |Gobiidae |*Pomatoschistus norvegicus* |Norway goby | |Gobiidae |*Thorogobius ephippiatus* |Leopard-spotted goby | |Stichaeidae |*Chirolophis ascanii* |Yarrell's blenny | |Scophthalmidae |*Zeugopterus punctatus* |Topknot | |Agonidae |*Agonus cataphractus* |Hooknose | |Syngnathidae |*Hippocampus guttulatus* |Long-snouted seahorse | |Dasyatidae |*Dasyatis pastinaca* |Common stingray | ---
+| Family         | Scientific Name               | Common Name            |
+|:---------------|:------------------------------|:-----------------------|
+| Cyprinidae     | *Leuciscus idus*              | Ide                    |
+| Lotidae        | *Gaidropsarus mediterraneus*  | Shore rockling         |
+| Lotidae        | *Gaidropsarus vulgaris*       | Three-bearded rockling |
+| Gobiesocidae   | *Lepadogaster candolii*       | Connemarra clingfish   |
+| Ammodytidae    | *Gymnammodytes semisquamatus* | Smooth sandeel         |
+| Callionymidae  | *Callionymus reticulatus*     | Reticulated dragonet   |
+| Gobiidae       | *Pomatoschistus norvegicus*   | Norway goby            |
+| Gobiidae       | *Thorogobius ephippiatus*     | Leopard-spotted goby   |
+| Stichaeidae    | *Chirolophis ascanii*         | Yarrell's blenny       |
+| Scophthalmidae | *Zeugopterus punctatus*       | Topknot                |
+| Agonidae       | *Agonus cataphractus*         | Hooknose               |
+| Syngnathidae   | *Hippocampus guttulatus*      | Long-snouted seahorse  |
+| Dasyatidae     | *Dasyatis pastinaca*          | Common stingray        |
 
 ###### Table 2. All common UK species with counts for tissue samples collected and sequence data obtained from GenBank (number of individuals).
 
-|Family |Scientific Name |Common Name | Tissue Count| GenBank Count| |:---------------|:------------------------------|:------------------------|------------:|-------------:| |Anguillidae |*Anguilla anguilla* |European eel | 4| 59| |Congridae |*Conger conger* |European conger | 1| 1| |Atherinidae |*Atherina boyeri* |Big-scale sand smelt | 7| 4| |Belonidae |*Belone belone* |Garfish | 3| 1| |Clupeidae |*Alosa alosa* |Allis shad | | 2| |Clupeidae |*Alosa fallax* |Twaite shad | | 1| |Clupeidae |*Clupea harengus* |Atlantic herring | 6| 103| |Clupeidae |*Sardina pilchardus* |European pilchard | 4| 9| |Clupeidae |*Sprattus sprattus* |European sprat | 9| 3| |Engraulidae |*Engraulis encrasicolus* |European anchovy | 1| 4| |Cobitidae |*Cobitis taenia* |Spined loach | | 1| |Cyprinidae |*Abramis brama* |Freshwater bream | | 6| |Cyprinidae |*Alburnus alburnus* |Bleak | | 4| |Cyprinidae |*Barbus barbus* |Barbel | | 6| |Cyprinidae |*Blicca bjoerkna* |White bream | | 4| |Cyprinidae |*Carassius auratus* |Goldfish | | 56| |Cyprinidae |*Carassius carassius* |Crucian carp | | 2| |Cyprinidae |*Cyprinus carpio* |Common carp | | 65| |Cyprinidae |*Gobio gobio* |Gudgeon | | 8| |Cyprinidae |*Leuciscus idus* |Ide | | | |Cyprinidae |*Leuciscus leuciscus* |Common dace | | 5| |Cyprinidae |*Phoxinus phoxinus* |Eurasian minnow | | 13| |Cyprinidae |*Pseudorasbora parva* |Stone moroko | | 10| |Cyprinidae |*Rutilus rutilus* |Roach | | 3| |Cyprinidae |*Scardinius erythrophthalmus* |Rudd | | 3| |Cyprinidae |*Squalius cephalus* |Chub | | 5| |Cyprinidae |*Tinca tinca* |Tench | | 6| |Nemacheilidae |*Barbatula barbatula* |Stone loach | | 7| |Esocidae |*Esox lucius* |Northern pike | | 8| |Gadidae |*Gadiculus argenteus* |Silvery pout | | 2| |Gadidae |*Gadus morhua* |Atlantic cod | 1| 171| |Gadidae |*Melanogrammus aeglefinus* |Haddock | | 8| |Gadidae |*Merlangius merlangus* |Whiting | 13| 7| |Gadidae |*Micromesistius poutassou* |Blue whiting | | 7| |Gadidae |*Pollachius pollachius* |Pollack | 3| 5| |Gadidae |*Pollachius virens* |Saithe | | 9| |Gadidae |*Raniceps raninus* |Tadpole fish | | 4| |Gadidae |*Trisopterus esmarkii* |Norway pout | | 3| |Gadidae |*Trisopterus luscus* |Pouting | 5| 2| |Gadidae |*Trisopterus minutus* |Poor cod | 5| 3| |Lotidae |*Ciliata mustela* |Fivebeard rockling | 11| 2| |Lotidae |*Ciliata septentrionalis* |Northern rockling | 3| | |Lotidae |*Enchelyopus cimbrius* |Fourbeard rockling | 1| 2| |Lotidae |*Gaidropsarus mediterraneus* |Shore rockling | | | |Lotidae |*Gaidropsarus vulgaris* |Three-bearded rockling | | | |Lotidae |*Molva molva* |Ling | | 3| |Merlucciidae |*Merluccius merluccius* |European hake | 1| 2| |Gasterosteidae |*Gasterosteus aculeatus* |Three-spined stickleback | | 13| |Gasterosteidae |*Pungitius pungitius* |Ninespine stickleback | 1| 8| |Gasterosteidae |*Spinachia spinachia* |Sea stickleback | 7| 3| |Gobiesocidae |*Apletodon dentatus* |Small-headed clingfish | 1| | |Gobiesocidae |*Diplecogaster bimaculata* |Two-spotted clingfish | 9| | |Gobiesocidae |*Lepadogaster candolii* |Connemarra clingfish | | | |Gobiesocidae |*Lepadogaster purpurea* |Cornish sucker | 3| | |Lophiidae |*Lophius piscatorius* |Angler | 3| 4| |Mugilidae |*Chelon auratus* |Golden grey mullet | | 4| |Mugilidae |*Chelon labrosus* |Thicklip grey mullet | | 7| |Mugilidae |*Chelon ramada* |Thinlip grey mullet | 13| 2| |Osmeridae |*Osmerus eperlanus* |European smelt | | 2| |Ammodytidae |*Ammodytes marinus* |Lesser sand-eel | 3| 1| |Ammodytidae |*Ammodytes tobianus* |Small sandeel | 8| 1| |Ammodytidae |*Gymnammodytes semisquamatus* |Smooth sandeel | | | |Ammodytidae |*Hyperoplus immaculatus* |Greater sand-eel | 1| | |Ammodytidae |*Hyperoplus lanceolatus* |Great sandeel | 3| | |Anarhichadidae |*Anarhichas lupus* |Atlantic wolffish | | 89| |Blenniidae |*Blennius ocellaris* |Butterfly blenny | 8| | |Blenniidae |*Coryphoblennius galerita* |Montagu's blenny | 17| | |Blenniidae |*Lipophrys pholis* |Shanny | 33| | |Blenniidae |*Parablennius gattorugine* |Tompot blenny | 1| | |Callionymidae |*Callionymus lyra* |Dragonet | 12| | |Callionymidae |*Callionymus maculatus* | | 10| | |Callionymidae |*Callionymus reticulatus* |Reticulated dragonet | | | |Caproidae |*Capros aper* |Boarfish | 1| 2| |Carangidae |*Trachurus trachurus* |Atlantic horse mackerel | 9| 4| |Cepolidae |*Cepola macrophthalma* |Red bandfish | 6| | |Gobiidae |*Aphia minuta* |Transparent goby | 10| 1| |Gobiidae |*Crystallogobius linearis* |Crystal goby | | 2| |Gobiidae |*Gobius cobitis* |Giant goby | | 1| |Gobiidae |*Gobiusculus flavescens* |Two-spotted goby | 1| | |Gobiidae |*Gobius niger* |Black goby | 9| 3| |Gobiidae |*Gobius paganellus* |Rock goby | 11| 1| |Gobiidae |*Lesueurigobius friesii* |Fries's goby | | 1| |Gobiidae |*Pomatoschistus lozanoi* |Lozano's goby | 3| | |Gobiidae |*Pomatoschistus microps* |Common goby | 14| 1| |Gobiidae |*Pomatoschistus minutus* |Sand goby | 21| 1| |Gobiidae |*Pomatoschistus norvegicus* |Norway goby | | | |Gobiidae |*Pomatoschistus pictus* |Painted goby | 11| | |Gobiidae |*Thorogobius ephippiatus* |Leopard-spotted goby | | | |Labridae |*Centrolabrus exoletus* |Rock cook | | 1| |Labridae |*Ctenolabrus rupestris* |Goldsinny-wrasse | 2| 2| |Labridae |*Labrus bergylta* |Ballan wrasse | 6| 1| |Labridae |*Labrus mixtus* |Cuckoo wrasse | | 2| |Labridae |*Symphodus bailloni* |Baillon's wrasse | 7| | |Labridae |*Symphodus melops* |Corkwing wrasse | 14| 1| |Moronidae |*Dicentrarchus labrax* |European seabass | 7| 3| |Mullidae |*Mullus surmuletus* |Surmullet | 4| 2| |Percidae |*Gymnocephalus cernua* |Ruffe | | 4| |Percidae |*Perca fluviatilis* |European perch | | 19| |Percidae |*Sander lucioperca* |Pike-perch | | 6| |Pholidae |*Pholis gunnellus* |Rock gunnel | 11| 3| |Scombridae |*Scomber scombrus* |Atlantic mackerel | 7| 4| |Sparidae |*Pagellus bogaraveo* |Blackspot seabream | 1| 3| |Sparidae |*Pagrus pagrus* |Red porgy | | 3| |Sparidae |*Sparus aurata* |Gilthead seabream | 7| 2| |Sparidae |*Spondyliosoma cantharus* |Black seabream | 5| 1| |Stichaeidae |*Chirolophis ascanii* |Yarrell's blenny | | | |Stichaeidae |*Lumpenus lampretaeformis* |Snakeblenny | | 2| |Trachinidae |*Echiichthys vipera* |Lesser weever | 6| | |Trachinidae |*Trachinus draco* |Greater weever | 5| 3| |Zoarcidae |*Zoarces viviparus* |Eelpout | | 1| |Bothidae |*Arnoglossus laterna* |Mediterranean scaldfish | 5| 1| |Pleuronectidae |*Glyptocephalus cynoglossus* |Witch flounder | 1| 3| |Pleuronectidae |*Hippoglossoides platessoides* |American plaice | | 5| |Pleuronectidae |*Hippoglossus hippoglossus* |Atlantic halibut | 1| 6| |Pleuronectidae |*Limanda limanda* |Common dab | 6| 2| |Pleuronectidae |*Microstomus kitt* |Lemon sole | 12| 1| |Pleuronectidae |*Platichthys flesus* |European flounder | 5| | |Pleuronectidae |*Pleuronectes platessa* |European plaice | 10| 1| |Scophthalmidae |*Lepidorhombus whiffiagonis* |Megrim | 4| | |Scophthalmidae |*Phrynorhombus norvegicus* |Norwegian topknot | 9| | |Scophthalmidae |*Scophthalmus maximus* |Turbot | 1| 3| |Scophthalmidae |*Scophthalmus rhombus* |Brill | 5| | |Scophthalmidae |*Zeugopterus punctatus* |Topknot | | | |Scophthalmidae |*Zeugopterus regius* |Eckstr<f6>m's topknot | 5| | |Soleidae |*Buglossidium luteum* |Solenette | 9| | |Soleidae |*Microchirus variegatus* |Thickback sole | 5| | |Soleidae |*Pegusa lascaris* |Sand sole | 8| | |Soleidae |*Solea solea* |Common sole | 6| 3| |Salmonidae |*Oncorhynchus mykiss* |Rainbow trout | | 18| |Salmonidae |*Salmo salar* |Atlantic salmon | 1| 13| |Salmonidae |*Salmo trutta* |Sea trout | | 20| |Salmonidae |*Thymallus thymallus* |Grayling | | 4| |Agonidae |*Agonus cataphractus* |Hooknose | | | |Cottidae |*Cottus gobio* |Bullhead | | 3| |Cottidae |*Micrenophrys lilljeborgii* |Norway bullhead | 1| | |Cottidae |*Myoxocephalus scorpius* |Shorthorn sculpin | | 4| |Cottidae |*Taurulus bubalis* |Longspined bullhead | 13| 1| |Cyclopteridae |*Cyclopterus lumpus* |Lumpfish | | 3| |Liparidae |*Liparis liparis* |Striped seasnail | 4| | |Liparidae |*Liparis montagui* |Montagus seasnail | 2| | |Triglidae |*Chelidonichthys cuculus* |Red gurnard | 12| 1| |Triglidae |*Chelidonichthys lastoviza* |Streaked gurnard | 5| | |Triglidae |*Chelidonichthys lucerna* |Tub gurnard | 6| | |Triglidae |*Eutrigla gurnardus* |Grey gurnard | 8| 1| |Siluridae |*Silurus glanis* |Wels catfish | | 2| |Syngnathidae |*Entelurus aequoreus* |Snake pipefish | 1| 1| |Syngnathidae |*Hippocampus guttulatus* |Long-snouted seahorse | | | |Syngnathidae |*Hippocampus hippocampus* |Short snouted seahorse | 6| 2| |Syngnathidae |*Nerophis lumbriciformis* |Worm pipefish | 6| | |Syngnathidae |*Nerophis ophidion* |Straightnose pipefish | | 1| |Syngnathidae |*Syngnathus acus* |Greater pipefish | 11| 1| |Syngnathidae |*Syngnathus rostellatus* |Nilsson's pipefish | 12| 1| |Syngnathidae |*Syngnathus typhle* |Broadnosed pipefish | 1| 2| |Balistidae |*Balistes capriscus* |Grey triggerfish | | 3| |Molidae |*Mola mola* |Ocean sunfish | | 5| |Zeidae |*Zeus faber* |John dory | 5| 4| |Petromyzontidae |*Lampetra fluviatilis* |River lamprey | | 2| |Petromyzontidae |*Lampetra planeri* |European brook lamprey | | 2| |Petromyzontidae |*Petromyzon marinus* |Sea lamprey | | 3| |Carcharhinidae |*Prionace glauca* |Blue shark | | 5| |Scyliorhinidae |*Scyliorhinus canicula* |Lesser spotted dogfish | 3| 1| |Scyliorhinidae |*Scyliorhinus stellaris* |Nursehound | 1| | |Triakidae |*Galeorhinus galeus* |Tope shark | 1| | |Triakidae |*Mustelus asterias* |Starry smooth-hound | 3| 1| |Alopiidae |*Alopias vulpinus* |Thresher | | 6| |Cetorhinidae |*Cetorhinus maximus* |Basking shark | | 25| |Lamnidae |*Lamna nasus* |Porbeagle | | 3| |Dasyatidae |*Dasyatis pastinaca* |Common stingray | | | |Rajidae |*Amblyraja radiata* |Starry ray | | 3| |Rajidae |*Leucoraja naevus* |Cuckoo ray | | 3| |Rajidae |*Raja brachyura* |Blonde ray | | 3| |Rajidae |*Raja clavata* |Thornback ray | 4| 3| |Rajidae |*Raja microocellata* |Small-eyed ray | | 1| |Rajidae |*Raja montagui* |Spotted ray | | 1| |Rajidae |*Raja undulata* |Undulate ray | 1| 1| |Squalidae |*Squalus acanthias* |Picked dogfish | | 4| ---
+| Family          | Scientific Name                | Common Name              |  Tissue Count|  GenBank Count|
+|:----------------|:-------------------------------|:-------------------------|-------------:|--------------:|
+| Anguillidae     | *Anguilla anguilla*            | European eel             |             4|             59|
+| Congridae       | *Conger conger*                | European conger          |             1|              1|
+| Atherinidae     | *Atherina boyeri*              | Big-scale sand smelt     |             7|              4|
+| Belonidae       | *Belone belone*                | Garfish                  |             3|              1|
+| Clupeidae       | *Alosa alosa*                  | Allis shad               |              |              2|
+| Clupeidae       | *Alosa fallax*                 | Twaite shad              |              |              1|
+| Clupeidae       | *Clupea harengus*              | Atlantic herring         |             6|            103|
+| Clupeidae       | *Sardina pilchardus*           | European pilchard        |             4|              9|
+| Clupeidae       | *Sprattus sprattus*            | European sprat           |             9|              3|
+| Engraulidae     | *Engraulis encrasicolus*       | European anchovy         |             1|              4|
+| Cobitidae       | *Cobitis taenia*               | Spined loach             |              |              1|
+| Cyprinidae      | *Abramis brama*                | Freshwater bream         |              |              6|
+| Cyprinidae      | *Alburnus alburnus*            | Bleak                    |              |              4|
+| Cyprinidae      | *Barbus barbus*                | Barbel                   |              |              6|
+| Cyprinidae      | *Blicca bjoerkna*              | White bream              |              |              4|
+| Cyprinidae      | *Carassius auratus*            | Goldfish                 |              |             56|
+| Cyprinidae      | *Carassius carassius*          | Crucian carp             |              |              2|
+| Cyprinidae      | *Cyprinus carpio*              | Common carp              |              |             65|
+| Cyprinidae      | *Gobio gobio*                  | Gudgeon                  |              |              8|
+| Cyprinidae      | *Leuciscus idus*               | Ide                      |              |               |
+| Cyprinidae      | *Leuciscus leuciscus*          | Common dace              |              |              5|
+| Cyprinidae      | *Phoxinus phoxinus*            | Eurasian minnow          |              |             13|
+| Cyprinidae      | *Pseudorasbora parva*          | Stone moroko             |              |             10|
+| Cyprinidae      | *Rutilus rutilus*              | Roach                    |              |              3|
+| Cyprinidae      | *Scardinius erythrophthalmus*  | Rudd                     |              |              3|
+| Cyprinidae      | *Squalius cephalus*            | Chub                     |              |              5|
+| Cyprinidae      | *Tinca tinca*                  | Tench                    |              |              6|
+| Nemacheilidae   | *Barbatula barbatula*          | Stone loach              |              |              7|
+| Esocidae        | *Esox lucius*                  | Northern pike            |              |              8|
+| Gadidae         | *Gadiculus argenteus*          | Silvery pout             |              |              2|
+| Gadidae         | *Gadus morhua*                 | Atlantic cod             |             1|            171|
+| Gadidae         | *Melanogrammus aeglefinus*     | Haddock                  |              |              8|
+| Gadidae         | *Merlangius merlangus*         | Whiting                  |            13|              7|
+| Gadidae         | *Micromesistius poutassou*     | Blue whiting             |              |              7|
+| Gadidae         | *Pollachius pollachius*        | Pollack                  |             3|              5|
+| Gadidae         | *Pollachius virens*            | Saithe                   |              |              9|
+| Gadidae         | *Raniceps raninus*             | Tadpole fish             |              |              4|
+| Gadidae         | *Trisopterus esmarkii*         | Norway pout              |              |              3|
+| Gadidae         | *Trisopterus luscus*           | Pouting                  |             5|              2|
+| Gadidae         | *Trisopterus minutus*          | Poor cod                 |             5|              3|
+| Lotidae         | *Ciliata mustela*              | Fivebeard rockling       |            11|              2|
+| Lotidae         | *Ciliata septentrionalis*      | Northern rockling        |             3|               |
+| Lotidae         | *Enchelyopus cimbrius*         | Fourbeard rockling       |             1|              2|
+| Lotidae         | *Gaidropsarus mediterraneus*   | Shore rockling           |              |               |
+| Lotidae         | *Gaidropsarus vulgaris*        | Three-bearded rockling   |              |               |
+| Lotidae         | *Molva molva*                  | Ling                     |              |              3|
+| Merlucciidae    | *Merluccius merluccius*        | European hake            |             1|              2|
+| Gasterosteidae  | *Gasterosteus aculeatus*       | Three-spined stickleback |              |             13|
+| Gasterosteidae  | *Pungitius pungitius*          | Ninespine stickleback    |             1|              8|
+| Gasterosteidae  | *Spinachia spinachia*          | Sea stickleback          |             7|              3|
+| Gobiesocidae    | *Apletodon dentatus*           | Small-headed clingfish   |             1|               |
+| Gobiesocidae    | *Diplecogaster bimaculata*     | Two-spotted clingfish    |             9|               |
+| Gobiesocidae    | *Lepadogaster candolii*        | Connemarra clingfish     |              |               |
+| Gobiesocidae    | *Lepadogaster purpurea*        | Cornish sucker           |             3|               |
+| Lophiidae       | *Lophius piscatorius*          | Angler                   |             3|              4|
+| Mugilidae       | *Chelon auratus*               | Golden grey mullet       |              |              4|
+| Mugilidae       | *Chelon labrosus*              | Thicklip grey mullet     |              |              7|
+| Mugilidae       | *Chelon ramada*                | Thinlip grey mullet      |            13|              2|
+| Osmeridae       | *Osmerus eperlanus*            | European smelt           |              |              2|
+| Ammodytidae     | *Ammodytes marinus*            | Lesser sand-eel          |             3|              1|
+| Ammodytidae     | *Ammodytes tobianus*           | Small sandeel            |             8|              1|
+| Ammodytidae     | *Gymnammodytes semisquamatus*  | Smooth sandeel           |              |               |
+| Ammodytidae     | *Hyperoplus immaculatus*       | Greater sand-eel         |             1|               |
+| Ammodytidae     | *Hyperoplus lanceolatus*       | Great sandeel            |             3|               |
+| Anarhichadidae  | *Anarhichas lupus*             | Atlantic wolffish        |              |             89|
+| Blenniidae      | *Blennius ocellaris*           | Butterfly blenny         |             8|               |
+| Blenniidae      | *Coryphoblennius galerita*     | Montagu's blenny         |            17|               |
+| Blenniidae      | *Lipophrys pholis*             | Shanny                   |            33|               |
+| Blenniidae      | *Parablennius gattorugine*     | Tompot blenny            |             1|               |
+| Callionymidae   | *Callionymus lyra*             | Dragonet                 |            12|               |
+| Callionymidae   | *Callionymus maculatus*        |                          |            10|               |
+| Callionymidae   | *Callionymus reticulatus*      | Reticulated dragonet     |              |               |
+| Caproidae       | *Capros aper*                  | Boarfish                 |             1|              2|
+| Carangidae      | *Trachurus trachurus*          | Atlantic horse mackerel  |             9|              4|
+| Cepolidae       | *Cepola macrophthalma*         | Red bandfish             |             6|               |
+| Gobiidae        | *Aphia minuta*                 | Transparent goby         |            10|              1|
+| Gobiidae        | *Crystallogobius linearis*     | Crystal goby             |              |              2|
+| Gobiidae        | *Gobius cobitis*               | Giant goby               |              |              1|
+| Gobiidae        | *Gobiusculus flavescens*       | Two-spotted goby         |             1|               |
+| Gobiidae        | *Gobius niger*                 | Black goby               |             9|              3|
+| Gobiidae        | *Gobius paganellus*            | Rock goby                |            11|              1|
+| Gobiidae        | *Lesueurigobius friesii*       | Fries's goby             |              |              1|
+| Gobiidae        | *Pomatoschistus lozanoi*       | Lozano's goby            |             3|               |
+| Gobiidae        | *Pomatoschistus microps*       | Common goby              |            14|              1|
+| Gobiidae        | *Pomatoschistus minutus*       | Sand goby                |            21|              1|
+| Gobiidae        | *Pomatoschistus norvegicus*    | Norway goby              |              |               |
+| Gobiidae        | *Pomatoschistus pictus*        | Painted goby             |            11|               |
+| Gobiidae        | *Thorogobius ephippiatus*      | Leopard-spotted goby     |              |               |
+| Labridae        | *Centrolabrus exoletus*        | Rock cook                |              |              1|
+| Labridae        | *Ctenolabrus rupestris*        | Goldsinny-wrasse         |             2|              2|
+| Labridae        | *Labrus bergylta*              | Ballan wrasse            |             6|              1|
+| Labridae        | *Labrus mixtus*                | Cuckoo wrasse            |              |              2|
+| Labridae        | *Symphodus bailloni*           | Baillon's wrasse         |             7|               |
+| Labridae        | *Symphodus melops*             | Corkwing wrasse          |            14|              1|
+| Moronidae       | *Dicentrarchus labrax*         | European seabass         |             7|              3|
+| Mullidae        | *Mullus surmuletus*            | Surmullet                |             4|              2|
+| Percidae        | *Gymnocephalus cernua*         | Ruffe                    |              |              4|
+| Percidae        | *Perca fluviatilis*            | European perch           |              |             19|
+| Percidae        | *Sander lucioperca*            | Pike-perch               |              |              6|
+| Pholidae        | *Pholis gunnellus*             | Rock gunnel              |            11|              3|
+| Scombridae      | *Scomber scombrus*             | Atlantic mackerel        |             7|              4|
+| Sparidae        | *Pagellus bogaraveo*           | Blackspot seabream       |             1|              3|
+| Sparidae        | *Pagrus pagrus*                | Red porgy                |              |              3|
+| Sparidae        | *Sparus aurata*                | Gilthead seabream        |             7|              2|
+| Sparidae        | *Spondyliosoma cantharus*      | Black seabream           |             5|              1|
+| Stichaeidae     | *Chirolophis ascanii*          | Yarrell's blenny         |              |               |
+| Stichaeidae     | *Lumpenus lampretaeformis*     | Snakeblenny              |              |              2|
+| Trachinidae     | *Echiichthys vipera*           | Lesser weever            |             6|               |
+| Trachinidae     | *Trachinus draco*              | Greater weever           |             5|              3|
+| Zoarcidae       | *Zoarces viviparus*            | Eelpout                  |              |              1|
+| Bothidae        | *Arnoglossus laterna*          | Mediterranean scaldfish  |             5|              1|
+| Pleuronectidae  | *Glyptocephalus cynoglossus*   | Witch flounder           |             1|              3|
+| Pleuronectidae  | *Hippoglossoides platessoides* | American plaice          |              |              5|
+| Pleuronectidae  | *Hippoglossus hippoglossus*    | Atlantic halibut         |             1|              6|
+| Pleuronectidae  | *Limanda limanda*              | Common dab               |             6|              2|
+| Pleuronectidae  | *Microstomus kitt*             | Lemon sole               |            12|              1|
+| Pleuronectidae  | *Platichthys flesus*           | European flounder        |             5|               |
+| Pleuronectidae  | *Pleuronectes platessa*        | European plaice          |            10|              1|
+| Scophthalmidae  | *Lepidorhombus whiffiagonis*   | Megrim                   |             4|               |
+| Scophthalmidae  | *Phrynorhombus norvegicus*     | Norwegian topknot        |             9|               |
+| Scophthalmidae  | *Scophthalmus maximus*         | Turbot                   |             1|              3|
+| Scophthalmidae  | *Scophthalmus rhombus*         | Brill                    |             5|               |
+| Scophthalmidae  | *Zeugopterus punctatus*        | Topknot                  |              |               |
+| Scophthalmidae  | *Zeugopterus regius*           | Eckstr<f6>m's topknot    |             5|               |
+| Soleidae        | *Buglossidium luteum*          | Solenette                |             9|               |
+| Soleidae        | *Microchirus variegatus*       | Thickback sole           |             5|               |
+| Soleidae        | *Pegusa lascaris*              | Sand sole                |             8|               |
+| Soleidae        | *Solea solea*                  | Common sole              |             6|              3|
+| Salmonidae      | *Oncorhynchus mykiss*          | Rainbow trout            |              |             18|
+| Salmonidae      | *Salmo salar*                  | Atlantic salmon          |             1|             13|
+| Salmonidae      | *Salmo trutta*                 | Sea trout                |              |             20|
+| Salmonidae      | *Thymallus thymallus*          | Grayling                 |              |              4|
+| Agonidae        | *Agonus cataphractus*          | Hooknose                 |              |               |
+| Cottidae        | *Cottus gobio*                 | Bullhead                 |              |              3|
+| Cottidae        | *Micrenophrys lilljeborgii*    | Norway bullhead          |             1|               |
+| Cottidae        | *Myoxocephalus scorpius*       | Shorthorn sculpin        |              |              4|
+| Cottidae        | *Taurulus bubalis*             | Longspined bullhead      |            13|              1|
+| Cyclopteridae   | *Cyclopterus lumpus*           | Lumpfish                 |              |              3|
+| Liparidae       | *Liparis liparis*              | Striped seasnail         |             4|               |
+| Liparidae       | *Liparis montagui*             | Montagus seasnail        |             2|               |
+| Triglidae       | *Chelidonichthys cuculus*      | Red gurnard              |            12|              1|
+| Triglidae       | *Chelidonichthys lastoviza*    | Streaked gurnard         |             5|               |
+| Triglidae       | *Chelidonichthys lucerna*      | Tub gurnard              |             6|               |
+| Triglidae       | *Eutrigla gurnardus*           | Grey gurnard             |             8|              1|
+| Siluridae       | *Silurus glanis*               | Wels catfish             |              |              2|
+| Syngnathidae    | *Entelurus aequoreus*          | Snake pipefish           |             1|              1|
+| Syngnathidae    | *Hippocampus guttulatus*       | Long-snouted seahorse    |              |               |
+| Syngnathidae    | *Hippocampus hippocampus*      | Short snouted seahorse   |             6|              2|
+| Syngnathidae    | *Nerophis lumbriciformis*      | Worm pipefish            |             6|               |
+| Syngnathidae    | *Nerophis ophidion*            | Straightnose pipefish    |              |              1|
+| Syngnathidae    | *Syngnathus acus*              | Greater pipefish         |            11|              1|
+| Syngnathidae    | *Syngnathus rostellatus*       | Nilsson's pipefish       |            12|              1|
+| Syngnathidae    | *Syngnathus typhle*            | Broadnosed pipefish      |             1|              2|
+| Balistidae      | *Balistes capriscus*           | Grey triggerfish         |              |              3|
+| Molidae         | *Mola mola*                    | Ocean sunfish            |              |              5|
+| Zeidae          | *Zeus faber*                   | John dory                |             5|              4|
+| Petromyzontidae | *Lampetra fluviatilis*         | River lamprey            |              |              2|
+| Petromyzontidae | *Lampetra planeri*             | European brook lamprey   |              |              2|
+| Petromyzontidae | *Petromyzon marinus*           | Sea lamprey              |              |              3|
+| Carcharhinidae  | *Prionace glauca*              | Blue shark               |              |              5|
+| Scyliorhinidae  | *Scyliorhinus canicula*        | Lesser spotted dogfish   |             3|              1|
+| Scyliorhinidae  | *Scyliorhinus stellaris*       | Nursehound               |             1|               |
+| Triakidae       | *Galeorhinus galeus*           | Tope shark               |             1|               |
+| Triakidae       | *Mustelus asterias*            | Starry smooth-hound      |             3|              1|
+| Alopiidae       | *Alopias vulpinus*             | Thresher                 |              |              6|
+| Cetorhinidae    | *Cetorhinus maximus*           | Basking shark            |              |             25|
+| Lamnidae        | *Lamna nasus*                  | Porbeagle                |              |              3|
+| Dasyatidae      | *Dasyatis pastinaca*           | Common stingray          |              |               |
+| Rajidae         | *Amblyraja radiata*            | Starry ray               |              |              3|
+| Rajidae         | *Leucoraja naevus*             | Cuckoo ray               |              |              3|
+| Rajidae         | *Raja brachyura*               | Blonde ray               |              |              3|
+| Rajidae         | *Raja clavata*                 | Thornback ray            |             4|              3|
+| Rajidae         | *Raja microocellata*           | Small-eyed ray           |              |              1|
+| Rajidae         | *Raja montagui*                | Spotted ray              |              |              1|
+| Rajidae         | *Raja undulata*                | Undulate ray             |             1|              1|
+| Squalidae       | *Squalus acanthias*            | Picked dogfish           |              |              4|
 
 ###### Table 3. All other UK species (reported in UK waters, but not listed in common species).
 
