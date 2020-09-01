@@ -156,8 +156,6 @@ needed.species %>%
     rename(Family=family, `Scientific Name`=sciNameValid, `Common Name`=commonName) %>%
 kable()
 ```
----
-
 
 ###### Table 2. All common UK species with counts for tissue samples collected and sequence data obtained from GenBank (number of individuals).
 ```{r print_common, echo=FALSE, results="asis"}
@@ -169,8 +167,6 @@ common.df %>%
     rename(Family=family, `Scientific Name`=sciNameValid, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>%
 kable()
 ```
----
-
 
 ###### Table 3. All other UK species (reported in UK waters, but not listed in common species).
 ```{r print_rare, echo=FALSE, results="asis"}
@@ -182,4 +178,3 @@ rare.df %>%
     rename(Family=family, `Scientific Name`=sciNameValid, `Common Name`=commonName, `Tissue Count`=tissueCount, `GenBank Count`=genbankCount) %>%
 kable()
 ```
-
