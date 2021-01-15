@@ -1,3 +1,5 @@
+**!!!IMPORTANT NOTE: THIS REPOSITORY IS SUPERCEDED BY A NEWER VERSION HOSTED AT [github.com/genner-lab/meta-fish-lib](https://github.com/genner-lab/meta-fish-lib). PLEASE USE THAT VERSION. THIS ONE WILL REMAIN FOR REFERENCE, BUT WILL NOT BE UPDATED!!!**
+
 # A generalised, dynamic DNA reference library for UK fishes
 ![SeaDNA Logo](docs/logo.svg)
 
